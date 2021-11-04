@@ -11,6 +11,21 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
+		<SoundBank Id="1229948536" Language="SFX" Hash="3415416018">
+			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
+			<ShortName>Environment</ShortName>
+			<Path>Environment.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Play_Music" DurationType="OneShot" DurationMin="245.365265" DurationMax="245.365265">
+					<IncludedMemoryFiles>
+						<File Id="109382999" Language="SFX">
+							<ShortName>SampleHipHopTrack100BPM.wav</ShortName>
+							<Path>SFX\SampleHipHopTrack100BPM_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>

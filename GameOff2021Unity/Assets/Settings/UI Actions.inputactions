@@ -90,6 +90,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player",
+            "id": "e5a59611-601f-4529-9450-088bcc76d78f",
+            "actions": [
+                {
+                    "name": "Debug",
+                    "type": "Button",
+                    "id": "07225af6-875b-4b7a-bc3d-6ccff4aede29",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e6ff64cc-bf5b-4ef4-8c8f-f60ef3da0de0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
