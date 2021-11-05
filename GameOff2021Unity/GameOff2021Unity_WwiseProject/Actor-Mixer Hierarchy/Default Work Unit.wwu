@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="DebugCowbell" ID="{46A008D5-C5E1-4607-9BD5-5AFDBA51B966}" ShortID="352344135">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="RKU_BME3_Drums_Perc_Cowbell_03" ID="{4DE15AD9-6CA2-4AD6-9890-C1DB96D7C3FC}">
+							<Language>SFX</Language>
+							<AudioFile>RKU_BME3_Drums_Perc_Cowbell_03.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="396899071"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="RKU_BME3_Drums_Perc_Cowbell_03" ID="{4DE15AD9-6CA2-4AD6-9890-C1DB96D7C3FC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

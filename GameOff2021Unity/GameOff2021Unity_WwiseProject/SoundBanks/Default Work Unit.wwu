@@ -5,6 +5,7 @@
 			<ChildrenList>
 				<SoundBank Name="Environment" ID="{884D84E8-777A-4DAF-AB22-949281D082F1}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_Cowbell" ID="{ECCB92A1-C6C8-48BE-9C61-2C8244EBE9D8}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Music" ID="{06CF03DA-14E9-4EC4-8A51-D0CACBEEA102}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

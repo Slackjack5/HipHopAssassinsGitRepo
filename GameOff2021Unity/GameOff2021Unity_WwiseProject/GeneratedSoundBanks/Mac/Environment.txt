@@ -1,6 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
+	1491318392	Play_Cowbell			\Default Work Unit\Play_Cowbell	
 	2932040671	Play_Music			\Default Work Unit\Play_Music	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	109382999	SampleHipHopTrack100BPM	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\SampleHipHopTrack100BPM_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\SampleHipHopTrack100BPM\SampleHipHopTrack100BPM		47110196
+	396899071	DebugCowbell	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\RKU_BME3_Drums_Perc_Cowbell_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DebugCowbell		20736
 

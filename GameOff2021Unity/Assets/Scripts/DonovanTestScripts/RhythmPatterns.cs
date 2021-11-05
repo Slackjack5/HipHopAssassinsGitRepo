@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RhythmPatterns : MonoBehaviour
 {
+
   //Pattersn for Character 1, NO attacks on Beat 3
   public static float[] Pattern(float SPBeat, float SPBar, int PatternNumber)
   {
@@ -11,17 +12,22 @@ public class RhythmPatterns : MonoBehaviour
     float firstTime = -1f;
     float secondTime = -1f;
     float thirdTime = -1f;
+    int MaxHitpoint = 0;
 
     if (PatternNumber == 1)
     {
       firstTime = 0; //First Beat is on Beat 1
       secondTime = SPBeat; //Second Beat is on Beat 2
       thirdTime = SPBeat * 3; //Second Beat is on Beat 4
+      MaxHitpoint = 3;
     }
 
 
     //Return, the tiime value for all the hit point
-    float[] timespots = new float[] { firstTime, secondTime, thirdTime };
+    float[] timespots = new float[] { firstTime, secondTime, thirdTime }; //Ask for help with this
+
+
     return timespots;
+   
   }
 }

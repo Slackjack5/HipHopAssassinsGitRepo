@@ -5,6 +5,7 @@
 			<PropertyList>
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\slack\Downloads\"/>
 				<Property Name="Event Action List\{06CF03DA-14E9-4EC4-8A51-D0CACBEEA102}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{ECCB92A1-C6C8-48BE-9C61-2C8244EBE9D8}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>

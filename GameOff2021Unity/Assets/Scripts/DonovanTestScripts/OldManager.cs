@@ -9,15 +9,31 @@ public class OldManager : MonoBehaviour
   //Variables
   private float spBeats;
   private float spBar;
-  public bool gameplayStarted;
+  private bool gameplayStarted;
   private State state;
-  public float time;
+  private int previousState;
+  private bool soundPlayed;
+
+
+  //QTE Variables
+  private int currentHitpoint = 0;
+  private float time;
+  private float newTime;
+  public static int frames;
+
   //A way for us to visualize the Rhythm
   public GameObject rhythmDetector;
   //leaniancy
   [Range(0.00f,0.50f)]
   public float leaniancy = 0.1f;
 
+  //Order of Rhythm Script:
+  /*
+   Step 1: Wait for player Input for a pattern and go to SawppingTurns State
+   Step 2: Wait for QTE Rhythm State
+   Step 3: Start Counting Time and Call the RhythmPatterns Script
+   Step 4: Display When the player should hit in QuickTimeEvent()
+  */
 
   private enum State
   {
@@ -31,65 +47,99 @@ public class OldManager : MonoBehaviour
   {
     //Wait Until the First Beat
     state = State.Waiting;
-
   }
 
+  private void FixedUpdate()
+  {
+    //Count the Amount of frames between each beat
+    frames += 1;
+  }
 
   // Update is called once per frame
   void Update()
   {
+    //Wait till the first beat has started, before starting the game.
     if (GlobalVariables.gameStarted == true)
     {
-      if (gameplayStarted == false) { gameplayStarted = true; state = State.PlayerRhythm; spBeats = AudioEvents.secondsPerBeat; spBar = AudioEvents.secondsPerBar; } 
+      if (gameplayStarted == false) { gameplayStarted = true; state = State.PlayerRhythm; spBeats = AudioEvents.secondsPerBeat; spBar = AudioEvents.secondsPerBar;}
+      Debug.Log(frames);
     }
-
-
     switch (state)
     {
       case State.Waiting:
+        previousState = 0;
         break;
-
-
       case State.QTERhythm:
+        //Start counting from the beginning of the beat
+        previousState = 1;
+        CountTime();
         QuickTimeEvent(RhythmPatterns.Pattern(spBeats, spBar, 1));
-        time += Time.deltaTime;
         break;
-
-
-
-      case State.PlayerRhythm: ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      case State.PlayerRhythm: 
         //If Player Presses Space, Start Rhythm Pattern 1
-        
-        if((Input.GetKeyDown("1"))) //Do Pattern 1
+        previousState = 2;
+        if ((Input.GetKeyDown("1"))) //Do Pattern 1
         {
           state = State.SwappingTurns;
         }
         break;
-
-
       case State.SwappingTurns:
-        if(GlobalVariables.currentBeat == 1) //Wait till beat 1 , then swap states
+        if(GlobalVariables.currentBeat == 1 && frames==0) //Wait till beat 1 , then swap states
         {
-          state = State.QTERhythm;
+          if (previousState==2) { state = State.QTERhythm; } else { state = State.PlayerRhythm; }
         }
         break;
     }
-    
   }
 
   public void QuickTimeEvent(float[] HitPoints)
   {
-    int currentHitpoint = 0;
-    if(time >= HitPoints[currentHitpoint] + leaniancy) { currentHitpoint += 1; }
-    if (time >= HitPoints[2] -leaniancy && time <= HitPoints[2] + leaniancy) 
-    { 
-      rhythmDetector.GetComponent<SpriteRenderer>().color = Color.green; 
+    if(currentHitpoint<HitPoints.Length) //Check to see if we are under the amount of hitpoints in this pattern
+    {
+      if (newTime >= HitPoints[currentHitpoint] && newTime <= HitPoints[currentHitpoint] + leaniancy) //If our current time reaches the middle of our hitregion, then play sound
+      {
+        //Play Sound Here
+        if (soundPlayed == false) { AkSoundEngine.PostEvent("Play_Cowbell", gameObject); soundPlayed = true; }
+      }
+
+      if (newTime >= HitPoints[currentHitpoint] - leaniancy && newTime <= HitPoints[currentHitpoint] + leaniancy) //Cehck to see if we are in the hitzone
+      {
+        //If so do this: This is where you check to see if the hit in time//
+        rhythmDetector.GetComponent<SpriteRenderer>().color = Color.green; //Glow Green
+      }
+      else
+      {
+        //If not  do this:
+        rhythmDetector.GetComponent<SpriteRenderer>().color = Color.red; //Glow Red
+      }
+
+      if (newTime >= HitPoints[currentHitpoint] + leaniancy) //If our current time is above where we needed to hit then move to the next hit point
+      {
+        currentHitpoint += 1;
+        soundPlayed = false;
+      }
+
     }
-    else 
-    { 
-      rhythmDetector.GetComponent<SpriteRenderer>().color = Color.red; 
+    else //If we go through all the hitpoints, Swap turns
+    {
+      ResetVariables();
+      state = State.SwappingTurns;
     }
-    Debug.Log("CurrentHitPoint:" + currentHitpoint);
+  }
+
+  public void ResetVariables()
+  {
+    currentHitpoint = 0;
+    rhythmDetector.GetComponent<SpriteRenderer>().color = Color.red;
+    soundPlayed = false;
+    newTime = 0;
+    time = 0;
+  }
+
+  public void CountTime()
+  {
+    time += Time.deltaTime;
+    newTime = Mathf.Round(time * 10.0f) * 0.1f;
   }
 
   

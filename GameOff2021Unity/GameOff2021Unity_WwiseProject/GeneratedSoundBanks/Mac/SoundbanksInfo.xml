@@ -11,11 +11,19 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3415416018">
+		<SoundBank Id="1229948536" Language="SFX" Hash="359800002">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
+				<Event Id="1491318392" Name="Play_Cowbell" ObjectPath="\Events\Default Work Unit\Play_Cowbell" DurationType="OneShot" DurationMin="0.117188" DurationMax="0.117188">
+					<IncludedMemoryFiles>
+						<File Id="396899071" Language="SFX">
+							<ShortName>RKU_BME3_Drums_Perc_Cowbell_03.wav</ShortName>
+							<Path>SFX\RKU_BME3_Drums_Perc_Cowbell_03_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Play_Music" DurationType="OneShot" DurationMin="245.365265" DurationMax="245.365265">
 					<IncludedMemoryFiles>
 						<File Id="109382999" Language="SFX">

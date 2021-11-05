@@ -14,6 +14,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Cowbell" ID="{ECCB92A1-C6C8-48BE-9C61-2C8244EBE9D8}">
+					<ChildrenList>
+						<Action Name="" ID="{9BFED1BC-1FAC-43B3-9F33-67D733FBBB61}" ShortID="242364979">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="DebugCowbell" ID="{46A008D5-C5E1-4607-9BD5-5AFDBA51B966}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

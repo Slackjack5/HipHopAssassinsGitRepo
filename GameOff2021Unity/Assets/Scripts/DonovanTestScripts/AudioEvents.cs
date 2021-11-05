@@ -16,18 +16,15 @@ public class AudioEvents : MonoBehaviour
   public UnityEvent OnEveryGrid;
   public UnityEvent OnEveryBeat;
   public UnityEvent OnEveryBar;
-  public UnityEvent OnR;
   public UnityEvent OnSubtractTime;
   //Functions
   public int GridCount = 0;
   public int gridCounter = 0;
   public bool startCounting = false;
-  private bool isMusicMuted = false;
   //Timing
-  public int[] songTiming;
   public int currentBar= GlobalVariables.currentBar;
   public int currentBeat= GlobalVariables.currentBeat;
-  [HideInInspector] public int currentGrid= GlobalVariables.currentGrid;
+  public int currentGrid= GlobalVariables.currentGrid;
   public bool gameStarted = GlobalVariables.gameStarted;
 
   //id of the wwise event - using this to get the playback position
@@ -96,7 +93,8 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentBar = 1;
     }
-      
+
+   
   }
 
   public void IncreaseBeat()
@@ -109,9 +107,10 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentBeat = 1;
     }
-
+    Debug.Log("Frames Per Beat: " + OldManager.frames / secondsPerBeat);
+    OldManager.frames = 0;
   }
-
+  
   public void IncreaseGrid()
   {
     if (GlobalVariables.currentGrid < 4)//Insert Time Signature
@@ -142,12 +141,6 @@ public class AudioEvents : MonoBehaviour
     //Camera Shake
 
   }
-
-  public void StartLevel()
-  {
-
-  }
-
 
 }
 

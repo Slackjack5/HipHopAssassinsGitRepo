@@ -4,6 +4,10 @@
 		<WorkUnit Name="Default Work Unit" ID="{86CBE694-7639-499A-A32A-677586411F80}" PersistMode="Standalone">
 			<ChildrenList>
 				<MusicPlaylistContainer Name="Music" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" ShortID="1033650539">
+					<PropertyList>
+						<Property Name="GridFrequencyPreset" Type="int16" Value="52"/>
+						<Property Name="Tempo" Type="Real64" Value="100"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
@@ -16,6 +20,7 @@
 						<MusicSegment Name="SampleHipHopTrack100BPM" ID="{F36DA277-B605-4665-8D4C-A7AECEB1A07F}" ShortID="934142253">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="245365.270833333"/>
+								<Property Name="GridFrequencyPreset" Type="int16" Value="64"/>
 								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 								<Property Name="Tempo" Type="Real64" Value="100"/>
 								<Property Name="Volume" Type="Real64">
