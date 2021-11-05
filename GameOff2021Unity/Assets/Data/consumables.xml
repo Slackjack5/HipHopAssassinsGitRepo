@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ArrayOfConsumable xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Consumable>
+    <id>0</id>
+    <name>Health Potion</name>
+    <description>Restores 10 HP</description>
+  </Consumable>
+  <Consumable>
+    <id>1</id>
+    <name>Strength Potion</name>
+    <description>Raises Strength by 5</description>
+  </Consumable>
+</ArrayOfConsumable>
