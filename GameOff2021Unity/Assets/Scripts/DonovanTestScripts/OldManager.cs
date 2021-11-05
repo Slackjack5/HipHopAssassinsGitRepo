@@ -11,6 +11,7 @@ public class OldManager : MonoBehaviour
   private float spBar;
   public bool gameplayStarted;
   private State state;
+  public float time;
   //A way for us to visualize the Rhythm
   public GameObject rhythmDetector;
   //leaniancy
@@ -21,17 +22,16 @@ public class OldManager : MonoBehaviour
   private enum State
   {
     Waiting,
-    EnemyRhythm,
+    QTERhythm,
     PlayerRhythm,
-    Scoring
+    SwappingTurns
   }
   // Start is called before the first frame update
   void Start()
   {
     //Wait Until the First Beat
     state = State.Waiting;
-    spBeats = AudioEvents.secondsPerBeat;
-    spBar = AudioEvents.secondsPerBar;
+
   }
 
 
@@ -40,7 +40,7 @@ public class OldManager : MonoBehaviour
   {
     if (GlobalVariables.gameStarted == true)
     {
-      if (gameplayStarted == false) { gameplayStarted=true; state = State.PlayerRhythm; }
+      if (gameplayStarted == false) { gameplayStarted = true; state = State.PlayerRhythm; spBeats = AudioEvents.secondsPerBeat; spBar = AudioEvents.secondsPerBar; } 
     }
 
 
@@ -48,23 +48,50 @@ public class OldManager : MonoBehaviour
     {
       case State.Waiting:
         break;
-      case State.EnemyRhythm:
 
-          break;
+
+      case State.QTERhythm:
+        QuickTimeEvent(RhythmPatterns.Pattern(spBeats, spBar, 1));
+        time += Time.deltaTime;
+        break;
+
+
+
       case State.PlayerRhythm: ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //If Player Presses Space, Start Rhythm Pattern 1
+        
+        if((Input.GetKeyDown("1"))) //Do Pattern 1
+        {
+          state = State.SwappingTurns;
+        }
+        break;
+
+
+      case State.SwappingTurns:
+        if(GlobalVariables.currentBeat == 1) //Wait till beat 1 , then swap states
+        {
+          state = State.QTERhythm;
+        }
         break;
     }
     
   }
 
-  public void OnDebug()
+  public void QuickTimeEvent(float[] HitPoints)
   {
-    Debug.Log("space key was pressed");
-    //for(int i;i<)
-    Debug.Log(RhythmPatterns.Pattern1(spBeats, spBar));
-    return;
+    int currentHitpoint = 0;
+    if(time >= HitPoints[currentHitpoint] + leaniancy) { currentHitpoint += 1; }
+    if (time >= HitPoints[2] -leaniancy && time <= HitPoints[2] + leaniancy) 
+    { 
+      rhythmDetector.GetComponent<SpriteRenderer>().color = Color.green; 
+    }
+    else 
+    { 
+      rhythmDetector.GetComponent<SpriteRenderer>().color = Color.red; 
+    }
+    Debug.Log("CurrentHitPoint:" + currentHitpoint);
   }
+
   
  
 

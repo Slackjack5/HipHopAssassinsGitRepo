@@ -25,8 +25,8 @@ public class AudioEvents : MonoBehaviour
   private bool isMusicMuted = false;
   //Timing
   public int[] songTiming;
-  [HideInInspector]public int currentBar= GlobalVariables.currentBar;
-  [HideInInspector] public int currentBeat= GlobalVariables.currentBeat;
+  public int currentBar= GlobalVariables.currentBar;
+  public int currentBeat= GlobalVariables.currentBeat;
   [HideInInspector] public int currentGrid= GlobalVariables.currentGrid;
   public bool gameStarted = GlobalVariables.gameStarted;
 
