@@ -12,7 +12,7 @@ public class CommandLoader : MonoBehaviour
 
   private int currentPage = 1;
 
-  private void Start()
+  private void Awake()
   {
     ClearCommands();
 
