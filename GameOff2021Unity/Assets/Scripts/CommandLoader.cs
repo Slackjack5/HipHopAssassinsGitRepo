@@ -16,10 +16,16 @@ public class CommandLoader : MonoBehaviour
   {
     ClearCommands();
 
-    foreach (Consumable consumable in XmlManager.Consumables)
+    for (int i = 0; i < pageSize; i++)
     {
       GameObject commandObject = Instantiate(commandPrefab, commandPanel.transform);
 
+      // If currentPage is 0, we want to fetch items 0 to 5.
+      // If currentPage is 1, we want to fetch items 6 to 11, and so on.
+      Consumable consumable = XmlManager.Consumables[i + pageSize * (currentPage - 1)];
+
+      // Index 1 refers to the text itself. Index 0 is the cursor.
+      // TODO: Change this to the non-array GetComponent after we use an image for the cursor.
       TextMeshProUGUI textComponent = commandObject.GetComponentsInChildren<TextMeshProUGUI>()[1];
       textComponent.text = consumable.name;
     }
