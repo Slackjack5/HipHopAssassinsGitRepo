@@ -11,11 +11,12 @@ public class OldManager : MonoBehaviour
   private float spBar;
   private bool gameplayStarted;
   private State state;
-  private int previousState;
+  public int previousState;
   private bool soundPlayed;
 
 
   //QTE Variables
+  public GameObject QTERing;
   private int currentHitpoint = 0;
   private float time;
   private float newTime;
@@ -24,8 +25,8 @@ public class OldManager : MonoBehaviour
   //A way for us to visualize the Rhythm
   public GameObject rhythmDetector;
   //leaniancy
-  [Range(0.00f,0.50f)]
-  public float leaniancy = 0.1f;
+  [Range(0.00f,1.2f)]
+  public float leaniancy = 1.2f;
 
   //Order of Rhythm Script:
   /*
@@ -73,7 +74,6 @@ public class OldManager : MonoBehaviour
         //Start counting from the beginning of the beat
         previousState = 1;
         CountTime();
-        QuickTimeEvent(RhythmPatterns.Pattern(spBeats, spBar, 1));
         break;
       case State.PlayerRhythm: 
         //If Player Presses Space, Start Rhythm Pattern 1
@@ -84,9 +84,13 @@ public class OldManager : MonoBehaviour
         }
         break;
       case State.SwappingTurns:
-        if(GlobalVariables.currentBeat == 1 && frames==0) //Wait till beat 1 , then swap states
+        if(GlobalVariables.currentBeat == 1 && frames == 0) //Wait till beat 1 , then swap states
         {
-          if (previousState==2) { state = State.QTERhythm; } else { state = State.PlayerRhythm; }
+          if (previousState==2) { state = State.QTERhythm; QuickTimeEvent(RhythmPatterns.Pattern(spBeats, spBar, 1)); } else { state = State.PlayerRhythm; }
+        }
+        else if (GlobalVariables.currentBeat != 1 && frames == 0)
+        {
+
         }
         break;
     }
@@ -96,24 +100,34 @@ public class OldManager : MonoBehaviour
   {
     if(currentHitpoint<HitPoints.Length) //Check to see if we are under the amount of hitpoints in this pattern
     {
-      if (newTime >= HitPoints[currentHitpoint] && newTime <= HitPoints[currentHitpoint] + leaniancy) //If our current time reaches the middle of our hitregion, then play sound
+      if (newTime >= HitPoints[currentHitpoint] && newTime <= HitPoints[currentHitpoint] + .01f) //If our current time reaches the middle of our hitregion, then play sound
       {
         //Play Sound Here
         if (soundPlayed == false) { AkSoundEngine.PostEvent("Play_Cowbell", gameObject); soundPlayed = true; }
       }
 
-      if (newTime >= HitPoints[currentHitpoint] - leaniancy && newTime <= HitPoints[currentHitpoint] + leaniancy) //Cehck to see if we are in the hitzone
+      if (HitPoints[0]==0)
       {
-        //If so do this: This is where you check to see if the hit in time//
-        rhythmDetector.GetComponent<SpriteRenderer>().color = Color.green; //Glow Green
+        QTERing.GetComponent<QTECircle>().StartQTE(leaniancy);
       }
       else
       {
-        //If not  do this:
-        rhythmDetector.GetComponent<SpriteRenderer>().color = Color.red; //Glow Red
+        if (newTime >= HitPoints[currentHitpoint] - leaniancy) //Cehck to see if we are in the hitzone
+        {
+          //If so do this: This is where you check to see if the hit * time//
+          rhythmDetector.GetComponent<SpriteRenderer>().color = Color.green; //Glow Green
+                                                                             //Spawn Said Hit Point
+                                                                             //
+        }
+        else
+        {
+          //If not  do this:
+          rhythmDetector.GetComponent<SpriteRenderer>().color = Color.red; //Glow Red
+        }
+
       }
 
-      if (newTime >= HitPoints[currentHitpoint] + leaniancy) //If our current time is above where we needed to hit then move to the next hit point
+      if (newTime >= HitPoints[currentHitpoint] + .01) //If our current time is above where we needed to hit then move to the next hit point
       {
         currentHitpoint += 1;
         soundPlayed = false;
