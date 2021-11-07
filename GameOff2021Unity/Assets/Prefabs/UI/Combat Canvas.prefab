@@ -178,7 +178,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2544573368198331814}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3775907912458183835}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: OpenStanceMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2128114875972709501
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +954,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3775907912458183835}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: OpenItemMenu
+        m_MethodName: OpenConsumableMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1366,7 +1378,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6129059500534046567}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3775907912458183835}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: OpenSpellMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7292347171576343651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,7 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topMenu: {fileID: 8916113313066028434}
-  itemMenu: {fileID: 7748114935302395098}
+  paginatedMenu: {fileID: 7748114935302395098}
 --- !u!1 &7482488483394018982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1599,7 @@ GameObject:
   - component: {fileID: 3184283625712686094}
   - component: {fileID: 6766425973641089775}
   m_Layer: 5
-  m_Name: Items Menu
+  m_Name: Paginated Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2388,7 +2412,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6381864354669519953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3775907912458183835}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: OpenAttackMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &508909872406075406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2932,6 +2968,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7636645026949112014}
     m_Modifications:
+    - target: {fileID: 26777018272913487, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26777018272913487, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26777018272913487, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 110771318012527975, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3023,6 +3071,14 @@ PrefabInstance:
     - target: {fileID: 4203167667656503912, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
       propertyPath: m_Name
       value: Back Command
+      objectReference: {fileID: 0}
+    - target: {fileID: 6250051379080607439, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6250051379080607439, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}

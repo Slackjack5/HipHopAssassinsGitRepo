@@ -4,11 +4,12 @@ using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public class XmlManager : MonoBehaviour
+public class DataManager : MonoBehaviour
 {
   [SerializeField] private bool useFakeData = false;
 
   public static Consumable[] Consumables { get; private set; }
+  public static Spell[] Spells { get; private set; }
 
   private void Awake()
   {
@@ -33,10 +34,21 @@ public class XmlManager : MonoBehaviour
       consumables.Add(new Consumable() { 
         id = i, 
         name = "Consumable " + i, 
-        description = "This is consumable " + i 
+        description = "This is consumable " + i + "."
       });
     }
-
     Consumables = consumables.ToArray();
+
+    List<Spell> spells = new List<Spell>();
+    for (int i = 0; i < 10; i++)
+    {
+      spells.Add(new Spell()
+      {
+        id = i,
+        name = "Spell " + i,
+        description = "This is spell " + i + "."
+      });
+    }
+    Spells = spells.ToArray();
   }
 }
