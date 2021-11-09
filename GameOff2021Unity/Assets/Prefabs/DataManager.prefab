@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 739611116404244025}
   - component: {fileID: 142005823304768085}
   m_Layer: 0
-  m_Name: XmlManager
+  m_Name: DataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,3 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214f90caa53cd304a9fe4959f7d3c7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useFakeData: 0
