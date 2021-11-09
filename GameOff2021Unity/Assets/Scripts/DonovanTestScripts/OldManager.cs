@@ -22,11 +22,8 @@ public class OldManager : MonoBehaviour
 
   //A way for us to visualize the Rhythm
   public GameObject rhythmDetector;
-  //leaniancy
-  [Range(0.00f,1.2f)]
-  public float leaniancy = 1.2f;
 
-  public BeatMapGenerator BeatMapGen;
+  public BeatMapManager BeatMapGen;
 
   private enum State
   {
@@ -89,6 +86,8 @@ public class OldManager : MonoBehaviour
         List<float[]> HitPointList= new List<float[]>();
         //Generate All Our Patterns
         HitPointList.Add(RhythmPatterns.Pattern(spBeats, spBar, 1));
+        HitPointList.Add(RhythmPatterns.Pattern(spBeats, spBar, 2));
+        HitPointList.Add(RhythmPatterns.Pattern(spBeats, spBar, 3));
         //Start Recording Time
         startTime = GlobalVariables.currentBar * spBar;
         BeatMapGen.GenerateBeat(HitPointList, startTime, spBar);
