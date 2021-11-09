@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour
   {
     // Convert list of Consumables to a list of Commands.
     List<Command> commands = new List<Command>();
-    foreach (Consumable consumable in DataManager.Consumables)
+    foreach (Consumable consumable in DataManager.AllConsumables)
     {
       commands.Add(new Command(consumable.name, consumable.description));
     }
@@ -48,7 +48,7 @@ public class MenuManager : MonoBehaviour
   {
     // Convert list of Spells to a list of Commands.
     List<Command> commands = new List<Command>();
-    foreach (Spell spell in DataManager.Spells)
+    foreach (Spell spell in DataManager.AllSpells)
     {
       commands.Add(new Command(spell.name, spell.description));
     }

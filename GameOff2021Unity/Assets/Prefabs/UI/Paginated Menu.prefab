@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5508574, b: 0, a: 0.5058824}
+  m_Color: {r: 1, g: 0.5508574, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4d50e7d7be7654eb32fb877023a1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnManager: {fileID: 5491105266764835275, guid: e118625274dc231439568fb06a66699e, type: 3}
   commandPrefab: {fileID: 4023184369005313497, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
   commandPanel: {fileID: 2976293601818851140}
   pageLabel: {fileID: 6999969550099029868}

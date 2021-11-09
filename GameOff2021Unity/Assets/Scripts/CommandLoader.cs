@@ -10,6 +10,8 @@ using UnityEngine.UI;
 
 public class CommandLoader : MonoBehaviour
 {
+  [SerializeField] private TurnManager turnManager;
+  [SerializeField] private MenuManager menuManager;
   [SerializeField] private GameObject commandPrefab;
   [SerializeField] private GameObject commandPanel;
   [SerializeField] private TextMeshProUGUI pageLabel;
@@ -76,11 +78,12 @@ public class CommandLoader : MonoBehaviour
           }
         }
 
-        Command command = commands[i + pageSize * (currentPage - 1)];
+        commandObject.GetComponentInChildren<Button>().onClick.AddListener(() => SubmitCommand(commandObject));
 
         // Index 1 refers to the text itself. Index 0 is the cursor.
         // TODO: Change this to the non-array GetComponent after we use an image for the cursor.
         TextMeshProUGUI textComponent = commandObject.GetComponentsInChildren<TextMeshProUGUI>()[1];
+        Command command = commands[i + pageSize * (currentPage - 1)];
         textComponent.text = command.Name;
       }
     }
@@ -116,5 +119,11 @@ public class CommandLoader : MonoBehaviour
   private void SetPageLabel()
   {
     pageLabel.text = currentPage + " of " + totalPages;
+  }
+
+  private void SubmitCommand(GameObject commandObject)
+  {
+    turnManager.GoNextTurn();
+    menuManager.OpenTopMenu();
   }
 }

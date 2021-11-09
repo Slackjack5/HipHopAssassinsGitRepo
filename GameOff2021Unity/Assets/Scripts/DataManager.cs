@@ -8,8 +8,8 @@ public class DataManager : MonoBehaviour
 {
   [SerializeField] private bool useFakeData = false;
 
-  public static Consumable[] Consumables { get; private set; }
-  public static Spell[] Spells { get; private set; }
+  public static Consumable[] AllConsumables { get; private set; }
+  public static Spell[] AllSpells { get; private set; }
 
   private void Awake()
   {
@@ -21,7 +21,7 @@ public class DataManager : MonoBehaviour
     {
       XmlSerializer serializer = new XmlSerializer(typeof(Consumable[]));
       StreamReader reader = new StreamReader(Application.dataPath + "/Data/consumables.xml");
-      Consumables = (Consumable[])serializer.Deserialize(reader.BaseStream);
+      AllConsumables = (Consumable[])serializer.Deserialize(reader.BaseStream);
       reader.Close();
     }
   }
@@ -37,7 +37,7 @@ public class DataManager : MonoBehaviour
         description = "This is consumable " + i + "."
       });
     }
-    Consumables = consumables.ToArray();
+    AllConsumables = consumables.ToArray();
 
     List<Spell> spells = new List<Spell>();
     for (int i = 0; i < 10; i++)
@@ -49,6 +49,6 @@ public class DataManager : MonoBehaviour
         description = "This is spell " + i + "."
       });
     }
-    Spells = spells.ToArray();
+    AllSpells = spells.ToArray();
   }
 }
