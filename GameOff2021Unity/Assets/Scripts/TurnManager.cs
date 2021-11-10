@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-  [SerializeField] private GameObject heroOneCard;
-  [SerializeField] private GameObject heroTwoCard;
-  [SerializeField] private GameObject heroThreeCard;
+  [SerializeField] private Hero heroOne;
+  [SerializeField] private Hero heroTwo;
+  [SerializeField] private Hero heroThree;
 
   private enum Turn
   {
@@ -65,13 +65,13 @@ public class TurnManager : MonoBehaviour
     switch (currentTurn)
     {
       case Turn.HERO_ONE:
-        textComponent.text = heroOneCard.GetComponentInChildren<TextMeshProUGUI>().text;
+        textComponent.text = heroOne.heroName;
         break;
       case Turn.HERO_TWO:
-        textComponent.text = heroTwoCard.GetComponentInChildren<TextMeshProUGUI>().text;
+        textComponent.text = heroTwo.heroName;
         break;
       case Turn.HERO_THREE:
-        textComponent.text = heroThreeCard.GetComponentInChildren<TextMeshProUGUI>().text;
+        textComponent.text = heroThree.heroName;
         break;
       default:
         break;

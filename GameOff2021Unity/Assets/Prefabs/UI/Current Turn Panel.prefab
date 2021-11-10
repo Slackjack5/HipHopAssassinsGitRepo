@@ -326,7 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ef4c9a8d7056640b6f796e99b30255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTurnPanel: {fileID: 0}
-  heroOneCard: {fileID: 3457986445870863668, guid: 4221507dac136d149a72ec0560edd282, type: 3}
-  heroTwoCard: {fileID: 8911889945108447397, guid: 775f932a51fea1f4094043c868a7ff94, type: 3}
-  heroThreeCard: {fileID: 6252451956419495997, guid: 4e0eaa44b59b20b49962e0d116d811e2, type: 3}
+  heroOneCard: {fileID: 0}
+  heroTwoCard: {fileID: 0}
+  heroThreeCard: {fileID: 0}

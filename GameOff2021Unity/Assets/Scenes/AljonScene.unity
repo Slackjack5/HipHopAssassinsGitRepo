@@ -687,6 +687,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3334098300787104609, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: heroOne
+      value: 
+      objectReference: {fileID: 186819947}
+    - target: {fileID: 3334098300787104609, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: heroTwo
+      value: 
+      objectReference: {fileID: 2033756064}
+    - target: {fileID: 3334098300787104609, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: heroThree
+      value: 
+      objectReference: {fileID: 1756696103}
     - target: {fileID: 3335438051915909593, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: hero
       value: 
