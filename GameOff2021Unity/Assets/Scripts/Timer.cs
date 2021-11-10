@@ -21,10 +21,12 @@ public class Timer : MonoBehaviour
 
   private void Update()
   {
-    if (currentTime > 0)
+    currentTime -= Time.deltaTime;
+    if (currentTime <= 0)
     {
-      currentTime -= Time.deltaTime;
-      progressBar.SetValue(currentTime);
+      currentTime = 0;
     }
+
+    progressBar.SetValue(currentTime);
   }
 }
