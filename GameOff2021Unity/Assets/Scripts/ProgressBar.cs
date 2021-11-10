@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatusBar : MonoBehaviour
+public class ProgressBar : MonoBehaviour
 {
   private Slider slider;
 
@@ -12,8 +12,7 @@ public class StatusBar : MonoBehaviour
     get { return slider.value >= slider.maxValue; }
   }
 
-  // Start is called before the first frame update
-  void Awake()
+  private void Awake()
   {
     slider = GetComponent<Slider>();
   }
