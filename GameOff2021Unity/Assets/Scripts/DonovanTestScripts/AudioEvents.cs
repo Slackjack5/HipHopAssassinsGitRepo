@@ -85,16 +85,7 @@ public class AudioEvents : MonoBehaviour
 
   public void IncreaseBar()
   {
-    if(GlobalVariables.currentBar <4)//Insert Time Signature
-    {
-      GlobalVariables.currentBar += 1;
-    }
-    else
-    {
-      GlobalVariables.currentBar = 1;
-    }
-
-   
+    GlobalVariables.currentBar += 1;
   }
 
   public void IncreaseBeat()
@@ -107,7 +98,6 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentBeat = 1;
     }
-    Debug.Log("Frames Per Beat: " + OldManager.frames / secondsPerBeat);
     OldManager.frames = 0;
   }
   

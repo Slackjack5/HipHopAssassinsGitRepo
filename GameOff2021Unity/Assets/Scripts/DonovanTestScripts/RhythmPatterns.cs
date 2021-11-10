@@ -12,14 +12,24 @@ public class RhythmPatterns : MonoBehaviour
     float firstTime = -1f;
     float secondTime = -1f;
     float thirdTime = -1f;
-    int MaxHitpoint = 0;
 
     if (PatternNumber == 1)
     {
       firstTime = 0; //First Beat is on Beat 1
-      secondTime = SPBeat; //Second Beat is on Beat 2
+      secondTime = SPBeat*1; //Second Beat is on Beat 2
       thirdTime = SPBeat * 3; //Second Beat is on Beat 4
-      MaxHitpoint = 3;
+    }
+    if (PatternNumber == 2)
+    {
+      firstTime = 0; //First Beat is on Beat 1
+      secondTime = SPBeat * 2; //Second Beat is on Beat 3
+      thirdTime = SPBeat * 3; //Second Beat is on Beat 4
+    }
+    if (PatternNumber == 3)
+    {
+      firstTime = 0; //First Beat is on Beat 1
+      secondTime = SPBeat * 1; //Second Beat is on Beat 2
+      thirdTime = SPBeat * 2; //Second Beat is on Beat 3
     }
 
 
@@ -30,4 +40,6 @@ public class RhythmPatterns : MonoBehaviour
     return timespots;
    
   }
+
+
 }

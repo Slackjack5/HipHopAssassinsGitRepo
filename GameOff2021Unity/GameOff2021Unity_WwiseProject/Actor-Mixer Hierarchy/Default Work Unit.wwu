@@ -14,6 +14,9 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="RKU_BME3_Drums_Perc_Cowbell_03" ID="{4DE15AD9-6CA2-4AD6-9890-C1DB96D7C3FC}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>RKU_BME3_Drums_Perc_Cowbell_03.wav</AudioFile>
 							<MediaIDList>
