@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class CommandLoader : MonoBehaviour
 {
-  [SerializeField] private TurnManager turnManager;
+  [SerializeField] private CombatManager turnManager;
   [SerializeField] private MenuManager menuManager;
   [SerializeField] private GameObject commandPrefab;
   [SerializeField] private GameObject commandPanel;

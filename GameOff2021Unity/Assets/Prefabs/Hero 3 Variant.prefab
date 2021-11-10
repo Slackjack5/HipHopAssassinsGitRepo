@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: speed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: heroName
       value: Micah
       objectReference: {fileID: 0}
@@ -18,6 +22,10 @@ PrefabInstance:
     - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: maxStamina
       value: 96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: combatantName
+      value: Micah
       objectReference: {fileID: 0}
     - target: {fileID: 2543558911476794873, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: m_RootOrder

@@ -15,7 +15,7 @@ public class StatusCard : MonoBehaviour
   {
     // Name should be the first TextMeshProUGUI component encountered.
     heroNameComponent = GetComponentInChildren<TextMeshProUGUI>();
-    heroNameComponent.text = hero.heroName;
+    heroNameComponent.text = hero.combatantName;
 
     // Health bar should be the first bar.
     healthBar = GetComponentsInChildren<StatusBar>()[0];

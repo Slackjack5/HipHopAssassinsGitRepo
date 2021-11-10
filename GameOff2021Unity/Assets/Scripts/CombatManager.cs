@@ -3,37 +3,37 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TurnManager : MonoBehaviour
+public class CombatManager : MonoBehaviour
 {
   [SerializeField] private Hero heroOne;
   [SerializeField] private Hero heroTwo;
   [SerializeField] private Hero heroThree;
 
-  private enum Turn
+  private enum State
   {
     HERO_ONE, HERO_TWO, HERO_THREE, EXECUTION
   }
 
-  private Turn currentTurn;
+  private State currentState;
 
   private void Start()
   {
-    currentTurn = Turn.HERO_ONE;
+    currentState = State.HERO_ONE;
     DisplayCurrentTurn();
   }
 
   public void GoNextTurn()
   {
-    switch (currentTurn)
+    switch (currentState)
     {
-      case Turn.HERO_ONE:
-        currentTurn = Turn.HERO_TWO;
+      case State.HERO_ONE:
+        currentState = State.HERO_TWO;
         break;
-      case Turn.HERO_TWO:
-        currentTurn = Turn.HERO_THREE;
+      case State.HERO_TWO:
+        currentState = State.HERO_THREE;
         break;
-      case Turn.HERO_THREE:
-        currentTurn = Turn.EXECUTION;
+      case State.HERO_THREE:
+        currentState = State.EXECUTION;
         break;
       default:
         break;
@@ -44,13 +44,13 @@ public class TurnManager : MonoBehaviour
 
   public void GoPreviousTurn()
   {
-    switch (currentTurn)
+    switch (currentState)
     {
-      case Turn.HERO_TWO:
-        currentTurn = Turn.HERO_ONE;
+      case State.HERO_TWO:
+        currentState = State.HERO_ONE;
         break;
-      case Turn.HERO_THREE:
-        currentTurn = Turn.HERO_TWO;
+      case State.HERO_THREE:
+        currentState = State.HERO_TWO;
         break;
       default:
         break;
@@ -62,16 +62,16 @@ public class TurnManager : MonoBehaviour
   private void DisplayCurrentTurn()
   {
     TextMeshProUGUI textComponent = GetComponentInChildren<TextMeshProUGUI>();
-    switch (currentTurn)
+    switch (currentState)
     {
-      case Turn.HERO_ONE:
-        textComponent.text = heroOne.heroName;
+      case State.HERO_ONE:
+        textComponent.text = heroOne.combatantName;
         break;
-      case Turn.HERO_TWO:
-        textComponent.text = heroTwo.heroName;
+      case State.HERO_TWO:
+        textComponent.text = heroTwo.combatantName;
         break;
-      case Turn.HERO_THREE:
-        textComponent.text = heroThree.heroName;
+      case State.HERO_THREE:
+        textComponent.text = heroThree.combatantName;
         break;
       default:
         break;
