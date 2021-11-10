@@ -1,48 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StatusBar : MonoBehaviour
 {
-  private Slider slider;
+  private ProgressBar progressBar;
+  private TextMeshProUGUI numberLabel;
 
-  public bool IsFull
+  private int maxValue;
+  private int currentValue;
+
+  private void Start()
   {
-    get { return slider.value >= slider.maxValue; }
+    progressBar = GetComponentInChildren<ProgressBar>();
+
+    // Number label should be the first text component.
+    numberLabel = GetComponentInChildren<TextMeshProUGUI>();
   }
 
-  // Start is called before the first frame update
-  void Awake()
+  private void Update()
   {
-    slider = GetComponent<Slider>();
+    numberLabel.text = currentValue + " / " + maxValue;
   }
 
-  public void Decrease(float value)
+  public void SetMaxValue(int value)
   {
-    slider.value -= value;
-    if (slider.value <= 0)
-    {
-      slider.value = 0;
-    }
+    maxValue = value;
+    progressBar.SetMaxValue(maxValue);
   }
 
-  public void Increase(float value)
+  public void SetValue(int value)
   {
-    slider.value += value;
-    if (slider.value >= slider.maxValue)
-    {
-      slider.value = slider.maxValue;
-    }
-  }
-
-  public void SetMaxValue(float value)
-  {
-    slider.maxValue = value;
-  }
-
-  public void SetValue(float value)
-  {
-    slider.value = value;
+    currentValue = value;
+    progressBar.SetValue(currentValue);
   }
 }

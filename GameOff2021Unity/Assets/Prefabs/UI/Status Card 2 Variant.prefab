@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3341534442111314722, guid: 91dee66a086d5694d8bc83580502f56e, type: 3}
+      propertyPath: hero
+      value: 
+      objectReference: {fileID: 2343787031564201332, guid: 6bbf758b0db3e634c95e2fbae46c6084, type: 3}
     - target: {fileID: 3370658359028962133, guid: 91dee66a086d5694d8bc83580502f56e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -197,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3958836189567588969, guid: 91dee66a086d5694d8bc83580502f56e, type: 3}
       propertyPath: m_Name
-      value: Status Card 2
+      value: Status Card 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4284618241228558279, guid: 91dee66a086d5694d8bc83580502f56e, type: 3}
       propertyPath: m_AnchorMax.x
