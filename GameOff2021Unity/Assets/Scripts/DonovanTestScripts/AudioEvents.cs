@@ -98,7 +98,6 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentBeat = 1;
     }
-    Debug.Log("Frames Per Beat: " + OldManager.frames / secondsPerBeat);
     OldManager.frames = 0;
   }
   

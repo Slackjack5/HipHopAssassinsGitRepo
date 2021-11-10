@@ -17,6 +17,7 @@ public class BeatMapManager : MonoBehaviour
   //leaniancy
   [Range(0.00f, 1.2f)]
   public float leaniancy = 1.2f;
+  public float damageMultiplier;
 
   private class HitPoint
   {
@@ -40,22 +41,53 @@ public class BeatMapManager : MonoBehaviour
 
       if((Input.GetKeyDown("space")))
       {
-        if (nextHitIndex<absoluteHitPointList.Count && absoluteHitPointList[nextHitIndex].time-TimeCounter.totalTime<=leaniancy)
+        if(nextHitIndex < absoluteHitPointList.Count)
         {
-          //Destroy the Beat
-          Destroy(absoluteHitPointList[nextHitIndex].beatCircle);
-          nextHitIndex++;
-        }
-        else if(nextHitIndex < absoluteHitPointList.Count && absoluteHitPointList[nextHitIndex].time - TimeCounter.totalTime > leaniancy)
-        {
-          nextHitIndex++;
-        }
+          float error = absoluteHitPointList[nextHitIndex].time - TimeCounter.totalTime;
 
+          if (error <= leaniancy)
+          {
+            //Check to see where they hit exactly and give proper rating
+            if (error < leaniancy / 3) //Perfect Hit
+            {
+              damageMultiplier = 1;
+              Debug.Log("Perfect Hit!");
+            }
+            else if (error < (leaniancy / 3) * 2) //Great Hit
+            {
+              damageMultiplier = .66f;
+              Debug.Log("Great Hit!");
+            }
+            else //Good Hit
+            {
+              damageMultiplier = .33f;
+              Debug.Log("Good Hit!");
+            }
+
+            //Destroy the Beat
+            Destroy(absoluteHitPointList[nextHitIndex].beatCircle);
+            nextHitIndex++;
+          }
+          else if (error > leaniancy) //Player Misses too early
+          {
+            nextHitIndex++;
+            damageMultiplier = 0;
+            Debug.Log("Too Early");
+          }
+          else if (TimeCounter.totalTime - absoluteHitPointList[nextHitIndex].time <= leaniancy) //Player Misses too late
+          {
+            nextHitIndex++;
+            damageMultiplier = 0;
+            Debug.Log("Too Late");
+          }
+        }
       }
 
-      if (nextHitIndex < absoluteHitPointList.Count && TimeCounter.totalTime - absoluteHitPointList[nextHitIndex].time > leaniancy)
+
+      if (nextHitIndex < absoluteHitPointList.Count && TimeCounter.totalTime - absoluteHitPointList[nextHitIndex].time > leaniancy) //Player Presses Nothing
       {
         nextHitIndex++;
+        Debug.Log("Press a damn button");
       }
     }
 
@@ -63,8 +95,6 @@ public class BeatMapManager : MonoBehaviour
 
   public void GenerateBeat(List<float[]> HitPointList, float startTime, float spBar)
   {
-    
-
     for (int i = 0; i < HitPointList.Count; i++)
     {
       float[] pattern = HitPointList[i];
@@ -72,11 +102,6 @@ public class BeatMapManager : MonoBehaviour
       {
         absoluteHitPointList.Add(new HitPoint() { time = pattern[j] + startTime + spBar * i });
       }
-    }
-
-    for (int i = 0; i < absoluteHitPointList.Count; i++)
-    {
-      Debug.Log("This is Point: " + i + " : " + absoluteHitPointList[i]);
     }
   }
 

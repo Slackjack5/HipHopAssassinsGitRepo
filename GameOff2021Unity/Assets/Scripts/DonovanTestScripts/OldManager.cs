@@ -63,7 +63,7 @@ public class OldManager : MonoBehaviour
       case State.Waiting:
         break;
       case State.QTERhythm:
-        if (TimeCounter.totalTime >= startTime) { Debug.Log("Beat 1 Initiated");}
+        if (TimeCounter.totalTime >= startTime) { }
         break;
       case State.PlayerRhythm: 
         if ((Input.GetKeyDown("space"))) 
