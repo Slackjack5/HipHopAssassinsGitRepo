@@ -121,7 +121,7 @@ public class CommandLoader : MonoBehaviour
     pageLabel.text = currentPage + " of " + totalPages;
   }
 
-  private void SubmitCommand(GameObject commandObject)
+  public void SubmitCommand(GameObject commandObject)
   {
     turnManager.GoNextTurn();
     menuManager.OpenTopMenu();

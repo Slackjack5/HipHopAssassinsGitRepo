@@ -22,17 +22,6 @@ public class MenuManager : MonoBehaviour
     SelectFirstCommand(topMenu);
   }
 
-  public void OpenAttackMenu()
-  {
-    OpenPaginatedMenu(new Command[]
-    {
-      new Command("Attack 1", "This is attack 1."),
-      new Command("Attack 2", "This is attack 2."),
-      new Command("Attack 3", "This is attack 3."),
-      new Command("Attack 4", "This is attack 4.")
-    });
-  }
-
   public void OpenConsumableMenu()
   {
     // Convert list of Consumables to a list of Commands.
