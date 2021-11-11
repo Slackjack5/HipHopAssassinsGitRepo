@@ -14,6 +14,12 @@ public class MenuManager : MonoBehaviour
     OpenTopMenu();
   }
 
+  public void HideMenu()
+  {
+    topMenu.SetActive(false);
+    paginatedMenu.SetActive(false);
+  }
+
   public void OpenTopMenu()
   {
     topMenu.SetActive(true);

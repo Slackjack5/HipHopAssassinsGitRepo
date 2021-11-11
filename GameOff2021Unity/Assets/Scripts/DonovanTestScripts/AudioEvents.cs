@@ -98,7 +98,6 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentBeat = 1;
     }
-    OldManager.frames = 0;
   }
   
   public void IncreaseGrid()

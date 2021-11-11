@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -323,17 +323,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4273167239964843675, guid: e118625274dc231439568fb06a66699e, type: 3}
   m_PrefabInstance: {fileID: 4555181861323900831}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8287488497309773396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5491105266764835275, guid: e118625274dc231439568fb06a66699e, type: 3}
-  m_PrefabInstance: {fileID: 4555181861323900831}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ef4c9a8d7056640b6f796e99b30255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6235848961498108321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -620,7 +609,7 @@ PrefabInstance:
     - target: {fileID: 6209066792206284411, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
       propertyPath: turnManager
       value: 
-      objectReference: {fileID: 8287488497309773396}
+      objectReference: {fileID: 0}
     - target: {fileID: 6332375416600266212, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

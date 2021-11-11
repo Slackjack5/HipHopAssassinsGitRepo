@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class TimeCounter : MonoBehaviour
 {
+  public float totalTime;
 
-  public static float totalTime { get; private set; }
+  public static float TotalTime { get; private set; }
 
   // Update is called once per frame
   void Update()
   {
-    if(GlobalVariables.gameStarted)
+    if (GlobalVariables.gameStarted)
     {
-    CountTime();
+      TotalTime += Time.deltaTime;
     }
-  }
 
-  public void CountTime()
-  {
-    totalTime += Time.deltaTime;
+    totalTime = TotalTime;
   }
 }
