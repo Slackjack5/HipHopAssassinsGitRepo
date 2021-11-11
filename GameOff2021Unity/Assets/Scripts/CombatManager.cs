@@ -11,7 +11,7 @@ public class CombatManager : MonoBehaviour
 
   private enum State
   {
-    HERO_ONE, HERO_TWO, HERO_THREE, EXECUTION
+    START, HERO_ONE, HERO_TWO, HERO_THREE, EXECUTION
   }
 
   private State currentState;
