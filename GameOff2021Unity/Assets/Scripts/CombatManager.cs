@@ -31,7 +31,7 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case CombatState.START:
-        if (GlobalVariables.gameStarted)
+        if (GlobalVariables.fightStarted)
         {
           menuManager.OpenTopMenu();
           CurrentState = CombatState.HERO_ONE;

@@ -25,7 +25,7 @@ public class AudioEvents : MonoBehaviour
   public int currentBar= GlobalVariables.currentBar;
   public int currentBeat= GlobalVariables.currentBeat;
   public int currentGrid= GlobalVariables.currentGrid;
-  public bool gameStarted = GlobalVariables.gameStarted;
+  public bool gameStarted = GlobalVariables.fightStarted;
 
   private static AkSegmentInfo currentSegment;
   private static int currentBarStartTime;  // The time, in milliseconds, that the current bar started at
@@ -61,7 +61,7 @@ public class AudioEvents : MonoBehaviour
   {
     playingID = rhythmHeckinEvent.Post(gameObject, (uint)(AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
     currentSegment = new AkSegmentInfo();
-    GlobalVariables.gameStarted = false;
+    GlobalVariables.fightStarted = false;
   }
 
   private void Update()
@@ -95,10 +95,10 @@ public class AudioEvents : MonoBehaviour
         break;
       case AkCallbackType.AK_MusicSyncBar:
         //I want to make sure that the secondsPerBeat is defined on our first measure.
-        if (GlobalVariables.gameStarted == false)
+        if (GlobalVariables.fightStarted == false)
         {
           // If the game hasn't started yet, start it on beat 1
-          GlobalVariables.gameStarted = true;
+          GlobalVariables.fightStarted = true;
         }
 
         secondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
@@ -174,5 +174,5 @@ public static class GlobalVariables
   public static int currentBar;
   public static int currentBeat;
   public static int currentGrid;
-  public static bool gameStarted;
+  public static bool fightStarted;
 }
