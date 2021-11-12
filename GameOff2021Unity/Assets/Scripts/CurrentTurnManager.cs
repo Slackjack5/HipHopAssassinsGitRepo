@@ -9,8 +9,10 @@ public class CurrentTurnManager : MonoBehaviour
   [SerializeField] private Hero heroOne;
   [SerializeField] private Hero heroTwo;
   [SerializeField] private Hero heroThree;
+  [SerializeField] private float spotlightDistance;
   [SerializeField] private CombatManager combatManager;
 
+  private float initialPositionX;
   private CombatManager.CombatState lastState;
   private TextMeshProUGUI nameComponent;
   private VerticalLayoutGroup panel;
@@ -20,6 +22,7 @@ public class CurrentTurnManager : MonoBehaviour
     panel = GetComponentInChildren<VerticalLayoutGroup>();
     nameComponent = GetComponentInChildren<TextMeshProUGUI>();
 
+    initialPositionX = heroOne.transform.position.x;
     lastState = CombatManager.CombatState.UNSPECIFIED;
   }
 
@@ -34,6 +37,7 @@ public class CurrentTurnManager : MonoBehaviour
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
+          SpotlightHero(heroOne);
         }
         
         lastState = CombatManager.CombatState.HERO_ONE;
@@ -45,6 +49,7 @@ public class CurrentTurnManager : MonoBehaviour
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
+          SpotlightHero(heroTwo);
         }
 
         lastState = CombatManager.CombatState.HERO_TWO;
@@ -56,12 +61,16 @@ public class CurrentTurnManager : MonoBehaviour
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
+          SpotlightHero(heroThree);
         }
         
         lastState = CombatManager.CombatState.HERO_THREE;
         break;
       default:
         panel.gameObject.SetActive(false);
+        ResetPosition(heroOne);
+        ResetPosition(heroTwo);
+        ResetPosition(heroThree);
         break;
     }
   }
@@ -69,5 +78,37 @@ public class CurrentTurnManager : MonoBehaviour
   private void MoveIndicators()
   {
     
+  }
+
+  private void ResetPosition(Hero hero)
+  {
+    hero.transform.position = new Vector2(initialPositionX, hero.transform.position.y);
+  }
+
+  private void SpotlightHero(Hero hero)
+  {
+    switch (combatManager.CurrentState)
+    {
+      case CombatManager.CombatState.HERO_ONE:
+        heroOne.transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroTwo);
+        ResetPosition(heroThree);
+        break;
+      case CombatManager.CombatState.HERO_TWO:
+        heroTwo.transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroOne);
+        ResetPosition(heroThree);
+        break;
+      case CombatManager.CombatState.HERO_THREE:
+        heroThree.transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroOne);
+        ResetPosition(heroTwo);
+        break;
+      default:
+        ResetPosition(heroOne);
+        ResetPosition(heroTwo);
+        ResetPosition(heroThree);
+        break;
+    }
   }
 }

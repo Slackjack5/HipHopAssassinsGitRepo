@@ -343,4 +343,5 @@ MonoBehaviour:
   heroOne: {fileID: 0}
   heroTwo: {fileID: 0}
   heroThree: {fileID: 0}
+  spotlightDistance: 2
   combatManager: {fileID: 0}
