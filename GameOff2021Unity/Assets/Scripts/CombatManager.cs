@@ -5,76 +5,118 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour
 {
-  [SerializeField] private Hero heroOne;
-  [SerializeField] private Hero heroTwo;
-  [SerializeField] private Hero heroThree;
+  [SerializeField] private BeatmapManager beatmapManager;
+  [SerializeField] private MenuManager menuManager;
 
-  private enum State
+  private float executionStartTime;
+  private int lastBar;
+
+  public enum CombatState
   {
-    HERO_ONE, HERO_TWO, HERO_THREE, EXECUTION
+    UNSPECIFIED, START, HERO_ONE, HERO_TWO, HERO_THREE, DELAY_EXECUTION, PRE_EXECUTION, EXECUTION
   }
 
-  private State currentState;
+  public CombatState CurrentState { get; private set; }
 
   private void Start()
   {
-    currentState = State.HERO_ONE;
-    DisplayCurrentTurn();
+    beatmapManager.complete.AddListener(AdvanceState);
+    menuManager.HideMenu();
+
+    CurrentState = CombatState.START;
   }
 
-  public void GoNextTurn()
+  private void Update()
   {
-    switch (currentState)
+    switch (CurrentState)
     {
-      case State.HERO_ONE:
-        currentState = State.HERO_TWO;
+      case CombatState.START:
+        if (GlobalVariables.fightStarted)
+        {
+          menuManager.OpenTopMenu();
+          CurrentState = CombatState.HERO_ONE;
+        }
+        
         break;
-      case State.HERO_TWO:
-        currentState = State.HERO_THREE;
+      case CombatState.DELAY_EXECUTION:
+        if (lastBar != GlobalVariables.currentBar && (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
+        {
+          CurrentState = CombatState.PRE_EXECUTION;
+        }
         break;
-      case State.HERO_THREE:
-        currentState = State.EXECUTION;
+      case CombatState.PRE_EXECUTION:
+        //Generate List
+        List<float[]> HitPointList = new List<float[]>();
+        //Generate All Our Patterns
+        HitPointList.Add(RhythmPatterns.Pattern(AudioEvents.secondsPerBeat, AudioEvents.secondsPerBar, 1));
+        HitPointList.Add(RhythmPatterns.Pattern(AudioEvents.secondsPerBeat, AudioEvents.secondsPerBar, 2));
+        HitPointList.Add(RhythmPatterns.Pattern(AudioEvents.secondsPerBeat, AudioEvents.secondsPerBar, 3));
+        //Start Recording Time
+        executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
+        beatmapManager.GenerateBeatmap(HitPointList, executionStartTime, AudioEvents.secondsPerBar);
+        CurrentState = CombatState.EXECUTION;
         break;
       default:
         break;
     }
+  }
 
-    DisplayCurrentTurn();
+  public void AdvanceState()
+  {
+    switch (CurrentState)
+    {
+      case CombatState.HERO_ONE:
+        menuManager.OpenTopMenu();
+
+        CurrentState = CombatState.HERO_TWO;
+        break;
+      case CombatState.HERO_TWO:
+        menuManager.OpenTopMenu();
+
+        CurrentState = CombatState.HERO_THREE;
+        break;
+      case CombatState.HERO_THREE:
+        menuManager.HideMenu();
+        beatmapManager.ShowTrack();
+
+        if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
+        {
+          CurrentState = CombatState.PRE_EXECUTION;
+        }
+        else
+        {
+          CurrentState = CombatState.DELAY_EXECUTION;
+          lastBar = GlobalVariables.currentBar;
+        }
+        break;
+      case CombatState.EXECUTION:
+        menuManager.OpenTopMenu();
+        beatmapManager.HideTrack();
+
+        CurrentState = CombatState.HERO_ONE;
+        break;
+      default:
+        break;
+    }
   }
 
   public void GoPreviousTurn()
   {
-    switch (currentState)
+    switch (CurrentState)
     {
-      case State.HERO_TWO:
-        currentState = State.HERO_ONE;
+      case CombatState.HERO_TWO:
+        CurrentState = CombatState.HERO_ONE;
         break;
-      case State.HERO_THREE:
-        currentState = State.HERO_TWO;
+      case CombatState.HERO_THREE:
+        CurrentState = CombatState.HERO_TWO;
         break;
       default:
         break;
     }
-
-    DisplayCurrentTurn();
   }
 
-  private void DisplayCurrentTurn()
+  private float Threshold(float secondsPerBar)
   {
-    TextMeshProUGUI textComponent = GetComponentInChildren<TextMeshProUGUI>();
-    switch (currentState)
-    {
-      case State.HERO_ONE:
-        textComponent.text = heroOne.combatantName;
-        break;
-      case State.HERO_TWO:
-        textComponent.text = heroTwo.combatantName;
-        break;
-      case State.HERO_THREE:
-        textComponent.text = heroThree.combatantName;
-        break;
-      default:
-        break;
-    }
+    return secondsPerBar / 2;
   }
 }

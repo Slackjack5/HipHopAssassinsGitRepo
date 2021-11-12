@@ -123,7 +123,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: OldManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CombatManager, Assembly-CSharp
         m_MethodName: ResetTime
         m_Mode: 1
         m_Arguments:

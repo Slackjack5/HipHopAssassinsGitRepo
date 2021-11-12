@@ -10,8 +10,7 @@ using UnityEngine.UI;
 
 public class CommandLoader : MonoBehaviour
 {
-  [SerializeField] private CombatManager turnManager;
-  [SerializeField] private MenuManager menuManager;
+  [SerializeField] private CombatManager combatManager;
   [SerializeField] private GameObject commandPrefab;
   [SerializeField] private GameObject commandPanel;
   [SerializeField] private TextMeshProUGUI pageLabel;
@@ -121,9 +120,8 @@ public class CommandLoader : MonoBehaviour
     pageLabel.text = currentPage + " of " + totalPages;
   }
 
-  private void SubmitCommand(GameObject commandObject)
+  public void SubmitCommand(GameObject commandObject)
   {
-    turnManager.GoNextTurn();
-    menuManager.OpenTopMenu();
+    combatManager.AdvanceState();
   }
 }

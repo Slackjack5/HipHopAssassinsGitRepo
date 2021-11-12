@@ -15,8 +15,8 @@ public class StatusBar : MonoBehaviour
   {
     progressBar = GetComponentInChildren<ProgressBar>();
 
-    // Number label should be the first text component.
-    numberLabel = GetComponentInChildren<TextMeshProUGUI>();
+    // Number label should be the second text component.
+    numberLabel = GetComponentsInChildren<TextMeshProUGUI>()[1];
   }
 
   private void Update()
