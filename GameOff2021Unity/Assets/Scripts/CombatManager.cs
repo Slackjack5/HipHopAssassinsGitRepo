@@ -8,9 +8,7 @@ public class CombatManager : MonoBehaviour
   [SerializeField] private BeatmapManager beatmapManager;
   [SerializeField] private MenuManager menuManager;
 
-  [SerializeField] private float currentBarTime;
-  [SerializeField] private float executionStartTime;
-  private bool gameplayStarted;
+  private float executionStartTime;
   private int lastBar;
 
   public enum CombatState
@@ -23,31 +21,26 @@ public class CombatManager : MonoBehaviour
   private void Start()
   {
     beatmapManager.complete.AddListener(AdvanceState);
+    menuManager.HideMenu();
 
-    // Wait until the first beat.
     CurrentState = CombatState.START;
   }
 
   private void Update()
   {
-    // Wait till the first beat has started, before starting the game.
-    if (GlobalVariables.gameStarted)
-    {
-      if (!gameplayStarted)
-      {
-        gameplayStarted = true;
-        CurrentState = CombatState.HERO_ONE;
-      }
-
-      currentBarTime += Time.deltaTime;
-    }
-
     switch (CurrentState)
     {
-      case CombatState.DELAY_EXECUTION:
-        if (lastBar != GlobalVariables.currentBar && (currentBarTime >= Threshold(AudioEvents.secondsPerBar)))
+      case CombatState.START:
+        if (GlobalVariables.gameStarted)
         {
-          print("Delay done - Preparing execution");
+          menuManager.OpenTopMenu();
+          CurrentState = CombatState.HERO_ONE;
+        }
+        
+        break;
+      case CombatState.DELAY_EXECUTION:
+        if (lastBar != GlobalVariables.currentBar && (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
+        {
           CurrentState = CombatState.PRE_EXECUTION;
         }
         break;
@@ -86,9 +79,8 @@ public class CombatManager : MonoBehaviour
         menuManager.HideMenu();
         beatmapManager.ShowTrack();
 
-        if (currentBarTime <= Threshold(AudioEvents.secondsPerBar))
+        if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
         {
-          print("Preparing execution");
           CurrentState = CombatState.PRE_EXECUTION;
         }
         else
@@ -121,11 +113,6 @@ public class CombatManager : MonoBehaviour
       default:
         break;
     }
-  }
-
-  public void ResetTime()
-  {
-    currentBarTime = 0;
   }
 
   private float Threshold(float secondsPerBar)

@@ -6,26 +6,23 @@ using UnityEngine.Events;
 public class BeatmapManager : MonoBehaviour
 {
   [SerializeField] private GameObject track;
+  [SerializeField] private GameObject beatCircle;
+  [SerializeField] private Transform spawnerPos;
+  [SerializeField] private Transform centerPos;
+  [SerializeField] private Transform endPos;
+  [Range(0.00f, 1.2f)] private float leniency = 0.07f;
 
   public readonly UnityEvent complete = new UnityEvent();
 
-  private List<HitPoint> absoluteHitPointList = new List<HitPoint>();
-  private int nextSpawnIndex=0;
-  private int nextHitIndex = 0;
-  public GameObject BeatCircle;
-  public Transform spawnerPos;
-  public Transform centerPos;
-  public Transform endPos;
-  public float travelTime;
-
-  //leaniancy
-  [Range(0.00f, 1.2f)]
-  public float leaniancy = 1.2f;
-  public float damageMultiplier;
-
+  private List<Note> notes = new List<Note>();
+  private int nextSpawnIndex = 0;
+  [SerializeField] private int nextHitIndex = 0;
+  private float travelTime;
+  private float damageMultiplier;
   private bool isGenerated = false;
+  private bool isReady = false;
 
-  private class HitPoint
+  private class Note
   {
     internal float time;
     internal GameObject beatCircle;
@@ -46,63 +43,63 @@ public class BeatmapManager : MonoBehaviour
       if (isGenerated)
       {
         //Spawn 
-        if (nextSpawnIndex < absoluteHitPointList.Count && TimeCounter.TotalTime >= absoluteHitPointList[nextSpawnIndex].time - travelTime)
+        if (nextSpawnIndex < notes.Count && AudioEvents.CurrentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
         {
           Spawn(nextSpawnIndex);
           nextSpawnIndex++;
         }
 
-        if (Input.GetKeyDown("space"))
+        if (isReady && Input.GetKeyDown("space"))
         {
-          if (nextHitIndex < absoluteHitPointList.Count)
+          if (nextHitIndex < notes.Count)
           {
-            float error = absoluteHitPointList[nextHitIndex].time - TimeCounter.TotalTime;
+            float error = notes[nextHitIndex].time - AudioEvents.CurrentSegmentPosition;
 
-            if (error <= leaniancy)
+            if (error >= -leniency / 3 && error <= leniency)
             {
               //Check to see where they hit exactly and give proper rating
-              if (error < leaniancy / 3) //Perfect Hit
+              if (error <= leniency / 3) //Perfect Hit
               {
                 damageMultiplier = 1;
-                Debug.Log("Perfect Hit!");
               }
-              else if (error < (leaniancy / 3) * 2) //Great Hit
+              else if (error <= (leniency / 3) * 2) //Great Hit
               {
                 damageMultiplier = .66f;
-                Debug.Log("Great Hit!");
               }
               else //Good Hit
               {
                 damageMultiplier = .33f;
-                Debug.Log("Good Hit!");
               }
 
               AkSoundEngine.PostEvent("Play_Cowbell", gameObject);
 
-              //Destroy the Beat
-              Destroy(absoluteHitPointList[nextHitIndex].beatCircle);
+              Destroy(notes[nextHitIndex].beatCircle);
               nextHitIndex++;
             }
-            else if (error > leaniancy) //Player Misses too early
+            else if (error > leniency) //Player Misses too early
+            {
+              Destroy(notes[nextHitIndex].beatCircle);
+              nextHitIndex++;
+              damageMultiplier = 0;
+            }
+            else if (error < -leniency / 3) //Player Misses too late
             {
               nextHitIndex++;
               damageMultiplier = 0;
-              Debug.Log("Too Early");
-            }
-            else if (TimeCounter.TotalTime - absoluteHitPointList[nextHitIndex].time <= leaniancy) //Player Misses too late
-            {
-              nextHitIndex++;
-              damageMultiplier = 0;
-              Debug.Log("Too Late");
             }
           }
         }
 
-        if (nextHitIndex < absoluteHitPointList.Count && TimeCounter.TotalTime - absoluteHitPointList[nextHitIndex].time > leaniancy) //Player Presses Nothing
+        if (nextHitIndex < notes.Count && AudioEvents.CurrentSegmentPosition - notes[nextHitIndex].time > leniency) //Player Presses Nothing
         {
           nextHitIndex++;
-          Debug.Log("Press a damn button");
         }
+
+        isReady = true;
+      }
+      else
+      {
+        isReady = false;
       }
     }
   }
@@ -114,13 +111,8 @@ public class BeatmapManager : MonoBehaviour
       float[] pattern = HitPointList[i];
       for (int j = 0; j < pattern.Length; j++)
       {
-        absoluteHitPointList.Add(new HitPoint() { time = pattern[j] + startTime + spBar * i });
+        notes.Add(new Note() { time = pattern[j] + startTime + spBar * i });
       }
-    }
-
-    foreach (HitPoint point in absoluteHitPointList)
-    {
-      print("Point time: " + point.time);
     }
 
     isGenerated = true;
@@ -138,11 +130,11 @@ public class BeatmapManager : MonoBehaviour
 
   private void Spawn(int spawnIndex)
   {
-    GameObject Circle = Instantiate(BeatCircle, spawnerPos.position, Quaternion.identity);
+    GameObject Circle = Instantiate(beatCircle, spawnerPos.position, Quaternion.identity);
     Circle.GetComponent<BeatCircle>().travelTime = travelTime;
     Circle.GetComponent<BeatCircle>().centerPos = centerPos;
     Circle.GetComponent<BeatCircle>().endPos = endPos;
     Circle.GetComponent<BeatCircle>().spawnerPos = spawnerPos;
-    absoluteHitPointList[spawnIndex].beatCircle = Circle;
+    notes[spawnIndex].beatCircle = Circle;
   }
 }

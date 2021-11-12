@@ -44,11 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   track: {fileID: 0}
-  combatManager: {fileID: 0}
-  BeatCircle: {fileID: 9171135472658574436, guid: cfc0245a58134484db5b113642b9f0e8, type: 3}
+  beatCircle: {fileID: 9171135472658574436, guid: cfc0245a58134484db5b113642b9f0e8, type: 3}
   spawnerPos: {fileID: 8987452416037070464, guid: 4bb6b8e677003034bb53e72b7866d04a, type: 3}
   centerPos: {fileID: 929854368908095217, guid: 2165d7990723dc04d9a1111a546be513, type: 3}
   endPos: {fileID: 7130308203617822314, guid: ab2e0ed4592181a4490d9b73326b5581, type: 3}
-  travelTime: 0
-  leaniancy: 0.07
-  damageMultiplier: 0
