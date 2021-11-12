@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
   [SerializeField] private float timeLimit = 120f;  // In seconds
 
+  public readonly UnityEvent expire = new UnityEvent();
+
   private ProgressBar progressBar;
 
   private float currentTime;
+  private bool isExpired;
 
   private void Start()
   {
@@ -21,10 +25,15 @@ public class Timer : MonoBehaviour
 
   private void Update()
   {
-    currentTime -= Time.deltaTime;
-    if (currentTime <= 0)
+    if (!isExpired)
     {
-      currentTime = 0;
+      currentTime -= Time.deltaTime;
+      if (currentTime <= 0)
+      {
+        currentTime = 0;
+        expire.Invoke();
+        isExpired = true;
+      }
     }
 
     progressBar.SetValue(currentTime);

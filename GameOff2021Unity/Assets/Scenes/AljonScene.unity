@@ -153,6 +153,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3063558216829245387, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 2102131024}
+    - target: {fileID: 3063558216829245387, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
       propertyPath: heroOne
       value: 
       objectReference: {fileID: 186819947}
@@ -514,6 +518,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 015d08f029b8c3546ba7df5a48b65887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2102131024 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4706476182505526865, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+  m_PrefabInstance: {fileID: 2496301813088378270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdf8b5480e2fd34b915592fdc6cb413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2143291770173743568
@@ -1131,6 +1146,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4161715789886214660, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: combatManager
+      value: 
+      objectReference: {fileID: 282201246}
     - target: {fileID: 4278522400520645948, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1242,6 +1261,10 @@ PrefabInstance:
     - target: {fileID: 4620383733329012107, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706476182505526865, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: timeLimit
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4723615573608693606, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_Interactable

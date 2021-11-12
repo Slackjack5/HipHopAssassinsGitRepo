@@ -7,13 +7,14 @@ public class CombatManager : MonoBehaviour
 {
   [SerializeField] private BeatmapManager beatmapManager;
   [SerializeField] private MenuManager menuManager;
+  [SerializeField] private Timer timer;
 
   private float executionStartTime;
   private int lastBar;
 
   public enum CombatState
   {
-    UNSPECIFIED, START, HERO_ONE, HERO_TWO, HERO_THREE, DELAY_EXECUTION, PRE_EXECUTION, EXECUTION
+    UNSPECIFIED, START, HERO_ONE, HERO_TWO, HERO_THREE, DELAY_EXECUTION, PRE_EXECUTION, EXECUTION, WIN, LOSE
   }
 
   public CombatState CurrentState { get; private set; }
@@ -22,6 +23,7 @@ public class CombatManager : MonoBehaviour
   {
     beatmapManager.complete.AddListener(AdvanceState);
     menuManager.HideMenu();
+    timer.expire.AddListener(Lose);
 
     CurrentState = CombatState.START;
   }
@@ -113,6 +115,11 @@ public class CombatManager : MonoBehaviour
       default:
         break;
     }
+  }
+
+  private void Lose()
+  {
+    CurrentState = CombatState.LOSE;
   }
 
   private float Threshold(float secondsPerBar)
