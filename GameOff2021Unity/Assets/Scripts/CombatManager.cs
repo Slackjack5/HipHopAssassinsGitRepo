@@ -13,7 +13,7 @@ public class CombatManager : MonoBehaviour
 
   public enum CombatState
   {
-    START, HERO_ONE, HERO_TWO, HERO_THREE, DELAY_EXECUTION, PRE_EXECUTION, EXECUTION
+    UNSPECIFIED, START, HERO_ONE, HERO_TWO, HERO_THREE, DELAY_EXECUTION, PRE_EXECUTION, EXECUTION
   }
 
   public CombatState CurrentState { get; private set; }

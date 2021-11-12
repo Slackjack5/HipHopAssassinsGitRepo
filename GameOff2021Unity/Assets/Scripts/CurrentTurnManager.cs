@@ -11,6 +11,7 @@ public class CurrentTurnManager : MonoBehaviour
   [SerializeField] private Hero heroThree;
   [SerializeField] private CombatManager combatManager;
 
+  private CombatManager.CombatState lastState;
   private TextMeshProUGUI nameComponent;
   private VerticalLayoutGroup panel;
 
@@ -18,6 +19,8 @@ public class CurrentTurnManager : MonoBehaviour
   {
     panel = GetComponentInChildren<VerticalLayoutGroup>();
     nameComponent = GetComponentInChildren<TextMeshProUGUI>();
+
+    lastState = CombatManager.CombatState.UNSPECIFIED;
   }
 
   private void Update()
@@ -27,18 +30,44 @@ public class CurrentTurnManager : MonoBehaviour
       case CombatManager.CombatState.HERO_ONE:
         panel.gameObject.SetActive(true);
         nameComponent.text = heroOne.combatantName;
+
+        if (lastState != combatManager.CurrentState)
+        {
+          MoveIndicators();
+        }
+        
+        lastState = CombatManager.CombatState.HERO_ONE;
         break;
       case CombatManager.CombatState.HERO_TWO:
         panel.gameObject.SetActive(true);
         nameComponent.text = heroTwo.combatantName;
+
+        if (lastState != combatManager.CurrentState)
+        {
+          MoveIndicators();
+        }
+
+        lastState = CombatManager.CombatState.HERO_TWO;
         break;
       case CombatManager.CombatState.HERO_THREE:
         panel.gameObject.SetActive(true);
         nameComponent.text = heroThree.combatantName;
+
+        if (lastState != combatManager.CurrentState)
+        {
+          MoveIndicators();
+        }
+        
+        lastState = CombatManager.CombatState.HERO_THREE;
         break;
       default:
         panel.gameObject.SetActive(false);
         break;
     }
+  }
+
+  private void MoveIndicators()
+  {
+    
   }
 }
