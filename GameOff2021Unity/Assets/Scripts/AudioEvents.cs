@@ -1,17 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
 
 public class AudioEvents : MonoBehaviour
 {
   //Wwise
   public AK.Wwise.Event rhythmHeckinEvent;
   public UnityEvent OnLevelEnded;
-  [HideInInspector] public static float secondsPerBeat;
-  [HideInInspector] public static float secondsPerBar;
-  [HideInInspector] public static float BPM;
+  public static float secondsPerBeat;
+  public static float secondsPerBar;
+  public static float bpm;
   //Unity Events
   public UnityEvent OnEveryGrid;
   public UnityEvent OnEveryBeat;
@@ -36,26 +33,16 @@ public class AudioEvents : MonoBehaviour
   /// <summary>
   /// The time elapsed, in seconds, since the current bar started
   /// </summary>
-  public static float CurrentBarTime
-  {
-    get
-    {
-      // iCurrentPosition is in milliseconds.
-      return (float)(currentSegment.iCurrentPosition - currentBarStartTime) / 1000;
-    }
-  }
+  public static float CurrentBarTime =>
+    // iCurrentPosition is in milliseconds.
+    (float)(currentSegment.iCurrentPosition - currentBarStartTime) / 1000;
 
   /// <summary>
   /// The time elapsed, in seconds, since the segment started
   /// </summary>
-  public static float CurrentSegmentPosition
-  {
-    get
-    {
-      // iCurrentPosition is in milliseconds.
-      return (float)currentSegment.iCurrentPosition / 1000;
-    }
-  }
+  public static float CurrentSegmentPosition =>
+    // iCurrentPosition is in milliseconds.
+    (float)currentSegment.iCurrentPosition / 1000;
 
   private void Start()
   {
@@ -86,7 +73,7 @@ public class AudioEvents : MonoBehaviour
 
         secondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
         secondsPerBar = _musicInfo.segmentInfo_fBarDuration;
-        BPM = _musicInfo.segmentInfo_fBeatDuration * 60f;
+        bpm = _musicInfo.segmentInfo_fBeatDuration * 60f;
         break;
       case AkCallbackType.AK_MusicSyncBeat:
 

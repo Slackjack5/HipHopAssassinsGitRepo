@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -12,15 +10,15 @@ public class DisplayInitiativeOrder : MonoBehaviour
   {
     ClearDisplay();
 
-    for (int i = 0; i < combatManager.Combatants.Count; i++)
+    for (var i = 0; i < combatManager.Combatants.Count; i++)
     {
       GameObject initiativeCard = Instantiate(initiativeCardPrefab, transform);
 
       TextMeshProUGUI[] textComponents = initiativeCard.GetComponentsInChildren<TextMeshProUGUI>();
-      TextMeshProUGUI name = textComponents[0];
+      TextMeshProUGUI combatantName = textComponents[0];
       TextMeshProUGUI order = textComponents[1];
 
-      name.text = combatManager.Combatants[i].Name;
+      combatantName.text = combatManager.Combatants[i].Name;
       order.text = (i + 1).ToString();
     }
   }

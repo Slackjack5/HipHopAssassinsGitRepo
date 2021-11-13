@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -18,11 +16,11 @@ public class MainMessage : MonoBehaviour
   {
     switch (combatManager.CurrentState)
     {
-      case CombatManager.CombatState.START:
+      case CombatManager.CombatState.Start:
         message.enabled = true;
         message.text = "FIGHT";
         break;
-      case CombatManager.CombatState.LOSE:
+      case CombatManager.CombatState.Lose:
         message.enabled = true;
         message.text = "GAME OVER";
         break;

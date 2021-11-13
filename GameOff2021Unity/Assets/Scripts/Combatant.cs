@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Combatant : MonoBehaviour
@@ -10,32 +8,18 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected int attack;
   [SerializeField] protected int speed;
 
-  public int Attack
-  {
-    get { return attack; }
-  }
-  public int CurrentHealth { get; protected set; }
-  public int CurrentStamina { get; protected set; }
-  public bool IsDead
-  {
-    get { return CurrentHealth <= 0; }
-  }
-  public int MaxHealth
-  { 
-    get { return maxHealth; } 
-  }
-  public int MaxStamina
-  { 
-    get { return maxStamina; } 
-  }
-  public string Name
-  {
-    get { return combatantName; }
-  }
-  public int Speed 
-  { 
-    get { return speed; } 
-  }
+  public int Attack => attack;
+  public int CurrentHealth { get; private set; }
+  public int CurrentStamina { get; private set; }
+  public bool IsDead => CurrentHealth <= 0;
+
+  public int MaxHealth => maxHealth;
+
+  public int MaxStamina => maxStamina;
+
+  public string Name => combatantName;
+
+  public int Speed => speed;
 
   protected virtual void Start()
   {

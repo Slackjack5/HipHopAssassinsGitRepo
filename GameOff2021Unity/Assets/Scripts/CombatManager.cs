@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour
 {
@@ -16,7 +16,16 @@ public class CombatManager : MonoBehaviour
 
   public enum CombatState
   {
-    UNSPECIFIED, START, HERO_ONE, HERO_TWO, HERO_THREE, DELAY_EXECUTION, PRE_EXECUTION, EXECUTION, WIN, LOSE
+    Unspecified, 
+    Start,
+    HeroOne, 
+    HeroTwo,
+    HeroThree,
+    DelayExecution,
+    PreExecution,
+    Execution, 
+    Win,
+    Lose
   }
 
   /// <summary>
@@ -24,10 +33,7 @@ public class CombatManager : MonoBehaviour
   /// </summary>
   public List<Combatant> Combatants { get; private set; }
   public CombatState CurrentState { get; private set; }
-  public Hero[] Heroes
-  {
-    get { return heroes; }
-  }
+  public Hero[] Heroes => heroes;
 
   private void Awake()
   {
@@ -37,7 +43,7 @@ public class CombatManager : MonoBehaviour
 
     SortByInitiative();
 
-    CurrentState = CombatState.START;
+    CurrentState = CombatState.Start;
   }
 
   private void OnGUI()
@@ -50,32 +56,42 @@ public class CombatManager : MonoBehaviour
 
   private void Update()
   {
+    if (AllMonstersDead())
+    {
+      Win();
+    }
+
+    if (AllHeroesDead())
+    {
+      Lose();
+    }
+
     switch (CurrentState)
     {
-      case CombatState.START:
+      case CombatState.Start:
         if (GlobalVariables.fightStarted)
         {
-          CurrentState = CombatState.HERO_ONE;
+          CurrentState = CombatState.HeroOne;
         }
         
         break;
-      case CombatState.DELAY_EXECUTION:
+      case CombatState.DelayExecution:
         if (lastBar != GlobalVariables.currentBar && (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
         {
-          CurrentState = CombatState.PRE_EXECUTION;
+          CurrentState = CombatState.PreExecution;
         }
         break;
-      case CombatState.PRE_EXECUTION:
+      case CombatState.PreExecution:
         //Generate All Our Patterns
         Dictionary<Combatant, List<float>> combatantPatterns = new Dictionary<Combatant, List<float>>();
 
         foreach (Combatant combatant in Combatants)
         {
-          if (combatant is Hero)
+          if (combatant is Hero hero)
           {
             // HeroId is either 1, 2, or 3.
-            Command command = submittedCommands[(combatant as Hero).HeroId - 1];
-            combatantPatterns[combatant] = RhythmPatterns.Pattern(command.PatternId);
+            Command command = GetHeroCommand(hero);
+            combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
           }
           else
           {
@@ -88,57 +104,47 @@ public class CombatManager : MonoBehaviour
         executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
         beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
 
-        CurrentState = CombatState.EXECUTION;
+        CurrentState = CombatState.Execution;
         break;
+      case CombatState.Unspecified:
+      case CombatState.HeroOne:
+      case CombatState.HeroTwo:
+      case CombatState.HeroThree:
+      case CombatState.Execution:
+      case CombatState.Win:
+      case CombatState.Lose:
       default:
         break;
     }
   }
 
-  public void AdvanceState()
+  private void AdvanceState()
   {
     switch (CurrentState)
     {
-      case CombatState.HERO_ONE:
-        CurrentState = CombatState.HERO_TWO;
+      case CombatState.HeroOne:
+        CurrentState = CombatState.HeroTwo;
         break;
-      case CombatState.HERO_TWO:
-        CurrentState = CombatState.HERO_THREE;
+      case CombatState.HeroTwo:
+        CurrentState = CombatState.HeroThree;
         break;
-      case CombatState.HERO_THREE:
+      case CombatState.HeroThree:
         beatmapManager.ShowTrack();
 
         if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
         {
-          CurrentState = CombatState.PRE_EXECUTION;
+          CurrentState = CombatState.PreExecution;
         }
         else
         {
-          CurrentState = CombatState.DELAY_EXECUTION;
+          CurrentState = CombatState.DelayExecution;
           lastBar = GlobalVariables.currentBar;
         }
         break;
-      case CombatState.EXECUTION:
+      case CombatState.Execution:
         beatmapManager.HideTrack();
 
-        CurrentState = CombatState.HERO_ONE;
-        break;
-      default:
-        break;
-    }
-  }
-
-  public void GoPreviousTurn()
-  {
-    switch (CurrentState)
-    {
-      case CombatState.HERO_TWO:
-        CurrentState = CombatState.HERO_ONE;
-        break;
-      case CombatState.HERO_THREE:
-        CurrentState = CombatState.HERO_TWO;
-        break;
-      default:
+        CurrentState = CombatState.HeroOne;
         break;
     }
   }
@@ -147,49 +153,61 @@ public class CombatManager : MonoBehaviour
   {
     switch (CurrentState)
     {
-      case CombatState.HERO_ONE:
+      case CombatState.HeroOne:
         submittedCommands[0] = command;
         break;
-      case CombatState.HERO_TWO:
+      case CombatState.HeroTwo:
         submittedCommands[1] = command;
         break;
-      case CombatState.HERO_THREE:
+      case CombatState.HeroThree:
         submittedCommands[2] = command;
-        break;
-      default:
         break;
     }
 
     AdvanceState();
   }
 
-  private int CompareCombatantSpeeds(Combatant x, Combatant y)
+  private bool AllHeroesDead()
+  {
+    return heroes.All(hero => hero.IsDead);
+  }
+
+  private bool AllMonstersDead()
+  {
+    return monsters.All(monster => monster.IsDead);
+  }
+
+  private static int CompareCombatantSpeeds(Combatant x, Combatant y)
   {
     return y.Speed.CompareTo(x.Speed);
   }
 
+  private Command GetHeroCommand(Hero hero)
+  {
+    // HeroId is either 1, 2, or 3.
+    return submittedCommands[hero.HeroId - 1];
+  }
+
   private void Lose()
   {
-    CurrentState = CombatState.LOSE;
+    CurrentState = CombatState.Lose;
   }
 
   private void ReadHit(Combatant combatant, BeatmapManager.AccuracyGrade accuracyGrade)
   {
     if (combatant is Monster)
     {
-      float damageMultiplier = 1f;
+      var damageMultiplier = 1f;
       switch (accuracyGrade)
       {
-        case BeatmapManager.AccuracyGrade.PERFECT:
+        case BeatmapManager.AccuracyGrade.Perfect:
           damageMultiplier = 0.5f;
           break;
-        case BeatmapManager.AccuracyGrade.GREAT:
+        case BeatmapManager.AccuracyGrade.Great:
           damageMultiplier = 0.7f;
           break;
-        case BeatmapManager.AccuracyGrade.GOOD:
+        case BeatmapManager.AccuracyGrade.Good:
           damageMultiplier = 0.9f;
-          break;
-        default:
           break;
       }
 
@@ -200,19 +218,17 @@ public class CombatManager : MonoBehaviour
     else
     {
       // Combatant is a Hero.
-      float damageMultiplier = 0f;
+      var damageMultiplier = 0f;
       switch (accuracyGrade)
       {
-        case BeatmapManager.AccuracyGrade.PERFECT:
+        case BeatmapManager.AccuracyGrade.Perfect:
           damageMultiplier = 1f;
           break;
-        case BeatmapManager.AccuracyGrade.GREAT:
+        case BeatmapManager.AccuracyGrade.Great:
           damageMultiplier = 0.66f;
           break;
-        case BeatmapManager.AccuracyGrade.GOOD:
+        case BeatmapManager.AccuracyGrade.Good:
           damageMultiplier = 0.33f;
-          break;
-        default:
           break;
       }
 
@@ -230,8 +246,13 @@ public class CombatManager : MonoBehaviour
     Combatants.Sort(CompareCombatantSpeeds);
   }
 
-  private float Threshold(float secondsPerBar)
+  private static float Threshold(float secondsPerBar)
   {
     return secondsPerBar / 2;
+  }
+
+  private void Win()
+  {
+    CurrentState = CombatState.Win;
   }
 }

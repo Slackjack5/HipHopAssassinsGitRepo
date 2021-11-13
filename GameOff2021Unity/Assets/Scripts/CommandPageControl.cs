@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -10,7 +8,7 @@ public class CommandPageControl : MonoBehaviour
   public KeyControl keyControl;
   public readonly UnityEvent activate = new UnityEvent();
 
-  private bool isReady = false;
+  private bool isReady;
 
   private void Update()
   {

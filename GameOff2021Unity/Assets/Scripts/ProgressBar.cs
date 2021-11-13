@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,10 +5,7 @@ public class ProgressBar : MonoBehaviour
 {
   private Slider slider;
 
-  public bool IsFull
-  {
-    get { return slider.value >= slider.maxValue; }
-  }
+  public bool IsFull => slider.value >= slider.maxValue;
 
   private void Awake()
   {

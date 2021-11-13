@@ -1,24 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BeatCircle : MonoBehaviour
 {
-
   public Transform centerPos;
   public Transform spawnerPos;
   public float travelTime;
   private float currentTime;
   public Transform endPos;
   private bool reachedMiddle;
-  // Start is called before the first frame update
-  void Start()
+  
+  private void Start()
   {
-  currentTime = travelTime;
+    currentTime = travelTime;
   }
 
-  // Update is called once per frame
-  void Update()
+  private void Update()
   {
     currentTime -= Time.deltaTime;
     float t = Mathf.InverseLerp(0, travelTime, currentTime);
@@ -33,19 +29,12 @@ public class BeatCircle : MonoBehaviour
       {
         reachedMiddle = true;
       }
-      
     }
     else
     {
-      if (reachedMiddle) 
-      { 
-        transform.position = Vector2.Lerp(endPos.position, centerPos.position, t); 
-      } 
-      else 
-      { 
-        transform.position = Vector2.Lerp(centerPos.position, spawnerPos.position, t); 
-      }
+      transform.position = reachedMiddle ? 
+        Vector2.Lerp(endPos.position, centerPos.position, t) : 
+        Vector2.Lerp(centerPos.position, spawnerPos.position, t);
     }
-      
   }
 }
