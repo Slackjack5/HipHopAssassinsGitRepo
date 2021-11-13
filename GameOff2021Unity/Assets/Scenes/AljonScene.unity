@@ -185,6 +185,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 293773456}
     - target: {fileID: 3063558216829245387, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
+      propertyPath: initiativeManager
+      value: 
+      objectReference: {fileID: 427087141}
+    - target: {fileID: 3063558216829245387, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
       propertyPath: currentTurnManager
       value: 
       objectReference: {fileID: 2496301813088378271}
@@ -321,6 +325,17 @@ PrefabInstance:
       objectReference: {fileID: 282201246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621aa4ef1010b2447a2cd6745ea1aa7e, type: 3}
+--- !u!114 &427087141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5032336014280381465, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+  m_PrefabInstance: {fileID: 2496301813088378270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ff714d6aadc2142968ac4559b9afce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1298879630
 GameObject:
   m_ObjectHideFlags: 0

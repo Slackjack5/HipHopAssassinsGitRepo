@@ -6,6 +6,7 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
   [SerializeField] private BeatmapManager beatmapManager;
+  [SerializeField] private InitiativeManager initiativeManager;
   [SerializeField] private Timer timer;
 
   private float executionStartTime;
@@ -46,10 +47,20 @@ public class CombatManager : MonoBehaviour
         break;
       case CombatState.PRE_EXECUTION:
         //Generate All Our Patterns
-        List<float[]> patterns = new List<float[]>();
-        foreach (Command command in submittedCommands)
+        List<List<float>> patterns = new List<List<float>>();
+
+        foreach (Combatant combatant in initiativeManager.Combatants)
         {
-          patterns.Add(RhythmPatterns.Pattern(command.PatternId));
+          if (combatant is Hero)
+          {
+            // HeroId is either 1, 2, or 3.
+            Command command = submittedCommands[(combatant as Hero).HeroId - 1];
+            patterns.Add(RhythmPatterns.Pattern(command.PatternId));
+          }
+          else
+          {
+            patterns.Add(RhythmPatterns.Pattern(5));
+          }
         }
 
         //Start Recording Time

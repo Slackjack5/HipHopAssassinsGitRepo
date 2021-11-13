@@ -4,40 +4,42 @@ using UnityEngine;
 
 public class RhythmPatterns : MonoBehaviour
 {
-  public static float[] Pattern(int patternId)
+  public static List<float> Pattern(int patternId)
   {
-    //Values Start at -1 to show they aren't set to a time
-    float firstTime = -1f;
-    float secondTime = -1f;
-    float thirdTime = -1f;
+    List<float> timeSpots = new List<float>();
 
     if (patternId == 1)
     {
-      firstTime = 0; //First Beat is on Beat 1
-      secondTime = AudioEvents.secondsPerBeat * 1; //Second Beat is on Beat 2
-      thirdTime = AudioEvents.secondsPerBeat * 3; //Second Beat is on Beat 4
+      timeSpots.Add(0); // Beat 1
+      timeSpots.Add(AudioEvents.secondsPerBeat * 1); // Beat 2
+      timeSpots.Add(AudioEvents.secondsPerBeat * 3); // Beat 4
     }
     if (patternId == 2)
     {
-      firstTime = 0; //First Beat is on Beat 1
-      secondTime = AudioEvents.secondsPerBeat * 2; //Second Beat is on Beat 3
-      thirdTime = AudioEvents.secondsPerBeat * 3; //Second Beat is on Beat 4
+      timeSpots.Add(0);  // Beat 1
+      timeSpots.Add(AudioEvents.secondsPerBeat * 2); // Beat 3
+      timeSpots.Add(AudioEvents.secondsPerBeat * 3); // Beat 4
     }
     if (patternId == 3)
     {
-      firstTime = 0; //First Beat is on Beat 1
-      secondTime = AudioEvents.secondsPerBeat * 1; //Second Beat is on Beat 2
-      thirdTime = AudioEvents.secondsPerBeat * 2; //Second Beat is on Beat 3
+      timeSpots.Add(0);  // Beat 1
+      timeSpots.Add(AudioEvents.secondsPerBeat * 1); // Beat 2
+      timeSpots.Add(AudioEvents.secondsPerBeat * 2); // Beat 3
     }
     if (patternId == 4)
     {
-      firstTime = AudioEvents.secondsPerBeat * 1;
-      secondTime = AudioEvents.secondsPerBeat * 2;
-      thirdTime = AudioEvents.secondsPerBeat * 3;
+      timeSpots.Add(AudioEvents.secondsPerBeat * 1); // Beat 2
+      timeSpots.Add(AudioEvents.secondsPerBeat * 2); // Beat 3
+      timeSpots.Add(AudioEvents.secondsPerBeat * 3); // Beat 4
+    }
+    if (patternId == 5)
+    {
+      timeSpots.Add(0); // Beat 1
+      timeSpots.Add(AudioEvents.secondsPerBeat * 0.5f); // Beat 1.5
+      timeSpots.Add(AudioEvents.secondsPerBeat * 1.5f); // Beat 2.5
+      timeSpots.Add(AudioEvents.secondsPerBeat * 2); // Beat 3
     }
 
-    // Return the time value for all the hit point
-    float[] timespots = new float[] { firstTime, secondTime, thirdTime };
-    return timespots;
+    return timeSpots;
   }
 }

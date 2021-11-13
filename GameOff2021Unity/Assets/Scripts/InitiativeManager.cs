@@ -8,12 +8,23 @@ public class InitiativeManager : MonoBehaviour
   [SerializeField] private GameObject initiativeCardPrefab;
   [SerializeField] private List<Combatant> combatants;
 
+  private List<Combatant> sortedCombatants;
+
+  /// <summary>
+  /// Combatants sorted in initiative order
+  /// </summary>
+  public List<Combatant> Combatants
+  {
+    get { return sortedCombatants; }
+  }
+
   private void Start()
   {
     ClearDisplay();
 
-    combatants.Sort(CompareCombatantSpeeds);
-    for (int i = 0; i < combatants.Count; i++)
+    sortedCombatants = new List<Combatant>(combatants);
+    sortedCombatants.Sort(CompareCombatantSpeeds);
+    for (int i = 0; i < sortedCombatants.Count; i++)
     {
       GameObject initiativeCard = Instantiate(initiativeCardPrefab, transform);
 
@@ -21,7 +32,7 @@ public class InitiativeManager : MonoBehaviour
       TextMeshProUGUI name = textComponents[0];
       TextMeshProUGUI order = textComponents[1];
 
-      name.text = combatants[i].Name;
+      name.text = sortedCombatants[i].Name;
       order.text = (i + 1).ToString();
     }
   }
