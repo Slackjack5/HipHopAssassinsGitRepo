@@ -1,27 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InitiativeManager : MonoBehaviour
+public class DisplayInitiativeOrder : MonoBehaviour
 {
   [SerializeField] private GameObject initiativeCardPrefab;
-  [SerializeField] private List<Combatant> combatants;
+  [SerializeField] private CombatManager combatManager;
 
   private void Start()
   {
     ClearDisplay();
 
-    combatants.Sort(CompareCombatantSpeeds);
-    for (int i = 0; i < combatants.Count; i++)
+    for (var i = 0; i < combatManager.Combatants.Count; i++)
     {
       GameObject initiativeCard = Instantiate(initiativeCardPrefab, transform);
 
       TextMeshProUGUI[] textComponents = initiativeCard.GetComponentsInChildren<TextMeshProUGUI>();
-      TextMeshProUGUI name = textComponents[0];
+      TextMeshProUGUI combatantName = textComponents[0];
       TextMeshProUGUI order = textComponents[1];
 
-      name.text = combatants[i].combatantName;
+      combatantName.text = combatManager.Combatants[i].Name;
       order.text = (i + 1).ToString();
     }
   }
@@ -32,10 +29,5 @@ public class InitiativeManager : MonoBehaviour
     {
       Destroy(child.gameObject);
     }
-  }
-
-  private int CompareCombatantSpeeds(Combatant x, Combatant y)
-  {
-    return y.speed.CompareTo(x.speed);
   }
 }

@@ -1,16 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Combatant : MonoBehaviour
 {
-  [SerializeField] public string combatantName;
-  [SerializeField] public int maxHealth;
-  [SerializeField] public int maxStamina;
-  [SerializeField] public int speed;
+  [SerializeField] protected string combatantName;
+  [SerializeField] protected int maxHealth;
+  [SerializeField] protected int maxStamina;
+  [SerializeField] protected int attack;
+  [SerializeField] protected int speed;
 
-  public int CurrentHealth { get; protected set; }
-  public int CurrentStamina { get; protected set; }
+  public int Attack => attack;
+  public int CurrentHealth { get; private set; }
+  public int CurrentStamina { get; private set; }
+  public bool IsDead => CurrentHealth <= 0;
+
+  public int MaxHealth => maxHealth;
+
+  public int MaxStamina => maxStamina;
+
+  public string Name => combatantName;
+
+  public int Speed => speed;
 
   protected virtual void Start()
   {

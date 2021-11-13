@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7253655950834415305, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: m_Name
-      value: Dragonfly
+      value: Dragonfly Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7253655950834415307, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: m_RootOrder
@@ -60,8 +60,12 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
+      propertyPath: attack
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: maxHealth
-      value: 30
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: maxStamina

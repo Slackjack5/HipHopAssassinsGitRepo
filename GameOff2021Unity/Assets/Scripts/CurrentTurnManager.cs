@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CurrentTurnManager : MonoBehaviour
 {
-  [SerializeField] private Hero heroOne;
-  [SerializeField] private Hero heroTwo;
-  [SerializeField] private Hero heroThree;
   [SerializeField] private float spotlightDistance;
   [SerializeField] private CombatManager combatManager;
 
+  private Hero[] heroes;
   private float initialPositionX;
   private CombatManager.CombatState lastState;
   private TextMeshProUGUI nameComponent;
@@ -22,57 +18,55 @@ public class CurrentTurnManager : MonoBehaviour
     panel = GetComponentInChildren<VerticalLayoutGroup>();
     nameComponent = GetComponentInChildren<TextMeshProUGUI>();
 
-    initialPositionX = heroOne.transform.position.x;
-    lastState = CombatManager.CombatState.UNSPECIFIED;
+    heroes = combatManager.Heroes;
+    initialPositionX = heroes[0].transform.position.x;
+    lastState = CombatManager.CombatState.Unspecified;
   }
 
   private void Update()
   {
     switch (combatManager.CurrentState)
     {
-      case CombatManager.CombatState.HERO_ONE:
+      case CombatManager.CombatState.HeroOne:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroOne.combatantName;
+        nameComponent.text = heroes[0].Name;
 
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
-          SpotlightHero(heroOne);
+          SpotlightHero();
         }
         
-        lastState = CombatManager.CombatState.HERO_ONE;
         break;
-      case CombatManager.CombatState.HERO_TWO:
+      case CombatManager.CombatState.HeroTwo:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroTwo.combatantName;
+        nameComponent.text = heroes[1].Name;
 
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
-          SpotlightHero(heroTwo);
+          SpotlightHero();
         }
 
-        lastState = CombatManager.CombatState.HERO_TWO;
         break;
-      case CombatManager.CombatState.HERO_THREE:
+      case CombatManager.CombatState.HeroThree:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroThree.combatantName;
+        nameComponent.text = heroes[2].Name;
 
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
-          SpotlightHero(heroThree);
+          SpotlightHero();
         }
         
-        lastState = CombatManager.CombatState.HERO_THREE;
         break;
       default:
         panel.gameObject.SetActive(false);
-        ResetPosition(heroOne);
-        ResetPosition(heroTwo);
-        ResetPosition(heroThree);
+        ResetAllPositions();
         break;
     }
+
+    lastState = combatManager.CurrentState;
   }
 
   private void MoveIndicators()
@@ -80,34 +74,40 @@ public class CurrentTurnManager : MonoBehaviour
     
   }
 
-  private void ResetPosition(Hero hero)
+  private void ResetAllPositions()
   {
-    hero.transform.position = new Vector2(initialPositionX, hero.transform.position.y);
+    ResetPosition(heroes[0]);
+    ResetPosition(heroes[1]);
+    ResetPosition(heroes[2]);
   }
 
-  private void SpotlightHero(Hero hero)
+  private void ResetPosition(Hero hero)
+  {
+    Transform heroTransform = hero.transform;
+    heroTransform.position = new Vector2(initialPositionX, heroTransform.position.y);
+  }
+
+  private void SpotlightHero()
   {
     switch (combatManager.CurrentState)
     {
-      case CombatManager.CombatState.HERO_ONE:
-        heroOne.transform.Translate(new Vector2(spotlightDistance, 0));
-        ResetPosition(heroTwo);
-        ResetPosition(heroThree);
+      case CombatManager.CombatState.HeroOne:
+        heroes[0].transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroes[1]);
+        ResetPosition(heroes[2]);
         break;
-      case CombatManager.CombatState.HERO_TWO:
-        heroTwo.transform.Translate(new Vector2(spotlightDistance, 0));
-        ResetPosition(heroOne);
-        ResetPosition(heroThree);
+      case CombatManager.CombatState.HeroTwo:
+        heroes[1].transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroes[0]);
+        ResetPosition(heroes[2]);
         break;
-      case CombatManager.CombatState.HERO_THREE:
-        heroThree.transform.Translate(new Vector2(spotlightDistance, 0));
-        ResetPosition(heroOne);
-        ResetPosition(heroTwo);
+      case CombatManager.CombatState.HeroThree:
+        heroes[2].transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroes[0]);
+        ResetPosition(heroes[1]);
         break;
       default:
-        ResetPosition(heroOne);
-        ResetPosition(heroTwo);
-        ResetPosition(heroThree);
+        ResetAllPositions();
         break;
     }
   }
