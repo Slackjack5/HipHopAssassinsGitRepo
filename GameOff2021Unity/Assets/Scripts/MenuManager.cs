@@ -47,27 +47,31 @@ public class MenuManager : MonoBehaviour
   public void OpenConsumableMenu()
   {
     // Convert list of Consumables to a list of Commands.
-    OpenPaginatedMenu(DataManager.AllConsumables.Select(consumable => new Command(consumable.name, consumable.description, 2)).ToArray());
+    OpenPaginatedMenu(DataManager.AllConsumables.Select(
+      consumable => new Command(consumable.name, consumable.description, Command.Type.Consumable, 2)).ToArray()
+    );
   }
 
-  public void OpenSpellMenu()
+  public void OpenMacroMenu()
   {
-    // Convert list of Spells to a list of Commands.
-    OpenPaginatedMenu(DataManager.AllSpells.Select(spell => new Command(spell.name, spell.description, 3)).ToArray());
+    // Convert list of Macros to a list of Commands.
+    OpenPaginatedMenu(DataManager.AllMacros.Select(
+      macro => new Command(macro.name, macro.description, Command.Type.Macro, 3)).ToArray()
+    );
   }
 
   public void OpenStanceMenu()
   {
     OpenPaginatedMenu(new Command[]
     {
-      new Command("Defend", "Raise guard to halve incoming damage.", 4),
-      new Command("Charge", "Spend turn to lengthen the time.", 4)
+      new Command("Defend", "Raise guard to halve incoming damage.", Command.Type.Defend, 4),
+      new Command("Charge", "Spend turn to lengthen the time.", Command.Type.Charge, 4)
     });
   }
 
   public void SubmitAttack()
   {
-    combatManager.SubmitCommand(new Command("Attack", "Attack the enemy.", 1));
+    combatManager.SubmitCommand(new Command("Attack", "Attack the enemy.", Command.Type.Attack, 1));
   }
   
   private void HideMenu()

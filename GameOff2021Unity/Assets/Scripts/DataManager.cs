@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour
   [SerializeField] private bool useFakeData;
 
   public static Consumable[] AllConsumables { get; private set; }
-  public static Spell[] AllSpells { get; private set; }
+  public static Macro[] AllMacros { get; private set; }
 
   private void Awake()
   {
@@ -39,16 +39,16 @@ public class DataManager : MonoBehaviour
     }
     AllConsumables = consumables.ToArray();
 
-    var spells = new List<Spell>();
+    var macros = new List<Macro>();
     for (var i = 0; i < 10; i++)
     {
-      spells.Add(new Spell()
+      macros.Add(new Macro()
       {
         id = i,
-        name = "Spell " + i,
-        description = "This is spell " + i + "."
+        name = "Macro " + i,
+        description = "This is macro " + i + "."
       });
     }
-    AllSpells = spells.ToArray();
+    AllMacros = macros.ToArray();
   }
 }

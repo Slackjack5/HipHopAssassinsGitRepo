@@ -48,7 +48,7 @@ public class CombatManager : MonoBehaviour
 
   private void OnGUI()
   {
-    for (int i = 0; i < monsters.Length; i++)
+    for (var i = 0; i < monsters.Length; i++)
     {
       GUI.Label(new Rect(0, 30 * i, 200, 30), monsters[i].Name + " HP: " + monsters[i].CurrentHealth + " / " + monsters[i].MaxHealth);
     }
@@ -83,13 +83,12 @@ public class CombatManager : MonoBehaviour
         break;
       case CombatState.PreExecution:
         //Generate All Our Patterns
-        Dictionary<Combatant, List<float>> combatantPatterns = new Dictionary<Combatant, List<float>>();
+        var combatantPatterns = new Dictionary<Combatant, List<float>>();
 
         foreach (Combatant combatant in Combatants)
         {
           if (combatant is Hero hero)
           {
-            // HeroId is either 1, 2, or 3.
             Command command = GetHeroCommand(hero);
             combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
           }
@@ -105,15 +104,6 @@ public class CombatManager : MonoBehaviour
         beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
 
         CurrentState = CombatState.Execution;
-        break;
-      case CombatState.Unspecified:
-      case CombatState.HeroOne:
-      case CombatState.HeroTwo:
-      case CombatState.HeroThree:
-      case CombatState.Execution:
-      case CombatState.Win:
-      case CombatState.Lose:
-      default:
         break;
     }
   }
@@ -143,7 +133,6 @@ public class CombatManager : MonoBehaviour
         break;
       case CombatState.Execution:
         beatmapManager.HideTrack();
-
         CurrentState = CombatState.HeroOne;
         break;
     }
@@ -217,7 +206,10 @@ public class CombatManager : MonoBehaviour
     }
     else
     {
-      // Combatant is a Hero.
+      var hero = combatant as Hero;
+      Command command = GetHeroCommand(hero);
+      if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
+      
       var damageMultiplier = 0f;
       switch (accuracyGrade)
       {

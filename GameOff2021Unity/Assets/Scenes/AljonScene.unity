@@ -917,6 +917,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2690265436875276450, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: m_Name
+      value: Macros Command
+      objectReference: {fileID: 0}
     - target: {fileID: 2823493330738686386, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
