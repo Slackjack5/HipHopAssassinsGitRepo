@@ -13,24 +13,33 @@ public class BeatmapManager : MonoBehaviour
   [Range(0.00f, 1.2f)] private float leniency = 0.07f;
 
   public readonly UnityEvent complete = new UnityEvent();
+  public readonly UnityEvent<Combatant, AccuracyGrade> hit = new UnityEvent<Combatant, AccuracyGrade>();
 
   private List<Note> notes = new List<Note>();
   private int nextSpawnIndex = 0;
   private int nextHitIndex = 0;
   private float travelTime;
-  private float damageMultiplier;
   private bool isGenerated = false;
   private bool isReady = false;
+  private float lateBound;  // The latest, in seconds, that the player can hit the note before it is considered a miss
 
   private class Note
   {
     internal float time;
     internal GameObject beatCircle;
+    internal Combatant combatant;
+  }
+
+  public enum AccuracyGrade
+  {
+    PERFECT, GREAT, GOOD, MISS
   }
 
   private void Start()
   {
     track.SetActive(false);
+
+    lateBound = leniency / 3;
   }
 
   private void Update()
@@ -56,6 +65,7 @@ public class BeatmapManager : MonoBehaviour
 
         if (nextHitIndex < notes.Count && AudioEvents.CurrentSegmentPosition - notes[nextHitIndex].time > leniency) // Player presses nothing
         {
+          hit.Invoke(notes[nextHitIndex].combatant, AccuracyGrade.MISS);
           nextHitIndex++;
         }
 
@@ -64,7 +74,7 @@ public class BeatmapManager : MonoBehaviour
           Finish();
         }
 
-        // Wait one more frame before checking hit.
+        // Wait one more frame before checking hit since the Space key could have just been pressed for submitting a command.
         isReady = true;
       }
       else
@@ -74,15 +84,22 @@ public class BeatmapManager : MonoBehaviour
     }
   }
 
-  public void GenerateBeatmap(List<List<float>> patterns, float startTime)
+  public void GenerateBeatmap(Dictionary<Combatant, List<float>> combatantPatterns, float startTime)
   {
-    for (int i = 0; i < patterns.Count; i++)
+    int entryNumber = 0;
+    foreach (KeyValuePair<Combatant, List<float>> entry in combatantPatterns)
     {
-      List<float> pattern = patterns[i];
-      for (int j = 0; j < pattern.Count; j++)
+      List<float> pattern = entry.Value;
+      for (int i = 0; i < pattern.Count; i++)
       {
-        notes.Add(new Note() { time = pattern[j] + startTime + AudioEvents.secondsPerBar * i });
+        notes.Add(new Note()
+        {
+          time = pattern[i] + startTime + AudioEvents.secondsPerBar * entryNumber,
+          combatant = entry.Key
+        });
       }
+
+      entryNumber++;
     }
 
     isGenerated = true;
@@ -104,20 +121,20 @@ public class BeatmapManager : MonoBehaviour
     {
       float error = notes[nextHitIndex].time - AudioEvents.CurrentSegmentPosition;
 
-      if (error >= -leniency / 3 && error <= leniency)
+      if (error >= -lateBound && error <= leniency)
       {
         // Check to see where they hit exactly and give proper rating
-        if (error <= leniency / 3) // Perfect Hit
+        if (error <= leniency / 3)
         {
-          damageMultiplier = 1;
+          hit.Invoke(notes[nextHitIndex].combatant, AccuracyGrade.PERFECT);
         }
-        else if (error <= (leniency / 3) * 2) // Great Hit
+        else if (error <= (leniency / 3) * 2)
         {
-          damageMultiplier = .66f;
+          hit.Invoke(notes[nextHitIndex].combatant, AccuracyGrade.GREAT);
         }
-        else // Good Hit
+        else 
         {
-          damageMultiplier = .33f;
+          hit.Invoke(notes[nextHitIndex].combatant, AccuracyGrade.GOOD);
         }
 
         AkSoundEngine.PostEvent("Play_Cowbell", gameObject);
@@ -127,14 +144,14 @@ public class BeatmapManager : MonoBehaviour
       }
       else if (error > leniency) // Player hits too early
       {
+        hit.Invoke(notes[nextHitIndex].combatant, AccuracyGrade.MISS);
         Destroy(notes[nextHitIndex].beatCircle);
         nextHitIndex++;
-        damageMultiplier = 0;
       }
-      else if (error < -leniency / 3) // Player hits too late
+      else if (error < -lateBound) // Player hits too late
       {
+        hit.Invoke(notes[nextHitIndex].combatant, AccuracyGrade.MISS);
         nextHitIndex++;
-        damageMultiplier = 0;
       }
     }
   }

@@ -7,8 +7,13 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected string combatantName;
   [SerializeField] protected int maxHealth;
   [SerializeField] protected int maxStamina;
+  [SerializeField] protected int attack;
   [SerializeField] protected int speed;
 
+  public int Attack
+  {
+    get { return attack; }
+  }
   public int CurrentHealth { get; protected set; }
   public int CurrentStamina { get; protected set; }
   public int MaxHealth

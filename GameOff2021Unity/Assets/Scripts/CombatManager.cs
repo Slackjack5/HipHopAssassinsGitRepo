@@ -8,6 +8,7 @@ public class CombatManager : MonoBehaviour
   [SerializeField] private BeatmapManager beatmapManager;
   [SerializeField] private InitiativeManager initiativeManager;
   [SerializeField] private Timer timer;
+  [SerializeField] private Hero[] heroes;
 
   private float executionStartTime;
   private int lastBar;
@@ -23,6 +24,7 @@ public class CombatManager : MonoBehaviour
   private void Start()
   {
     beatmapManager.complete.AddListener(AdvanceState);
+    beatmapManager.hit.AddListener(ReadHit);
     timer.expire.AddListener(Lose);
 
     CurrentState = CombatState.START;
@@ -47,7 +49,7 @@ public class CombatManager : MonoBehaviour
         break;
       case CombatState.PRE_EXECUTION:
         //Generate All Our Patterns
-        List<List<float>> patterns = new List<List<float>>();
+        Dictionary<Combatant, List<float>> combatantPatterns = new Dictionary<Combatant, List<float>>();
 
         foreach (Combatant combatant in initiativeManager.Combatants)
         {
@@ -55,17 +57,18 @@ public class CombatManager : MonoBehaviour
           {
             // HeroId is either 1, 2, or 3.
             Command command = submittedCommands[(combatant as Hero).HeroId - 1];
-            patterns.Add(RhythmPatterns.Pattern(command.PatternId));
+            combatantPatterns[combatant] = RhythmPatterns.Pattern(command.PatternId);
           }
           else
           {
-            patterns.Add(RhythmPatterns.Pattern(5));
+            // Combatant is a monster.
+            combatantPatterns[combatant] = RhythmPatterns.Pattern(5);
           }
         }
 
         //Start Recording Time
         executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
-        beatmapManager.GenerateBeatmap(patterns, executionStartTime);
+        beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
 
         CurrentState = CombatState.EXECUTION;
         break;
@@ -145,6 +148,32 @@ public class CombatManager : MonoBehaviour
   private void Lose()
   {
     CurrentState = CombatState.LOSE;
+  }
+
+  private void ReadHit(Combatant combatant, BeatmapManager.AccuracyGrade accuracyGrade)
+  {
+    if (combatant is Monster)
+    {
+      float damageMultiplier = 1f;
+      switch (accuracyGrade)
+      {
+        case BeatmapManager.AccuracyGrade.PERFECT:
+          damageMultiplier = 0.5f;
+          break;
+        case BeatmapManager.AccuracyGrade.GREAT:
+          damageMultiplier = 0.7f;
+          break;
+        case BeatmapManager.AccuracyGrade.GOOD:
+          damageMultiplier = 0.9f;
+          break;
+        default:
+          break;
+      }
+
+      // For now, have the monster attack a random hero.
+      int index = Random.Range(0, heroes.Length);
+      heroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+    }
   }
 
   private float Threshold(float secondsPerBar)
