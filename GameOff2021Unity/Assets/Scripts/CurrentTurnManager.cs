@@ -32,39 +32,36 @@ public class CurrentTurnManager : MonoBehaviour
     {
       case CombatManager.CombatState.HERO_ONE:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroOne.combatantName;
+        nameComponent.text = heroOne.Name;
 
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
-          SpotlightHero(heroOne);
+          SpotlightHero();
         }
         
-        lastState = CombatManager.CombatState.HERO_ONE;
         break;
       case CombatManager.CombatState.HERO_TWO:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroTwo.combatantName;
+        nameComponent.text = heroTwo.Name;
 
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
-          SpotlightHero(heroTwo);
+          SpotlightHero();
         }
 
-        lastState = CombatManager.CombatState.HERO_TWO;
         break;
       case CombatManager.CombatState.HERO_THREE:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroThree.combatantName;
+        nameComponent.text = heroThree.Name;
 
         if (lastState != combatManager.CurrentState)
         {
           MoveIndicators();
-          SpotlightHero(heroThree);
+          SpotlightHero();
         }
         
-        lastState = CombatManager.CombatState.HERO_THREE;
         break;
       default:
         panel.gameObject.SetActive(false);
@@ -73,6 +70,8 @@ public class CurrentTurnManager : MonoBehaviour
         ResetPosition(heroThree);
         break;
     }
+
+    lastState = combatManager.CurrentState;
   }
 
   private void MoveIndicators()
@@ -85,7 +84,7 @@ public class CurrentTurnManager : MonoBehaviour
     hero.transform.position = new Vector2(initialPositionX, hero.transform.position.y);
   }
 
-  private void SpotlightHero(Hero hero)
+  private void SpotlightHero()
   {
     switch (combatManager.CurrentState)
     {

@@ -15,16 +15,16 @@ public class StatusCard : MonoBehaviour
   {
     // Name should be the first TextMeshProUGUI component encountered.
     heroNameComponent = GetComponentInChildren<TextMeshProUGUI>();
-    heroNameComponent.text = hero.combatantName;
+    heroNameComponent.text = hero.Name;
 
     // Health bar should be the first bar.
     healthBar = GetComponentsInChildren<StatusBar>()[0];
-    healthBar.SetMaxValue(hero.maxHealth);
+    healthBar.SetMaxValue(hero.MaxHealth);
     healthBar.SetValue(hero.CurrentHealth);
 
     // Stamina bar should be the second bar.
     staminaBar = GetComponentsInChildren<StatusBar>()[1];
-    staminaBar.SetMaxValue(hero.maxStamina);
+    staminaBar.SetMaxValue(hero.MaxStamina);
     staminaBar.SetValue(hero.CurrentStamina);
   }
 

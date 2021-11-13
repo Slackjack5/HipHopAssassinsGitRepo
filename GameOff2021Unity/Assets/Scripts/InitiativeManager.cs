@@ -21,7 +21,7 @@ public class InitiativeManager : MonoBehaviour
       TextMeshProUGUI name = textComponents[0];
       TextMeshProUGUI order = textComponents[1];
 
-      name.text = combatants[i].combatantName;
+      name.text = combatants[i].Name;
       order.text = (i + 1).ToString();
     }
   }
@@ -36,6 +36,6 @@ public class InitiativeManager : MonoBehaviour
 
   private int CompareCombatantSpeeds(Combatant x, Combatant y)
   {
-    return y.speed.CompareTo(x.speed);
+    return y.Speed.CompareTo(x.Speed);
   }
 }

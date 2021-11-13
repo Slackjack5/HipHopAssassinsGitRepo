@@ -74,14 +74,14 @@ public class BeatmapManager : MonoBehaviour
     }
   }
 
-  public void GenerateBeatmap(List<float[]> HitPointList, float startTime, float spBar)
+  public void GenerateBeatmap(List<float[]> patterns, float startTime)
   {
-    for (int i = 0; i < HitPointList.Count; i++)
+    for (int i = 0; i < patterns.Count; i++)
     {
-      float[] pattern = HitPointList[i];
+      float[] pattern = patterns[i];
       for (int j = 0; j < pattern.Length; j++)
       {
-        notes.Add(new Note() { time = pattern[j] + startTime + spBar * i });
+        notes.Add(new Note() { time = pattern[j] + startTime + AudioEvents.secondsPerBar * i });
       }
     }
 

@@ -4,13 +4,29 @@ using UnityEngine;
 
 public abstract class Combatant : MonoBehaviour
 {
-  [SerializeField] public string combatantName;
-  [SerializeField] public int maxHealth;
-  [SerializeField] public int maxStamina;
-  [SerializeField] public int speed;
+  [SerializeField] protected string combatantName;
+  [SerializeField] protected int maxHealth;
+  [SerializeField] protected int maxStamina;
+  [SerializeField] protected int speed;
 
   public int CurrentHealth { get; protected set; }
   public int CurrentStamina { get; protected set; }
+  public int MaxHealth
+  { 
+    get { return maxHealth; } 
+  }
+  public int MaxStamina
+  { 
+    get { return maxStamina; } 
+  }
+  public string Name
+  {
+    get { return combatantName; }
+  }
+  public int Speed 
+  { 
+    get { return speed; } 
+  }
 
   protected virtual void Start()
   {

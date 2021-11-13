@@ -1106,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3775907912458183835, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: combatManager
+      value: 
+      objectReference: {fileID: 282201246}
     - target: {fileID: 3779231047193601493, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1261,10 +1265,6 @@ PrefabInstance:
     - target: {fileID: 4620383733329012107, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4706476182505526865, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
-      propertyPath: timeLimit
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4723615573608693606, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_Interactable

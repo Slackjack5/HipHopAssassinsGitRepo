@@ -6,11 +6,11 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
   [SerializeField] private BeatmapManager beatmapManager;
-  [SerializeField] private MenuManager menuManager;
   [SerializeField] private Timer timer;
 
   private float executionStartTime;
   private int lastBar;
+  private readonly Command[] submittedCommands = new Command[3];
 
   public enum CombatState
   {
@@ -22,7 +22,6 @@ public class CombatManager : MonoBehaviour
   private void Start()
   {
     beatmapManager.complete.AddListener(AdvanceState);
-    menuManager.HideMenu();
     timer.expire.AddListener(Lose);
 
     CurrentState = CombatState.START;
@@ -35,7 +34,6 @@ public class CombatManager : MonoBehaviour
       case CombatState.START:
         if (GlobalVariables.fightStarted)
         {
-          menuManager.OpenTopMenu();
           CurrentState = CombatState.HERO_ONE;
         }
         
@@ -47,15 +45,17 @@ public class CombatManager : MonoBehaviour
         }
         break;
       case CombatState.PRE_EXECUTION:
-        //Generate List
-        List<float[]> HitPointList = new List<float[]>();
         //Generate All Our Patterns
-        HitPointList.Add(RhythmPatterns.Pattern(AudioEvents.secondsPerBeat, AudioEvents.secondsPerBar, 1));
-        HitPointList.Add(RhythmPatterns.Pattern(AudioEvents.secondsPerBeat, AudioEvents.secondsPerBar, 2));
-        HitPointList.Add(RhythmPatterns.Pattern(AudioEvents.secondsPerBeat, AudioEvents.secondsPerBar, 3));
+        List<float[]> patterns = new List<float[]>();
+        foreach (Command command in submittedCommands)
+        {
+          patterns.Add(RhythmPatterns.Pattern(command.PatternId));
+        }
+
         //Start Recording Time
         executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
-        beatmapManager.GenerateBeatmap(HitPointList, executionStartTime, AudioEvents.secondsPerBar);
+        beatmapManager.GenerateBeatmap(patterns, executionStartTime);
+
         CurrentState = CombatState.EXECUTION;
         break;
       default:
@@ -68,17 +68,12 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case CombatState.HERO_ONE:
-        menuManager.OpenTopMenu();
-
         CurrentState = CombatState.HERO_TWO;
         break;
       case CombatState.HERO_TWO:
-        menuManager.OpenTopMenu();
-
         CurrentState = CombatState.HERO_THREE;
         break;
       case CombatState.HERO_THREE:
-        menuManager.HideMenu();
         beatmapManager.ShowTrack();
 
         if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
@@ -92,7 +87,6 @@ public class CombatManager : MonoBehaviour
         }
         break;
       case CombatState.EXECUTION:
-        menuManager.OpenTopMenu();
         beatmapManager.HideTrack();
 
         CurrentState = CombatState.HERO_ONE;
@@ -115,6 +109,26 @@ public class CombatManager : MonoBehaviour
       default:
         break;
     }
+  }
+
+  public void SubmitCommand(Command command)
+  {
+    switch (CurrentState)
+    {
+      case CombatState.HERO_ONE:
+        submittedCommands[0] = command;
+        break;
+      case CombatState.HERO_TWO:
+        submittedCommands[1] = command;
+        break;
+      case CombatState.HERO_THREE:
+        submittedCommands[2] = command;
+        break;
+      default:
+        break;
+    }
+
+    AdvanceState();
   }
 
   private void Lose()
