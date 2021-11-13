@@ -197,6 +197,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2496301813088378271}
     - target: {fileID: 3063558216829245387, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
+      propertyPath: monsters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063558216829245387, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
       propertyPath: heroes.Array.data[0]
       value: 
       objectReference: {fileID: 186819947}
@@ -208,6 +212,10 @@ PrefabInstance:
       propertyPath: heroes.Array.data[2]
       value: 
       objectReference: {fileID: 1756696103}
+    - target: {fileID: 3063558216829245387, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
+      propertyPath: monsters.Array.data[0]
+      value: 
+      objectReference: {fileID: 2143291770173743569}
     - target: {fileID: 6581480403230856303, guid: 20bc5f9fb3c9a4b46ac4b7ad45f7dca8, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1317,6 +1325,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5032336014280381465, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: combatManager
+      value: 
+      objectReference: {fileID: 282201246}
     - target: {fileID: 5032336014280381465, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: combatants.Array.size
       value: 4

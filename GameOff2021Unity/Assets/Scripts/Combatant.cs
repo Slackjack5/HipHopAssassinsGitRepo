@@ -16,6 +16,10 @@ public abstract class Combatant : MonoBehaviour
   }
   public int CurrentHealth { get; protected set; }
   public int CurrentStamina { get; protected set; }
+  public bool IsDead
+  {
+    get { return CurrentHealth <= 0; }
+  }
   public int MaxHealth
   { 
     get { return maxHealth; } 

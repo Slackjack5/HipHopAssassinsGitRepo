@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class CurrentTurnManager : MonoBehaviour
 {
-  [SerializeField] private Hero heroOne;
-  [SerializeField] private Hero heroTwo;
-  [SerializeField] private Hero heroThree;
   [SerializeField] private float spotlightDistance;
   [SerializeField] private CombatManager combatManager;
 
+  private Hero[] heroes;
   private float initialPositionX;
   private CombatManager.CombatState lastState;
   private TextMeshProUGUI nameComponent;
@@ -22,7 +20,8 @@ public class CurrentTurnManager : MonoBehaviour
     panel = GetComponentInChildren<VerticalLayoutGroup>();
     nameComponent = GetComponentInChildren<TextMeshProUGUI>();
 
-    initialPositionX = heroOne.transform.position.x;
+    heroes = combatManager.Heroes;
+    initialPositionX = heroes[0].transform.position.x;
     lastState = CombatManager.CombatState.UNSPECIFIED;
   }
 
@@ -32,7 +31,7 @@ public class CurrentTurnManager : MonoBehaviour
     {
       case CombatManager.CombatState.HERO_ONE:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroOne.Name;
+        nameComponent.text = heroes[0].Name;
 
         if (lastState != combatManager.CurrentState)
         {
@@ -43,7 +42,7 @@ public class CurrentTurnManager : MonoBehaviour
         break;
       case CombatManager.CombatState.HERO_TWO:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroTwo.Name;
+        nameComponent.text = heroes[1].Name;
 
         if (lastState != combatManager.CurrentState)
         {
@@ -54,7 +53,7 @@ public class CurrentTurnManager : MonoBehaviour
         break;
       case CombatManager.CombatState.HERO_THREE:
         panel.gameObject.SetActive(true);
-        nameComponent.text = heroThree.Name;
+        nameComponent.text = heroes[2].Name;
 
         if (lastState != combatManager.CurrentState)
         {
@@ -65,9 +64,7 @@ public class CurrentTurnManager : MonoBehaviour
         break;
       default:
         panel.gameObject.SetActive(false);
-        ResetPosition(heroOne);
-        ResetPosition(heroTwo);
-        ResetPosition(heroThree);
+        ResetAllPositions();
         break;
     }
 
@@ -77,6 +74,13 @@ public class CurrentTurnManager : MonoBehaviour
   private void MoveIndicators()
   {
     
+  }
+
+  private void ResetAllPositions()
+  {
+    ResetPosition(heroes[0]);
+    ResetPosition(heroes[1]);
+    ResetPosition(heroes[2]);
   }
 
   private void ResetPosition(Hero hero)
@@ -89,24 +93,22 @@ public class CurrentTurnManager : MonoBehaviour
     switch (combatManager.CurrentState)
     {
       case CombatManager.CombatState.HERO_ONE:
-        heroOne.transform.Translate(new Vector2(spotlightDistance, 0));
-        ResetPosition(heroTwo);
-        ResetPosition(heroThree);
+        heroes[0].transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroes[1]);
+        ResetPosition(heroes[2]);
         break;
       case CombatManager.CombatState.HERO_TWO:
-        heroTwo.transform.Translate(new Vector2(spotlightDistance, 0));
-        ResetPosition(heroOne);
-        ResetPosition(heroThree);
+        heroes[1].transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroes[0]);
+        ResetPosition(heroes[2]);
         break;
       case CombatManager.CombatState.HERO_THREE:
-        heroThree.transform.Translate(new Vector2(spotlightDistance, 0));
-        ResetPosition(heroOne);
-        ResetPosition(heroTwo);
+        heroes[2].transform.Translate(new Vector2(spotlightDistance, 0));
+        ResetPosition(heroes[0]);
+        ResetPosition(heroes[1]);
         break;
       default:
-        ResetPosition(heroOne);
-        ResetPosition(heroTwo);
-        ResetPosition(heroThree);
+        ResetAllPositions();
         break;
     }
   }

@@ -6,9 +6,9 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour
 {
   [SerializeField] private BeatmapManager beatmapManager;
-  [SerializeField] private InitiativeManager initiativeManager;
   [SerializeField] private Timer timer;
   [SerializeField] private Hero[] heroes;
+  [SerializeField] private Monster[] monsters;
 
   private float executionStartTime;
   private int lastBar;
@@ -19,15 +19,33 @@ public class CombatManager : MonoBehaviour
     UNSPECIFIED, START, HERO_ONE, HERO_TWO, HERO_THREE, DELAY_EXECUTION, PRE_EXECUTION, EXECUTION, WIN, LOSE
   }
 
+  /// <summary>
+  /// Combatants sorted in initiative order
+  /// </summary>
+  public List<Combatant> Combatants { get; private set; }
   public CombatState CurrentState { get; private set; }
+  public Hero[] Heroes
+  {
+    get { return heroes; }
+  }
 
-  private void Start()
+  private void Awake()
   {
     beatmapManager.complete.AddListener(AdvanceState);
     beatmapManager.hit.AddListener(ReadHit);
     timer.expire.AddListener(Lose);
 
+    SortByInitiative();
+
     CurrentState = CombatState.START;
+  }
+
+  private void OnGUI()
+  {
+    for (int i = 0; i < monsters.Length; i++)
+    {
+      GUI.Label(new Rect(0, 30 * i, 200, 30), monsters[i].Name + " HP: " + monsters[i].CurrentHealth + " / " + monsters[i].MaxHealth);
+    }
   }
 
   private void Update()
@@ -51,7 +69,7 @@ public class CombatManager : MonoBehaviour
         //Generate All Our Patterns
         Dictionary<Combatant, List<float>> combatantPatterns = new Dictionary<Combatant, List<float>>();
 
-        foreach (Combatant combatant in initiativeManager.Combatants)
+        foreach (Combatant combatant in Combatants)
         {
           if (combatant is Hero)
           {
@@ -61,7 +79,7 @@ public class CombatManager : MonoBehaviour
           }
           else
           {
-            // Combatant is a monster.
+            // Combatant is a Monster.
             combatantPatterns[combatant] = RhythmPatterns.Pattern(5);
           }
         }
@@ -145,6 +163,11 @@ public class CombatManager : MonoBehaviour
     AdvanceState();
   }
 
+  private int CompareCombatantSpeeds(Combatant x, Combatant y)
+  {
+    return y.Speed.CompareTo(x.Speed);
+  }
+
   private void Lose()
   {
     CurrentState = CombatState.LOSE;
@@ -174,6 +197,37 @@ public class CombatManager : MonoBehaviour
       int index = Random.Range(0, heroes.Length);
       heroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
+    else
+    {
+      // Combatant is a Hero.
+      float damageMultiplier = 0f;
+      switch (accuracyGrade)
+      {
+        case BeatmapManager.AccuracyGrade.PERFECT:
+          damageMultiplier = 1f;
+          break;
+        case BeatmapManager.AccuracyGrade.GREAT:
+          damageMultiplier = 0.66f;
+          break;
+        case BeatmapManager.AccuracyGrade.GOOD:
+          damageMultiplier = 0.33f;
+          break;
+        default:
+          break;
+      }
+
+      // For now, have the hero attack a random monster.
+      int index = Random.Range(0, monsters.Length);
+      monsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+    }
+  }
+
+  private void SortByInitiative()
+  {
+    Combatants = new List<Combatant>();
+    Combatants.AddRange(heroes);
+    Combatants.AddRange(monsters);
+    Combatants.Sort(CompareCombatantSpeeds);
   }
 
   private float Threshold(float secondsPerBar)

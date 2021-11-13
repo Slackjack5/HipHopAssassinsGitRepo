@@ -12,6 +12,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: attack
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: heroId
       value: 3
       objectReference: {fileID: 0}
