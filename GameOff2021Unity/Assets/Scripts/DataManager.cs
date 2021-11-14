@@ -20,7 +20,7 @@ public class DataManager : MonoBehaviour
     {
       var serializer = new XmlSerializer(typeof(Consumable[]));
       var reader = new StreamReader(Application.dataPath + "/Data/consumables.xml");
-      AllConsumables = (Consumable[])serializer.Deserialize(reader.BaseStream);
+      AllConsumables = (Consumable[]) serializer.Deserialize(reader.BaseStream);
       reader.Close();
     }
   }
@@ -30,13 +30,14 @@ public class DataManager : MonoBehaviour
     var consumables = new List<Consumable>();
     for (var i = 0; i < 10; i++)
     {
-      consumables.Add(new Consumable() 
-      { 
-        id = i, 
-        name = "Consumable " + i, 
+      consumables.Add(new Consumable()
+      {
+        id = i,
+        name = "Consumable " + i,
         description = "This is consumable " + i + "."
       });
     }
+
     AllConsumables = consumables.ToArray();
 
     var macros = new List<Macro>();
@@ -49,6 +50,7 @@ public class DataManager : MonoBehaviour
         description = "This is macro " + i + "."
       });
     }
+
     AllMacros = macros.ToArray();
   }
 }

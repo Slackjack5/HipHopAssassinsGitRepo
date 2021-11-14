@@ -1,29 +1,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour
 {
   [SerializeField] private BeatmapManager beatmapManager;
-  [SerializeField] private Timer timer;
   [SerializeField] private Hero[] heroes;
-  [SerializeField] private Monster[] monsters;
+  [SerializeField] private GameObject monsterObjects;
 
-  private float executionStartTime;
+  private bool isCombatDone;
   private int lastBar;
+  private Monster[] monsters;
   private readonly Command[] submittedCommands = new Command[3];
 
   public enum CombatState
   {
-    Unspecified, 
+    Unspecified,
     Start,
-    HeroOne, 
+    HeroOne,
     HeroTwo,
     HeroThree,
     DelayExecution,
     PreExecution,
-    Execution, 
+    Execution,
     Win,
     Lose
   }
@@ -32,17 +33,26 @@ public class CombatManager : MonoBehaviour
   /// Combatants sorted in initiative order
   /// </summary>
   public List<Combatant> Combatants { get; private set; }
-  public CombatState CurrentState { get; private set; }
+  public static CombatState CurrentState { get; private set; }
   public Hero[] Heroes => heroes;
 
   private void Awake()
   {
+    Assert.IsTrue(beatmapManager, "beatmapManager is empty");
+    Assert.IsTrue(monsterObjects, "monsterObjects is empty");
+    
     beatmapManager.complete.AddListener(AdvanceState);
     beatmapManager.hit.AddListener(ReadHit);
-    timer.expire.AddListener(Lose);
+
+    monsters = monsterObjects.GetComponentsInChildren<Monster>();
 
     SortByInitiative();
 
+    foreach (Combatant combatant in Combatants)
+    {
+      combatant.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(combatant));
+    }
+    
     CurrentState = CombatState.Start;
   }
 
@@ -50,12 +60,15 @@ public class CombatManager : MonoBehaviour
   {
     for (var i = 0; i < monsters.Length; i++)
     {
-      GUI.Label(new Rect(0, 30 * i, 200, 30), monsters[i].Name + " HP: " + monsters[i].CurrentHealth + " / " + monsters[i].MaxHealth);
+      GUI.Label(new Rect(0, 30 * i, 200, 30),
+        monsters[i].Name + " HP: " + monsters[i].CurrentHealth + " / " + monsters[i].MaxHealth);
     }
   }
 
   private void Update()
   {
+    if (isCombatDone) return;
+
     if (AllMonstersDead())
     {
       Win();
@@ -73,69 +86,29 @@ public class CombatManager : MonoBehaviour
         {
           CurrentState = CombatState.HeroOne;
         }
-        
+
         break;
       case CombatState.DelayExecution:
-        if (lastBar != GlobalVariables.currentBar && (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
+        if (lastBar != GlobalVariables.currentBar &&
+            (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
         {
           CurrentState = CombatState.PreExecution;
         }
+
         break;
       case CombatState.PreExecution:
-        //Generate All Our Patterns
-        var combatantPatterns = new Dictionary<Combatant, List<float>>();
-
-        foreach (Combatant combatant in Combatants)
-        {
-          if (combatant is Hero hero)
-          {
-            Command command = GetHeroCommand(hero);
-            combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
-          }
-          else
-          {
-            // Combatant is a Monster.
-            combatantPatterns[combatant] = RhythmPatterns.Pattern(5);
-          }
-        }
-
-        //Start Recording Time
-        executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
-        beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
+        GeneratePatterns();
 
         CurrentState = CombatState.Execution;
         break;
     }
   }
 
-  private void AdvanceState()
+  public void Lose()
   {
-    switch (CurrentState)
-    {
-      case CombatState.HeroOne:
-        CurrentState = CombatState.HeroTwo;
-        break;
-      case CombatState.HeroTwo:
-        CurrentState = CombatState.HeroThree;
-        break;
-      case CombatState.HeroThree:
-        beatmapManager.ShowTrack();
-
-        if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
-        {
-          CurrentState = CombatState.PreExecution;
-        }
-        else
-        {
-          CurrentState = CombatState.DelayExecution;
-          lastBar = GlobalVariables.currentBar;
-        }
-        break;
-      case CombatState.Execution:
-        beatmapManager.HideTrack();
-        CurrentState = CombatState.HeroOne;
-        break;
-    }
+    CurrentState = CombatState.Lose;
+    isCombatDone = true;
+    beatmapManager.ForceFinish();
   }
 
   public void SubmitCommand(Command command)
@@ -156,6 +129,41 @@ public class CombatManager : MonoBehaviour
     AdvanceState();
   }
 
+  private void AdvanceState()
+  {
+    switch (CurrentState)
+    {
+      case CombatState.HeroOne:
+        CurrentState = heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo;
+        break;
+      case CombatState.HeroTwo:
+        if (heroes[2].IsDead)
+        {
+          DeterminePreExecutionState();
+        }
+        else
+        {
+          CurrentState = CombatState.HeroThree;
+        }
+
+        break;
+      case CombatState.HeroThree:
+        DeterminePreExecutionState();
+        break;
+      case CombatState.Execution:
+        if (heroes[0].IsDead)
+        {
+          CurrentState = heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo;
+        }
+        else
+        {
+          CurrentState = CombatState.HeroOne;
+        }
+
+        break;
+    }
+  }
+
   private bool AllHeroesDead()
   {
     return heroes.All(hero => hero.IsDead);
@@ -166,20 +174,45 @@ public class CombatManager : MonoBehaviour
     return monsters.All(monster => monster.IsDead);
   }
 
-  private static int CompareCombatantSpeeds(Combatant x, Combatant y)
+  private void DeterminePreExecutionState()
   {
-    return y.Speed.CompareTo(x.Speed);
+    if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
+    {
+      CurrentState = CombatState.PreExecution;
+    }
+    else
+    {
+      CurrentState = CombatState.DelayExecution;
+      lastBar = GlobalVariables.currentBar;
+    }
+  }
+
+  private void GeneratePatterns()
+  {
+    var combatantPatterns = new Dictionary<Combatant, List<float>>();
+
+    foreach (Combatant combatant in Combatants.Where(combatant => !combatant.IsDead))
+    {
+      if (combatant is Hero hero)
+      {
+        Command command = GetHeroCommand(hero);
+        combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
+      }
+      else
+      {
+        // Combatant is a Monster.
+        combatantPatterns[combatant] = RhythmPatterns.Pattern(5);
+      }
+    }
+
+    float executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
+    beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
   }
 
   private Command GetHeroCommand(Hero hero)
   {
     // HeroId is either 1, 2, or 3.
     return submittedCommands[hero.HeroId - 1];
-  }
-
-  private void Lose()
-  {
-    CurrentState = CombatState.Lose;
   }
 
   private void ReadHit(Combatant combatant, BeatmapManager.AccuracyGrade accuracyGrade)
@@ -209,7 +242,7 @@ public class CombatManager : MonoBehaviour
       var hero = combatant as Hero;
       Command command = GetHeroCommand(hero);
       if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
-      
+
       var damageMultiplier = 0f;
       switch (accuracyGrade)
       {
@@ -238,13 +271,20 @@ public class CombatManager : MonoBehaviour
     Combatants.Sort(CompareCombatantSpeeds);
   }
 
-  private static float Threshold(float secondsPerBar)
-  {
-    return secondsPerBar / 2;
-  }
-
   private void Win()
   {
     CurrentState = CombatState.Win;
+    isCombatDone = true;
+    beatmapManager.ForceFinish();
+  }
+
+  private static int CompareCombatantSpeeds(Combatant x, Combatant y)
+  {
+    return y.Speed.CompareTo(x.Speed);
+  }
+
+  private static float Threshold(float secondsPerBar)
+  {
+    return secondsPerBar / 2;
   }
 }

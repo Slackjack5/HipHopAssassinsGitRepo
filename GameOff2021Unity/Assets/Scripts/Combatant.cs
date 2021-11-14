@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Combatant : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected int maxStamina;
   [SerializeField] protected int attack;
   [SerializeField] protected int speed;
+
+  public readonly UnityEvent dead = new UnityEvent();
 
   public int Attack => attack;
   public int CurrentHealth { get; private set; }
@@ -33,6 +36,7 @@ public abstract class Combatant : MonoBehaviour
     if (CurrentHealth <= 0)
     {
       CurrentHealth = 0;
+      Die();
     }
   }
 
@@ -61,5 +65,11 @@ public abstract class Combatant : MonoBehaviour
     {
       CurrentStamina = maxStamina;
     }
+  }
+
+  private void Die()
+  {
+    GetComponent<SpriteRenderer>().enabled = false;
+    dead.Invoke();
   }
 }

@@ -3,9 +3,8 @@ using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
-  [SerializeField] private float timeLimit = 120f;  // In seconds
-
-  public readonly UnityEvent expire = new UnityEvent();
+  [SerializeField] private float timeLimit = 120f; // In seconds
+  [SerializeField] private UnityEvent expire;
 
   private ProgressBar progressBar;
 
