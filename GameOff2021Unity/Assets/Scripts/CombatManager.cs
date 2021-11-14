@@ -33,6 +33,7 @@ public class CombatManager : MonoBehaviour
   /// Combatants sorted in initiative order
   /// </summary>
   public List<Combatant> Combatants { get; private set; }
+
   public static CombatState CurrentState { get; private set; }
   public Hero[] Heroes => heroes;
 
@@ -40,7 +41,7 @@ public class CombatManager : MonoBehaviour
   {
     Assert.IsTrue(beatmapManager, "beatmapManager is empty");
     Assert.IsTrue(monsterObjects, "monsterObjects is empty");
-    
+
     beatmapManager.complete.AddListener(AdvanceState);
     beatmapManager.hit.AddListener(ReadHit);
 
@@ -52,7 +53,7 @@ public class CombatManager : MonoBehaviour
     {
       combatant.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(combatant));
     }
-    
+
     CurrentState = CombatState.Start;
   }
 
@@ -234,7 +235,8 @@ public class CombatManager : MonoBehaviour
       }
 
       // For now, have the monster attack a random hero.
-      int index = Random.Range(0, heroes.Length);
+      List<Hero> livingHeroes = heroes.Where(hero => !hero.IsDead).ToList();
+      int index = Random.Range(0, livingHeroes.Count);
       heroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
     else
@@ -258,7 +260,8 @@ public class CombatManager : MonoBehaviour
       }
 
       // For now, have the hero attack a random monster.
-      int index = Random.Range(0, monsters.Length);
+      List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
+      int index = Random.Range(0, livingMonsters.Count);
       monsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
   }
