@@ -237,7 +237,7 @@ public class CombatManager : MonoBehaviour
       // For now, have the monster attack a random hero.
       List<Hero> livingHeroes = heroes.Where(hero => !hero.IsDead).ToList();
       int index = Random.Range(0, livingHeroes.Count);
-      heroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+      livingHeroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
     else
     {
@@ -262,7 +262,7 @@ public class CombatManager : MonoBehaviour
       // For now, have the hero attack a random monster.
       List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
       int index = Random.Range(0, livingMonsters.Count);
-      monsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+      livingMonsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
   }
 

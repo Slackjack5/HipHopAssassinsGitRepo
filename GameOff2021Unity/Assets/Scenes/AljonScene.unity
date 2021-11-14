@@ -2270,6 +2270,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2915651810848430335, guid: 2640ad00fbf766b478a2b3a134778f9c, type: 3}
+      propertyPath: m_Name
+      value: Damage Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 7473691854885686384, guid: 2640ad00fbf766b478a2b3a134778f9c, type: 3}
       propertyPath: m_Name
       value: Hero 1
