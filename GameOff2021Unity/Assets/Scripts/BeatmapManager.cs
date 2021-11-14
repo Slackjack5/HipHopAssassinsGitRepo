@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class BeatmapManager : MonoBehaviour
 {
   [SerializeField] private GameObject track;
-  [SerializeField] private GameObject beatCircle;
+  [SerializeField] private GameObject beatCirclePrefab;
   [SerializeField] private Transform spawnerPos;
   [SerializeField] private Transform centerPos;
   [SerializeField] private Transform endPos;
@@ -74,7 +74,7 @@ public class BeatmapManager : MonoBehaviour
         {
           hit.Invoke(notes[nextHitIndex].combatant, AccuracyGrade.Miss);
         }
-        
+
         nextHitIndex++;
       }
 
@@ -188,13 +188,18 @@ public class BeatmapManager : MonoBehaviour
 
   private void Spawn(int spawnIndex)
   {
-    if (notes[spawnIndex].combatant.IsDead) return;
-    
-    GameObject circle = Instantiate(beatCircle, spawnerPos.position, Quaternion.identity, track.transform);
-    circle.GetComponent<BeatCircle>().travelTime = travelTime;
-    circle.GetComponent<BeatCircle>().centerPos = centerPos;
-    circle.GetComponent<BeatCircle>().endPos = endPos;
-    circle.GetComponent<BeatCircle>().spawnerPos = spawnerPos;
-    notes[spawnIndex].beatCircle = circle;
+    Note note = notes[spawnIndex];
+    if (note.combatant.IsDead) return;
+
+    GameObject circle = Instantiate(beatCirclePrefab, spawnerPos.position, Quaternion.identity, track.transform);
+    var beatCircle = circle.GetComponent<BeatCircle>();
+    beatCircle.travelTime = travelTime;
+    beatCircle.centerPos = centerPos;
+    beatCircle.endPos = endPos;
+    beatCircle.spawnerPos = spawnerPos;
+
+    circle.GetComponent<SpriteRenderer>().color = note.combatant.gameObject.GetComponent<SpriteRenderer>().color;
+
+    note.beatCircle = circle;
   }
 }
