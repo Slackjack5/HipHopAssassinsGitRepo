@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/AljonScene.unity
+    guid: 9e090e882673b1c4baeb51dd054166e7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 07595cccd6b83124490dd3f3851af59c, type: 2}

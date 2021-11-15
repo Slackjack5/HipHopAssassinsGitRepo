@@ -42,7 +42,7 @@ public class BeatmapManager : MonoBehaviour
   {
     track.SetActive(false);
 
-    lateBound = leniency / 3;
+    lateBound = leniency * 2 / 3;
   }
 
   private void Update()
