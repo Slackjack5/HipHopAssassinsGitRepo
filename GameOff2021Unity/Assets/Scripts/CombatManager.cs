@@ -2,15 +2,21 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour
 {
+  [SerializeField] private float startStateDuration;
   [SerializeField] private BeatmapManager beatmapManager;
-  [SerializeField] private Hero[] heroes;
+  [SerializeField] private GameObject heroObjects;
   [SerializeField] private GameObject monsterObjects;
 
+  public readonly UnityEvent<CombatState> onChangeState = new UnityEvent<CombatState>();
+
+  private float currentStartStateTime;
   private bool isCombatDone;
+  private bool isStarting;
   private int lastBar;
   private Monster[] monsters;
   private readonly Command[] submittedCommands = new Command[3];
@@ -18,6 +24,7 @@ public class CombatManager : MonoBehaviour
   public enum CombatState
   {
     Unspecified,
+    PreStart,
     Start,
     HeroOne,
     HeroTwo,
@@ -35,7 +42,8 @@ public class CombatManager : MonoBehaviour
   public List<Combatant> Combatants { get; private set; }
 
   public static CombatState CurrentState { get; private set; }
-  public Hero[] Heroes => heroes;
+
+  public Hero[] Heroes => heroObjects.GetComponentsInChildren<Hero>();
 
   private void Awake()
   {
@@ -54,7 +62,7 @@ public class CombatManager : MonoBehaviour
       combatant.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(combatant));
     }
 
-    CurrentState = CombatState.Start;
+    ChangeState(CombatState.PreStart);
   }
 
   private void OnGUI()
@@ -83,9 +91,17 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case CombatState.Start:
-        if (GlobalVariables.fightStarted)
+        if (!isStarting)
         {
-          CurrentState = CombatState.HeroOne;
+          currentStartStateTime = startStateDuration;
+          isStarting = true;
+        }
+
+        currentStartStateTime -= Time.deltaTime;
+
+        if (currentStartStateTime <= 0)
+        {
+          ChangeState(CombatState.HeroOne);
         }
 
         break;
@@ -93,23 +109,28 @@ public class CombatManager : MonoBehaviour
         if (lastBar != GlobalVariables.currentBar &&
             (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
         {
-          CurrentState = CombatState.PreExecution;
+          ChangeState(CombatState.PreExecution);
         }
 
         break;
       case CombatState.PreExecution:
         GeneratePatterns();
 
-        CurrentState = CombatState.Execution;
+        ChangeState(CombatState.Execution);
         break;
     }
   }
 
   public void Lose()
   {
-    CurrentState = CombatState.Lose;
+    ChangeState(CombatState.Lose);
     isCombatDone = true;
     beatmapManager.ForceFinish();
+  }
+
+  public void StartFight()
+  {
+    ChangeState(CombatState.Start);
   }
 
   public void SubmitCommand(Command command)
@@ -135,16 +156,16 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case CombatState.HeroOne:
-        CurrentState = heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo;
+        ChangeState(Heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo);
         break;
       case CombatState.HeroTwo:
-        if (heroes[2].IsDead)
+        if (Heroes[2].IsDead)
         {
           DeterminePreExecutionState();
         }
         else
         {
-          CurrentState = CombatState.HeroThree;
+          ChangeState(CombatState.HeroThree);
         }
 
         break;
@@ -152,13 +173,13 @@ public class CombatManager : MonoBehaviour
         DeterminePreExecutionState();
         break;
       case CombatState.Execution:
-        if (heroes[0].IsDead)
+        if (Heroes[0].IsDead)
         {
-          CurrentState = heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo;
+          ChangeState(Heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo);
         }
         else
         {
-          CurrentState = CombatState.HeroOne;
+          ChangeState(CombatState.HeroOne);
         }
 
         break;
@@ -167,7 +188,7 @@ public class CombatManager : MonoBehaviour
 
   private bool AllHeroesDead()
   {
-    return heroes.All(hero => hero.IsDead);
+    return Heroes.All(hero => hero.IsDead);
   }
 
   private bool AllMonstersDead()
@@ -175,15 +196,21 @@ public class CombatManager : MonoBehaviour
     return monsters.All(monster => monster.IsDead);
   }
 
+  private void ChangeState(CombatState state)
+  {
+    CurrentState = state;
+    onChangeState.Invoke(state);
+  }
+
   private void DeterminePreExecutionState()
   {
     if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
     {
-      CurrentState = CombatState.PreExecution;
+      ChangeState(CombatState.PreExecution);
     }
     else
     {
-      CurrentState = CombatState.DelayExecution;
+      ChangeState(CombatState.DelayExecution);
       lastBar = GlobalVariables.currentBar;
     }
   }
@@ -235,7 +262,7 @@ public class CombatManager : MonoBehaviour
       }
 
       // For now, have the monster attack a random hero.
-      List<Hero> livingHeroes = heroes.Where(hero => !hero.IsDead).ToList();
+      List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
       int index = Random.Range(0, livingHeroes.Count);
       livingHeroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
@@ -269,14 +296,14 @@ public class CombatManager : MonoBehaviour
   private void SortByInitiative()
   {
     Combatants = new List<Combatant>();
-    Combatants.AddRange(heroes);
+    Combatants.AddRange(Heroes);
     Combatants.AddRange(monsters);
     Combatants.Sort(CompareCombatantSpeeds);
   }
 
   private void Win()
   {
-    CurrentState = CombatState.Win;
+    ChangeState(CombatState.Win);
     isCombatDone = true;
     beatmapManager.ForceFinish();
   }

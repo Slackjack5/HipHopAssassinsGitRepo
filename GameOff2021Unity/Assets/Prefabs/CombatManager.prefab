@@ -43,10 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ef4c9a8d7056640b6f796e99b30255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startStateDuration: 2
   beatmapManager: {fileID: 0}
-  heroes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  monsters:
-  - {fileID: 0}
+  heroObjects: {fileID: 0}
+  monsterObjects: {fileID: 0}

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1776450301885918885}
+  - component: {fileID: 7199307927816896046}
   m_Layer: 0
   m_Name: Monsters
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7199307927816896046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776450301885918884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a697d9d0ef32df42bde3819e2dcacf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 2936318771290333306, guid: 8631d4556bd6f384ba824072e7fea820, type: 3}
+  travelTime: 1
 --- !u!1001 &367527848184322002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50,10 +65,6 @@ PrefabInstance:
     - target: {fileID: 4535698602132759785, guid: a26a155be18b16148a70ab8878176a3d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.864686
-      objectReference: {fileID: 0}
-    - target: {fileID: 4535698602132759785, guid: a26a155be18b16148a70ab8878176a3d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.45802453
       objectReference: {fileID: 0}
     - target: {fileID: 4535698602132759785, guid: a26a155be18b16148a70ab8878176a3d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -112,10 +123,6 @@ PrefabInstance:
     - target: {fileID: 8783215521600638228, guid: 1a69c2743639b8543b94d770e4f926ce, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.504686
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783215521600638228, guid: 1a69c2743639b8543b94d770e4f926ce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.45802453
       objectReference: {fileID: 0}
     - target: {fileID: 8783215521600638228, guid: 1a69c2743639b8543b94d770e4f926ce, type: 3}
       propertyPath: m_LocalRotation.w

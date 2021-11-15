@@ -22,14 +22,19 @@ public class CurrentTurnManager : MonoBehaviour
     nameComponent = GetComponentInChildren<TextMeshProUGUI>();
 
     heroes = combatManager.Heroes;
-    initialPositionX = heroes[0].transform.position.x;
     lastState = CombatManager.CombatState.Unspecified;
+    combatManager.onChangeState.AddListener(ReadState);
   }
 
-  private void Update()
+  private void ReadState(CombatManager.CombatState state)
   {
-    switch (CombatManager.CurrentState)
+    switch (state)
     {
+      case CombatManager.CombatState.PreStart:
+        break;
+      case CombatManager.CombatState.Start:
+        initialPositionX = heroes[0].transform.position.x;
+        break;
       case CombatManager.CombatState.HeroOne:
         panel.gameObject.SetActive(true);
         nameComponent.text = heroes[0].Name;
@@ -69,7 +74,7 @@ public class CurrentTurnManager : MonoBehaviour
         break;
     }
 
-    lastState = CombatManager.CurrentState;
+    lastState = state;
   }
 
   private void MoveIndicators()
