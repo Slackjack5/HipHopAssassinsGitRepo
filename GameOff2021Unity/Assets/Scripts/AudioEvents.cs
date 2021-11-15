@@ -8,24 +8,30 @@ public class AudioEvents : MonoBehaviour
   public UnityEvent OnLevelEnded;
   public static float secondsPerBeat;
   public static float secondsPerBar;
+
   public static float bpm;
+
   //Unity Events
   public UnityEvent OnEveryGrid;
   public UnityEvent OnEveryBeat;
   public UnityEvent OnEveryBar;
+
   public UnityEvent OnSubtractTime;
+
   //Functions
   public int GridCount = 0;
   public int gridCounter = 0;
+
   public bool startCounting = false;
+
   //Timing
-  public int currentBar= GlobalVariables.currentBar;
-  public int currentBeat= GlobalVariables.currentBeat;
-  public int currentGrid= GlobalVariables.currentGrid;
+  public int currentBar = GlobalVariables.currentBar;
+  public int currentBeat = GlobalVariables.currentBeat;
+  public int currentGrid = GlobalVariables.currentGrid;
   public bool gameStarted = GlobalVariables.fightStarted;
 
   private static AkSegmentInfo currentSegment;
-  private static int currentBarStartTime;  // The time, in milliseconds, that the current bar started at
+  private static int currentBarStartTime; // The time, in milliseconds, that the current bar started at
 
   //id of the wwise event - using this to get the playback position
   static uint playingID;
@@ -35,18 +41,20 @@ public class AudioEvents : MonoBehaviour
   /// </summary>
   public static float CurrentBarTime =>
     // iCurrentPosition is in milliseconds.
-    (float)(currentSegment.iCurrentPosition - currentBarStartTime) / 1000;
+    (float) (currentSegment.iCurrentPosition - currentBarStartTime) / 1000;
 
   /// <summary>
   /// The time elapsed, in seconds, since the segment started
   /// </summary>
   public static float CurrentSegmentPosition =>
     // iCurrentPosition is in milliseconds.
-    (float)currentSegment.iCurrentPosition / 1000;
+    (float) currentSegment.iCurrentPosition / 1000;
 
   private void Start()
   {
-    playingID = rhythmHeckinEvent.Post(gameObject, (uint)(AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition), MusicCallbackFunction);
+    playingID = rhythmHeckinEvent.Post(gameObject,
+      (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
+      MusicCallbackFunction);
     currentSegment = new AkSegmentInfo();
     GlobalVariables.fightStarted = false;
   }
@@ -62,8 +70,7 @@ public class AudioEvents : MonoBehaviour
 
   void MusicCallbackFunction(object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info)
   {
-
-    AkMusicSyncCallbackInfo _musicInfo = (AkMusicSyncCallbackInfo)in_info;
+    AkMusicSyncCallbackInfo _musicInfo = (AkMusicSyncCallbackInfo) in_info;
 
     switch (_musicInfo.musicSyncType)
     {
@@ -101,9 +108,7 @@ public class AudioEvents : MonoBehaviour
         break;
       default:
         break;
-
     }
-
   }
 
   public void IncreaseBar()
@@ -113,7 +118,7 @@ public class AudioEvents : MonoBehaviour
 
   public void IncreaseBeat()
   {
-    if (GlobalVariables.currentBeat < 4)//Insert Time Signature
+    if (GlobalVariables.currentBeat < 4) //Insert Time Signature
     {
       GlobalVariables.currentBeat += 1;
     }
@@ -122,10 +127,10 @@ public class AudioEvents : MonoBehaviour
       GlobalVariables.currentBeat = 1;
     }
   }
-  
+
   public void IncreaseGrid()
   {
-    if (GlobalVariables.currentGrid < 4)//Insert Time Signature
+    if (GlobalVariables.currentGrid < 4) //Insert Time Signature
     {
       GlobalVariables.currentGrid += 1;
     }
@@ -133,7 +138,6 @@ public class AudioEvents : MonoBehaviour
     {
       GlobalVariables.currentGrid = 1;
     }
-
   }
 
 
@@ -151,9 +155,7 @@ public class AudioEvents : MonoBehaviour
   public void Bump()
   {
     //Camera Shake
-
   }
-
 }
 
 public static class GlobalVariables

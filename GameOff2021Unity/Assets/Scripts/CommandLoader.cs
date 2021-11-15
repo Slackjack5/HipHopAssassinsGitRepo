@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -17,6 +19,11 @@ public class CommandLoader : MonoBehaviour
   private Command[] commands;
   private int currentPage = 1;
   private int totalPages;
+
+  private void Start()
+  {
+    Assert.IsTrue(combatManager, "combatManager is empty");
+  }
 
   public void LoadCommands(Command[] commandsToLoad)
   {
@@ -50,7 +57,7 @@ public class CommandLoader : MonoBehaviour
       // If currentPage is 1, we want to fetch items 6 to 11, and so on.
       int index = i + pageSize * (currentPage - 1);
       if (index >= commands.Length) continue;
-      
+
       GameObject commandObject = Instantiate(commandPrefab, commandPanel.transform);
 
       if (i == 0)

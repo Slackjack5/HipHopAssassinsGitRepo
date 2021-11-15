@@ -15,12 +15,12 @@ public class RhythmPatterns : MonoBehaviour
         timeSpots.Add(AudioEvents.secondsPerBeat * 3); // Beat 4
         break;
       case 2:
-        timeSpots.Add(0);  // Beat 1
+        timeSpots.Add(0); // Beat 1
         timeSpots.Add(AudioEvents.secondsPerBeat * 2); // Beat 3
         timeSpots.Add(AudioEvents.secondsPerBeat * 3); // Beat 4
         break;
       case 3:
-        timeSpots.Add(0);  // Beat 1
+        timeSpots.Add(0); // Beat 1
         timeSpots.Add(AudioEvents.secondsPerBeat * 1); // Beat 2
         timeSpots.Add(AudioEvents.secondsPerBeat * 2); // Beat 3
         break;

@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class CurrentTurnManager : MonoBehaviour
@@ -15,34 +16,41 @@ public class CurrentTurnManager : MonoBehaviour
 
   private void Start()
   {
+    Assert.IsTrue(combatManager, "combatManager is empty");
+
     panel = GetComponentInChildren<VerticalLayoutGroup>();
     nameComponent = GetComponentInChildren<TextMeshProUGUI>();
 
     heroes = combatManager.Heroes;
-    initialPositionX = heroes[0].transform.position.x;
     lastState = CombatManager.CombatState.Unspecified;
+    combatManager.onChangeState.AddListener(ReadState);
   }
 
-  private void Update()
+  private void ReadState(CombatManager.CombatState state)
   {
-    switch (combatManager.CurrentState)
+    switch (state)
     {
+      case CombatManager.CombatState.PreStart:
+        break;
+      case CombatManager.CombatState.Start:
+        initialPositionX = heroes[0].transform.position.x;
+        break;
       case CombatManager.CombatState.HeroOne:
         panel.gameObject.SetActive(true);
         nameComponent.text = heroes[0].Name;
 
-        if (lastState != combatManager.CurrentState)
+        if (lastState != CombatManager.CurrentState)
         {
           MoveIndicators();
           SpotlightHero();
         }
-        
+
         break;
       case CombatManager.CombatState.HeroTwo:
         panel.gameObject.SetActive(true);
         nameComponent.text = heroes[1].Name;
 
-        if (lastState != combatManager.CurrentState)
+        if (lastState != CombatManager.CurrentState)
         {
           MoveIndicators();
           SpotlightHero();
@@ -53,12 +61,12 @@ public class CurrentTurnManager : MonoBehaviour
         panel.gameObject.SetActive(true);
         nameComponent.text = heroes[2].Name;
 
-        if (lastState != combatManager.CurrentState)
+        if (lastState != CombatManager.CurrentState)
         {
           MoveIndicators();
           SpotlightHero();
         }
-        
+
         break;
       default:
         panel.gameObject.SetActive(false);
@@ -66,12 +74,11 @@ public class CurrentTurnManager : MonoBehaviour
         break;
     }
 
-    lastState = combatManager.CurrentState;
+    lastState = state;
   }
 
   private void MoveIndicators()
   {
-    
   }
 
   private void ResetAllPositions()
@@ -89,7 +96,7 @@ public class CurrentTurnManager : MonoBehaviour
 
   private void SpotlightHero()
   {
-    switch (combatManager.CurrentState)
+    switch (CombatManager.CurrentState)
     {
       case CombatManager.CombatState.HeroOne:
         heroes[0].transform.Translate(new Vector2(spotlightDistance, 0));

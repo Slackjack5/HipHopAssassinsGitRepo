@@ -1,4 +1,7 @@
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Combatant : MonoBehaviour
 {
@@ -7,6 +10,10 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected int maxStamina;
   [SerializeField] protected int attack;
   [SerializeField] protected int speed;
+  [SerializeField] protected GameObject damageNumberPrefab;
+  [SerializeField] protected RectTransform damageSpawnTransform;
+
+  public readonly UnityEvent dead = new UnityEvent();
 
   public int Attack => attack;
   public int CurrentHealth { get; private set; }
@@ -30,9 +37,12 @@ public abstract class Combatant : MonoBehaviour
   public void DecreaseHealth(int value)
   {
     CurrentHealth -= value;
+    SpawnDamageNumber(value);
+
     if (CurrentHealth <= 0)
     {
       CurrentHealth = 0;
+      Die();
     }
   }
 
@@ -61,5 +71,17 @@ public abstract class Combatant : MonoBehaviour
     {
       CurrentStamina = maxStamina;
     }
+  }
+
+  private void Die()
+  {
+    GetComponent<SpriteRenderer>().enabled = false;
+    dead.Invoke();
+  }
+
+  private void SpawnDamageNumber(int value)
+  {
+    GameObject obj = Instantiate(damageNumberPrefab, damageSpawnTransform);
+    obj.GetComponent<DamageNumber>().value = value;
   }
 }

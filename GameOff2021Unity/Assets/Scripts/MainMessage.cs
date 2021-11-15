@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class MainMessage : MonoBehaviour
 {
-  [SerializeField] private CombatManager combatManager;
-
   private TextMeshProUGUI message;
 
   private void Start()
@@ -14,19 +12,26 @@ public class MainMessage : MonoBehaviour
 
   private void Update()
   {
-    switch (combatManager.CurrentState)
+    switch (CombatManager.CurrentState)
     {
       case CombatManager.CombatState.Start:
-        message.enabled = true;
-        message.text = "FIGHT";
+        Display("FIGHT");
         break;
       case CombatManager.CombatState.Lose:
-        message.enabled = true;
-        message.text = "GAME OVER";
+        Display("GAME OVER");
+        break;
+      case CombatManager.CombatState.Win:
+        Display("VICTORY");
         break;
       default:
         message.enabled = false;
         break;
     }
+  }
+
+  private void Display(string text)
+  {
+    message.enabled = true;
+    message.text = text;
   }
 }

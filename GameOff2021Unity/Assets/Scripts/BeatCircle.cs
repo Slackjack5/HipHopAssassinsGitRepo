@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class BeatCircle : MonoBehaviour
 {
-  public Transform centerPos;
-  public Transform spawnerPos;
-  public float travelTime;
+  [HideInInspector] public Transform spawnerPos;
+  [HideInInspector] public Transform centerPos;
+  [HideInInspector] public Transform endPos;
+  [HideInInspector] public float travelTime;
+
   private float currentTime;
-  public Transform endPos;
   private bool reachedMiddle;
-  
+
   private void Start()
   {
     currentTime = travelTime;
@@ -18,10 +19,10 @@ public class BeatCircle : MonoBehaviour
   {
     currentTime -= Time.deltaTime;
     float t = Mathf.InverseLerp(0, travelTime, currentTime);
-    if(t<=0)
+    if (t <= 0)
     {
       currentTime = travelTime;
-      if(reachedMiddle)
+      if (reachedMiddle)
       {
         Destroy(gameObject);
       }
@@ -32,9 +33,9 @@ public class BeatCircle : MonoBehaviour
     }
     else
     {
-      transform.position = reachedMiddle ? 
-        Vector2.Lerp(endPos.position, centerPos.position, t) : 
-        Vector2.Lerp(centerPos.position, spawnerPos.position, t);
+      transform.position = reachedMiddle
+        ? Vector2.Lerp(endPos.position, centerPos.position, t)
+        : Vector2.Lerp(centerPos.position, spawnerPos.position, t);
     }
   }
 }

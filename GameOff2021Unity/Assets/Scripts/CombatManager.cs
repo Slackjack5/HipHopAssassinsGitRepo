@@ -1,29 +1,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour
 {
+  [SerializeField] private float startStateDuration;
   [SerializeField] private BeatmapManager beatmapManager;
-  [SerializeField] private Timer timer;
-  [SerializeField] private Hero[] heroes;
-  [SerializeField] private Monster[] monsters;
+  [SerializeField] private GameObject heroObjects;
+  [SerializeField] private GameObject monsterObjects;
 
-  private float executionStartTime;
+  public readonly UnityEvent<CombatState> onChangeState = new UnityEvent<CombatState>();
+
+  private float currentStartStateTime;
+  private bool isCombatDone;
+  private bool isStarting;
   private int lastBar;
+  private Monster[] monsters;
   private readonly Command[] submittedCommands = new Command[3];
 
   public enum CombatState
   {
-    Unspecified, 
+    Unspecified,
+    PreStart,
     Start,
-    HeroOne, 
+    HeroOne,
     HeroTwo,
     HeroThree,
     DelayExecution,
     PreExecution,
-    Execution, 
+    Execution,
     Win,
     Lose
   }
@@ -32,30 +40,44 @@ public class CombatManager : MonoBehaviour
   /// Combatants sorted in initiative order
   /// </summary>
   public List<Combatant> Combatants { get; private set; }
-  public CombatState CurrentState { get; private set; }
-  public Hero[] Heroes => heroes;
+
+  public static CombatState CurrentState { get; private set; }
+
+  public Hero[] Heroes => heroObjects.GetComponentsInChildren<Hero>();
 
   private void Awake()
   {
+    Assert.IsTrue(beatmapManager, "beatmapManager is empty");
+    Assert.IsTrue(monsterObjects, "monsterObjects is empty");
+
     beatmapManager.complete.AddListener(AdvanceState);
     beatmapManager.hit.AddListener(ReadHit);
-    timer.expire.AddListener(Lose);
+
+    monsters = monsterObjects.GetComponentsInChildren<Monster>();
 
     SortByInitiative();
 
-    CurrentState = CombatState.Start;
+    foreach (Combatant combatant in Combatants)
+    {
+      combatant.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(combatant));
+    }
+
+    ChangeState(CombatState.PreStart);
   }
 
   private void OnGUI()
   {
-    for (int i = 0; i < monsters.Length; i++)
+    for (var i = 0; i < monsters.Length; i++)
     {
-      GUI.Label(new Rect(0, 30 * i, 200, 30), monsters[i].Name + " HP: " + monsters[i].CurrentHealth + " / " + monsters[i].MaxHealth);
+      GUI.Label(new Rect(0, 30 * i, 200, 30),
+        monsters[i].Name + " HP: " + monsters[i].CurrentHealth + " / " + monsters[i].MaxHealth);
     }
   }
 
   private void Update()
   {
+    if (isCombatDone) return;
+
     if (AllMonstersDead())
     {
       Win();
@@ -69,84 +91,46 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case CombatState.Start:
-        if (GlobalVariables.fightStarted)
+        if (!isStarting)
         {
-          CurrentState = CombatState.HeroOne;
+          currentStartStateTime = startStateDuration;
+          isStarting = true;
         }
-        
+
+        currentStartStateTime -= Time.deltaTime;
+
+        if (currentStartStateTime <= 0)
+        {
+          ChangeState(CombatState.HeroOne);
+        }
+
         break;
       case CombatState.DelayExecution:
-        if (lastBar != GlobalVariables.currentBar && (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
+        if (lastBar != GlobalVariables.currentBar &&
+            (AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar)))
         {
-          CurrentState = CombatState.PreExecution;
+          ChangeState(CombatState.PreExecution);
         }
+
         break;
       case CombatState.PreExecution:
-        //Generate All Our Patterns
-        Dictionary<Combatant, List<float>> combatantPatterns = new Dictionary<Combatant, List<float>>();
+        GeneratePatterns();
 
-        foreach (Combatant combatant in Combatants)
-        {
-          if (combatant is Hero hero)
-          {
-            // HeroId is either 1, 2, or 3.
-            Command command = GetHeroCommand(hero);
-            combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
-          }
-          else
-          {
-            // Combatant is a Monster.
-            combatantPatterns[combatant] = RhythmPatterns.Pattern(5);
-          }
-        }
-
-        //Start Recording Time
-        executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
-        beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
-
-        CurrentState = CombatState.Execution;
-        break;
-      case CombatState.Unspecified:
-      case CombatState.HeroOne:
-      case CombatState.HeroTwo:
-      case CombatState.HeroThree:
-      case CombatState.Execution:
-      case CombatState.Win:
-      case CombatState.Lose:
-      default:
+        ChangeState(CombatState.Execution);
         break;
     }
   }
 
-  private void AdvanceState()
+  public void Lose()
   {
-    switch (CurrentState)
-    {
-      case CombatState.HeroOne:
-        CurrentState = CombatState.HeroTwo;
-        break;
-      case CombatState.HeroTwo:
-        CurrentState = CombatState.HeroThree;
-        break;
-      case CombatState.HeroThree:
-        beatmapManager.ShowTrack();
+    ChangeState(CombatState.Lose);
+    isCombatDone = true;
+    beatmapManager.ForceFinish();
+  }
 
-        if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
-        {
-          CurrentState = CombatState.PreExecution;
-        }
-        else
-        {
-          CurrentState = CombatState.DelayExecution;
-          lastBar = GlobalVariables.currentBar;
-        }
-        break;
-      case CombatState.Execution:
-        beatmapManager.HideTrack();
-
-        CurrentState = CombatState.HeroOne;
-        break;
-    }
+  public void StartFight()
+  {
+    ChangeState(CombatState.Start);
   }
 
   public void SubmitCommand(Command command)
@@ -167,9 +151,44 @@ public class CombatManager : MonoBehaviour
     AdvanceState();
   }
 
+  private void AdvanceState()
+  {
+    switch (CurrentState)
+    {
+      case CombatState.HeroOne:
+        ChangeState(Heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo);
+        break;
+      case CombatState.HeroTwo:
+        if (Heroes[2].IsDead)
+        {
+          DeterminePreExecutionState();
+        }
+        else
+        {
+          ChangeState(CombatState.HeroThree);
+        }
+
+        break;
+      case CombatState.HeroThree:
+        DeterminePreExecutionState();
+        break;
+      case CombatState.Execution:
+        if (Heroes[0].IsDead)
+        {
+          ChangeState(Heroes[1].IsDead ? CombatState.HeroThree : CombatState.HeroTwo);
+        }
+        else
+        {
+          ChangeState(CombatState.HeroOne);
+        }
+
+        break;
+    }
+  }
+
   private bool AllHeroesDead()
   {
-    return heroes.All(hero => hero.IsDead);
+    return Heroes.All(hero => hero.IsDead);
   }
 
   private bool AllMonstersDead()
@@ -177,20 +196,51 @@ public class CombatManager : MonoBehaviour
     return monsters.All(monster => monster.IsDead);
   }
 
-  private static int CompareCombatantSpeeds(Combatant x, Combatant y)
+  private void ChangeState(CombatState state)
   {
-    return y.Speed.CompareTo(x.Speed);
+    CurrentState = state;
+    onChangeState.Invoke(state);
+  }
+
+  private void DeterminePreExecutionState()
+  {
+    if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
+    {
+      ChangeState(CombatState.PreExecution);
+    }
+    else
+    {
+      ChangeState(CombatState.DelayExecution);
+      lastBar = GlobalVariables.currentBar;
+    }
+  }
+
+  private void GeneratePatterns()
+  {
+    var combatantPatterns = new Dictionary<Combatant, List<float>>();
+
+    foreach (Combatant combatant in Combatants.Where(combatant => !combatant.IsDead))
+    {
+      if (combatant is Hero hero)
+      {
+        Command command = GetHeroCommand(hero);
+        combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
+      }
+      else
+      {
+        // Combatant is a Monster.
+        combatantPatterns[combatant] = RhythmPatterns.Pattern(5);
+      }
+    }
+
+    float executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
+    beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
   }
 
   private Command GetHeroCommand(Hero hero)
   {
     // HeroId is either 1, 2, or 3.
     return submittedCommands[hero.HeroId - 1];
-  }
-
-  private void Lose()
-  {
-    CurrentState = CombatState.Lose;
   }
 
   private void ReadHit(Combatant combatant, BeatmapManager.AccuracyGrade accuracyGrade)
@@ -212,12 +262,16 @@ public class CombatManager : MonoBehaviour
       }
 
       // For now, have the monster attack a random hero.
-      int index = Random.Range(0, heroes.Length);
-      heroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+      List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
+      int index = Random.Range(0, livingHeroes.Count);
+      livingHeroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
     else
     {
-      // Combatant is a Hero.
+      var hero = combatant as Hero;
+      Command command = GetHeroCommand(hero);
+      if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
+
       var damageMultiplier = 0f;
       switch (accuracyGrade)
       {
@@ -233,26 +287,34 @@ public class CombatManager : MonoBehaviour
       }
 
       // For now, have the hero attack a random monster.
-      int index = Random.Range(0, monsters.Length);
-      monsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+      List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
+      int index = Random.Range(0, livingMonsters.Count);
+      livingMonsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
     }
   }
 
   private void SortByInitiative()
   {
     Combatants = new List<Combatant>();
-    Combatants.AddRange(heroes);
+    Combatants.AddRange(Heroes);
     Combatants.AddRange(monsters);
     Combatants.Sort(CompareCombatantSpeeds);
+  }
+
+  private void Win()
+  {
+    ChangeState(CombatState.Win);
+    isCombatDone = true;
+    beatmapManager.ForceFinish();
+  }
+
+  private static int CompareCombatantSpeeds(Combatant x, Combatant y)
+  {
+    return y.Speed.CompareTo(x.Speed);
   }
 
   private static float Threshold(float secondsPerBar)
   {
     return secondsPerBar / 2;
-  }
-
-  private void Win()
-  {
-    CurrentState = CombatState.Win;
   }
 }

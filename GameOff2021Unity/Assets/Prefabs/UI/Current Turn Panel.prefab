@@ -340,8 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3268f1d75f98a3945aae10642490d6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroOne: {fileID: 0}
-  heroTwo: {fileID: 0}
-  heroThree: {fileID: 0}
   spotlightDistance: 2
+  initialPosition: {fileID: 4134102615471117813, guid: b7c0fb12a540b104daef1da3de63027e, type: 3}
   combatManager: {fileID: 0}

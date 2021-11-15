@@ -1,5 +1,5 @@
 [System.Serializable]
-public class Spell
+public class Macro
 {
   public int id;
   public string name;

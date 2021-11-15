@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class DisplayInitiativeOrder : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class DisplayInitiativeOrder : MonoBehaviour
 
   private void Start()
   {
+    Assert.IsTrue(combatManager, "combatManager is empty");
+
     ClearDisplay();
 
     for (var i = 0; i < combatManager.Combatants.Count; i++)

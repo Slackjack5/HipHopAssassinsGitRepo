@@ -9,7 +9,7 @@ public class StatusBar : MonoBehaviour
   private int maxValue;
   private int currentValue;
 
-  private void Start()
+  private void Awake()
   {
     progressBar = GetComponentInChildren<ProgressBar>();
 
