@@ -114,6 +114,9 @@ public class CombatManager : MonoBehaviour
 
         break;
       case CombatState.PreExecution:
+        // For now, each Hero and Monster will target a random enemy.
+        SetRandomTargets();
+
         GeneratePatterns();
 
         ChangeState(CombatState.Execution);
@@ -215,6 +218,24 @@ public class CombatManager : MonoBehaviour
     }
   }
 
+  private void SetRandomTargets()
+  {
+    List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
+    List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
+
+    foreach (Hero hero in livingHeroes)
+    {
+      int index = Random.Range(0, livingMonsters.Count);
+      hero.SetTarget(livingMonsters[index]);
+    }
+
+    foreach (Monster monster in livingMonsters)
+    {
+      int index = Random.Range(0, livingHeroes.Count);
+      monster.SetTarget(livingHeroes[index]);
+    }
+  }
+
   private void GeneratePatterns()
   {
     var combatantPatterns = new Dictionary<Combatant, List<float>>();
@@ -263,10 +284,6 @@ public class CombatManager : MonoBehaviour
             break;
         }
 
-        // For now, have the monster attack a random hero.
-        List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
-        int index = Random.Range(0, livingHeroes.Count);
-        monster.SetTarget(livingHeroes[index]);
         monster.DamageTarget(damageMultiplier);
         break;
       }
@@ -289,10 +306,6 @@ public class CombatManager : MonoBehaviour
             break;
         }
 
-        // For now, have the hero attack a random monster.
-        List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
-        int index = Random.Range(0, livingMonsters.Count);
-        hero.SetTarget(livingMonsters[index]);
         hero.DamageTarget(damageMultiplier);
         break;
       }

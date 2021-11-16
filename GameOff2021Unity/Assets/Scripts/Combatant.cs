@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,8 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected int speed;
   [SerializeField] protected GameObject damageNumberPrefab;
   [SerializeField] protected RectTransform damageSpawnTransform;
+  [SerializeField] protected float distanceFromTarget;
+  [SerializeField] protected float travelTime;
 
   public readonly UnityEvent dead = new UnityEvent();
 
@@ -80,7 +83,12 @@ public abstract class Combatant : MonoBehaviour
 
   public void DamageTarget(float damageMultiplier)
   {
-    if (target == null) return;
+    if (target == null)
+    {
+      Debug.LogError(combatantName + " just tried to damage target, but target is null!");
+    }
+
+    MoveToTarget();
     target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
   }
 
@@ -94,5 +102,18 @@ public abstract class Combatant : MonoBehaviour
   {
     GameObject obj = Instantiate(damageNumberPrefab, damageSpawnTransform);
     obj.GetComponent<DamageNumber>().value = value;
+  }
+
+  private void MoveToTarget()
+  {
+    Vector2 targetPosition = target.transform.position;
+    float distance = distanceFromTarget;
+    if (target is Monster)
+    {
+      // Hero is attacking from the left of the Monster.
+      distance *= -1;
+    }
+
+    transform.DOMove(new Vector2(targetPosition.x + distance, targetPosition.y), travelTime);
   }
 }
