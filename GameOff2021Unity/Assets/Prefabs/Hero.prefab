@@ -104,8 +104,9 @@ MonoBehaviour:
   damageNumberPrefab: {fileID: 6632316025372179153, guid: 264fb6a335c1a414b8272264cddabd05, type: 3}
   damageSpawnTransform: {fileID: 3705782181819244135}
   distanceFromTarget: 1
-  travelTime: 1
+  travelTime: 0.3
   heroId: 0
+  spotlightDistance: 2
 --- !u!1001 &3927329578000928858
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class CombatManager : MonoBehaviour
   [SerializeField] private GameObject heroObjects;
   [SerializeField] private GameObject monsterObjects;
 
-  public readonly UnityEvent<CombatState> onChangeState = new UnityEvent<CombatState>();
+  public static readonly UnityEvent<CombatState> onChangeState = new UnityEvent<CombatState>();
 
   private float currentStartStateTime;
   private bool isCombatDone;
@@ -43,7 +43,7 @@ public class CombatManager : MonoBehaviour
 
   public static CombatState CurrentState { get; private set; }
 
-  public Hero[] Heroes => heroObjects.GetComponentsInChildren<Hero>();
+  public static Hero[] Heroes { get; private set; }
 
   private void Awake()
   {
@@ -53,6 +53,7 @@ public class CombatManager : MonoBehaviour
     beatmapManager.complete.AddListener(AdvanceState);
     beatmapManager.hit.AddListener(ReadHit);
 
+    Heroes = heroObjects.GetComponentsInChildren<Hero>();
     monsters = monsterObjects.GetComponentsInChildren<Monster>();
 
     SortByInitiative();
@@ -93,6 +94,11 @@ public class CombatManager : MonoBehaviour
       case CombatState.Start:
         if (!isStarting)
         {
+          foreach (Combatant combatant in Combatants)
+          {
+            combatant.SetInitialPosition();
+          }
+
           currentStartStateTime = startStateDuration;
           isStarting = true;
         }
@@ -264,8 +270,9 @@ public class CombatManager : MonoBehaviour
     return submittedCommands[hero.HeroId - 1];
   }
 
-  private void ReadHit(Combatant combatant, BeatmapManager.AccuracyGrade accuracyGrade)
+  private void ReadHit(BeatmapManager.Note note, BeatmapManager.AccuracyGrade accuracyGrade)
   {
+    Combatant combatant = note.combatant;
     switch (combatant)
     {
       case Monster monster:
@@ -284,7 +291,7 @@ public class CombatManager : MonoBehaviour
             break;
         }
 
-        monster.DamageTarget(damageMultiplier);
+        monster.DamageTarget(damageMultiplier, note.isLastOfCombatant);
         break;
       }
       case Hero hero:
@@ -306,7 +313,7 @@ public class CombatManager : MonoBehaviour
             break;
         }
 
-        hero.DamageTarget(damageMultiplier);
+        hero.DamageTarget(damageMultiplier, note.isLastOfCombatant);
         break;
       }
       default:

@@ -16,7 +16,17 @@ public abstract class Combatant : MonoBehaviour
 
   public readonly UnityEvent dead = new UnityEvent();
 
+  private State currentState;
+  private bool isInitialPositionSet;
+  private Vector2 initialPosition;
   private Combatant target;
+
+  private enum State
+  {
+    Idle,
+    Attacking,
+    Dead
+  }
 
   public int Attack => attack;
   public int CurrentHealth { get; private set; }
@@ -35,10 +45,14 @@ public abstract class Combatant : MonoBehaviour
   {
     CurrentHealth = maxHealth;
     CurrentStamina = maxStamina;
+
+    currentState = State.Idle;
   }
 
   public void DecreaseHealth(int value)
   {
+    if (currentState == State.Dead) return;
+
     CurrentHealth -= value;
     SpawnDamageNumber(value);
 
@@ -51,6 +65,8 @@ public abstract class Combatant : MonoBehaviour
 
   public void DecreaseStamina(int value)
   {
+    if (currentState == State.Dead) return;
+
     CurrentStamina -= value;
     if (CurrentStamina <= 0)
     {
@@ -60,6 +76,8 @@ public abstract class Combatant : MonoBehaviour
 
   public void IncreaseHealth(int value)
   {
+    if (currentState == State.Dead) return;
+
     CurrentHealth += value;
     if (CurrentHealth >= maxHealth)
     {
@@ -69,6 +87,8 @@ public abstract class Combatant : MonoBehaviour
 
   public void IncreaseStamina(int value)
   {
+    if (currentState == State.Dead) return;
+
     CurrentStamina += value;
     if (CurrentStamina >= maxStamina)
     {
@@ -76,25 +96,56 @@ public abstract class Combatant : MonoBehaviour
     }
   }
 
+  public void SetInitialPosition()
+  {
+    initialPosition = transform.position;
+    isInitialPositionSet = true;
+  }
+
+  public void ResetPosition()
+  {
+    if (!isInitialPositionSet)
+    {
+      Debug.LogWarning(combatantName + " could not reset its position. Initial position was not set first.");
+      return;
+    }
+
+    transform.DOMove(initialPosition, travelTime);
+  }
+
   public void SetTarget(Combatant combatant)
   {
+    if (currentState == State.Dead) return;
     target = combatant;
   }
 
-  public void DamageTarget(float damageMultiplier)
+  public void DamageTarget(float damageMultiplier, bool isLastHit)
   {
+    if (currentState == State.Dead) return;
     if (target == null)
     {
       Debug.LogError(combatantName + " just tried to damage target, but target is null!");
+      return;
     }
 
-    MoveToTarget();
+    if (currentState == State.Idle)
+    {
+      MoveToTarget();
+    }
+
+    if (currentState == State.Attacking && isLastHit)
+    {
+      ResetPosition();
+      currentState = State.Idle;
+    }
+
     target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
   }
 
   private void Die()
   {
     GetComponent<SpriteRenderer>().enabled = false;
+    currentState = State.Dead;
     dead.Invoke();
   }
 
@@ -106,6 +157,8 @@ public abstract class Combatant : MonoBehaviour
 
   private void MoveToTarget()
   {
+    currentState = State.Attacking;
+
     Vector2 targetPosition = target.transform.position;
     float distance = distanceFromTarget;
     if (target is Monster)
