@@ -245,51 +245,60 @@ public class CombatManager : MonoBehaviour
 
   private void ReadHit(Combatant combatant, BeatmapManager.AccuracyGrade accuracyGrade)
   {
-    if (combatant is Monster)
+    switch (combatant)
     {
-      var damageMultiplier = 1f;
-      switch (accuracyGrade)
+      case Monster monster:
       {
-        case BeatmapManager.AccuracyGrade.Perfect:
-          damageMultiplier = 0.5f;
-          break;
-        case BeatmapManager.AccuracyGrade.Great:
-          damageMultiplier = 0.7f;
-          break;
-        case BeatmapManager.AccuracyGrade.Good:
-          damageMultiplier = 0.9f;
-          break;
+        var damageMultiplier = 1f;
+        switch (accuracyGrade)
+        {
+          case BeatmapManager.AccuracyGrade.Perfect:
+            damageMultiplier = 0.5f;
+            break;
+          case BeatmapManager.AccuracyGrade.Great:
+            damageMultiplier = 0.7f;
+            break;
+          case BeatmapManager.AccuracyGrade.Good:
+            damageMultiplier = 0.9f;
+            break;
+        }
+
+        // For now, have the monster attack a random hero.
+        List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
+        int index = Random.Range(0, livingHeroes.Count);
+        monster.SetTarget(livingHeroes[index]);
+        monster.DamageTarget(damageMultiplier);
+        break;
       }
-
-      // For now, have the monster attack a random hero.
-      List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
-      int index = Random.Range(0, livingHeroes.Count);
-      livingHeroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
-    }
-    else
-    {
-      var hero = combatant as Hero;
-      Command command = GetHeroCommand(hero);
-      if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
-
-      var damageMultiplier = 0f;
-      switch (accuracyGrade)
+      case Hero hero:
       {
-        case BeatmapManager.AccuracyGrade.Perfect:
-          damageMultiplier = 1f;
-          break;
-        case BeatmapManager.AccuracyGrade.Great:
-          damageMultiplier = 0.66f;
-          break;
-        case BeatmapManager.AccuracyGrade.Good:
-          damageMultiplier = 0.33f;
-          break;
-      }
+        Command command = GetHeroCommand(hero);
+        if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
 
-      // For now, have the hero attack a random monster.
-      List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
-      int index = Random.Range(0, livingMonsters.Count);
-      livingMonsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+        var damageMultiplier = 0f;
+        switch (accuracyGrade)
+        {
+          case BeatmapManager.AccuracyGrade.Perfect:
+            damageMultiplier = 1f;
+            break;
+          case BeatmapManager.AccuracyGrade.Great:
+            damageMultiplier = 0.66f;
+            break;
+          case BeatmapManager.AccuracyGrade.Good:
+            damageMultiplier = 0.33f;
+            break;
+        }
+
+        // For now, have the hero attack a random monster.
+        List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
+        int index = Random.Range(0, livingMonsters.Count);
+        hero.SetTarget(livingMonsters[index]);
+        hero.DamageTarget(damageMultiplier);
+        break;
+      }
+      default:
+        Debug.LogError("The combatant is neither a Hero nor a Monster. ReadHit failed.");
+        break;
     }
   }
 

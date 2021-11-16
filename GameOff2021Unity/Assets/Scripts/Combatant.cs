@@ -1,5 +1,3 @@
-using DG.Tweening;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +12,8 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected RectTransform damageSpawnTransform;
 
   public readonly UnityEvent dead = new UnityEvent();
+
+  private Combatant target;
 
   public int Attack => attack;
   public int CurrentHealth { get; private set; }
@@ -71,6 +71,17 @@ public abstract class Combatant : MonoBehaviour
     {
       CurrentStamina = maxStamina;
     }
+  }
+
+  public void SetTarget(Combatant combatant)
+  {
+    target = combatant;
+  }
+
+  public void DamageTarget(float damageMultiplier)
+  {
+    if (target == null) return;
+    target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
   }
 
   private void Die()
