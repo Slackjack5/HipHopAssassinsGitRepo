@@ -12,7 +12,7 @@ public class CombatManager : MonoBehaviour
   [SerializeField] private GameObject heroObjects;
   [SerializeField] private GameObject monsterObjects;
 
-  public readonly UnityEvent<CombatState> onChangeState = new UnityEvent<CombatState>();
+  public static readonly UnityEvent<CombatState> onChangeState = new UnityEvent<CombatState>();
 
   private float currentStartStateTime;
   private bool isCombatDone;
@@ -39,11 +39,11 @@ public class CombatManager : MonoBehaviour
   /// <summary>
   /// Combatants sorted in initiative order
   /// </summary>
-  public List<Combatant> Combatants { get; private set; }
+  public static List<Combatant> Combatants { get; private set; }
 
   public static CombatState CurrentState { get; private set; }
 
-  public Hero[] Heroes => heroObjects.GetComponentsInChildren<Hero>();
+  public static Hero[] Heroes { get; private set; }
 
   private void Awake()
   {
@@ -53,6 +53,7 @@ public class CombatManager : MonoBehaviour
     beatmapManager.complete.AddListener(AdvanceState);
     beatmapManager.hit.AddListener(ReadHit);
 
+    Heroes = heroObjects.GetComponentsInChildren<Hero>();
     monsters = monsterObjects.GetComponentsInChildren<Monster>();
 
     SortByInitiative();
@@ -93,6 +94,11 @@ public class CombatManager : MonoBehaviour
       case CombatState.Start:
         if (!isStarting)
         {
+          foreach (Combatant combatant in Combatants)
+          {
+            combatant.SetInitialPosition();
+          }
+
           currentStartStateTime = startStateDuration;
           isStarting = true;
         }
@@ -114,6 +120,9 @@ public class CombatManager : MonoBehaviour
 
         break;
       case CombatState.PreExecution:
+        // For now, each Monster will target a random Hero.
+        SetRandomTargets();
+
         GeneratePatterns();
 
         ChangeState(CombatState.Execution);
@@ -215,6 +224,18 @@ public class CombatManager : MonoBehaviour
     }
   }
 
+  private void SetRandomTargets()
+  {
+    List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
+    List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
+
+    foreach (Monster monster in livingMonsters)
+    {
+      int index = Random.Range(0, livingHeroes.Count);
+      monster.SetTarget(livingHeroes[index]);
+    }
+  }
+
   private void GeneratePatterns()
   {
     var combatantPatterns = new Dictionary<Combatant, List<float>>();
@@ -243,53 +264,56 @@ public class CombatManager : MonoBehaviour
     return submittedCommands[hero.HeroId - 1];
   }
 
-  private void ReadHit(Combatant combatant, BeatmapManager.AccuracyGrade accuracyGrade)
+  private void ReadHit(BeatmapManager.Note note, BeatmapManager.AccuracyGrade accuracyGrade)
   {
-    if (combatant is Monster)
+    Combatant combatant = note.combatant;
+    switch (combatant)
     {
-      var damageMultiplier = 1f;
-      switch (accuracyGrade)
+      case Monster monster:
       {
-        case BeatmapManager.AccuracyGrade.Perfect:
-          damageMultiplier = 0.5f;
-          break;
-        case BeatmapManager.AccuracyGrade.Great:
-          damageMultiplier = 0.7f;
-          break;
-        case BeatmapManager.AccuracyGrade.Good:
-          damageMultiplier = 0.9f;
-          break;
+        var damageMultiplier = 1f;
+        switch (accuracyGrade)
+        {
+          case BeatmapManager.AccuracyGrade.Perfect:
+            damageMultiplier = 0.5f;
+            break;
+          case BeatmapManager.AccuracyGrade.Great:
+            damageMultiplier = 0.7f;
+            break;
+          case BeatmapManager.AccuracyGrade.Good:
+            damageMultiplier = 0.9f;
+            break;
+        }
+
+        monster.DamageTarget(damageMultiplier, note.isLastOfCombatant);
+        break;
       }
-
-      // For now, have the monster attack a random hero.
-      List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
-      int index = Random.Range(0, livingHeroes.Count);
-      livingHeroes[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
-    }
-    else
-    {
-      var hero = combatant as Hero;
-      Command command = GetHeroCommand(hero);
-      if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
-
-      var damageMultiplier = 0f;
-      switch (accuracyGrade)
+      case Hero hero:
       {
-        case BeatmapManager.AccuracyGrade.Perfect:
-          damageMultiplier = 1f;
-          break;
-        case BeatmapManager.AccuracyGrade.Great:
-          damageMultiplier = 0.66f;
-          break;
-        case BeatmapManager.AccuracyGrade.Good:
-          damageMultiplier = 0.33f;
-          break;
-      }
+        Command command = GetHeroCommand(hero);
+        if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
 
-      // For now, have the hero attack a random monster.
-      List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
-      int index = Random.Range(0, livingMonsters.Count);
-      livingMonsters[index].DecreaseHealth(Mathf.RoundToInt(combatant.Attack * damageMultiplier));
+        var damageMultiplier = 0f;
+        switch (accuracyGrade)
+        {
+          case BeatmapManager.AccuracyGrade.Perfect:
+            damageMultiplier = 1f;
+            break;
+          case BeatmapManager.AccuracyGrade.Great:
+            damageMultiplier = 0.66f;
+            break;
+          case BeatmapManager.AccuracyGrade.Good:
+            damageMultiplier = 0.33f;
+            break;
+        }
+
+        hero.SetTarget(command.Target);
+        hero.DamageTarget(damageMultiplier, note.isLastOfCombatant);
+        break;
+      }
+      default:
+        Debug.LogError("The combatant is neither a Hero nor a Monster. ReadHit failed.");
+        break;
     }
   }
 

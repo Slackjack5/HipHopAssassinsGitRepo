@@ -79,5 +79,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero 1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3797277406592459603, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: m_Name
+      value: Target Cursor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}

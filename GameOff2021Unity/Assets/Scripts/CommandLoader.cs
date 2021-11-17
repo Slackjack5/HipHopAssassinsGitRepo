@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -10,20 +8,16 @@ using UnityEngine.UI;
 
 public class CommandLoader : MonoBehaviour
 {
-  [SerializeField] private CombatManager combatManager;
   [SerializeField] private GameObject commandPrefab;
   [SerializeField] private GameObject commandPanel;
   [SerializeField] private TextMeshProUGUI pageLabel;
   [SerializeField] private int pageSize = 6;
 
+  public readonly UnityEvent<Command> onSubmitCommand = new UnityEvent<Command>();
+
   private Command[] commands;
   private int currentPage = 1;
   private int totalPages;
-
-  private void Start()
-  {
-    Assert.IsTrue(combatManager, "combatManager is empty");
-  }
 
   public void LoadCommands(Command[] commandsToLoad)
   {
@@ -106,6 +100,16 @@ public class CommandLoader : MonoBehaviour
     DisplayCommands();
   }
 
+  private void SetPageLabel()
+  {
+    pageLabel.text = currentPage + " of " + totalPages;
+  }
+
+  private void SubmitCommand(Command command)
+  {
+    onSubmitCommand.Invoke(command);
+  }
+
   private static void RegisterPageControl(GameObject commandObject, KeyControl keyControl, UnityAction action)
   {
     GameObject buttonObject = commandObject.GetComponentInChildren<Button>().gameObject;
@@ -117,15 +121,5 @@ public class CommandLoader : MonoBehaviour
   private static void SelectCommand(GameObject commandObject)
   {
     EventSystem.current.SetSelectedGameObject(commandObject.GetComponentInChildren<Button>().gameObject);
-  }
-
-  private void SetPageLabel()
-  {
-    pageLabel.text = currentPage + " of " + totalPages;
-  }
-
-  private void SubmitCommand(Command command)
-  {
-    combatManager.SubmitCommand(command);
   }
 }
