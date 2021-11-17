@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public abstract class Combatant : MonoBehaviour
 {
@@ -28,23 +29,22 @@ public abstract class Combatant : MonoBehaviour
     Dead
   }
 
-  public int Attack => attack;
+  public string Name => combatantName;
   public int CurrentHealth { get; private set; }
   public int CurrentStamina { get; private set; }
-  public bool IsDead => CurrentHealth <= 0;
-
   public int MaxHealth => maxHealth;
-
   public int MaxStamina => maxStamina;
-
-  public string Name => combatantName;
-
+  public int Attack => attack;
   public int Speed => speed;
+  public bool IsDead => CurrentHealth <= 0;
+  public Button TargetCursor { get; private set; }
 
-  protected virtual void Start()
+  protected virtual void Awake()
   {
     CurrentHealth = maxHealth;
     CurrentStamina = maxStamina;
+
+    TargetCursor = GetComponentInChildren<Button>();
 
     currentState = State.Idle;
   }

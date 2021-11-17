@@ -13,6 +13,7 @@ public class Command
   public string Description { get; private set; }
   public Type CommandType { get; private set; }
   public int PatternId { get; private set; }
+  public Combatant Target { get; private set; }
 
   public Command(string name, string description, Type commandType, int patternId)
   {
@@ -20,5 +21,10 @@ public class Command
     Description = description;
     CommandType = commandType;
     PatternId = patternId;
+  }
+
+  public void SetTarget(Combatant combatant)
+  {
+    Target = combatant;
   }
 }

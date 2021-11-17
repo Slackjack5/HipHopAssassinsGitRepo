@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -11,12 +12,17 @@ public class MenuManager : MonoBehaviour
   [SerializeField] private CombatManager combatManager;
 
   private CombatManager.CombatState lastState;
+  private readonly List<Button> targetCursors = new List<Button>();
+  private bool isSelectingTarget;
+  private Command pendingCommand;
 
   private void Start()
   {
     Assert.IsTrue(combatManager, "combatManager is empty");
 
     lastState = CombatManager.CombatState.Unspecified;
+
+    RegisterSubmitTargetControls();
   }
 
   private void Update()
@@ -34,6 +40,7 @@ public class MenuManager : MonoBehaviour
         break;
       default:
         HideMenu();
+        HideTargetMenu();
         break;
     }
 
@@ -44,6 +51,8 @@ public class MenuManager : MonoBehaviour
   {
     topMenu.SetActive(true);
     paginatedMenu.SetActive(false);
+
+    HideTargetMenu();
 
     SelectFirstCommand(topMenu);
   }
@@ -76,7 +85,17 @@ public class MenuManager : MonoBehaviour
 
   public void SubmitAttack()
   {
-    combatManager.SubmitCommand(new Command("Attack", "Attack the enemy.", Command.Type.Attack, 1));
+    pendingCommand = new Command("Attack", "Attack the enemy.", Command.Type.Attack, 1);
+    OpenTargetMenu();
+  }
+
+  private void RegisterSubmitTargetControls()
+  {
+    foreach (Combatant combatant in CombatManager.Combatants)
+    {
+      combatant.TargetCursor.onClick.AddListener(() => SubmitTarget(combatant));
+      targetCursors.Add(combatant.TargetCursor);
+    }
   }
 
   private void HideMenu()
@@ -85,16 +104,73 @@ public class MenuManager : MonoBehaviour
     paginatedMenu.SetActive(false);
   }
 
+  private void HideTargetMenu()
+  {
+    isSelectingTarget = false;
+    foreach (Button targetCursor in targetCursors)
+    {
+      targetCursor.interactable = false;
+    }
+  }
+
   private void OpenPaginatedMenu(Command[] commands)
   {
     topMenu.SetActive(false);
     paginatedMenu.SetActive(true);
 
-    paginatedMenu.GetComponent<CommandLoader>().LoadCommands(commands);
+    var commandLoader = paginatedMenu.GetComponent<CommandLoader>();
+    commandLoader.LoadCommands(commands);
+    commandLoader.onSubmitCommand.AddListener(command =>
+    {
+      pendingCommand = command;
+      OpenTargetMenu();
+    });
   }
 
-  private static void SelectFirstCommand(GameObject menu)
+  private void OpenTargetMenu()
   {
+    HideMenu();
+
+    isSelectingTarget = true;
+    foreach (Button targetCursor in targetCursors)
+    {
+      targetCursor.interactable = true;
+    }
+
+    SelectFirstTarget();
+  }
+
+  private void SubmitTarget(Combatant combatant)
+  {
+    if (pendingCommand == null)
+    {
+      Debug.LogError("Failed to submit target. Pending command does not exist!");
+      return;
+    }
+
+    pendingCommand.SetTarget(combatant);
+    combatManager.SubmitCommand(pendingCommand);
+  }
+
+  private void SelectFirstCommand(GameObject menu)
+  {
+    if (isSelectingTarget)
+    {
+      Debug.LogWarning("Failed selecting first command. We are selecting a target!");
+      return;
+    }
+
     EventSystem.current.SetSelectedGameObject(menu.GetComponentInChildren<Button>().gameObject);
+  }
+
+  private void SelectFirstTarget()
+  {
+    if (!isSelectingTarget)
+    {
+      Debug.LogWarning("Failed selecting first target. We are still in the command menu!");
+      return;
+    }
+
+    EventSystem.current.SetSelectedGameObject(CombatManager.Heroes[0].TargetCursor.gameObject);
   }
 }

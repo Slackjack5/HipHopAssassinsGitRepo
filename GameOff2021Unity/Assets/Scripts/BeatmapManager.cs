@@ -15,7 +15,7 @@ public class BeatmapManager : MonoBehaviour
   public readonly UnityEvent complete = new UnityEvent();
   public readonly UnityEvent<Note, AccuracyGrade> hit = new UnityEvent<Note, AccuracyGrade>();
 
-  private List<Note> notes = new List<Note>();
+  private readonly List<Note> notes = new List<Note>();
   private int nextSpawnIndex;
   private int nextHitIndex;
   private float travelTime;
@@ -119,7 +119,8 @@ public class BeatmapManager : MonoBehaviour
       entryNumber++;
     }
 
-    notes = generatedNotes;
+    notes.Clear();
+    notes.AddRange(generatedNotes);
     nextHitIndex = 0;
     nextSpawnIndex = 0;
     ShowTrack();

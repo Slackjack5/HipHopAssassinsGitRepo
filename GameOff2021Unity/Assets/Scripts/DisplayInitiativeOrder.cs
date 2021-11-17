@@ -1,19 +1,15 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 public class DisplayInitiativeOrder : MonoBehaviour
 {
   [SerializeField] private GameObject initiativeCardPrefab;
-  [SerializeField] private CombatManager combatManager;
 
   private void Start()
   {
-    Assert.IsTrue(combatManager, "combatManager is empty");
-
     ClearDisplay();
 
-    for (var i = 0; i < combatManager.Combatants.Count; i++)
+    for (var i = 0; i < CombatManager.Combatants.Count; i++)
     {
       GameObject initiativeCard = Instantiate(initiativeCardPrefab, transform);
 
@@ -21,7 +17,7 @@ public class DisplayInitiativeOrder : MonoBehaviour
       TextMeshProUGUI combatantName = textComponents[0];
       TextMeshProUGUI order = textComponents[1];
 
-      combatantName.text = combatManager.Combatants[i].Name;
+      combatantName.text = CombatManager.Combatants[i].Name;
       order.text = (i + 1).ToString();
     }
   }

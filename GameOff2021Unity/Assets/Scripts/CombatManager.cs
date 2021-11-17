@@ -39,7 +39,7 @@ public class CombatManager : MonoBehaviour
   /// <summary>
   /// Combatants sorted in initiative order
   /// </summary>
-  public List<Combatant> Combatants { get; private set; }
+  public static List<Combatant> Combatants { get; private set; }
 
   public static CombatState CurrentState { get; private set; }
 
@@ -120,7 +120,7 @@ public class CombatManager : MonoBehaviour
 
         break;
       case CombatState.PreExecution:
-        // For now, each Hero and Monster will target a random enemy.
+        // For now, each Monster will target a random Hero.
         SetRandomTargets();
 
         GeneratePatterns();
@@ -229,12 +229,6 @@ public class CombatManager : MonoBehaviour
     List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
     List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
 
-    foreach (Hero hero in livingHeroes)
-    {
-      int index = Random.Range(0, livingMonsters.Count);
-      hero.SetTarget(livingMonsters[index]);
-    }
-
     foreach (Monster monster in livingMonsters)
     {
       int index = Random.Range(0, livingHeroes.Count);
@@ -313,6 +307,7 @@ public class CombatManager : MonoBehaviour
             break;
         }
 
+        hero.SetTarget(command.Target);
         hero.DamageTarget(damageMultiplier, note.isLastOfCombatant);
         break;
       }
