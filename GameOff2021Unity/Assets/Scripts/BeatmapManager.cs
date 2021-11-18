@@ -2,14 +2,15 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BeatmapManager : MonoBehaviour
 {
   [SerializeField] private GameObject track;
   [SerializeField] private GameObject beatCirclePrefab;
-  [SerializeField] private Transform spawnerPos;
-  [SerializeField] private Transform centerPos;
-  [SerializeField] private Transform endPos;
+  [SerializeField] private RectTransform spawnerPos;
+  [SerializeField] private RectTransform centerPos;
+  [SerializeField] private RectTransform endPos;
   [Range(0.00f, 1.2f)] private float leniency = 0.07f;
 
   public readonly UnityEvent complete = new UnityEvent();
@@ -207,7 +208,7 @@ public class BeatmapManager : MonoBehaviour
     beatCircle.endPos = endPos;
     beatCircle.spawnerPos = spawnerPos;
 
-    circle.GetComponent<SpriteRenderer>().color = note.combatant.gameObject.GetComponent<SpriteRenderer>().color;
+    circle.GetComponent<Image>().color = note.combatant.gameObject.GetComponent<SpriteRenderer>().color;
 
     note.beatCircle = circle;
   }
