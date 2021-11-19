@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2543558911476794873}
   - component: {fileID: 2543558911476794874}
   - component: {fileID: 2543558911476794872}
+  - component: {fileID: 51303484486287734}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -107,6 +108,25 @@ MonoBehaviour:
   travelTime: 0.3
   heroId: 0
   spotlightDistance: 2
+--- !u!95 &51303484486287734
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543558911476794875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ca9132939a781f84f91e9a1ec0533555, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3927329578000928858
 PrefabInstance:
   m_ObjectHideFlags: 0

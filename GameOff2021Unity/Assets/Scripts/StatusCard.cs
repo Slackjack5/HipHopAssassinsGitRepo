@@ -4,31 +4,67 @@ using UnityEngine;
 public class StatusCard : MonoBehaviour
 {
   [SerializeField] private Hero hero;
+  [SerializeField] private GameObject activePanel;
+  [SerializeField] private GameObject inactivePanel;
 
-  private TextMeshProUGUI heroNameComponent;
-  private StatusBar healthBar;
-  private StatusBar staminaBar;
+  private TextMeshProUGUI activeHeroName;
+  private TextMeshProUGUI inactiveHeroName;
+  private StatusBar activeHealthBar;
+  private StatusBar activeStaminaBar;
+  private StatusBar inactiveHealthBar;
+  private StatusBar inactiveStaminaBar;
+  private bool isActive;
 
   private void Start()
   {
     // Name should be the first TextMeshProUGUI component encountered.
-    heroNameComponent = GetComponentInChildren<TextMeshProUGUI>();
-    heroNameComponent.text = hero.Name;
+    activeHeroName = activePanel.GetComponentInChildren<TextMeshProUGUI>();
+    activeHeroName.text = hero.Name;
 
-    // Health bar should be the first bar.
-    healthBar = GetComponentsInChildren<StatusBar>()[0];
-    healthBar.SetMaxValue(hero.MaxHealth);
-    healthBar.SetValue(hero.CurrentHealth);
+    inactiveHeroName = inactivePanel.GetComponentInChildren<TextMeshProUGUI>();
+    inactiveHeroName.text = hero.Name;
 
-    // Stamina bar should be the second bar.
-    staminaBar = GetComponentsInChildren<StatusBar>()[1];
-    staminaBar.SetMaxValue(hero.MaxStamina);
-    staminaBar.SetValue(hero.CurrentStamina);
+    activeHealthBar = activePanel.GetComponentsInChildren<StatusBar>()[0];
+    activeHealthBar.SetMaxValue(hero.MaxHealth);
+    activeHealthBar.SetValue(hero.CurrentHealth);
+
+    activeStaminaBar = activePanel.GetComponentsInChildren<StatusBar>()[1];
+    activeStaminaBar.SetMaxValue(hero.MaxStamina);
+    activeStaminaBar.SetValue(hero.CurrentStamina);
+
+    inactiveHealthBar = inactivePanel.GetComponentsInChildren<StatusBar>()[0];
+    inactiveHealthBar.SetMaxValue(hero.MaxHealth);
+    inactiveHealthBar.SetValue(hero.CurrentHealth);
+
+    inactiveStaminaBar = inactivePanel.GetComponentsInChildren<StatusBar>()[1];
+    inactiveStaminaBar.SetMaxValue(hero.MaxStamina);
+    inactiveStaminaBar.SetValue(hero.CurrentStamina);
   }
 
   private void Update()
   {
-    healthBar.SetValue(hero.CurrentHealth);
-    staminaBar.SetValue(hero.CurrentStamina);
+    activeHealthBar.SetValue(hero.CurrentHealth);
+    activeStaminaBar.SetValue(hero.CurrentStamina);
+    inactiveHealthBar.SetValue(hero.CurrentHealth);
+    inactiveStaminaBar.SetValue(hero.CurrentStamina);
+
+    switch (CombatManager.CurrentState)
+    {
+      case CombatManager.CombatState.HeroOne:
+        isActive = hero.HeroId == 1;
+        break;
+      case CombatManager.CombatState.HeroTwo:
+        isActive = hero.HeroId == 2;
+        break;
+      case CombatManager.CombatState.HeroThree:
+        isActive = hero.HeroId == 3;
+        break;
+      default:
+        isActive = false;
+        break;
+    }
+
+    activePanel.SetActive(isActive);
+    inactivePanel.SetActive(!isActive);
   }
 }

@@ -5,6 +5,15 @@ TextureImporter:
   - first:
       213: -2578461326706343104
     second: Icon Block White_0
+  - first:
+      213: -3460399291468960533
+    second: Icon Block White_1
+  - first:
+      213: -4153551405912944350
+    second: Icon Block White_2
+  - first:
+      213: 8182019546521191835
+    second: Icon Block White_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -98,9 +107,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 124
-        y: 47
-        width: 72
-        height: 27
+        y: 69
+        width: 5
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,6 +119,69 @@ TextureImporter:
       bones: []
       spriteID: 043069aa517773cd0800000000000000
       internalID: -2578461326706343104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon Block White_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 69
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: becaafaad213affc0800000000000000
+      internalID: -3460399291468960533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon Block White_2
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 47
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2211c36b00f9b56c0800000000000000
+      internalID: -4153551405912944350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Icon Block White_3
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 47
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b95c2b76d6f5c8170800000000000000
+      internalID: 8182019546521191835
       vertices: []
       indices: 
       edges: []

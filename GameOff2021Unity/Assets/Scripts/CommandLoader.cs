@@ -79,9 +79,7 @@ public class CommandLoader : MonoBehaviour
       Command command = commands[index];
       commandObject.GetComponentInChildren<Button>().onClick.AddListener(() => SubmitCommand(command));
 
-      // Index 1 refers to the text itself. Index 0 is the cursor.
-      // TODO: Change this to the non-array GetComponent after we use an image for the cursor.
-      TextMeshProUGUI textComponent = commandObject.GetComponentsInChildren<TextMeshProUGUI>()[1];
+      var textComponent = commandObject.GetComponentInChildren<TextMeshProUGUI>();
       textComponent.text = command.Name;
     }
 

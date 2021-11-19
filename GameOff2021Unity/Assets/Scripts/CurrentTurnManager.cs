@@ -1,28 +1,24 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class CurrentTurnManager : MonoBehaviour
 {
   private Hero[] heroes;
   private CombatManager.CombatState lastState;
-  private TextMeshProUGUI nameComponent;
-  private VerticalLayoutGroup panel;
+  private Image image;
 
   private void Start()
   {
-    panel = GetComponentInChildren<VerticalLayoutGroup>();
-    nameComponent = GetComponentInChildren<TextMeshProUGUI>();
+    image = GetComponentInChildren<Image>();
 
-    panel.gameObject.SetActive(false);
+    image.gameObject.SetActive(false);
 
     heroes = CombatManager.Heroes;
     lastState = CombatManager.CombatState.Unspecified;
-    CombatManager.onChangeState.AddListener(ReadState);
+    CombatManager.onChangeState.AddListener(OnChangeState);
   }
 
-  private void ReadState(CombatManager.CombatState state)
+  private void OnChangeState(CombatManager.CombatState state)
   {
     switch (state)
     {
@@ -31,8 +27,7 @@ public class CurrentTurnManager : MonoBehaviour
       case CombatManager.CombatState.Start:
         break;
       case CombatManager.CombatState.HeroOne:
-        panel.gameObject.SetActive(true);
-        nameComponent.text = heroes[0].Name;
+        image.gameObject.SetActive(true);
 
         if (lastState != CombatManager.CurrentState)
         {
@@ -42,8 +37,7 @@ public class CurrentTurnManager : MonoBehaviour
 
         break;
       case CombatManager.CombatState.HeroTwo:
-        panel.gameObject.SetActive(true);
-        nameComponent.text = heroes[1].Name;
+        image.gameObject.SetActive(true);
 
         if (lastState != CombatManager.CurrentState)
         {
@@ -53,8 +47,7 @@ public class CurrentTurnManager : MonoBehaviour
 
         break;
       case CombatManager.CombatState.HeroThree:
-        panel.gameObject.SetActive(true);
-        nameComponent.text = heroes[2].Name;
+        image.gameObject.SetActive(true);
 
         if (lastState != CombatManager.CurrentState)
         {
@@ -64,7 +57,7 @@ public class CurrentTurnManager : MonoBehaviour
 
         break;
       default:
-        panel.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
         ResetAllHeroPositions();
         break;
     }

@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,12 +18,12 @@ public abstract class Combatant : MonoBehaviour
 
   public readonly UnityEvent dead = new UnityEvent();
 
-  private State currentState;
+  protected State currentState;
   private bool isInitialPositionSet;
   private Vector2 initialPosition;
   private Combatant target;
 
-  private enum State
+  protected enum State
   {
     Idle,
     Attacking,
@@ -45,8 +46,16 @@ public abstract class Combatant : MonoBehaviour
     CurrentStamina = maxStamina;
 
     TargetCursor = GetComponentInChildren<Button>();
+  }
 
-    currentState = State.Idle;
+  protected virtual void Start()
+  {
+    ChangeState(State.Idle);
+  }
+
+  protected virtual void ChangeState(State state)
+  {
+    currentState = state;
   }
 
   public void DecreaseHealth(int value)
@@ -136,7 +145,7 @@ public abstract class Combatant : MonoBehaviour
     if (currentState == State.Attacking && isLastHit)
     {
       ResetPosition();
-      currentState = State.Idle;
+      ChangeState(State.Idle);
     }
 
     target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
@@ -144,9 +153,9 @@ public abstract class Combatant : MonoBehaviour
 
   private void Die()
   {
-    GetComponent<SpriteRenderer>().enabled = false;
-    currentState = State.Dead;
+    ChangeState(State.Dead);
     dead.Invoke();
+    gameObject.SetActive(false);
   }
 
   private void SpawnDamageNumber(int value)
@@ -157,7 +166,7 @@ public abstract class Combatant : MonoBehaviour
 
   private void MoveToTarget()
   {
-    currentState = State.Attacking;
+    ChangeState(State.Attacking);
 
     Vector2 targetPosition = target.transform.position;
     float distance = distanceFromTarget;
