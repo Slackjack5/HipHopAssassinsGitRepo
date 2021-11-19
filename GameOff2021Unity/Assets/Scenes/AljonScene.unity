@@ -3139,6 +3139,18 @@ PrefabInstance:
       propertyPath: m_BlendUpdateMethod
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4993594879384720819, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993594879384720819, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993594879384720819, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.15686275
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
 --- !u!1001 &5621960000087939104
