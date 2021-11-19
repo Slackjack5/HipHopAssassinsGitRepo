@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: d408e9e38c975184fb87c8a1048915ec
+guid: 09ebab8fcc2b90347af7cc0a7bdf2470
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -8696074497271380586
-    second: Icon Block Back_0
-  - first:
-      213: -3203825093495397118
-    second: Icon Block Back_1
-  - first:
-      213: -6091698197372949313
-    second: Icon Block Back_2
-  - first:
-      213: 5755101099241682089
-    second: Icon Block Back_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -53,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -101,91 +89,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Icon Block Back_0
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 64
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6954ec98156515780800000000000000
-      internalID: -8696074497271380586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icon Block Back_1
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 64
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 20569b35d0ab983d0800000000000000
-      internalID: -3203825093495397118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icon Block Back_2
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 42
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbca2b2c3c0f57ba0800000000000000
-      internalID: -6091698197372949313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Icon Block Back_3
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 42
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a4b2ca35f93edf40800000000000000
-      internalID: 5755101099241682089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

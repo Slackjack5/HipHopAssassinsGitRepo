@@ -36,10 +36,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2087853636075687547, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2087853636075687547, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -92,12 +88,16 @@ PrefabInstance:
       value: Stamina Status Bar Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4157787323126836382, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4300196851866706935, guid: b541fdd1ec3ac8646af168aeb959d882, type: 3}
+    - target: {fileID: 4157787323126836382, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
       propertyPath: m_Color.b
-      value: 0.14528298
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4157787323126836382, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
       propertyPath: m_Color.g
-      value: 0.8618589
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4157787323126836382, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
       propertyPath: m_Color.r
@@ -112,6 +112,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5772399564718541770, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
+      propertyPath: m_text
+      value: AP
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599755394941433707, guid: 724a35ae7a78d2b49bb3af3967711008, type: 3}
       propertyPath: m_text
       value: AP
       objectReference: {fileID: 0}

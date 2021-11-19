@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 425.3, y: 114.31}
+  m_CellSize: {x: 425.3, y: 124.62}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -111,18 +111,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6064752764357126141}
     m_Modifications:
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4261078927485246973, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
       propertyPath: m_Name
       value: Items Command
@@ -253,18 +241,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6064752764357126141}
     m_Modifications:
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4261078927485246973, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
       propertyPath: m_Name
       value: Attack Command
@@ -395,18 +371,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6064752764357126141}
     m_Modifications:
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4261078927485246973, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
       propertyPath: m_Name
       value: Macros Command
@@ -537,18 +501,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6064752764357126141}
     m_Modifications:
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550294257400338068, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4261078927485246973, guid: d62ca4f1937601049aa7580a70d364bb, type: 3}
       propertyPath: m_Name
       value: Stance Command

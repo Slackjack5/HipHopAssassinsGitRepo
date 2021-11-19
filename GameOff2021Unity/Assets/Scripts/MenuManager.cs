@@ -10,8 +10,13 @@ public class MenuManager : MonoBehaviour
   [SerializeField] private GameObject topMenu;
   [SerializeField] private GameObject paginatedMenu;
   [SerializeField] private CombatManager combatManager;
+  [SerializeField] private Image fill;
+  [SerializeField] private Sprite heroOneFill;
+  [SerializeField] private Sprite heroTwoFill;
+  [SerializeField] private Sprite heroThreeFill;
+  [SerializeField] private Sprite rhythmFill;
 
-  private CombatManager.CombatState lastState;
+  private RectTransform background;
   private readonly List<Button> targetCursors = new List<Button>();
   private bool isSelectingTarget;
   private Command pendingCommand;
@@ -20,31 +25,41 @@ public class MenuManager : MonoBehaviour
   {
     Assert.IsTrue(combatManager, "combatManager is empty");
 
-    lastState = CombatManager.CombatState.Unspecified;
+    // Background should be the first child of this object.
+    background = GetComponentsInChildren<RectTransform>()[1];
+    background.gameObject.SetActive(false);
 
     RegisterSubmitTargetControls();
+
+    CombatManager.onChangeState.AddListener(OnChangeState);
+
+    HideAllSelectables();
   }
 
-  private void Update()
+  private void OnChangeState(CombatManager.CombatState state)
   {
-    switch (CombatManager.CurrentState)
+    switch (state)
     {
       case CombatManager.CombatState.HeroOne:
+        fill.sprite = heroOneFill;
+        background.gameObject.SetActive(true);
+        OpenTopMenu();
+        break;
       case CombatManager.CombatState.HeroTwo:
+        fill.sprite = heroTwoFill;
+        background.gameObject.SetActive(true);
+        OpenTopMenu();
+        break;
       case CombatManager.CombatState.HeroThree:
-        if (lastState != CombatManager.CurrentState)
-        {
-          OpenTopMenu();
-        }
-
+        fill.sprite = heroThreeFill;
+        background.gameObject.SetActive(true);
+        OpenTopMenu();
         break;
       default:
-        HideMenu();
-        HideTargetMenu();
+        fill.sprite = rhythmFill;
+        HideAllSelectables();
         break;
     }
-
-    lastState = CombatManager.CurrentState;
   }
 
   public void OpenTopMenu()
@@ -52,7 +67,7 @@ public class MenuManager : MonoBehaviour
     topMenu.SetActive(true);
     paginatedMenu.SetActive(false);
 
-    HideTargetMenu();
+    HideTargetSelector();
 
     SelectFirstCommand(topMenu);
   }
@@ -86,7 +101,7 @@ public class MenuManager : MonoBehaviour
   public void SubmitAttack()
   {
     pendingCommand = new Command("Attack", "Attack the enemy.", Command.Type.Attack, 1);
-    OpenTargetMenu();
+    OpenTargetSelector();
   }
 
   private void RegisterSubmitTargetControls()
@@ -104,7 +119,13 @@ public class MenuManager : MonoBehaviour
     paginatedMenu.SetActive(false);
   }
 
-  private void HideTargetMenu()
+  private void HideAllSelectables()
+  {
+    HideMenu();
+    HideTargetSelector();
+  }
+
+  private void HideTargetSelector()
   {
     isSelectingTarget = false;
     foreach (Button targetCursor in targetCursors)
@@ -123,11 +144,11 @@ public class MenuManager : MonoBehaviour
     commandLoader.onSubmitCommand.AddListener(command =>
     {
       pendingCommand = command;
-      OpenTargetMenu();
+      OpenTargetSelector();
     });
   }
 
-  private void OpenTargetMenu()
+  private void OpenTargetSelector()
   {
     HideMenu();
 
