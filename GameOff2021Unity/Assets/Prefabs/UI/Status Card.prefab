@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5361207774128150470}
   - component: {fileID: 5188075234804510187}
   - component: {fileID: 4768373560557257561}
+  - component: {fileID: 7303425196707502002}
   m_Layer: 5
   m_Name: Turn Indicator
   m_TagString: Untagged
@@ -75,6 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7303425196707502002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896374612607071215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1ac9fd63a181140ab8fd34baab7e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTurnIndicator: {fileID: 0}
+  travelTime: 0.5
+  rotateUnitsPerFrame: 0.1
 --- !u!1 &1357549921580687837
 GameObject:
   m_ObjectHideFlags: 0

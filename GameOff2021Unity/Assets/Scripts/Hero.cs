@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ public class Hero : Combatant
   [SerializeField] private float spotlightDistance;
 
   private Animator animator;
+  private static readonly int isAttacking = Animator.StringToHash("isAttacking");
 
   public int HeroId => heroId;
 
@@ -22,7 +22,7 @@ public class Hero : Combatant
   {
     base.ChangeState(state);
 
-    animator.SetBool("isAttacking", currentState == State.Attacking);
+    animator.SetBool(isAttacking, currentState == State.Attacking);
   }
 
   public void Spotlight()

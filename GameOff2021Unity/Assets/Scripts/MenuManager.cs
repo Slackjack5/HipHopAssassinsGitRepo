@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class MenuManager : MonoBehaviour
   [SerializeField] private Sprite heroTwoFill;
   [SerializeField] private Sprite heroThreeFill;
   [SerializeField] private Sprite rhythmFill;
+  [SerializeField] private GameObject backCommand;
 
   private RectTransform background;
   private readonly List<Button> targetCursors = new List<Button>();
@@ -31,12 +33,12 @@ public class MenuManager : MonoBehaviour
 
     RegisterSubmitTargetControls();
 
-    CombatManager.onChangeState.AddListener(OnChangeState);
+    CombatManager.onStateChange.AddListener(OnStateChange);
 
     HideAllSelectables();
   }
 
-  private void OnChangeState(CombatManager.CombatState state)
+  private void OnStateChange(CombatManager.CombatState state)
   {
     switch (state)
     {
@@ -132,6 +134,8 @@ public class MenuManager : MonoBehaviour
     {
       targetCursor.interactable = false;
     }
+
+    backCommand.SetActive(false);
   }
 
   private void OpenPaginatedMenu(Command[] commands)
@@ -157,6 +161,8 @@ public class MenuManager : MonoBehaviour
     {
       targetCursor.interactable = true;
     }
+
+    backCommand.SetActive(true);
 
     SelectFirstTarget();
   }

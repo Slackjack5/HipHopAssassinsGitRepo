@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,7 +20,6 @@ public abstract class Combatant : MonoBehaviour
   protected State currentState;
   private bool isInitialPositionSet;
   private Vector2 initialPosition;
-  private Combatant target;
 
   protected enum State
   {
@@ -38,6 +36,7 @@ public abstract class Combatant : MonoBehaviour
   public int Attack => attack;
   public int Speed => speed;
   public bool IsDead => CurrentHealth <= 0;
+  public Combatant Target { get; private set; }
   public Button TargetCursor { get; private set; }
 
   protected virtual void Awake()
@@ -125,15 +124,15 @@ public abstract class Combatant : MonoBehaviour
   public void SetTarget(Combatant combatant)
   {
     if (currentState == State.Dead) return;
-    target = combatant;
+    Target = combatant;
   }
 
   public void DamageTarget(float damageMultiplier, bool isLastHit)
   {
     if (currentState == State.Dead) return;
-    if (target == null)
+    if (Target == null)
     {
-      Debug.LogError(combatantName + " just tried to damage target, but target is null!");
+      Debug.LogError(combatantName + " just tried to damage Target, but Target is null!");
       return;
     }
 
@@ -148,7 +147,7 @@ public abstract class Combatant : MonoBehaviour
       ChangeState(State.Idle);
     }
 
-    target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
+    Target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
   }
 
   private void Die()
@@ -168,9 +167,9 @@ public abstract class Combatant : MonoBehaviour
   {
     ChangeState(State.Attacking);
 
-    Vector2 targetPosition = target.transform.position;
+    Vector2 targetPosition = Target.transform.position;
     float distance = distanceFromTarget;
-    if (target is Monster)
+    if (Target is Monster)
     {
       // Hero is attacking from the left of the Monster.
       distance *= -1;
