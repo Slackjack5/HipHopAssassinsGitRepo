@@ -100,7 +100,14 @@ public class CommandLoader : MonoBehaviour
 
   private void SetPageLabel()
   {
-    pageLabel.text = currentPage + " of " + totalPages;
+    if (totalPages == 0)
+    {
+      pageLabel.text = "";
+    }
+    else
+    {
+      pageLabel.text = currentPage + " of " + totalPages;
+    }
   }
 
   private void SubmitCommand(Command command)
