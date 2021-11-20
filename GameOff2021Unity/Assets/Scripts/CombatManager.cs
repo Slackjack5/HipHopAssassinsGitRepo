@@ -43,7 +43,7 @@ public class CombatManager : MonoBehaviour
 
   public static CombatState CurrentState { get; private set; }
 
-  public static Hero[] Heroes { get; private set; }
+  public static List<Hero> Heroes { get; private set; }
 
   private void Awake()
   {
@@ -53,7 +53,21 @@ public class CombatManager : MonoBehaviour
     beatmapManager.complete.AddListener(AdvanceState);
     beatmapManager.hit.AddListener(ReadHit);
 
-    Heroes = heroObjects.GetComponentsInChildren<Hero>();
+    // Ensure heroes are ordered by ID.
+    Heroes = heroObjects.GetComponentsInChildren<Hero>().ToList();
+    var isSorted = true;
+    for (var i = 0; i < Heroes.Count; i++)
+    {
+      if (Heroes[i].HeroId == i + 1) continue;
+      Debug.LogWarning("Heroes are not ordered by ID! Will sort heroes.");
+      isSorted = false;
+    }
+
+    if (!isSorted)
+    {
+      Heroes.Sort(CompareHeroIds);
+    }
+
     monsters = monsterObjects.GetComponentsInChildren<Monster>();
 
     SortByInitiative();
@@ -208,6 +222,31 @@ public class CombatManager : MonoBehaviour
   private void ChangeState(CombatState state)
   {
     CurrentState = state;
+
+    switch (state)
+    {
+      case CombatState.HeroOne:
+        Heroes[0].Spotlight();
+        Heroes[1].ResetPosition();
+        Heroes[2].ResetPosition();
+        break;
+      case CombatState.HeroTwo:
+        Heroes[0].ResetPosition();
+        Heroes[1].Spotlight();
+        Heroes[2].ResetPosition();
+        break;
+      case CombatState.HeroThree:
+        Heroes[0].ResetPosition();
+        Heroes[1].ResetPosition();
+        Heroes[2].Spotlight();
+        break;
+      default:
+        Heroes[0].ResetPosition();
+        Heroes[1].ResetPosition();
+        Heroes[2].ResetPosition();
+        break;
+    }
+
     onStateChange.Invoke(state);
   }
 
@@ -329,6 +368,11 @@ public class CombatManager : MonoBehaviour
   private static int CompareCombatantSpeeds(Combatant x, Combatant y)
   {
     return y.Speed.CompareTo(x.Speed);
+  }
+
+  private static int CompareHeroIds(Hero x, Hero y)
+  {
+    return y.HeroId.CompareTo(x.HeroId);
   }
 
   private static float Threshold(float secondsPerBar)

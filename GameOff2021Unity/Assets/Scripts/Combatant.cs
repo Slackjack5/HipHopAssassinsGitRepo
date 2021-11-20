@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -111,7 +110,7 @@ public abstract class Combatant : MonoBehaviour
     isInitialPositionSet = true;
   }
 
-  protected void ResetPosition()
+  public void ResetPosition()
   {
     if (!isInitialPositionSet)
     {
