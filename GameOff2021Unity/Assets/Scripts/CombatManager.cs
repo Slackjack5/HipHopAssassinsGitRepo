@@ -267,23 +267,23 @@ public class CombatManager : MonoBehaviour
   private void ReadHit(BeatmapManager.Note note, BeatmapManager.AccuracyGrade accuracyGrade)
   {
     Combatant combatant = note.combatant;
+    if (combatant.IsDead)
+    {
+      Debug.LogError("Read hit from a combatant that is dead!");
+      return;
+    }
+
     switch (combatant)
     {
       case Monster monster:
       {
-        var damageMultiplier = 1f;
-        switch (accuracyGrade)
+        float damageMultiplier = accuracyGrade switch
         {
-          case BeatmapManager.AccuracyGrade.Perfect:
-            damageMultiplier = 0.5f;
-            break;
-          case BeatmapManager.AccuracyGrade.Great:
-            damageMultiplier = 0.7f;
-            break;
-          case BeatmapManager.AccuracyGrade.Good:
-            damageMultiplier = 0.9f;
-            break;
-        }
+          BeatmapManager.AccuracyGrade.Perfect => 0f,
+          BeatmapManager.AccuracyGrade.Great => 0.25f,
+          BeatmapManager.AccuracyGrade.Good => 0.5f,
+          _ => 1f
+        };
 
         monster.DamageTarget(damageMultiplier, note.isLastOfCombatant);
         break;
@@ -293,19 +293,13 @@ public class CombatManager : MonoBehaviour
         Command command = GetHeroCommand(hero);
         if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
 
-        var damageMultiplier = 0f;
-        switch (accuracyGrade)
+        float damageMultiplier = accuracyGrade switch
         {
-          case BeatmapManager.AccuracyGrade.Perfect:
-            damageMultiplier = 1f;
-            break;
-          case BeatmapManager.AccuracyGrade.Great:
-            damageMultiplier = 0.66f;
-            break;
-          case BeatmapManager.AccuracyGrade.Good:
-            damageMultiplier = 0.33f;
-            break;
-        }
+          BeatmapManager.AccuracyGrade.Perfect => 1f,
+          BeatmapManager.AccuracyGrade.Great => 0.5f,
+          BeatmapManager.AccuracyGrade.Good => 0.25f,
+          _ => 0f
+        };
 
         hero.SetTarget(command.Target);
         hero.DamageTarget(damageMultiplier, note.isLastOfCombatant);
