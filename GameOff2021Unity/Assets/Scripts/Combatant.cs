@@ -111,7 +111,7 @@ public abstract class Combatant : MonoBehaviour
     isInitialPositionSet = true;
   }
 
-  public void ResetPosition()
+  protected void ResetPosition()
   {
     if (!isInitialPositionSet)
     {

@@ -33,12 +33,12 @@ public class MenuManager : MonoBehaviour
 
     RegisterSubmitTargetControls();
 
-    CombatManager.onChangeState.AddListener(OnChangeState);
+    CombatManager.onStateChange.AddListener(OnStateChange);
 
     HideAllSelectables();
   }
 
-  private void OnChangeState(CombatManager.CombatState state)
+  private void OnStateChange(CombatManager.CombatState state)
   {
     switch (state)
     {

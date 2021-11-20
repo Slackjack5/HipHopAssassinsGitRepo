@@ -12,7 +12,7 @@ public class CombatManager : MonoBehaviour
   [SerializeField] private GameObject heroObjects;
   [SerializeField] private GameObject monsterObjects;
 
-  public static readonly UnityEvent<CombatState> onChangeState = new UnityEvent<CombatState>();
+  public static readonly UnityEvent<CombatState> onStateChange = new UnityEvent<CombatState>();
 
   private float currentStartStateTime;
   private bool isCombatDone;
@@ -208,7 +208,7 @@ public class CombatManager : MonoBehaviour
   private void ChangeState(CombatState state)
   {
     CurrentState = state;
-    onChangeState.Invoke(state);
+    onStateChange.Invoke(state);
   }
 
   private void DeterminePreExecutionState()
