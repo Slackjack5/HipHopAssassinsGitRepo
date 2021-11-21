@@ -1169,22 +1169,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu Panel
       objectReference: {fileID: 0}
-    - target: {fileID: 4376305744858708984, guid: 3bef0c0e3ec78b44eb8597ea02e80a81, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4376305744858708984, guid: 3bef0c0e3ec78b44eb8597ea02e80a81, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4376305744858708984, guid: 3bef0c0e3ec78b44eb8597ea02e80a81, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4376305744858708984, guid: 3bef0c0e3ec78b44eb8597ea02e80a81, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4592466091226370919, guid: 3bef0c0e3ec78b44eb8597ea02e80a81, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

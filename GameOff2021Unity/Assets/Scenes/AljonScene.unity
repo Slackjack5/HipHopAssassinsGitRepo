@@ -1182,7 +1182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3081787750773928833, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_fontSize
-      value: 26.25
+      value: 26.9
       objectReference: {fileID: 0}
     - target: {fileID: 3132956746228049442, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3126,7 +3126,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 142005823304768085, guid: fc1787e70ee3d1a43961dc8f18c0dd1e, type: 3}
       propertyPath: useFakeData
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 739611116404244025, guid: fc1787e70ee3d1a43961dc8f18c0dd1e, type: 3}
       propertyPath: m_RootOrder

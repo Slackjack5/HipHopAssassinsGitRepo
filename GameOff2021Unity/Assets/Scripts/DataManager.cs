@@ -15,13 +15,12 @@ public class DataManager : MonoBehaviour
     if (useFakeData)
     {
       LoadFakeData();
+      Serialize(AllMacros, "/Data/fake_macros.xml");
     }
     else
     {
-      var serializer = new XmlSerializer(typeof(Consumable[]));
-      var reader = new StreamReader(Application.dataPath + "/Data/consumables.xml");
-      AllConsumables = (Consumable[]) serializer.Deserialize(reader.BaseStream);
-      reader.Close();
+      AllConsumables = Deserialize<Consumable[]>("/Data/consumables.xml");
+      AllMacros = Deserialize<Macro[]>("/Data/macros.xml");
     }
   }
 
@@ -30,7 +29,7 @@ public class DataManager : MonoBehaviour
     var consumables = new List<Consumable>();
     for (var i = 0; i < 10; i++)
     {
-      consumables.Add(new Consumable()
+      consumables.Add(new Consumable
       {
         id = i,
         name = "Consumable " + i,
@@ -43,14 +42,29 @@ public class DataManager : MonoBehaviour
     var macros = new List<Macro>();
     for (var i = 0; i < 10; i++)
     {
-      macros.Add(new Macro()
+      macros.Add(new Macro
       {
         id = i,
         name = "Macro " + i,
-        description = "This is macro " + i + "."
+        description = "This is macro " + i + ".",
+        patternId = 3
       });
     }
 
     AllMacros = macros.ToArray();
+  }
+
+  private static void Serialize(object toSerialize, string path)
+  {
+    var serializer = new XmlSerializer(toSerialize.GetType());
+    using var writer = new StreamWriter(Application.dataPath + path);
+    serializer.Serialize(writer.BaseStream, toSerialize);
+  }
+
+  private static T Deserialize<T>(string path)
+  {
+    var serializer = new XmlSerializer(typeof(T));
+    using var reader = new StreamReader(Application.dataPath + path);
+    return (T) serializer.Deserialize(reader.BaseStream);
   }
 }

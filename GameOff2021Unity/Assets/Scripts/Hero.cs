@@ -16,6 +16,11 @@ public class Hero : Combatant
     base.Awake();
 
     animator = GetComponent<Animator>();
+
+    if (heroId == 3)
+    {
+      Die();
+    }
   }
 
   protected override void ChangeState(State state)

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ArrayOfMacro xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Macro>
+        <id>1</id>
+        <name>Repair</name>
+        <description>Heals the target.</description>
+        <power>3</power>
+        <patternId>3</patternId>
+    </Macro>
+    <Macro>
+        <id>2</id>
+        <name>Mass Repair</name>
+        <description>Heals all.</description>
+        <power>3</power>
+        <patternId>3</patternId>
+    </Macro>
+    <Macro>
+        <id>3</id>
+        <name>Reboot</name>
+        <description>Resurrect the target to half health.</description>
+        <patternId>3</patternId>
+    </Macro>
+</ArrayOfMacro>

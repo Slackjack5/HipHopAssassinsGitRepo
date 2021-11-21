@@ -66,7 +66,6 @@ public abstract class Combatant : MonoBehaviour
 
     if (CurrentHealth <= 0)
     {
-      CurrentHealth = 0;
       Die();
     }
   }
@@ -102,6 +101,12 @@ public abstract class Combatant : MonoBehaviour
     {
       CurrentStamina = maxStamina;
     }
+  }
+
+  public void Resurrect()
+  {
+    if (!IsDead) return;
+    CurrentHealth = MaxHealth / 2;
   }
 
   public void SetInitialPosition()
@@ -150,11 +155,11 @@ public abstract class Combatant : MonoBehaviour
     Target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
   }
 
-  private void Die()
+  protected void Die()
   {
+    CurrentHealth = 0;
     ChangeState(State.Dead);
     dead.Invoke();
-    gameObject.SetActive(false);
   }
 
   private void SpawnDamageNumber(int value)

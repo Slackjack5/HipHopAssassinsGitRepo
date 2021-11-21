@@ -19,7 +19,6 @@ public class MenuManager : MonoBehaviour
   [SerializeField] private GameObject backCommand;
 
   private RectTransform background;
-  private readonly List<Button> targetCursors = new List<Button>();
   private bool isSelectingTarget;
   private Command pendingCommand;
 
@@ -76,33 +75,41 @@ public class MenuManager : MonoBehaviour
 
   public void OpenConsumableMenu()
   {
-    // Convert list of Consumables to a list of Commands.
-    OpenPaginatedMenu(DataManager.AllConsumables.Select(
-        consumable => new Command(consumable.name, consumable.description, Command.Type.Consumable, 2))
-      .ToArray()
-    );
+    OpenPaginatedMenu(DataManager.AllConsumables);
   }
 
   public void OpenMacroMenu()
   {
-    // Convert list of Macros to a list of Commands.
-    OpenPaginatedMenu(DataManager.AllMacros.Select(
-        macro => new Command(macro.name, macro.description, Command.Type.Macro, 3)).ToArray()
-    );
+    OpenPaginatedMenu(DataManager.AllMacros);
   }
 
   public void OpenStanceMenu()
   {
-    OpenPaginatedMenu(new[]
+    OpenPaginatedMenu(new Command[]
     {
-      new Command("Defend", "Raise guard to halve incoming damage.", Command.Type.Defend, 4),
-      new Command("Charge", "Spend turn to lengthen the time.", Command.Type.Charge, 4)
+      new Macro
+      {
+        name = "Defend",
+        description = "Raise guard to halve incoming damage.",
+        patternId = 4
+      },
+      new Macro
+      {
+        name = "Charge",
+        description = "Spend turn to lengthen the time.",
+        patternId = 4
+      }
     });
   }
 
   public void SubmitAttack()
   {
-    pendingCommand = new Command("Attack", "Attack the enemy.", Command.Type.Attack, 1);
+    pendingCommand = new Attack
+    {
+      name = "Attack",
+      description = "Attack the enemy.",
+      patternId = 1
+    };
     OpenTargetSelector();
   }
 
@@ -111,7 +118,6 @@ public class MenuManager : MonoBehaviour
     foreach (Combatant combatant in CombatManager.Combatants)
     {
       combatant.TargetCursor.onClick.AddListener(() => SubmitTarget(combatant));
-      targetCursors.Add(combatant.TargetCursor);
     }
   }
 
@@ -130,9 +136,9 @@ public class MenuManager : MonoBehaviour
   private void HideTargetSelector()
   {
     isSelectingTarget = false;
-    foreach (Button targetCursor in targetCursors)
+    foreach (Combatant combatant in CombatManager.Combatants)
     {
-      targetCursor.interactable = false;
+      combatant.TargetCursor.interactable = false;
     }
 
     backCommand.SetActive(false);
@@ -157,9 +163,9 @@ public class MenuManager : MonoBehaviour
     HideMenu();
 
     isSelectingTarget = true;
-    foreach (Button targetCursor in targetCursors)
+    foreach (Combatant combatant in CombatManager.Combatants)
     {
-      targetCursor.interactable = true;
+      combatant.TargetCursor.interactable = true;
     }
 
     backCommand.SetActive(true);

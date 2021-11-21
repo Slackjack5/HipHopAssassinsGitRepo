@@ -284,7 +284,7 @@ public class CombatManager : MonoBehaviour
       if (combatant is Hero hero)
       {
         Command command = GetHeroCommand(hero);
-        combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
+        combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
       }
       else
       {
@@ -329,10 +329,7 @@ public class CombatManager : MonoBehaviour
       }
       case Hero hero:
       {
-        Command command = GetHeroCommand(hero);
-        if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
-
-        float damageMultiplier = accuracyGrade switch
+        float effectMultiplier = accuracyGrade switch
         {
           BeatmapManager.AccuracyGrade.Perfect => 1f,
           BeatmapManager.AccuracyGrade.Great => 0.5f,
@@ -340,8 +337,20 @@ public class CombatManager : MonoBehaviour
           _ => 0f
         };
 
-        hero.SetTarget(command.Target);
-        hero.DamageTarget(damageMultiplier, note.isLastOfCombatant);
+        Command command = GetHeroCommand(hero);
+        switch (command)
+        {
+          case Macro macro:
+            macro.Execute(hero, effectMultiplier, note.isLastOfCombatant);
+            break;
+          case Attack attack:
+            attack.Execute(hero, effectMultiplier, note.isLastOfCombatant);
+            break;
+          case Consumable consumable:
+            consumable.Execute(hero);
+            break;
+        }
+
         break;
       }
       default:

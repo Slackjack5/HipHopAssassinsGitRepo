@@ -80,7 +80,7 @@ public class CommandLoader : MonoBehaviour
       commandObject.GetComponentInChildren<Button>().onClick.AddListener(() => SubmitCommand(command));
 
       var textComponent = commandObject.GetComponentInChildren<TextMeshProUGUI>();
-      textComponent.text = command.Name;
+      textComponent.text = command.name;
     }
 
     SetPageLabel();

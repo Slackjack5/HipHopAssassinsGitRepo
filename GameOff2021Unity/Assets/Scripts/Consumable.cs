@@ -1,7 +1,10 @@
 [System.Serializable]
-public class Consumable
+public class Consumable : Command
 {
   public int id;
-  public string name;
-  public string description;
+
+  public override void Execute(Combatant actor)
+  {
+    throw new System.NotImplementedException();
+  }
 }

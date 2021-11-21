@@ -373,6 +373,7 @@ MonoBehaviour:
   heroTwoFill: {fileID: -9090227130882411957, guid: 6775f7080f8a4334daa1ca405a086e1f, type: 3}
   heroThreeFill: {fileID: 1519069876800158031, guid: 7f88f6901f005504ca485cd5880d9bf5, type: 3}
   rhythmFill: {fileID: 1519069876800158031, guid: c88cfc6adb42b644fba4700b4e1a704a, type: 3}
+  backCommand: {fileID: 0}
 --- !u!1 &6011670256754521389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,22 +1095,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7580006793297150662, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7652158324516366937, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7652158324516366937, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7652158324516366937, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7652158324516366937, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
