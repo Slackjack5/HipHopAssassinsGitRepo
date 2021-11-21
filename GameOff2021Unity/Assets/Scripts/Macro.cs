@@ -41,6 +41,18 @@ public class Macro : Command
         }
 
         break;
+      case 4:
+        // Debug
+        Target.DecreaseHealth(Mathf.FloorToInt(power * effectMultiplier));
+        break;
+      case 5:
+        // Mass debug
+        foreach (Monster monster in CombatManager.Monsters)
+        {
+          monster.DecreaseHealth(Mathf.FloorToInt(power * effectMultiplier));
+        }
+
+        break;
     }
   }
 
