@@ -718,10 +718,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 41.199997
       objectReference: {fileID: 0}
-    - target: {fileID: 2380311190354794261, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
-      objectReference: {fileID: 0}
     - target: {fileID: 2713211101356929931, guid: c3377cc04b841784188b7dd1779b7756, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1364,10 +1360,6 @@ PrefabInstance:
     - target: {fileID: 5362651047823379959, guid: 408fcb0d4adb6164abf1376fcb6f10ac, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5421863126822841628, guid: 408fcb0d4adb6164abf1376fcb6f10ac, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 5476991522701841979, guid: 408fcb0d4adb6164abf1376fcb6f10ac, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
