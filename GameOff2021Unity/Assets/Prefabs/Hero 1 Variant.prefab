@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794874, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 2543558911476794875, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: m_Name
       value: Hero 1 Variant

@@ -42,6 +42,12 @@ public class BeatCircle : MonoBehaviour
 
   public void Hit()
   {
+    //Destroy(gameObject);
+    gameObject.GetComponent<Animator>().SetBool("Hit", true);
+  }
+
+  public void Destroy()
+  {
     Destroy(gameObject);
   }
 }
