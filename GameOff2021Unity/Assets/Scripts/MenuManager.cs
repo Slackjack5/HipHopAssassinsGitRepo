@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
   [SerializeField] private Sprite heroOneFill;
   [SerializeField] private Sprite heroTwoFill;
   [SerializeField] private Sprite heroThreeFill;
-  [SerializeField] private Sprite rhythmFill;
+  [SerializeField] private GameObject rhythmFill;
   [SerializeField] private GameObject backCommand;
 
   private RectTransform background;
@@ -42,22 +42,32 @@ public class MenuManager : MonoBehaviour
     switch (state)
     {
       case CombatManager.CombatState.HeroOne:
+        fill.gameObject.SetActive(true);
+        rhythmFill.SetActive(false);
+
         fill.sprite = heroOneFill;
         background.gameObject.SetActive(true);
         OpenTopMenu();
         break;
       case CombatManager.CombatState.HeroTwo:
+        fill.gameObject.SetActive(true);
+        rhythmFill.SetActive(false);
+
         fill.sprite = heroTwoFill;
         background.gameObject.SetActive(true);
         OpenTopMenu();
         break;
       case CombatManager.CombatState.HeroThree:
+        fill.gameObject.SetActive(true);
+        rhythmFill.SetActive(false);
+
         fill.sprite = heroThreeFill;
         background.gameObject.SetActive(true);
         OpenTopMenu();
         break;
       default:
-        fill.sprite = rhythmFill;
+        fill.gameObject.SetActive(false);
+        rhythmFill.SetActive(true);
         HideAllSelectables();
         break;
     }
