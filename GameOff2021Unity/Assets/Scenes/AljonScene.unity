@@ -812,10 +812,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 943002665202948099, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
-      objectReference: {fileID: 0}
     - target: {fileID: 1059818126845947631, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1179,10 +1175,6 @@ PrefabInstance:
     - target: {fileID: 3049349796152305618, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3081787750773928833, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
-      propertyPath: m_fontSize
-      value: 26.25
       objectReference: {fileID: 0}
     - target: {fileID: 3132956746228049442, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1595,6 +1587,10 @@ PrefabInstance:
     - target: {fileID: 4401052032208702411, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424542220926703443, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: m_fontSize
+      value: 50.8
       objectReference: {fileID: 0}
     - target: {fileID: 4445138487068730610, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2393,6 +2389,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7061020513923174093, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061020513923174093, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2560,6 +2560,10 @@ PrefabInstance:
       propertyPath: hero
       value: 
       objectReference: {fileID: 1756696103}
+    - target: {fileID: 7642419121718802495, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: m_Name
+      value: Shadow
+      objectReference: {fileID: 0}
     - target: {fileID: 7656086583108668948, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3126,7 +3130,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 142005823304768085, guid: fc1787e70ee3d1a43961dc8f18c0dd1e, type: 3}
       propertyPath: useFakeData
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 739611116404244025, guid: fc1787e70ee3d1a43961dc8f18c0dd1e, type: 3}
       propertyPath: m_RootOrder

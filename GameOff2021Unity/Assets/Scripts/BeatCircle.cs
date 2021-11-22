@@ -24,6 +24,7 @@ public class BeatCircle : MonoBehaviour
       currentTime = travelTime;
       if (reachedMiddle)
       {
+        // Reached the end of the track, so destroy this object.
         Destroy(gameObject);
       }
       else
@@ -37,5 +38,10 @@ public class BeatCircle : MonoBehaviour
         ? Vector2.Lerp(endPos.position, centerPos.position, t)
         : Vector2.Lerp(centerPos.position, spawnerPos.position, t);
     }
+  }
+
+  public void Hit()
+  {
+    Destroy(gameObject);
   }
 }

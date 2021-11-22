@@ -18,7 +18,6 @@ public class CombatManager : MonoBehaviour
   private bool isCombatDone;
   private bool isStarting;
   private int lastBar;
-  private Monster[] monsters;
   private readonly Command[] submittedCommands = new Command[3];
 
   public enum CombatState
@@ -45,6 +44,8 @@ public class CombatManager : MonoBehaviour
 
   public static List<Hero> Heroes { get; private set; }
 
+  public static List<Monster> Monsters { get; private set; }
+
   private void Awake()
   {
     Assert.IsTrue(beatmapManager, "beatmapManager is empty");
@@ -68,7 +69,7 @@ public class CombatManager : MonoBehaviour
       Heroes.Sort(CompareHeroIds);
     }
 
-    monsters = monsterObjects.GetComponentsInChildren<Monster>();
+    Monsters = monsterObjects.GetComponentsInChildren<Monster>().ToList();
 
     SortByInitiative();
 
@@ -82,10 +83,10 @@ public class CombatManager : MonoBehaviour
 
   private void OnGUI()
   {
-    for (var i = 0; i < monsters.Length; i++)
+    for (var i = 0; i < Monsters.Count; i++)
     {
       GUI.Label(new Rect(0, 30 * i, 200, 30),
-        monsters[i].Name + " HP: " + monsters[i].CurrentHealth + " / " + monsters[i].MaxHealth);
+        Monsters[i].Name + " HP: " + Monsters[i].CurrentHealth + " / " + Monsters[i].MaxHealth);
     }
   }
 
@@ -216,7 +217,7 @@ public class CombatManager : MonoBehaviour
 
   private bool AllMonstersDead()
   {
-    return monsters.All(monster => monster.IsDead);
+    return Monsters.All(monster => monster.IsDead);
   }
 
   private void ChangeState(CombatState state)
@@ -266,7 +267,7 @@ public class CombatManager : MonoBehaviour
   private void SetRandomTargets()
   {
     List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
-    List<Monster> livingMonsters = monsters.Where(monster => !monster.IsDead).ToList();
+    List<Monster> livingMonsters = Monsters.Where(monster => !monster.IsDead).ToList();
 
     foreach (Monster monster in livingMonsters)
     {
@@ -284,7 +285,7 @@ public class CombatManager : MonoBehaviour
       if (combatant is Hero hero)
       {
         Command command = GetHeroCommand(hero);
-        combatantPatterns[hero] = RhythmPatterns.Pattern(command.PatternId);
+        combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
       }
       else
       {
@@ -329,10 +330,7 @@ public class CombatManager : MonoBehaviour
       }
       case Hero hero:
       {
-        Command command = GetHeroCommand(hero);
-        if (command.CommandType != Command.Type.Attack && command.CommandType != Command.Type.Macro) return;
-
-        float damageMultiplier = accuracyGrade switch
+        float effectMultiplier = accuracyGrade switch
         {
           BeatmapManager.AccuracyGrade.Perfect => 1f,
           BeatmapManager.AccuracyGrade.Great => 0.5f,
@@ -340,8 +338,20 @@ public class CombatManager : MonoBehaviour
           _ => 0f
         };
 
-        hero.SetTarget(command.Target);
-        hero.DamageTarget(damageMultiplier, note.isLastOfCombatant);
+        Command command = GetHeroCommand(hero);
+        switch (command)
+        {
+          case Macro macro:
+            macro.Execute(hero, effectMultiplier, note.isLastOfCombatant);
+            break;
+          case Attack attack:
+            attack.Execute(hero, effectMultiplier, note.isLastOfCombatant);
+            break;
+          case Consumable consumable:
+            consumable.Execute(hero);
+            break;
+        }
+
         break;
       }
       default:
@@ -354,7 +364,7 @@ public class CombatManager : MonoBehaviour
   {
     Combatants = new List<Combatant>();
     Combatants.AddRange(Heroes);
-    Combatants.AddRange(monsters);
+    Combatants.AddRange(Monsters);
     Combatants.Sort(CompareCombatantSpeeds);
   }
 

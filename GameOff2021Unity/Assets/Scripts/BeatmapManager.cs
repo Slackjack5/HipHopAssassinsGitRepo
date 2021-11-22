@@ -170,13 +170,13 @@ public class BeatmapManager : MonoBehaviour
 
       AkSoundEngine.PostEvent("Play_Cowbell", gameObject);
 
-      Destroy(notes[nextHitIndex].beatCircle);
+      notes[nextHitIndex].beatCircle.GetComponent<BeatCircle>().Hit();
       nextHitIndex++;
     }
     else if (error > leniency) // Player hits too early
     {
       hit.Invoke(notes[nextHitIndex], AccuracyGrade.Miss);
-      Destroy(notes[nextHitIndex].beatCircle);
+      notes[nextHitIndex].beatCircle.GetComponent<BeatCircle>().Hit();
       nextHitIndex++;
     }
     else if (error < -lateBound) // Player hits too late
