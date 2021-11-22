@@ -36,13 +36,19 @@ public abstract class Combatant : MonoBehaviour
   public int Attack => attack;
   public int Speed => speed;
   public bool IsDead => CurrentHealth <= 0;
-  public Combatant Target { get; private set; }
+  private Combatant Target { get; set; }
   public Button TargetCursor { get; private set; }
+  public float AttackMultiplier { get; private set; }
+  public float MacroMultiplier { get; private set; }
+  public float DefenseMultiplier { get; private set; }
 
   protected virtual void Awake()
   {
     CurrentHealth = maxHealth;
     CurrentStamina = maxStamina;
+    AttackMultiplier = 1;
+    MacroMultiplier = 1;
+    DefenseMultiplier = 1;
 
     TargetCursor = GetComponentInChildren<Button>();
   }
@@ -109,6 +115,57 @@ public abstract class Combatant : MonoBehaviour
     CurrentHealth = MaxHealth / 2;
   }
 
+  public void SetAttackMultiplier(float value)
+  {
+    AttackMultiplier *= value;
+  }
+
+  public void SetMacroMultiplier(float value)
+  {
+    MacroMultiplier *= value;
+  }
+
+  public void SetDefenseMultiplier(float value)
+  {
+    DefenseMultiplier *= value;
+  }
+
+  public void ResetDebuffMultipliers()
+  {
+    if (AttackMultiplier < 1)
+    {
+      AttackMultiplier = 1;
+    }
+
+    if (MacroMultiplier < 1)
+    {
+      MacroMultiplier = 1;
+    }
+
+    if (DefenseMultiplier < 1)
+    {
+      DefenseMultiplier = 1;
+    }
+  }
+
+  public void ResetBuffMultipliers()
+  {
+    if (AttackMultiplier > 1)
+    {
+      AttackMultiplier = 1;
+    }
+
+    if (MacroMultiplier > 1)
+    {
+      MacroMultiplier = 1;
+    }
+
+    if (DefenseMultiplier > 1)
+    {
+      DefenseMultiplier = 1;
+    }
+  }
+
   public void SetInitialPosition()
   {
     initialPosition = transform.position;
@@ -152,7 +209,8 @@ public abstract class Combatant : MonoBehaviour
       ChangeState(State.Idle);
     }
 
-    Target.DecreaseHealth(Mathf.RoundToInt(Attack * damageMultiplier));
+    Target.DecreaseHealth(
+      Mathf.RoundToInt(Attack * AttackMultiplier * (1 / Target.DefenseMultiplier) * damageMultiplier));
   }
 
   protected void Die()

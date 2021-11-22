@@ -11,6 +11,9 @@ public class Timer : MonoBehaviour
   private float currentTime;
   private bool isExpired;
 
+  private static bool isPaused;
+  private static float pauseTime;
+
   private void Start()
   {
     progressBar = GetComponentInChildren<ProgressBar>();
@@ -22,6 +25,19 @@ public class Timer : MonoBehaviour
 
   private void Update()
   {
+    if (isPaused)
+    {
+      pauseTime -= Time.deltaTime;
+      if (pauseTime <= 0)
+      {
+        isPaused = false;
+      }
+      else
+      {
+        return;
+      }
+    }
+
     if (!isExpired)
     {
       currentTime -= Time.deltaTime;
@@ -34,5 +50,11 @@ public class Timer : MonoBehaviour
     }
 
     progressBar.SetValue(currentTime);
+  }
+
+  public static void PauseTime(int time)
+  {
+    pauseTime = time;
+    isPaused = true;
   }
 }
