@@ -90,7 +90,16 @@ public class MenuManager : MonoBehaviour
 
   public void OpenMacroMenu()
   {
-    OpenPaginatedMenu(DataManager.AllMacros);
+    OpenPaginatedMenu(DataManager.AllMacros.Select(macro => new Macro
+      {
+        name = macro.name,
+        description = macro.description,
+        patternId = macro.patternId,
+        id = macro.id,
+        power = macro.power,
+        cost = macro.cost
+      })
+      .Cast<Command>().ToArray());
   }
 
   public void OpenStanceMenu()

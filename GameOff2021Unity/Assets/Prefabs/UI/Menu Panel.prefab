@@ -465,9 +465,9 @@ MonoBehaviour:
   paginatedMenu: {fileID: 3945398632298570223}
   combatManager: {fileID: 0}
   fill: {fileID: 1888126614986140990}
-  heroOneFill: {fileID: 1519069876800158031, guid: c88cfc6adb42b644fba4700b4e1a704a, type: 3}
+  heroOneFill: {fileID: 21300000, guid: 14684d8edb407ea4f9ade1359c5af4dc, type: 3}
   heroTwoFill: {fileID: -9090227130882411957, guid: 6775f7080f8a4334daa1ca405a086e1f, type: 3}
-  heroThreeFill: {fileID: 1519069876800158031, guid: 7f88f6901f005504ca485cd5880d9bf5, type: 3}
+  heroThreeFill: {fileID: 21300000, guid: 74bbee9f508a1504ca86d674d11fc60e, type: 3}
   rhythmFill: {fileID: 425359302902033399}
   backCommand: {fileID: 0}
 --- !u!1 &6011670256754521389
