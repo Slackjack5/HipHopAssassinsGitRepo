@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTurnIndicator: {fileID: 0}
   travelTime: 0.5
-  rotateUnitsPerFrame: -0.4
+  rotationSpeed: -80
 --- !u!1 &1357549921580687837
 GameObject:
   m_ObjectHideFlags: 0

@@ -520,6 +520,43 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8049576065316245789, guid: 38dcf0fce7c70eb44b158771fbd37290, type: 3}
   m_PrefabInstance: {fileID: 1254813878}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1264082665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4993594879384720812, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
+  m_PrefabInstance: {fileID: 4993594878220091682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1264082666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264082665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &1405241280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -691,10 +728,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: complete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 282201246}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4055894f8242aa2459327705816aaf2a, type: 3}
 --- !u!1 &2427447236685547708 stripped
@@ -2594,6 +2627,10 @@ PrefabInstance:
       value: -68.75
       objectReference: {fileID: 0}
     - target: {fileID: 7299387663107274057, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: rotateUnitsPerFrame
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299387663107274057, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: currentTurnIndicator
       value: 
       objectReference: {fileID: 1977006862}
@@ -2896,10 +2933,6 @@ PrefabInstance:
     - target: {fileID: 8516347562737153987, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: rhythmManager
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8556932862201265981, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
-      propertyPath: m_fontSize
-      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8596020286348398595, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3382,18 +3415,6 @@ PrefabInstance:
     - target: {fileID: 4993594879384720816, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4993594879384720819, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.15686275
-      objectReference: {fileID: 0}
-    - target: {fileID: 4993594879384720819, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.15686275
-      objectReference: {fileID: 0}
-    - target: {fileID: 4993594879384720819, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.15686275
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
