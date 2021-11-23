@@ -208,8 +208,27 @@ public class BeatmapManager : MonoBehaviour
     beatCircle.endPos = endPos;
     beatCircle.spawnerPos = spawnerPos;
 
-    circle.GetComponent<Image>().color = note.combatant.gameObject.GetComponent<SpriteRenderer>().color;
-
+    //circle.GetComponent<Image>().color = note.combatant.gameObject.GetComponent<SpriteRenderer>().color;
+    if(note.combatant.gameObject.name=="Vanguard")
+    {
+      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
+      circle.GetComponent<Animator>().SetInteger("Hero", 3);
+    }
+    else if (note.combatant.gameObject.name == "Initiate")
+    {
+      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
+      circle.GetComponent<Animator>().SetInteger("Hero", 1);
+    }
+    else if (note.combatant.gameObject.name == "Analysis")
+    {
+      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
+      circle.GetComponent<Animator>().SetInteger("Hero", 2);
+    }
+    else
+    {
+      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
+      circle.GetComponent<Animator>().SetInteger("Hero", 4);
+    }
     note.beatCircle = circle;
   }
 }
