@@ -76,8 +76,6 @@ public class CombatManager : MonoBehaviour
 
   private void Update()
   {
-    Debug.Log($"Current state is {CurrentState}");
-
     if (CurrentState == State.Inactive || CurrentState == State.Win || CurrentState == State.Lose) return;
 
     if (CurrentState != State.PreStart && CurrentState != State.Start)

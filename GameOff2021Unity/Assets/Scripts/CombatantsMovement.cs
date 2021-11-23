@@ -11,12 +11,6 @@ public class CombatantsMovement : MonoBehaviour
 
   private void Start()
   {
-    transform.DOMove(destination.position, travelTime).OnComplete(Doo);
-  }
-
-  private void Doo()
-  {
-    Debug.Log("Hello");
-    onComplete.Invoke();
+    transform.DOMove(destination.position, travelTime).OnComplete(onComplete.Invoke);
   }
 }

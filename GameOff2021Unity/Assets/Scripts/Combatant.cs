@@ -45,7 +45,6 @@ public abstract class Combatant : MonoBehaviour
   protected virtual void Awake()
   {
     CurrentHealth = maxHealth;
-    Debug.Log($"Current health set to {CurrentHealth}");
     CurrentStamina = maxStamina;
     AttackMultiplier = 1;
     MacroMultiplier = 1;
