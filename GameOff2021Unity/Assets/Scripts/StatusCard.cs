@@ -43,22 +43,22 @@ public class StatusCard : MonoBehaviour
 
     turnIndicator = GetComponentInChildren<TurnIndicator>();
 
-    CombatManager.onStateChange.AddListener(OnStateChange);
+    CombatManager.onStateChange.AddListener(OnCombatStateChange);
 
     isActive = false;
     activePanel.SetActive(false);
     inactivePanel.SetActive(true);
   }
 
-  private void OnStateChange(CombatManager.CombatState state)
+  private void OnCombatStateChange(CombatManager.State state)
   {
     switch (state)
     {
-      case CombatManager.CombatState.Unspecified:
-      case CombatManager.CombatState.PreStart:
-      case CombatManager.CombatState.Start:
+      case CombatManager.State.Unspecified:
+      case CombatManager.State.PreStart:
+      case CombatManager.State.Start:
         break;
-      case CombatManager.CombatState.HeroOne:
+      case CombatManager.State.HeroOne:
         isActive = hero.HeroId == 1;
         if (isActive)
         {
@@ -70,7 +70,7 @@ public class StatusCard : MonoBehaviour
         }
 
         break;
-      case CombatManager.CombatState.HeroTwo:
+      case CombatManager.State.HeroTwo:
         isActive = hero.HeroId == 2;
         if (isActive)
         {
@@ -82,7 +82,7 @@ public class StatusCard : MonoBehaviour
         }
 
         break;
-      case CombatManager.CombatState.HeroThree:
+      case CombatManager.State.HeroThree:
         isActive = hero.HeroId == 3;
         if (isActive)
         {

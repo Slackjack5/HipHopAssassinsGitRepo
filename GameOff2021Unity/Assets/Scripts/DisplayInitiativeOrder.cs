@@ -14,6 +14,15 @@ public class DisplayInitiativeOrder : MonoBehaviour
   {
     ClearDisplay();
 
+    CombatManager.onStateChange.AddListener(OnCombatStateChange);
+  }
+
+  private void OnCombatStateChange(CombatManager.State state)
+  {
+    if (state != CombatManager.State.PreStart) return;
+
+    ClearDisplay();
+
     for (var i = 0; i < CombatManager.Combatants.Count; i++)
     {
       Combatant combatant = CombatManager.Combatants[i];

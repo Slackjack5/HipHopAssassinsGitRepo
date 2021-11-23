@@ -14,13 +14,13 @@ public class MainMessage : MonoBehaviour
   {
     switch (CombatManager.CurrentState)
     {
-      case CombatManager.CombatState.Start:
+      case CombatManager.State.Start:
         Display("FIGHT");
         break;
-      case CombatManager.CombatState.Lose:
+      case CombatManager.State.Lose:
         Display("GAME OVER");
         break;
-      case CombatManager.CombatState.Win:
+      case CombatManager.State.Win:
         Display("VICTORY");
         break;
       default:
