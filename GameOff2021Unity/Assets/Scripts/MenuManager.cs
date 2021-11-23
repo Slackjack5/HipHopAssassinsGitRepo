@@ -30,18 +30,21 @@ public class MenuManager : MonoBehaviour
     background = GetComponentsInChildren<RectTransform>()[1];
     background.gameObject.SetActive(false);
 
-    RegisterSubmitTargetControls();
+    HideMenu();
+    backCommand.SetActive(false);
 
-    CombatManager.onStateChange.AddListener(OnStateChange);
-
-    HideAllSelectables();
+    CombatManager.onStateChange.AddListener(OnCombatStateChange);
   }
 
-  private void OnStateChange(CombatManager.CombatState state)
+  private void OnCombatStateChange(CombatManager.State state)
   {
     switch (state)
     {
-      case CombatManager.CombatState.HeroOne:
+      case CombatManager.State.PreStart:
+        RegisterSubmitTargetControls();
+        HideAllSelectables();
+        break;
+      case CombatManager.State.HeroOne:
         fill.gameObject.SetActive(true);
         rhythmFill.SetActive(false);
 
@@ -49,7 +52,7 @@ public class MenuManager : MonoBehaviour
         background.gameObject.SetActive(true);
         OpenTopMenu();
         break;
-      case CombatManager.CombatState.HeroTwo:
+      case CombatManager.State.HeroTwo:
         fill.gameObject.SetActive(true);
         rhythmFill.SetActive(false);
 
@@ -57,7 +60,7 @@ public class MenuManager : MonoBehaviour
         background.gameObject.SetActive(true);
         OpenTopMenu();
         break;
-      case CombatManager.CombatState.HeroThree:
+      case CombatManager.State.HeroThree:
         fill.gameObject.SetActive(true);
         rhythmFill.SetActive(false);
 

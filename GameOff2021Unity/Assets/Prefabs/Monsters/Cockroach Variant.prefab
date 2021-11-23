@@ -21,19 +21,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7253655950834415305, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: m_Name
-      value: Beetle Variant
+      value: Cockroach Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7253655950834415307, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253655950834415307, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253655950834415307, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.84
       objectReference: {fileID: 0}
     - target: {fileID: 7253655950834415307, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: m_LocalRotation.w
@@ -65,19 +57,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: speed
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: maxHealth
-      value: 130
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: maxStamina
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: combatantName
-      value: Beetle
+      value: Cockroach
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}

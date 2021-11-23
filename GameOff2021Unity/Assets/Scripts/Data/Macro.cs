@@ -118,7 +118,7 @@ public class Macro : Command
         // Pause
         if (ShouldExecute())
         {
-          Timer.PauseTime(power);
+          Timer.Pause(power);
         }
 
         break;

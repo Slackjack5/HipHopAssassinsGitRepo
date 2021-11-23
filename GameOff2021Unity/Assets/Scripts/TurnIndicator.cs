@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ public class TurnIndicator : MonoBehaviour
 {
   [SerializeField] private Transform currentTurnIndicator;
   [SerializeField] private float travelTime;
-  [SerializeField] private float rotateUnitsPerFrame;
+  [SerializeField] private float rotationSpeed;
 
   private RectTransform rectTransform;
   private Vector2 initialPosition;
@@ -24,7 +23,7 @@ public class TurnIndicator : MonoBehaviour
   {
     if (isShowing)
     {
-      transform.Rotate(new Vector3(0, 0, rotateUnitsPerFrame));
+      transform.Rotate(new Vector3(0, 0, rotationSpeed * Time.deltaTime));
     }
   }
 

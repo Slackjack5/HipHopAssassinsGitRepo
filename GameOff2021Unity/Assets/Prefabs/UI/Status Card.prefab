@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTurnIndicator: {fileID: 0}
   travelTime: 0.5
-  rotateUnitsPerFrame: -0.4
+  rotationSpeed: -80
 --- !u!1 &1357549921580687837
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +888,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

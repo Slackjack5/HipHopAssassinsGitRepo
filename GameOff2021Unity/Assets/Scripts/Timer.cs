@@ -4,57 +4,80 @@ using UnityEngine.Events;
 public class Timer : MonoBehaviour
 {
   [SerializeField] private float timeLimit = 120f; // In seconds
-  [SerializeField] private UnityEvent expire;
 
-  private ProgressBar progressBar;
+  public static readonly UnityEvent onExpire = new UnityEvent();
 
-  private float currentTime;
-  private bool isExpired;
+  private enum State
+  {
+    Inactive,
+    Running,
+    Paused,
+    Expired
+  }
 
-  private static bool isPaused;
+  private static ProgressBar progressBar;
+  private static float _timeLimit;
+  private static float currentTime;
+  private static State currentState;
   private static float pauseTime;
 
   private void Start()
   {
     progressBar = GetComponentInChildren<ProgressBar>();
     progressBar.SetMaxValue(timeLimit);
-    progressBar.SetValue(timeLimit);
 
-    currentTime = timeLimit;
+    _timeLimit = timeLimit;
+
+    currentState = State.Inactive;
   }
 
   private void Update()
   {
-    if (isPaused)
-    {
-      pauseTime -= Time.deltaTime;
-      if (pauseTime <= 0)
-      {
-        isPaused = false;
-      }
-      else
-      {
-        return;
-      }
-    }
-
-    if (!isExpired)
-    {
-      currentTime -= Time.deltaTime;
-      if (currentTime <= 0)
-      {
-        currentTime = 0;
-        expire.Invoke();
-        isExpired = true;
-      }
-    }
-
     progressBar.SetValue(currentTime);
+
+    switch (currentState)
+    {
+      case State.Inactive:
+        progressBar.gameObject.SetActive(false);
+        break;
+      case State.Paused:
+        pauseTime -= Time.deltaTime;
+        if (pauseTime <= 0)
+        {
+          currentState = State.Running;
+        }
+
+        break;
+      case State.Running:
+        currentTime -= Time.deltaTime;
+        if (currentTime <= 0)
+        {
+          currentTime = 0;
+          onExpire.Invoke();
+          currentState = State.Expired;
+        }
+
+        break;
+    }
   }
 
-  public static void PauseTime(int time)
+  public static void Activate()
+  {
+    if (currentState == State.Inactive)
+    {
+      progressBar.gameObject.SetActive(true);
+      currentTime = _timeLimit;
+      currentState = State.Running;
+    }
+    else
+    {
+      Debug.LogWarning("Failed to activate timer. Timer is currently running or has not been reset.");
+    }
+  }
+
+  public static void Pause(int time)
   {
     pauseTime = time;
-    isPaused = true;
+    currentState = State.Paused;
   }
 }

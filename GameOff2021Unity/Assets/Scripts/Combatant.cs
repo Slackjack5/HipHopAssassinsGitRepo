@@ -37,7 +37,7 @@ public abstract class Combatant : MonoBehaviour
   public int Speed => speed;
   public bool IsDead => CurrentHealth <= 0;
   private Combatant Target { get; set; }
-  public Button TargetCursor { get; private set; }
+  public Button TargetCursor => GetComponentInChildren<Button>();
   public float AttackMultiplier { get; private set; }
   public float MacroMultiplier { get; private set; }
   public float DefenseMultiplier { get; private set; }
@@ -45,12 +45,11 @@ public abstract class Combatant : MonoBehaviour
   protected virtual void Awake()
   {
     CurrentHealth = maxHealth;
+    Debug.Log($"Current health set to {CurrentHealth}");
     CurrentStamina = maxStamina;
     AttackMultiplier = 1;
     MacroMultiplier = 1;
     DefenseMultiplier = 1;
-
-    TargetCursor = GetComponentInChildren<Button>();
   }
 
   protected virtual void Start()
@@ -58,7 +57,7 @@ public abstract class Combatant : MonoBehaviour
     ChangeState(State.Idle);
   }
 
-  protected virtual void ChangeState(State state)
+  protected void ChangeState(State state)
   {
     currentState = state;
   }
