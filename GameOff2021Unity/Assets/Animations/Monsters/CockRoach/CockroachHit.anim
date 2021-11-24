@@ -17,21 +17,54 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
-  m_SampleRate: 60
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 889cdb99591753e4492d70abc69bfcbf, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: c719c1b6d554b664c8f6046fdb340d11, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: b06f974363f2308428608e5936032c02, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 06b591a169227ef4db37b7596e9935ba, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 1e7b1e7718d8687438c97e23fb1a8a85, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: bae178c41bfd986419af8ff0cd770bff, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: c28c8ed3739204b44acc4446e0a98db7, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 889cdb99591753e4492d70abc69bfcbf, type: 3}
+    - {fileID: 21300000, guid: c719c1b6d554b664c8f6046fdb340d11, type: 3}
+    - {fileID: 21300000, guid: b06f974363f2308428608e5936032c02, type: 3}
+    - {fileID: 21300000, guid: 06b591a169227ef4db37b7596e9935ba, type: 3}
+    - {fileID: 21300000, guid: 1e7b1e7718d8687438c97e23fb1a8a85, type: 3}
+    - {fileID: 21300000, guid: bae178c41bfd986419af8ff0cd770bff, type: 3}
+    - {fileID: 21300000, guid: c28c8ed3739204b44acc4446e0a98db7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -50,4 +83,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.5
+    functionName: endHitAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
