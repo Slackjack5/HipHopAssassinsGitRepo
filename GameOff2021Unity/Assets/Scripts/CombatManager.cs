@@ -16,7 +16,6 @@ public class CombatManager : MonoBehaviour
   private float currentStartStateTime;
   private bool isStarting;
   private int lastBar;
-  private readonly Command[] submittedCommands = new Command[3];
 
   public enum State
   {
@@ -176,13 +175,13 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case State.HeroOne:
-        submittedCommands[0] = command;
+        Heroes[0].SubmitCommand(command);
         break;
       case State.HeroTwo:
-        submittedCommands[1] = command;
+        Heroes[1].SubmitCommand(command);
         break;
       case State.HeroThree:
-        submittedCommands[2] = command;
+        Heroes[2].SubmitCommand(command);
         break;
     }
 
@@ -211,6 +210,11 @@ public class CombatManager : MonoBehaviour
         DeterminePreExecutionState();
         break;
       case State.Execution:
+        foreach (Hero hero in Heroes)
+        {
+          hero.ResetCommand();
+        }
+
         if (Heroes[0].IsDead)
         {
           ChangeState(Heroes[1].IsDead ? State.HeroThree : State.HeroTwo);
@@ -298,7 +302,7 @@ public class CombatManager : MonoBehaviour
     {
       if (combatant is Hero hero)
       {
-        Command command = GetHeroCommand(hero);
+        Command command = hero.GetSubmittedCommand();
         combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
       }
       else
@@ -310,12 +314,6 @@ public class CombatManager : MonoBehaviour
 
     float executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
     beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
-  }
-
-  private Command GetHeroCommand(Hero hero)
-  {
-    // HeroId is either 1, 2, or 3.
-    return submittedCommands[hero.HeroId - 1];
   }
 
   private void ReadHit(BeatmapManager.Note note, BeatmapManager.AccuracyGrade accuracyGrade)
@@ -352,7 +350,7 @@ public class CombatManager : MonoBehaviour
           _ => 0f
         };
 
-        Command command = GetHeroCommand(hero);
+        Command command = hero.GetSubmittedCommand();
         switch (command)
         {
           case Macro macro:
