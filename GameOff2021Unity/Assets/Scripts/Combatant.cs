@@ -209,6 +209,11 @@ public abstract class Combatant : MonoBehaviour
 
     Target.DecreaseHealth(
       Mathf.RoundToInt(Attack * AttackMultiplier * (1 / Target.DefenseMultiplier) * damageMultiplier));
+
+    //Animations
+    //Heroes
+    if (Target.name == "Vanguard"){ Target.GetComponent<Animator>().SetBool("Hurt", true); }
+    
   }
 
   protected void Die()

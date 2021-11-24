@@ -22,4 +22,9 @@ public class Hero : Combatant
   {
     transform.DOMoveX(transform.position.x + spotlightDistance, travelTime);
   }
+
+  public void EndHurtAnimation()
+  {
+    gameObject.GetComponent<Animator>().SetBool("Hurt", false);
+  }
 }
