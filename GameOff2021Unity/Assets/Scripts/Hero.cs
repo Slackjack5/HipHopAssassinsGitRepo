@@ -7,15 +7,25 @@ public class Hero : Combatant
   [SerializeField] private float spotlightDistance;
 
   public int HeroId => heroId;
+  private Command submittedCommand;
 
-  protected override void Awake()
+  public void SubmitCommand(Command command)
   {
-    base.Awake();
+    submittedCommand = command;
+  }
 
-    if (heroId == 3)
-    {
-      Die();
-    }
+  public Command GetSubmittedCommand()
+  {
+    if (submittedCommand != null) return submittedCommand;
+
+    Debug.LogError(
+      $"Failed to get submitted command of hero {Name}. Submitted command is null! (Did you call SubmitCommand?)");
+    return null;
+  }
+
+  public void ResetCommand()
+  {
+    submittedCommand = null;
   }
 
   public void Spotlight()
