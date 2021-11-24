@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class BeatmapManager : MonoBehaviour
 {
@@ -23,6 +22,9 @@ public class BeatmapManager : MonoBehaviour
   private bool isGenerated;
   private bool isReady;
   private float lateBound; // The latest, in seconds, that the player can hit the note before it is considered a miss
+
+  private static readonly int attackType = Animator.StringToHash("AttackType");
+  private static readonly int heroHash = Animator.StringToHash("Hero");
 
   public class Note
   {
@@ -208,31 +210,36 @@ public class BeatmapManager : MonoBehaviour
     beatCircle.endPos = endPos;
     beatCircle.spawnerPos = spawnerPos;
 
-    //circle.GetComponent<Image>().color = note.combatant.gameObject.GetComponent<SpriteRenderer>().color;
-    if(note.combatant.Name=="Vanguard")
+    if (note.combatant is Hero hero)
     {
-      //If action was an attack
-      circle.GetComponent<Animator>().SetInteger("AttackType", 1); //Change attack type to 1 ELSE , make it 2 for Macro
-      //Current Hero is Vanguard so make Hero 3
-      circle.GetComponent<Animator>().SetInteger("Hero", 3);
-    }
-    else if (note.combatant.Name == "Initiate")
-    {
-      circle.GetComponent<Animator>().SetInteger("AttackType", 1);//Change attack type to 1 ELSE , make it 2 for Macro
-      //Current Hero is Initiate so make Hero 1
-      circle.GetComponent<Animator>().SetInteger("Hero", 1);
-    }
-    else if (note.combatant.Name == "Analysis")
-    {
-      circle.GetComponent<Animator>().SetInteger("AttackType", 1);//Change attack type to 1 ELSE , make it 2 for Macro
-      //Current Hero is Analysis so make Hero 2
-      circle.GetComponent<Animator>().SetInteger("Hero", 2);
+      // Attack is 1. Macro is 2.
+      int value = hero.GetSubmittedCommand() is Macro ? 2 : 1;
+      circle.GetComponent<Animator>().SetInteger(attackType, value);
+
+      switch (hero.Name)
+      {
+        case "Vanguard":
+          // Current Hero is Vanguard so make Hero 3.
+          circle.GetComponent<Animator>().SetInteger(heroHash, 3);
+          break;
+        case "Initiate":
+          // Current Hero is Initiate so make Hero 1.
+          circle.GetComponent<Animator>().SetInteger(heroHash, 1);
+          break;
+        case "Analysis":
+          // Current Hero is Analysis so make Hero 2.
+          circle.GetComponent<Animator>().SetInteger(heroHash, 2);
+          break;
+      }
     }
     else
     {
-      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
-      circle.GetComponent<Animator>().SetInteger("Hero", 4);
+      circle.GetComponent<Animator>().SetInteger(attackType, 1);
+
+      // Enemy is represented with a value of 4.
+      circle.GetComponent<Animator>().SetInteger(heroHash, 4);
     }
+
     note.beatCircle = circle;
   }
 }
