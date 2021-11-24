@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
@@ -12,12 +13,15 @@ public class EncounterManager : MonoBehaviour
   }
 
   private State currentState;
-  private int currentEncounter;
+  private Encounter currentEncounter;
+  private int currentEncounterIndex;
   private int currentGold;
 
   private void Awake()
   {
     currentState = State.PreEncounter;
+
+    CombatManager.onStateChange.AddListener(OnCombatStateChange);
   }
 
   private void OnGUI()
@@ -38,14 +42,21 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
-    if (currentEncounter >= encounters.Length)
+    if (currentEncounterIndex >= encounters.Length)
     {
-      Debug.LogError($"Failed to start encounter. Index {currentEncounter} is out of bounds!");
+      Debug.LogError($"Failed to start encounter. Index {currentEncounterIndex} is out of bounds!");
       return;
     }
 
-    combatManager.Begin(Instantiate(encounters[currentEncounter]));
-    CombatManager.onStateChange.AddListener(OnCombatStateChange);
+    // Reset the current encounter.
+    if (currentEncounter != null)
+    {
+      Destroy(currentEncounter.gameObject);
+    }
+
+    currentEncounter = Instantiate(encounters[currentEncounterIndex]);
+    combatManager.Reset();
+    combatManager.Begin(currentEncounter);
 
     currentState = State.InEncounter;
   }
@@ -62,8 +73,8 @@ public class EncounterManager : MonoBehaviour
 
     if (isWin)
     {
-      currentGold += encounters[currentEncounter].Gold;
-      currentEncounter++;
+      currentGold += encounters[currentEncounterIndex].Gold;
+      currentEncounterIndex++;
     }
   }
 

@@ -108,6 +108,7 @@ public class CombatManager : MonoBehaviour
 
         if (currentStartStateTime <= 0)
         {
+          Timer.Activate();
           ChangeState(State.HeroOne);
         }
 
@@ -142,8 +143,21 @@ public class CombatManager : MonoBehaviour
     }
   }
 
+  public void Reset()
+  {
+    CurrentState = State.Inactive;
+    isStarting = false;
+    lastBar = 0;
+  }
+
   public void Begin(Encounter encounter)
   {
+    if (CurrentState != State.Inactive)
+    {
+      Debug.LogError("Failed to start combat. Current state is not inactive (did you call Reset?)");
+      return;
+    }
+
     Monsters = encounter.GetComponentsInChildren<Monster>().ToList();
 
     SortByInitiative();
@@ -153,6 +167,8 @@ public class CombatManager : MonoBehaviour
       combatant.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(combatant));
     }
 
+    Timer.ResetState();
+
     encounter.GetComponent<CombatantsMovement>().onComplete.AddListener(StartFight);
 
     ChangeState(State.PreStart);
@@ -160,7 +176,6 @@ public class CombatManager : MonoBehaviour
 
   private void StartFight()
   {
-    Timer.Activate();
     ChangeState(State.Start);
   }
 
