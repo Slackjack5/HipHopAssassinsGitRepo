@@ -312,6 +312,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 7684539153727140449, guid: 5befbdb1819e80a4cb6a1a18c9017584, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684539153727140450, guid: 5befbdb1819e80a4cb6a1a18c9017584, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7684539153727140450, guid: 5befbdb1819e80a4cb6a1a18c9017584, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
