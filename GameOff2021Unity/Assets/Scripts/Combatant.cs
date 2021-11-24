@@ -211,8 +211,8 @@ public abstract class Combatant : MonoBehaviour
       Mathf.RoundToInt(Attack * AttackMultiplier * (1 / Target.DefenseMultiplier) * damageMultiplier));
 
     //Animations
-    //Heroes
-    if (Target.name == "Vanguard"){ Target.GetComponent<Animator>().SetBool("Hurt", true); }
+    //Play Hurt Animation
+    if (Target.GetComponent<Animator>() != null && damageMultiplier!=0){ Target.GetComponent<Animator>().SetBool("Hurt", true); }
     
   }
 

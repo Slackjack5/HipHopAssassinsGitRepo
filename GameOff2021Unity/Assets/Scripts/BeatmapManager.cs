@@ -209,19 +209,23 @@ public class BeatmapManager : MonoBehaviour
     beatCircle.spawnerPos = spawnerPos;
 
     //circle.GetComponent<Image>().color = note.combatant.gameObject.GetComponent<SpriteRenderer>().color;
-    if(note.combatant.gameObject.name=="Vanguard")
+    if(note.combatant.Name=="Vanguard")
     {
-      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
+      //If action was an attack
+      circle.GetComponent<Animator>().SetInteger("AttackType", 1); //Change attack type to 1 ELSE , make it 2 for Macro
+      //Current Hero is Vanguard so make Hero 3
       circle.GetComponent<Animator>().SetInteger("Hero", 3);
     }
-    else if (note.combatant.gameObject.name == "Initiate")
+    else if (note.combatant.Name == "Initiate")
     {
-      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
+      circle.GetComponent<Animator>().SetInteger("AttackType", 1);//Change attack type to 1 ELSE , make it 2 for Macro
+      //Current Hero is Initiate so make Hero 1
       circle.GetComponent<Animator>().SetInteger("Hero", 1);
     }
-    else if (note.combatant.gameObject.name == "Analysis")
+    else if (note.combatant.Name == "Analysis")
     {
-      circle.GetComponent<Animator>().SetInteger("AttackType", 1);
+      circle.GetComponent<Animator>().SetInteger("AttackType", 1);//Change attack type to 1 ELSE , make it 2 for Macro
+      //Current Hero is Analysis so make Hero 2
       circle.GetComponent<Animator>().SetInteger("Hero", 2);
     }
     else
