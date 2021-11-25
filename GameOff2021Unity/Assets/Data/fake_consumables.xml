@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<ArrayOfConsumable xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Consumable>
+    <name>Consumable 0</name>
+    <description>This is consumable 0.</description>
+    <patternId>0</patternId>
+    <id>0</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 1</name>
+    <description>This is consumable 1.</description>
+    <patternId>0</patternId>
+    <id>1</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 2</name>
+    <description>This is consumable 2.</description>
+    <patternId>0</patternId>
+    <id>2</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 3</name>
+    <description>This is consumable 3.</description>
+    <patternId>0</patternId>
+    <id>3</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 4</name>
+    <description>This is consumable 4.</description>
+    <patternId>0</patternId>
+    <id>4</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 5</name>
+    <description>This is consumable 5.</description>
+    <patternId>0</patternId>
+    <id>5</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 6</name>
+    <description>This is consumable 6.</description>
+    <patternId>0</patternId>
+    <id>6</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 7</name>
+    <description>This is consumable 7.</description>
+    <patternId>0</patternId>
+    <id>7</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 8</name>
+    <description>This is consumable 8.</description>
+    <patternId>0</patternId>
+    <id>8</id>
+    <cost>0</cost>
+  </Consumable>
+  <Consumable>
+    <name>Consumable 9</name>
+    <description>This is consumable 9.</description>
+    <patternId>0</patternId>
+    <id>9</id>
+    <cost>0</cost>
+  </Consumable>
+</ArrayOfConsumable>

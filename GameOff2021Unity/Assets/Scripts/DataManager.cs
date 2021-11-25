@@ -15,6 +15,7 @@ public class DataManager : MonoBehaviour
     if (useFakeData)
     {
       LoadFakeData();
+      Serialize(AllConsumables, "/Data/fake_consumables.xml");
       Serialize(AllMacros, "/Data/fake_macros.xml");
     }
     else

@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -172,7 +170,7 @@ public class MenuManager : MonoBehaviour
     paginatedMenu.SetActive(true);
 
     var commandLoader = paginatedMenu.GetComponent<CommandLoader>();
-    commandLoader.LoadCommands(commands);
+    commandLoader.Load(commands);
     commandLoader.onSubmitCommand.AddListener(command =>
     {
       pendingCommand = command;

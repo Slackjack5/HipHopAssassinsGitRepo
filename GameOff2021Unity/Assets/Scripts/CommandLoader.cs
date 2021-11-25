@@ -19,7 +19,7 @@ public class CommandLoader : MonoBehaviour
   private int currentPage = 1;
   private int totalPages;
 
-  public void LoadCommands(Command[] commandsToLoad)
+  public void Load(Command[] commandsToLoad)
   {
     commands = commandsToLoad;
 

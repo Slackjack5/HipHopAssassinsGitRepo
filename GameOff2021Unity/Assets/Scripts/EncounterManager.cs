@@ -54,7 +54,16 @@ public class EncounterManager : MonoBehaviour
     }
 
     currentEncounter = Instantiate(encounters[currentEncounterIndex]);
-    combatManager.Begin(currentEncounter);
+
+    if (currentEncounter is Shop shop)
+    {
+      shop.Open();
+      shop.onClose.AddListener(() => EndEncounter(true));
+    }
+    else
+    {
+      combatManager.Begin(currentEncounter);
+    }
 
     currentState = State.InEncounter;
   }
