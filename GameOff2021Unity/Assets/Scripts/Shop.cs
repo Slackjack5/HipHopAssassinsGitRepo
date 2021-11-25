@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Shop : Encounter
+public class Shop : MonoBehaviour
 {
   [SerializeField] private GameObject menu;
 
@@ -11,12 +13,18 @@ public class Shop : Encounter
   public readonly UnityEvent<Consumable> onPurchase = new UnityEvent<Consumable>();
   public readonly UnityEvent onClose = new UnityEvent();
 
+  private void Start()
+  {
+    consumables.AddRange(DataManager.AllConsumables);
+  }
+
   public void Open()
   {
     menu.SetActive(true);
+    EventSystem.current.SetSelectedGameObject(menu.GetComponentInChildren<Button>().gameObject);
 
-    var commandLoader = menu.GetComponent<CommandLoader>();
-    commandLoader.Load(consumables.ToArray());
+    var commandLoader = menu.GetComponentInChildren<CommandLoader>();
+    commandLoader.Load(consumables.ToArray(), true);
     commandLoader.onSubmitCommand.AddListener(command =>
     {
       var consumable = (Consumable) command;
@@ -26,6 +34,7 @@ public class Shop : Encounter
 
   public void Close()
   {
+    menu.SetActive(false);
     onClose.Invoke();
   }
 }

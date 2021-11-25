@@ -86,7 +86,7 @@ public class MenuManager : MonoBehaviour
 
   public void OpenConsumableMenu()
   {
-    OpenPaginatedMenu(DataManager.AllConsumables);
+    OpenPaginatedMenu(EncounterManager.ConsumablesOwned.ToArray());
   }
 
   public void OpenMacroMenu()

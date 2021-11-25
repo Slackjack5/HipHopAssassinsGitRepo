@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
   [SerializeField] private Encounter[] encounters;
   [SerializeField] private CombatManager combatManager;
+  [SerializeField] private Shop shop;
 
   private enum State
   {
@@ -15,6 +17,10 @@ public class EncounterManager : MonoBehaviour
   private Encounter currentEncounter;
   private int currentEncounterIndex;
   private int currentGold;
+
+  private static readonly List<Consumable> consumablesOwned = new List<Consumable>();
+
+  public static List<Consumable> ConsumablesOwned => consumablesOwned;
 
   private void Awake()
   {
@@ -55,9 +61,10 @@ public class EncounterManager : MonoBehaviour
 
     currentEncounter = Instantiate(encounters[currentEncounterIndex]);
 
-    if (currentEncounter is Shop shop)
+    if (currentEncounter.IsShop)
     {
       shop.Open();
+      shop.onPurchase.AddListener(OnPurchase);
       shop.onClose.AddListener(() => EndEncounter(true));
     }
     else
@@ -98,5 +105,16 @@ public class EncounterManager : MonoBehaviour
         EndEncounter(true);
         break;
     }
+  }
+
+  private void OnPurchase(Consumable consumable)
+  {
+    if (consumable.cost > currentGold)
+    {
+      return;
+    }
+
+    consumablesOwned.Add(consumable);
+    currentGold -= consumable.cost;
   }
 }

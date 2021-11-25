@@ -18,9 +18,11 @@ public class CommandLoader : MonoBehaviour
   private Command[] commands;
   private int currentPage = 1;
   private int totalPages;
+  private bool _isShop;
 
-  public void Load(Command[] commandsToLoad)
+  public void Load(Command[] commandsToLoad, bool isShop = false)
   {
+    _isShop = isShop;
     commands = commandsToLoad;
 
     currentPage = 1;
@@ -80,7 +82,13 @@ public class CommandLoader : MonoBehaviour
       commandObject.GetComponentInChildren<Button>().onClick.AddListener(() => SubmitCommand(command));
 
       var textComponent = commandObject.GetComponentInChildren<TextMeshProUGUI>();
-      textComponent.text = command.name;
+      textComponent.text = command switch
+      {
+        Consumable consumable when _isShop => $"{consumable.name} ${consumable.cost}",
+        Consumable consumable => $"{consumable.name} x{consumable.AmountOwned}",
+        Macro macro => $"{macro.name} {macro.cost}",
+        _ => command.name
+      };
     }
 
     SetPageLabel();
