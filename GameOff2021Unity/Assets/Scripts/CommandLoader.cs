@@ -11,6 +11,7 @@ public class CommandLoader : MonoBehaviour
   [SerializeField] private GameObject commandPrefab;
   [SerializeField] private GameObject commandPanel;
   [SerializeField] private TextMeshProUGUI pageLabel;
+  [SerializeField] private GameObject backCommand;
   [SerializeField] private int pageSize = 6;
 
   public readonly UnityEvent<Command> onSubmitCommand = new UnityEvent<Command>();
@@ -46,6 +47,13 @@ public class CommandLoader : MonoBehaviour
   private void DisplayCommands()
   {
     ClearDisplay();
+    SetPageLabel();
+
+    if (commands.Length == 0)
+    {
+      SelectCommand(backCommand);
+      return;
+    }
 
     for (var i = 0; i < pageSize; i++)
     {
@@ -90,8 +98,6 @@ public class CommandLoader : MonoBehaviour
         _ => command.name
       };
     }
-
-    SetPageLabel();
   }
 
   private void LoadNextPage()

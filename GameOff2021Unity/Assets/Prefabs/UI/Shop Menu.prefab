@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6697056233511865696}
   - component: {fileID: 3253653565538978689}
   m_Layer: 5
-  m_Name: Shop Menu Variant
+  m_Name: Shop Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   commandPrefab: {fileID: 4023184369005313497, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
   commandPanel: {fileID: 5927210687203723966}
   pageLabel: {fileID: 1884939803526914710}
+  backCommand: {fileID: 8589155093517742392}
   pageSize: 6
 --- !u!1 &5927210687203723966
 GameObject:
@@ -474,13 +475,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3897633372312571368, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897633372312571368, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897633372312571368, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897633372312571368, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4023184369005313497, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
       propertyPath: m_Name
       value: Command
       objectReference: {fileID: 0}
     - target: {fileID: 5109266671509187250, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
       propertyPath: m_fontSize
-      value: 30.55
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb122c2affe4cf4cb2819c626182a7d, type: 3}
@@ -958,6 +975,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
+--- !u!1 &8589155093517742392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4203167667656503912, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
+  m_PrefabInstance: {fileID: 5577261417604449104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7269920049483300276 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2991965141798436580, guid: c08b85564ffb5d84bb367edb44ff18c2, type: 3}
