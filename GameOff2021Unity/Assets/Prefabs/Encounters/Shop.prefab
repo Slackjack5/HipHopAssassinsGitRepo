@@ -59,5 +59,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6055447119546663991, guid: 38dcf0fce7c70eb44b158771fbd37290, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 38dcf0fce7c70eb44b158771fbd37290, type: 3}

@@ -66,6 +66,11 @@ public class MenuManager : MonoBehaviour
         background.gameObject.SetActive(true);
         OpenTopMenu();
         break;
+      case CombatManager.State.Lose:
+      case CombatManager.State.Win:
+        background.gameObject.SetActive(false);
+        HideAllSelectables();
+        break;
       default:
         fill.gameObject.SetActive(false);
         rhythmFill.SetActive(true);

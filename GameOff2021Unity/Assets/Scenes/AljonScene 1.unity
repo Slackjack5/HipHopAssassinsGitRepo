@@ -831,6 +831,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d9410d332a6f44184ed9937ee5b502, type: 3}
+--- !u!114 &389403649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6671141978461848270, guid: 84d9410d332a6f44184ed9937ee5b502, type: 3}
+  m_PrefabInstance: {fileID: 389403648}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500311f2d570f4c4980a13f69751abd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &396663598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3698,6 +3709,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EncounterManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: shop
+      value: 
+      objectReference: {fileID: 389403649}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: combatManager
+      value: 
+      objectReference: {fileID: 282201246}
     - target: {fileID: 2686011641875503661, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
       propertyPath: m_RootOrder
       value: 14
