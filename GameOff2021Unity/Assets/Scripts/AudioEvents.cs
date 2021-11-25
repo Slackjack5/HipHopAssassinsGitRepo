@@ -28,7 +28,7 @@ public class AudioEvents : MonoBehaviour
   public int currentBar = GlobalVariables.currentBar;
   public int currentBeat = GlobalVariables.currentBeat;
   public int currentGrid = GlobalVariables.currentGrid;
-  public bool gameStarted = GlobalVariables.fightStarted;
+  public bool gameStarted = GlobalVariables.songStarted;
 
   private static AkSegmentInfo currentSegment;
   private static int currentBarStartTime; // The time, in milliseconds, that the current bar started at
@@ -56,7 +56,7 @@ public class AudioEvents : MonoBehaviour
       (uint) (AkCallbackType.AK_MusicSyncAll | AkCallbackType.AK_EnableGetMusicPlayPosition),
       MusicCallbackFunction);
     currentSegment = new AkSegmentInfo();
-    GlobalVariables.fightStarted = false;
+    GlobalVariables.songStarted = false;
   }
 
   private void Update()
@@ -89,10 +89,10 @@ public class AudioEvents : MonoBehaviour
         break;
       case AkCallbackType.AK_MusicSyncBar:
         //I want to make sure that the secondsPerBeat is defined on our first measure.
-        if (GlobalVariables.fightStarted == false)
+        if (GlobalVariables.songStarted == false)
         {
           // If the game hasn't started yet, start it on beat 1
-          GlobalVariables.fightStarted = true;
+          GlobalVariables.songStarted = true;
         }
 
         secondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
@@ -163,5 +163,5 @@ public static class GlobalVariables
   public static int currentBar;
   public static int currentBeat;
   public static int currentGrid;
-  public static bool fightStarted;
+  public static bool songStarted;
 }

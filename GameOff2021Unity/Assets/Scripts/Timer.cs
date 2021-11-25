@@ -75,7 +75,7 @@ public class Timer : MonoBehaviour
     }
   }
 
-  public static void ResetState()
+  public static void Deactivate()
   {
     currentState = State.Inactive;
   }

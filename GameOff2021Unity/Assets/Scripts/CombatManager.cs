@@ -167,8 +167,6 @@ public class CombatManager : MonoBehaviour
       combatant.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(combatant));
     }
 
-    Timer.ResetState();
-
     encounter.GetComponent<CombatantsMovement>().onComplete.AddListener(StartFight);
 
     ChangeState(State.PreStart);

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
@@ -55,7 +54,6 @@ public class EncounterManager : MonoBehaviour
     }
 
     currentEncounter = Instantiate(encounters[currentEncounterIndex]);
-    combatManager.Reset();
     combatManager.Begin(currentEncounter);
 
     currentState = State.InEncounter;
@@ -69,13 +67,15 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
-    currentState = State.PreEncounter;
-
     if (isWin)
     {
       currentGold += encounters[currentEncounterIndex].Gold;
       currentEncounterIndex++;
     }
+
+    combatManager.Reset();
+    Timer.Deactivate();
+    currentState = State.PreEncounter;
   }
 
   private void OnCombatStateChange(CombatManager.State state)
