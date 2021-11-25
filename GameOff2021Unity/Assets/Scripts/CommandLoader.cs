@@ -12,6 +12,8 @@ public class CommandLoader : MonoBehaviour
   [SerializeField] private GameObject commandPanel;
   [SerializeField] private TextMeshProUGUI pageLabel;
   [SerializeField] private GameObject backCommand;
+  [SerializeField] private Color priceColor;
+  [SerializeField] private Color staminaColor;
   [SerializeField] private int pageSize = 6;
 
   public readonly UnityEvent<Command> onSubmitCommand = new UnityEvent<Command>();
@@ -89,14 +91,30 @@ public class CommandLoader : MonoBehaviour
       Command command = commands[index];
       commandObject.GetComponentInChildren<Button>().onClick.AddListener(() => SubmitCommand(command));
 
-      var textComponent = commandObject.GetComponentInChildren<TextMeshProUGUI>();
-      textComponent.text = command switch
+      TextMeshProUGUI[] textComponents = commandObject.GetComponentsInChildren<TextMeshProUGUI>();
+
+      TextMeshProUGUI commandName = textComponents[0];
+      commandName.text = command.name;
+
+      TextMeshProUGUI number = textComponents[1];
+      switch (command)
       {
-        Consumable consumable when _isShop => $"{consumable.name} ${consumable.cost}",
-        Consumable consumable => $"{consumable.name} x{consumable.AmountOwned}",
-        Macro macro => $"{macro.name} {macro.cost}",
-        _ => command.name
-      };
+        case Consumable consumable when _isShop:
+          number.text = $"${consumable.cost}";
+          number.color = priceColor;
+          break;
+        case Consumable consumable:
+          number.text = $"x{consumable.AmountOwned}";
+          number.color = Color.white;
+          break;
+        case Macro macro:
+          number.text = $"{macro.cost}";
+          number.color = staminaColor;
+          break;
+        default:
+          number.text = "";
+          break;
+      }
     }
   }
 
