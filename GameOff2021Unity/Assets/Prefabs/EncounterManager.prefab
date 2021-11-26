@@ -48,5 +48,6 @@ MonoBehaviour:
   - {fileID: 9210066921081904185, guid: dfbb52227032612458d5b41c8b650d65, type: 3}
   - {fileID: 5173187836029368252, guid: 2e15ef181536f894fb120418ef89be9e, type: 3}
   - {fileID: 9210066921081904185, guid: a367da854179f884c99649431b183056, type: 3}
+  - {fileID: 9210066921081904185, guid: 99ab8903366d3b245a0b4ae615361c4b, type: 3}
   combatManager: {fileID: 0}
   shop: {fileID: 0}

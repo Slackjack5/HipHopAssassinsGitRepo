@@ -19,14 +19,14 @@
     <Macro>
         <id>3</id>
         <name>Reboot</name>
-        <description>Resurrect the target to half health.</description>
+        <description>Resurrects the target to half health.</description>
         <patternId>3</patternId>
         <cost>40</cost>
     </Macro>
     <Macro>
         <id>4</id>
         <name>Debug</name>
-        <description>Deal burst damage to a target.</description>
+        <description>Deals burst damage to a target.</description>
         <power>20</power>
         <patternId>3</patternId>
         <cost>6</cost>
@@ -34,7 +34,7 @@
     <Macro>
         <id>5</id>
         <name>Mass Debug</name>
-        <description>Deal burst damage to all enemies.</description>
+        <description>Deals burst damage to all enemies.</description>
         <power>20</power>
         <patternId>3</patternId>
         <cost>16</cost>
