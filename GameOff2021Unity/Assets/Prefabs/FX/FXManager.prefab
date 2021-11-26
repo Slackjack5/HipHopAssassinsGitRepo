@@ -45,4 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackHit: {fileID: 940433965074736908, guid: 5b7063dea040dc84f8ca76ea88ca6559, type: 3}
   MacroHit: {fileID: 940433965074736908, guid: d1d328a750fa80e43aa84730132a5626, type: 3}
+  MacroPulse: {fileID: 940433965074736908, guid: b3ed55b153ccc9840975d051c2b182b7, type: 3}
+  BuffOffense: {fileID: 1221544090074648248, guid: 363b2f7b9c6c38d44b7383ab401d3f5d, type: 3}
   AttackType: 0

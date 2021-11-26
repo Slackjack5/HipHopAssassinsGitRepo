@@ -7,6 +7,8 @@ public class FXManager : MonoBehaviour
   //FX
   [SerializeField] private GameObject AttackHit;
   [SerializeField] private GameObject MacroHit;
+  [SerializeField] private GameObject MacroPulse;
+  [SerializeField] private GameObject BuffOffense;
   public int AttackType = 0;
 
 
@@ -30,5 +32,23 @@ public class FXManager : MonoBehaviour
       AkSoundEngine.PostEvent("Play_AttackHit", gameObject);
     }
     
+  }
+
+  public void SpawnMacroPulse(Combatant Caster, bool isMacro)
+  {
+    if (isMacro)
+    {
+      GameObject myEffect = Instantiate(MacroPulse, new Vector3(Caster.transform.position.x, Caster.transform.position.y, 0), Quaternion.identity);
+    }
+  }
+
+  public void SpawnBuffOffense(Combatant Target)
+  {
+      GameObject myEffect = Instantiate(BuffOffense, new Vector3(Target.transform.position.x, Target.transform.position.y, 0), Quaternion.identity);
+  }
+
+  public void SpawnBuffDefense(Combatant Target)
+  {
+    GameObject myEffect = Instantiate(MacroPulse, new Vector3(Target.transform.position.x, Target.transform.position.y, 0), Quaternion.identity);
   }
 }
