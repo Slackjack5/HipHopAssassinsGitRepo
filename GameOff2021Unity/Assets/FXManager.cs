@@ -34,12 +34,11 @@ public class FXManager : MonoBehaviour
     
   }
 
-  public void SpawnMacroPulse(Combatant Caster, bool isMacro)
+  public void SpawnMacroPulse(Combatant Caster)
   {
-    if (isMacro)
-    {
-      GameObject myEffect = Instantiate(MacroPulse, new Vector3(Caster.transform.position.x, Caster.transform.position.y, 0), Quaternion.identity);
-    }
+    float randomSize = Random.Range(.5f, 1f);
+    GameObject myEffect = Instantiate(MacroPulse, new Vector3(Caster.transform.position.x, Caster.transform.position.y, 0), Quaternion.identity);
+    myEffect.transform.localScale = new Vector3(randomSize, randomSize, 0);
   }
 
   public void SpawnBuffOffense(Combatant Target)
