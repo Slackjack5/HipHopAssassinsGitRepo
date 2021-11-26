@@ -15,7 +15,7 @@ public class Attack : Command
     }
 
     actor.SetTarget(Target);
-    actor.DamageTarget(damageMultiplier, isLastHit);
+    actor.AttackTarget(damageMultiplier, isLastHit);
   }
 
   public void Execute(Combatant actor, float damageMultiplier, bool isLastHit)

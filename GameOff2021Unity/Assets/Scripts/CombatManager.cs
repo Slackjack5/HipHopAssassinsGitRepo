@@ -363,7 +363,7 @@ public class CombatManager : MonoBehaviour
           _ => 1f
         };
 
-        monster.DamageTarget(damageMultiplier, note.isLastOfCombatant);
+        monster.AttackTarget(damageMultiplier, note.isLastOfCombatant);
         break;
       }
       case Hero hero:

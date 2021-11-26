@@ -18,6 +18,9 @@ public abstract class Combatant : MonoBehaviour
   public readonly UnityEvent dead = new UnityEvent();
 
   protected State currentState;
+  protected float baseDefenseMultiplier;
+  protected float baseMacroDefenseMultiplier;
+
   private bool isInitialPositionSet;
   private Vector2 initialPosition;
 
@@ -39,8 +42,9 @@ public abstract class Combatant : MonoBehaviour
   private Combatant Target { get; set; }
   public Button TargetCursor => GetComponentInChildren<Button>();
   public float AttackMultiplier { get; private set; }
-  public float MacroMultiplier { get; private set; }
-  public float DefenseMultiplier { get; private set; }
+  public float MacroMultiplier { get; protected set; }
+  public float DefenseMultiplier { get; protected set; }
+  public float MacroDefenseMultiplier { get; protected set; }
 
   protected virtual void Awake()
   {
@@ -48,7 +52,12 @@ public abstract class Combatant : MonoBehaviour
     CurrentStamina = maxStamina;
     AttackMultiplier = 1;
     MacroMultiplier = 1;
-    DefenseMultiplier = 1;
+
+    baseDefenseMultiplier = 1;
+    DefenseMultiplier = baseDefenseMultiplier;
+
+    baseMacroDefenseMultiplier = 1;
+    MacroDefenseMultiplier = baseMacroDefenseMultiplier;
   }
 
   protected virtual void Start()
@@ -158,9 +167,9 @@ public abstract class Combatant : MonoBehaviour
       MacroMultiplier = 1;
     }
 
-    if (DefenseMultiplier < 1)
+    if (DefenseMultiplier < baseDefenseMultiplier)
     {
-      DefenseMultiplier = 1;
+      DefenseMultiplier = baseDefenseMultiplier;
     }
   }
 
@@ -176,9 +185,9 @@ public abstract class Combatant : MonoBehaviour
       MacroMultiplier = 1;
     }
 
-    if (DefenseMultiplier > 1)
+    if (DefenseMultiplier > baseDefenseMultiplier)
     {
-      DefenseMultiplier = 1;
+      DefenseMultiplier = baseDefenseMultiplier;
     }
   }
 
@@ -205,7 +214,7 @@ public abstract class Combatant : MonoBehaviour
     Target = combatant;
   }
 
-  public void DamageTarget(float damageMultiplier, bool isLastHit)
+  public void AttackTarget(float damageMultiplier, bool isLastHit)
   {
     if (currentState == State.Dead) return;
     if (Target == null)
@@ -225,8 +234,7 @@ public abstract class Combatant : MonoBehaviour
       ChangeState(State.Idle);
     }
 
-    Target.DecreaseHealth(
-      Mathf.RoundToInt(Attack * AttackMultiplier * (1 / Target.DefenseMultiplier) * damageMultiplier));
+    Target.TakeDamage(this, damageMultiplier, false);
 
     //Animations
     //Play Hurt Animation
@@ -234,6 +242,16 @@ public abstract class Combatant : MonoBehaviour
     {
       Target.GetComponent<Animator>().SetBool("Hurt", true);
     }
+  }
+
+  public void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
+  {
+    if (currentState == State.Dead) return;
+
+    float damage = isMacro
+      ? actor.Attack * actor.MacroMultiplier * (1 / MacroDefenseMultiplier) * damageMultiplier
+      : actor.Attack * actor.AttackMultiplier * (1 / DefenseMultiplier) * damageMultiplier;
+    DecreaseHealth(Mathf.RoundToInt(damage));
   }
 
   protected virtual void Die()
