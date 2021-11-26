@@ -240,11 +240,7 @@ public abstract class Combatant : MonoBehaviour
 
     //Animations
     //Play Hurt Animation
-    if (Target.GetComponent<Animator>() != null && damageMultiplier != 0)
-    {
-      Target.GetComponent<Animator>().SetBool("Hurt", true);
-      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(Target,this);
-    }
+
   }
 
   public void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
@@ -254,6 +250,12 @@ public abstract class Combatant : MonoBehaviour
     float damage = isMacro
       ? actor.Attack * actor.MacroMultiplier * (1 / MacroDefenseMultiplier) * damageMultiplier
       : actor.Attack * actor.AttackMultiplier * (1 / DefenseMultiplier) * damageMultiplier;
+
+    if (GetComponent<Animator>() != null && damageMultiplier != 0)
+    {
+      GetComponent<Animator>().SetBool("Hurt", true);
+      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this,isMacro);
+    }
     DecreaseHealth(Mathf.RoundToInt(damage));
   }
 

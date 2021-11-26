@@ -10,19 +10,21 @@ public class FXManager : MonoBehaviour
   public int AttackType = 0;
 
 
-  public void SpawnAttackHit(Combatant Target, Combatant Caster)
+  public void SpawnAttackHit(Combatant Target, bool isMacro)
   {
-    float randomSize = Random.Range(.5f, 1.5f);
+
     float randomPosition = Random.Range(-.5f, .5f);
-    Debug.Log(Caster is Hero);
-    if(Caster is Hero hero && hero.GetSubmittedCommand() is Macro)
+
+    if(isMacro)
     {
+      float randomSize = Random.Range(1f, 1.5f);
       GameObject myEffect = Instantiate(MacroHit, new Vector3(Target.transform.position.x + randomPosition, Target.transform.position.y + randomPosition, 0), Quaternion.identity);
       myEffect.transform.localScale = new Vector3(randomSize, randomSize, 0);
       
     }
     else
     {
+      float randomSize = Random.Range(.5f, 1.5f);
       GameObject myEffect = Instantiate(AttackHit, new Vector3(Target.transform.position.x + randomPosition, Target.transform.position.y + randomPosition, 0), Quaternion.identity);
       myEffect.transform.localScale = new Vector3(randomSize, randomSize, 0);
     }
