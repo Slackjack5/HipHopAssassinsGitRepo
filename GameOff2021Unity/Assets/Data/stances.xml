@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ArrayOfStance xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Stance>
+    <name>Defend</name>
+    <description>Raises guard to halve incoming damage.</description>
+    <id>1</id>
+  </Stance>
+  <Stance>
+    <name>Charge</name>
+    <description>Spends a turn to add time back to the timer.</description>
+    <id>2</id>
+    <power>10</power>
+  </Stance>
+</ArrayOfStance>

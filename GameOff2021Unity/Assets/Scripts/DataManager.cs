@@ -9,6 +9,7 @@ public class DataManager : MonoBehaviour
 
   public static Consumable[] AllConsumables { get; private set; }
   public static Macro[] AllMacros { get; private set; }
+  public static Stance[] AllStances { get; private set; }
 
   private void Awake()
   {
@@ -17,11 +18,13 @@ public class DataManager : MonoBehaviour
       LoadFakeData();
       Serialize(AllConsumables, "/Data/fake_consumables.xml");
       Serialize(AllMacros, "/Data/fake_macros.xml");
+      Serialize(AllStances, "/Data/fake_stances.xml");
     }
     else
     {
       AllConsumables = Deserialize<Consumable[]>("/Data/consumables.xml");
       AllMacros = Deserialize<Macro[]>("/Data/macros.xml");
+      AllStances = Deserialize<Stance[]>("/Data/stances.xml");
     }
   }
 
@@ -53,6 +56,19 @@ public class DataManager : MonoBehaviour
     }
 
     AllMacros = macros.ToArray();
+
+    var stances = new List<Stance>();
+    for (var i = 0; i < 10; i++)
+    {
+      stances.Add(new Stance
+      {
+        id = i,
+        name = $"Stance {i}",
+        description = $"This is stance {i}."
+      });
+    }
+
+    AllStances = stances.ToArray();
   }
 
   private static void Serialize(object toSerialize, string path)

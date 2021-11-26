@@ -33,6 +33,12 @@ public class Hero : Combatant
     submittedCommand = null;
   }
 
+  public void Defend()
+  {
+    DefenseMultiplier *= 2;
+    MacroDefenseMultiplier *= 2;
+  }
+
   public void Spotlight()
   {
     transform.DOMoveX(transform.position.x + spotlightDistance, travelTime);

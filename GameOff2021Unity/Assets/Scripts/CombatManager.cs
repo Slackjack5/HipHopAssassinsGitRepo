@@ -323,7 +323,15 @@ public class CombatManager : MonoBehaviour
         case Hero hero:
         {
           Command command = hero.GetSubmittedCommand();
-          combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
+          if (command is Stance stance)
+          {
+            stance.Execute(hero);
+          }
+          else
+          {
+            combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
+          }
+
           break;
         }
         case Monster monster:

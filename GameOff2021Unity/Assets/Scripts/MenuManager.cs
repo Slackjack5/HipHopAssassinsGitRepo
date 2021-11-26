@@ -137,24 +137,7 @@ public class MenuManager : MonoBehaviour
 
   public void OpenStanceMenu()
   {
-    OpenPaginatedMenu(new Command[]
-    {
-      new Macro
-      {
-        name = "Defend",
-        description = "Raise guard to halve incoming damage.",
-        patternId = 4
-      },
-      new Macro
-      {
-        name = "Charge",
-        description = "Spend a turn to add time back to the timer.",
-        patternId = 4
-      }
-    });
-
-    //Sound Effect
-    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
+    OpenPaginatedMenu(DataManager.AllStances);
   }
 
   public void SubmitAttack()

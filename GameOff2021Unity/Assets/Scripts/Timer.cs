@@ -85,4 +85,15 @@ public class Timer : MonoBehaviour
     pauseTime = time;
     currentState = State.Paused;
   }
+
+  public static void Add(int time)
+  {
+    if (currentState == State.Inactive || currentState == State.Expired) return;
+
+    currentTime += time;
+    if (currentTime > _timeLimit)
+    {
+      currentTime = _timeLimit;
+    }
+  }
 }
