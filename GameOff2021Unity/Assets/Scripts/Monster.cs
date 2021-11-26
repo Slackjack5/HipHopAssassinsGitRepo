@@ -20,8 +20,8 @@ public class Monster : Combatant
 
     if (isMacroResistant)
     {
-      baseMacroDefenseMultiplier = 0.5f;
-      MacroDefenseMultiplier = 0.5f;
+      baseMacroDefenseMultiplier = 2;
+      MacroDefenseMultiplier = 2;
     }
   }
 
