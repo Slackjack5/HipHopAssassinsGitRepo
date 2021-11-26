@@ -5,8 +5,11 @@ public class Hero : Combatant
 {
   [SerializeField] private int heroId;
   [SerializeField] private float spotlightDistance;
+  [SerializeField] private int attackPatternId;
 
+  public int AttackPatternId => attackPatternId;
   public int HeroId => heroId;
+
   private Command submittedCommand;
 
   public void SubmitCommand(Command command)

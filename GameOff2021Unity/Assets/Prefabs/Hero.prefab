@@ -108,6 +108,7 @@ MonoBehaviour:
   travelTime: 0.3
   heroId: 0
   spotlightDistance: 2
+  attackPatternId: 1
 --- !u!95 &51303484486287734
 Animator:
   serializedVersion: 3

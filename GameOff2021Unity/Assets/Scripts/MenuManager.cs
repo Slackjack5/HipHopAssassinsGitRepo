@@ -129,12 +129,21 @@ public class MenuManager : MonoBehaviour
 
   public void SubmitAttack()
   {
+    int patternId = CombatManager.CurrentState switch
+    {
+      CombatManager.State.HeroOne => CombatManager.Heroes[0].AttackPatternId,
+      CombatManager.State.HeroTwo => CombatManager.Heroes[1].AttackPatternId,
+      CombatManager.State.HeroThree => CombatManager.Heroes[2].AttackPatternId,
+      _ => 0
+    };
+
     pendingCommand = new Attack
     {
       name = "Attack",
       description = "Attack the enemy.",
-      patternId = 1
+      patternId = patternId
     };
+
     OpenTargetSelector();
   }
 
