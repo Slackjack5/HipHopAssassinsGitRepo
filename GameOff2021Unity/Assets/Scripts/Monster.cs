@@ -6,6 +6,12 @@ public class Monster : Combatant
 
   public int PatternId => patternId;
 
+  protected override void Die()
+  {
+    base.Die();
+
+    GetComponent<SpriteRenderer>().enabled = false;
+  }
 
   public void endHitAnimation()
   {

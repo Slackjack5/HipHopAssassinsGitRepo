@@ -236,7 +236,7 @@ public abstract class Combatant : MonoBehaviour
     }
   }
 
-  protected void Die()
+  protected virtual void Die()
   {
     CurrentHealth = 0;
     ChangeState(State.Dead);

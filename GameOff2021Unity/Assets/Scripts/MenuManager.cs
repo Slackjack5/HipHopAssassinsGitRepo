@@ -121,7 +121,7 @@ public class MenuManager : MonoBehaviour
       new Macro
       {
         name = "Charge",
-        description = "Spend turn to lengthen the time.",
+        description = "Spend a turn to add time back to the timer.",
         patternId = 4
       }
     });
@@ -197,7 +197,7 @@ public class MenuManager : MonoBehaviour
     HideMenu();
 
     isSelectingTarget = true;
-    foreach (Combatant combatant in CombatManager.Combatants)
+    foreach (Combatant combatant in CombatManager.Combatants.Where(combatant => !(combatant is Monster {IsDead: true})))
     {
       combatant.TargetCursor.interactable = true;
     }
