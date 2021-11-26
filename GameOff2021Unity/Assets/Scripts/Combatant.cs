@@ -113,19 +113,37 @@ public abstract class Combatant : MonoBehaviour
     CurrentHealth = MaxHealth / 2;
   }
 
-  public void SetAttackMultiplier(float value)
+  public void BuffAttack()
   {
-    AttackMultiplier *= value;
+    AttackMultiplier *= 2;
+    if (AttackMultiplier >= 4)
+    {
+      AttackMultiplier = 4;
+    }
   }
 
-  public void SetMacroMultiplier(float value)
+  public void BuffMacro()
   {
-    MacroMultiplier *= value;
+    MacroMultiplier *= 2;
+    if (MacroMultiplier >= 4)
+    {
+      MacroMultiplier = 4;
+    }
   }
 
-  public void SetDefenseMultiplier(float value)
+  public void BuffDefense()
   {
-    DefenseMultiplier *= value;
+    DefenseMultiplier *= 2;
+    if (DefenseMultiplier >= 4)
+    {
+      DefenseMultiplier = 4;
+    }
+  }
+
+  public void Surge()
+  {
+    AttackMultiplier *= 2;
+    MacroMultiplier *= 2;
   }
 
   public void ResetDebuffMultipliers()
@@ -212,8 +230,10 @@ public abstract class Combatant : MonoBehaviour
 
     //Animations
     //Play Hurt Animation
-    if (Target.GetComponent<Animator>() != null && damageMultiplier!=0){ Target.GetComponent<Animator>().SetBool("Hurt", true); }
-    
+    if (Target.GetComponent<Animator>() != null && damageMultiplier != 0)
+    {
+      Target.GetComponent<Animator>().SetBool("Hurt", true);
+    }
   }
 
   protected void Die()

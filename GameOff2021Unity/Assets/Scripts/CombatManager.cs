@@ -185,6 +185,11 @@ public class CombatManager : MonoBehaviour
 
   public void SubmitCommand(Command command)
   {
+    if (command is Consumable consumable)
+    {
+      consumable.DecrementAmountOwned();
+    }
+
     switch (CurrentState)
     {
       case State.HeroOne:
@@ -373,7 +378,7 @@ public class CombatManager : MonoBehaviour
             attack.Execute(hero, effectMultiplier, note.isLastOfCombatant);
             break;
           case Consumable consumable:
-            consumable.Execute(hero);
+            consumable.Execute(hero, effectMultiplier, note.isLastOfCombatant);
             break;
         }
 

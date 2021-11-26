@@ -16,11 +16,11 @@ public class EncounterManager : MonoBehaviour
   private State currentState;
   private Encounter currentEncounter;
   private int currentEncounterIndex;
-  private int currentGold;
+  private int currentGold = 12;
 
-  private static readonly List<Consumable> consumablesOwned = new List<Consumable>();
+  private static readonly HashSet<Consumable> consumablesOwned = new HashSet<Consumable>();
 
-  public static List<Consumable> ConsumablesOwned => consumablesOwned;
+  public static IEnumerable<Consumable> ConsumablesOwned => consumablesOwned;
 
   private void Awake()
   {
@@ -114,7 +114,13 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
-    consumablesOwned.Add(consumable);
+    if (!consumablesOwned.Contains(consumable))
+    {
+      consumablesOwned.Add(consumable);
+    }
+
+    consumable.IncrementAmountOwned();
+
     currentGold -= consumable.cost;
   }
 }

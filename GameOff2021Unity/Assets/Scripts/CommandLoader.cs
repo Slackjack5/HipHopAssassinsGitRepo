@@ -57,6 +57,8 @@ public class CommandLoader : MonoBehaviour
       return;
     }
 
+    GameObject firstCommand = null;
+
     for (var i = 0; i < pageSize; i++)
     {
       // If currentPage is 0, we want to fetch items 0 to 5.
@@ -64,11 +66,15 @@ public class CommandLoader : MonoBehaviour
       int index = i + pageSize * (currentPage - 1);
       if (index >= commands.Length) continue;
 
-      GameObject commandObject = Instantiate(commandPrefab, commandPanel.transform);
+      Command command = commands[index];
 
-      if (i == 0)
+      // Don't create a command for a consumable that the player does not currently have.
+      if (!_isShop && command is Consumable {AmountOwned: 0}) continue;
+
+      GameObject commandObject = Instantiate(commandPrefab, commandPanel.transform);
+      if (firstCommand == null)
       {
-        SelectCommand(commandObject);
+        firstCommand = commandObject;
       }
 
       // When i is even, the command appears in the left column.
@@ -88,7 +94,6 @@ public class CommandLoader : MonoBehaviour
         }
       }
 
-      Command command = commands[index];
       commandObject.GetComponentInChildren<Button>().onClick.AddListener(() => SubmitCommand(command));
 
       TextMeshProUGUI[] textComponents = commandObject.GetComponentsInChildren<TextMeshProUGUI>();
@@ -116,6 +121,8 @@ public class CommandLoader : MonoBehaviour
           break;
       }
     }
+
+    SelectCommand(firstCommand);
   }
 
   private void LoadNextPage()
@@ -157,6 +164,12 @@ public class CommandLoader : MonoBehaviour
 
   private static void SelectCommand(GameObject commandObject)
   {
+    if (commandObject == null)
+    {
+      Debug.LogError("Failed to select command. commandObject is null!");
+      return;
+    }
+
     EventSystem.current.SetSelectedGameObject(commandObject.GetComponentInChildren<Button>().gameObject);
   }
 }

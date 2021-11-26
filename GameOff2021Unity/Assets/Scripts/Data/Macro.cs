@@ -16,7 +16,7 @@ public class Macro : Command
   {
     if (!isInitialized)
     {
-      Debug.LogError("Failed to execute macro for " + actor.Name + ". Macro fields are not initialized!");
+      Debug.LogError($"Failed to execute macro for {actor.Name}. Macro fields are not initialized!");
       return;
     }
 
@@ -62,7 +62,7 @@ public class Macro : Command
         {
           foreach (Hero hero in CombatManager.Heroes)
           {
-            hero.SetMacroMultiplier(power);
+            hero.BuffMacro();
           }
         }
 
@@ -73,7 +73,7 @@ public class Macro : Command
         {
           foreach (Hero hero in CombatManager.Heroes)
           {
-            hero.SetAttackMultiplier(power);
+            hero.BuffAttack();
           }
         }
 
@@ -84,7 +84,7 @@ public class Macro : Command
         {
           foreach (Hero hero in CombatManager.Heroes)
           {
-            hero.SetDefenseMultiplier(power);
+            hero.BuffDefense();
           }
         }
 
@@ -93,8 +93,7 @@ public class Macro : Command
         // Surge
         if (ShouldExecute())
         {
-          Target.SetAttackMultiplier(2);
-          Target.SetDefenseMultiplier(2);
+          Target.Surge();
         }
 
         break;
