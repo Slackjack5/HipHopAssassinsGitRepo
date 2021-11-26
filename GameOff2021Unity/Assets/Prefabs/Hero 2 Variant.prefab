@@ -25,15 +25,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: maxHealth
-      value: 70
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: maxStamina
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: combatantName
       value: Analysis
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[4]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[5]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[6]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543558911476794872, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
+      propertyPath: macroIds.Array.data[7]
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2543558911476794873, guid: 3143dc2c5a4dd014690dd586d389b97a, type: 3}
       propertyPath: m_RootOrder

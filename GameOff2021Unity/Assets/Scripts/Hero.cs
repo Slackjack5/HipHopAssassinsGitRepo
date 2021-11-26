@@ -6,9 +6,11 @@ public class Hero : Combatant
   [SerializeField] private int heroId;
   [SerializeField] private float spotlightDistance;
   [SerializeField] private int attackPatternId;
+  [SerializeField] private int[] macroIds;
 
   public int AttackPatternId => attackPatternId;
   public int HeroId => heroId;
+  public int[] MacroIds => macroIds;
 
   private Command submittedCommand;
 

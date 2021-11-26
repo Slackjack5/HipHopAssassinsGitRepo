@@ -9,6 +9,9 @@ public class RhythmPatterns : MonoBehaviour
 
     switch (patternId)
     {
+      case 0:
+        // DO NOT USE
+        break;
       case 1:
         // All attacks
         // Beats 1, 2, 4

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -96,7 +97,16 @@ public class MenuManager : MonoBehaviour
 
   public void OpenMacroMenu()
   {
-    OpenPaginatedMenu(DataManager.AllMacros.Select(macro => new Macro
+    int[] macroIds = CombatManager.CurrentState switch
+    {
+      CombatManager.State.HeroOne => CombatManager.Heroes[0].MacroIds,
+      CombatManager.State.HeroTwo => CombatManager.Heroes[1].MacroIds,
+      CombatManager.State.HeroThree => CombatManager.Heroes[2].MacroIds,
+      _ => new int[] { }
+    };
+
+    List<Command> macros = macroIds.Select(macroId => DataManager.AllMacros[macroId - 1])
+      .Select(macro => new Macro
       {
         name = macro.name,
         description = macro.description,
@@ -105,7 +115,10 @@ public class MenuManager : MonoBehaviour
         power = macro.power,
         cost = macro.cost
       })
-      .Cast<Command>().ToArray());
+      .Cast<Command>()
+      .ToList();
+
+    OpenPaginatedMenu(macros.ToArray());
   }
 
   public void OpenStanceMenu()
