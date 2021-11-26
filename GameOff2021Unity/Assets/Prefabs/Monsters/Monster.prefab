@@ -106,6 +106,7 @@ MonoBehaviour:
   distanceFromTarget: 1
   travelTime: 0.3
   patternId: 5
+  damageCanvas: {fileID: 1105219166697531451}
 --- !u!1001 &6150571464042424597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 955362698324436448f596729701c564, type: 3}
+--- !u!1 &1105219166697531451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6489052443942486318, guid: 955362698324436448f596729701c564, type: 3}
+  m_PrefabInstance: {fileID: 6150571464042424597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9190175405923259167 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3085308791343905290, guid: 955362698324436448f596729701c564, type: 3}
