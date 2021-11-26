@@ -145,6 +145,11 @@ public class CombatManager : MonoBehaviour
 
   public void Reset()
   {
+    foreach (Hero hero in Heroes)
+    {
+      hero.Reset();
+    }
+
     CurrentState = State.Inactive;
     isStarting = false;
     lastBar = 0;

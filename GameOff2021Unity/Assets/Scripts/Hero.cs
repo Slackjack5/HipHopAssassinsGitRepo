@@ -48,4 +48,12 @@ public class Hero : Combatant
   {
     gameObject.GetComponent<Animator>().SetBool("Hurt", false);
   }
+
+  public void Reset()
+  {
+    ResetCommand();
+    ResetPosition();
+    ResetBuffMultipliers();
+    ResetDebuffMultipliers();
+  }
 }

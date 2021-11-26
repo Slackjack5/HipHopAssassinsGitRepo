@@ -175,6 +175,11 @@ public abstract class Combatant : MonoBehaviour
     {
       DefenseMultiplier = baseDefenseMultiplier;
     }
+
+    if (MacroDefenseMultiplier < baseMacroDefenseMultiplier)
+    {
+      MacroDefenseMultiplier = baseMacroDefenseMultiplier;
+    }
   }
 
   public void ResetBuffMultipliers()
@@ -192,6 +197,11 @@ public abstract class Combatant : MonoBehaviour
     if (DefenseMultiplier > baseDefenseMultiplier)
     {
       DefenseMultiplier = baseDefenseMultiplier;
+    }
+
+    if (MacroDefenseMultiplier > baseMacroDefenseMultiplier)
+    {
+      MacroDefenseMultiplier = baseMacroDefenseMultiplier;
     }
   }
 
