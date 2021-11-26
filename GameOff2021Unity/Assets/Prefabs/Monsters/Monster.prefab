@@ -105,6 +105,7 @@ MonoBehaviour:
   damageSpawnTransform: {fileID: 5815836085045471016}
   distanceFromTarget: 1
   travelTime: 0.3
+  patternId: 5
 --- !u!1001 &6150571464042424597
 PrefabInstance:
   m_ObjectHideFlags: 0

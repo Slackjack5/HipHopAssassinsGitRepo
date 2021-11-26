@@ -318,15 +318,23 @@ public class CombatManager : MonoBehaviour
 
     foreach (Combatant combatant in Combatants.Where(combatant => !combatant.IsDead))
     {
-      if (combatant is Hero hero)
+      switch (combatant)
       {
-        Command command = hero.GetSubmittedCommand();
-        combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
-      }
-      else
-      {
-        // Combatant is a Monster.
-        combatantPatterns[combatant] = RhythmPatterns.Pattern(5);
+        case Hero hero:
+        {
+          Command command = hero.GetSubmittedCommand();
+          combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
+          break;
+        }
+        case Monster monster:
+        {
+          combatantPatterns[monster] = RhythmPatterns.Pattern(monster.PatternId);
+          break;
+        }
+        default:
+          Debug.LogError(
+            $"Could not generate pattern for combatant {combatant.Name}. It's neither a Hero nor Monster!");
+          break;
       }
     }
 
