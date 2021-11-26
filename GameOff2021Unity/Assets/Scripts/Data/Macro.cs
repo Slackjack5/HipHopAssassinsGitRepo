@@ -20,6 +20,8 @@ public class Macro : Command
       return;
     }
 
+    if (!ShouldExecute()) return;
+
     actor.DecreaseStamina(cost);
 
     switch (id)
@@ -38,10 +40,7 @@ public class Macro : Command
         break;
       case 3:
         // Reboot
-        if (ShouldExecute())
-        {
-          Target.Resurrect();
-        }
+        Target.Resurrect();
 
         break;
       case 4:
@@ -58,67 +57,46 @@ public class Macro : Command
         break;
       case 6:
         // Macro+
-        if (ShouldExecute())
+        foreach (Hero hero in CombatManager.Heroes)
         {
-          foreach (Hero hero in CombatManager.Heroes)
-          {
-            hero.BuffMacro();
-          }
+          hero.BuffMacro();
         }
 
         break;
       case 7:
         // Attack+
-        if (ShouldExecute())
+        foreach (Hero hero in CombatManager.Heroes)
         {
-          foreach (Hero hero in CombatManager.Heroes)
-          {
-            hero.BuffAttack();
-          }
+          hero.BuffAttack();
         }
 
         break;
       case 8:
         // Defense+
-        if (ShouldExecute())
+        foreach (Hero hero in CombatManager.Heroes)
         {
-          foreach (Hero hero in CombatManager.Heroes)
-          {
-            hero.BuffDefense();
-          }
+          hero.BuffDefense();
         }
 
         break;
       case 9:
         // Surge
-        if (ShouldExecute())
-        {
-          Target.Surge();
-        }
+        Target.Surge();
 
         break;
       case 10:
         // Remove Debuff
-        if (ShouldExecute())
-        {
-          Target.ResetDebuffMultipliers();
-        }
+        Target.ResetDebuffMultipliers();
 
         break;
       case 11:
         // Remove Buff
-        if (ShouldExecute())
-        {
-          Target.ResetBuffMultipliers();
-        }
+        Target.ResetBuffMultipliers();
 
         break;
       case 12:
         // Pause
-        if (ShouldExecute())
-        {
-          Timer.Pause(power);
-        }
+        Timer.Pause(power);
 
         break;
     }
