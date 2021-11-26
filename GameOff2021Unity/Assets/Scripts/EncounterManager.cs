@@ -20,7 +20,7 @@ public class EncounterManager : MonoBehaviour
 
   private static readonly HashSet<Consumable> consumablesOwned = new HashSet<Consumable>();
 
-  public static IEnumerable<Consumable> ConsumablesOwned => consumablesOwned;
+  public static IEnumerable<Command> ConsumablesOwned => consumablesOwned;
 
   private void Awake()
   {

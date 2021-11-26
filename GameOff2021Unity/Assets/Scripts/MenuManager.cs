@@ -32,6 +32,8 @@ public class MenuManager : MonoBehaviour
     HideMenu();
     backCommand.SetActive(false);
 
+    RegisterSubmitTargetControls(CombatManager.Heroes);
+
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
   }
 
@@ -40,7 +42,7 @@ public class MenuManager : MonoBehaviour
     switch (state)
     {
       case CombatManager.State.PreStart:
-        RegisterSubmitTargetControls();
+        RegisterSubmitTargetControls(CombatManager.Monsters);
         HideAllSelectables();
         break;
       case CombatManager.State.HeroOne:
@@ -178,9 +180,9 @@ public class MenuManager : MonoBehaviour
     OpenTargetSelector();
   }
 
-  private void RegisterSubmitTargetControls()
+  private void RegisterSubmitTargetControls(IEnumerable<Combatant> combatants)
   {
-    foreach (Combatant combatant in CombatManager.Combatants)
+    foreach (Combatant combatant in combatants)
     {
       combatant.TargetCursor.onClick.AddListener(() => SubmitTarget(combatant));
     }
