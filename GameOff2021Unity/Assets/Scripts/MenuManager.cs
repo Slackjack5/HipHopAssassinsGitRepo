@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
@@ -16,6 +18,7 @@ public class MenuManager : MonoBehaviour
   [SerializeField] private Sprite heroThreeFill;
   [SerializeField] private GameObject rhythmFill;
   [SerializeField] private GameObject backCommand;
+  [SerializeField] private GameObject descriptionPanel;
 
   private RectTransform background;
   private bool isSelectingTarget;
@@ -31,10 +34,33 @@ public class MenuManager : MonoBehaviour
 
     HideMenu();
     backCommand.SetActive(false);
+    descriptionPanel.SetActive(false);
 
     RegisterSubmitTargetControls(CombatManager.Heroes);
 
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
+  }
+
+  private void Update()
+  {
+    if (paginatedMenu.activeSelf)
+    {
+      descriptionPanel.SetActive(true);
+
+      var description = EventSystem.current.currentSelectedGameObject.GetComponent<Description>();
+      if (description == null)
+      {
+        descriptionPanel.SetActive(false);
+      }
+      else
+      {
+        descriptionPanel.GetComponentInChildren<TextMeshProUGUI>().text = description.text;
+      }
+    }
+    else
+    {
+      descriptionPanel.SetActive(false);
+    }
   }
 
   private void OnCombatStateChange(CombatManager.State state)
@@ -46,28 +72,13 @@ public class MenuManager : MonoBehaviour
         HideAllSelectables();
         break;
       case CombatManager.State.HeroOne:
-        fill.gameObject.SetActive(true);
-        rhythmFill.SetActive(false);
-
-        fill.sprite = heroOneFill;
-        background.gameObject.SetActive(true);
-        OpenTopMenu();
+        UpdateCommandMenu(heroOneFill);
         break;
       case CombatManager.State.HeroTwo:
-        fill.gameObject.SetActive(true);
-        rhythmFill.SetActive(false);
-
-        fill.sprite = heroTwoFill;
-        background.gameObject.SetActive(true);
-        OpenTopMenu();
+        UpdateCommandMenu(heroTwoFill);
         break;
       case CombatManager.State.HeroThree:
-        fill.gameObject.SetActive(true);
-        rhythmFill.SetActive(false);
-
-        fill.sprite = heroThreeFill;
-        background.gameObject.SetActive(true);
-        OpenTopMenu();
+        UpdateCommandMenu(heroThreeFill);
         break;
       case CombatManager.State.Lose:
       case CombatManager.State.Win:
@@ -173,6 +184,20 @@ public class MenuManager : MonoBehaviour
     {
       combatant.TargetCursor.onClick.AddListener(() => SubmitTarget(combatant));
     }
+  }
+
+  private void UpdateCommandMenu(Sprite heroFill)
+  {
+    background.gameObject.SetActive(true);
+    fill.gameObject.SetActive(true);
+    rhythmFill.SetActive(false);
+
+    fill.sprite = heroFill;
+
+    // Fill for the description panel should be the second image.
+    descriptionPanel.GetComponentsInChildren<Image>()[1].sprite = heroFill;
+
+    OpenTopMenu();
   }
 
   private void HideMenu()
