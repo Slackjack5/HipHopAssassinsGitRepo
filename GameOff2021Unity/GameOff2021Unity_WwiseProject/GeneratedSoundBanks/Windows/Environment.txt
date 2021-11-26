@@ -2,7 +2,9 @@ Event	ID	Name			Wwise Object Path	Notes
 	537679050	Play_Approach			\Default Work Unit\Play_Approach	
 	1491318392	Play_Cowbell			\Default Work Unit\Play_Cowbell	
 	1720406201	Play_MacroHit			\Default Work Unit\Play_MacroHit	
+	1883176764	Play_UIClose			\Default Work Unit\Play_UIClose	
 	2932040671	Play_Music			\Default Work Unit\Play_Music	
+	2933238184	Play_UIOpen			\Default Work Unit\Play_UIOpen	
 	3154146856	Play_EnemyDeath			\Default Work Unit\Play_EnemyDeath	
 	3703192648	Play_UISelect			\Default Work Unit\Play_UISelect	
 	3916729409	Play_AttackHit			\Default Work Unit\Play_AttackHit	
@@ -10,7 +12,9 @@ Event	ID	Name			Wwise Object Path	Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	109382999	SampleHipHopTrack100BPM	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Windows\SFX\SampleHipHopTrack100BPM_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\SampleHipHopTrack100BPM\SampleHipHopTrack100BPM		47110196
+	117930279	UIClose	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Windows\SFX\UIClose_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIClose		33592
 	158753998	EnemyDeath	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Windows\SFX\EnemyDeath_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\EnemyDeath		45350
+	201554557	UIOpen	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Windows\SFX\UIOpen_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UIOpen		33592
 	259699750	AttackHit1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Windows\SFX\Hit\AttackHit1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AttackHit\AttackHit1		12388
 	396899071	DebugCowbell	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Windows\SFX\RKU_BME3_Drums_Perc_Cowbell_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\DebugCowbell		20736
 	416583162	AttackHit2	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Windows\SFX\Hit\AttackHit2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AttackHit\AttackHit2		22208

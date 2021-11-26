@@ -91,6 +91,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_UIOpen" ID="{13FC4B79-607E-45AE-B001-D51766A6DB4E}">
+					<ChildrenList>
+						<Action Name="" ID="{ED2AB322-01A4-43A2-9468-6077EB474E52}" ShortID="920180090">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UIOpen" ID="{BBF7CB62-9B52-4DE7-88EE-60F8A3944C07}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_UIClose" ID="{33374D3A-C53F-4A1E-B9BC-5F9DC9C0B4F1}">
+					<ChildrenList>
+						<Action Name="" ID="{2D047FA6-BFE1-426E-99BA-D2DA3BBF8A9E}" ShortID="114893276">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UIClose" ID="{9C905C44-BBAE-4F87-8869-2500A8CB95D9}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

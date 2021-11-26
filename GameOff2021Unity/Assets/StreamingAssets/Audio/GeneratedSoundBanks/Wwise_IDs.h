@@ -19,7 +19,9 @@ namespace AK
         static const AkUniqueID PLAY_ENEMYDEATH = 3154146856U;
         static const AkUniqueID PLAY_MACROHIT = 1720406201U;
         static const AkUniqueID PLAY_MUSIC = 2932040671U;
+        static const AkUniqueID PLAY_UICLOSE = 1883176764U;
         static const AkUniqueID PLAY_UIMOVE = 4068532111U;
+        static const AkUniqueID PLAY_UIOPEN = 2933238184U;
         static const AkUniqueID PLAY_UISELECT = 3703192648U;
     } // namespace EVENTS
 

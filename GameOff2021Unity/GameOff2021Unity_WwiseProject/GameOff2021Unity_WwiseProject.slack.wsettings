@@ -3,8 +3,10 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{B8ECC702-16C2-433D-9116-56CB589ABD29}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\slack\Downloads\CodeBreakersAudio\New\Hit\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\slack\Downloads\CodeBreakersAudio\New\"/>
 				<Property Name="Event Action List\{06CF03DA-14E9-4EC4-8A51-D0CACBEEA102}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{13FC4B79-607E-45AE-B001-D51766A6DB4E}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{33374D3A-C53F-4A1E-B9BC-5F9DC9C0B4F1}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{370BF9C4-5832-43A5-91E5-9EF6C2C6157A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{765434EA-98AC-425B-A2C9-1EA70C4F12B3}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{8114F9D1-614A-4FC7-B4C0-6580729018D8}\x64_Expand States" Type="string" Value=""/>
@@ -32,7 +34,7 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value="LiTisDvguEiZR+Z+g6tLDybcct/rncpJkrkk2isWReA="/>
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="6IRNiHp3r02rIpSSgdCC8Q=="/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
-				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="zqn/gBtvAkyzjphX8pWskQEDI+L/////uNezjfhal02CaPxx3eQOHQEDI+L/////"/>
+				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="zqn/gBtvAkyzjphX8pWskQED0Bj/////uNezjfhal02CaPxx3eQOHQED0Bj/////"/>
 				<Property Name="Interactive Music\x64_{F36DA277-B605-4665-8D4C-A7AECEB1A07F} - SegmentEditorZoomInfo" Type="string" Value="Z99JKRCzI0Cv591YUFj8P7gasTL16xBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
@@ -53,7 +55,7 @@
 				<Property Name="ProjectExplorer\FirstVisible_9_1" Type="string" Value="{41093F77-829F-4D88-8601-E8B25F3D4781}"/>
 				<Property Name="ProjectExplorer\x64_Expanded_11_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_12_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_13_1" Type="string" Value="lObLhjl2mkmjKmd1hkEfgEgTDr6aAWVPtLRSKDlM3nQ="/>
+				<Property Name="ProjectExplorer\x64_Expanded_13_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_14_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_15_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_16_1" Type="string" Value=""/>
@@ -69,7 +71,7 @@
 				<Property Name="ProjectExplorer\x64_Expanded_4_1" Type="string" Value="ddtOdjhlTEmSTu6YGZH6UQ=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_5_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_7_1" Type="string" Value="zp6VB2ZByECy4SU3/U5zZg=="/>
+				<Property Name="ProjectExplorer\x64_Expanded_7_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_8_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_9_1" Type="string" Value=""/>
 				<Property Name="SoundBank Manager\x64_Expand States" Type="string" Value="zp6VB2ZByECy4SU3/U5zZg=="/>

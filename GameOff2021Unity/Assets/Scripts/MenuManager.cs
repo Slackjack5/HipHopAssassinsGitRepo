@@ -88,11 +88,19 @@ public class MenuManager : MonoBehaviour
     HideTargetSelector();
 
     SelectFirstCommand(topMenu);
+
+
+    //Sound Effect
+    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
   }
 
   public void OpenConsumableMenu()
   {
     OpenPaginatedMenu(EncounterManager.ConsumablesOwned.ToArray());
+
+
+    //Sound Effect
+    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
   }
 
   public void OpenMacroMenu()
@@ -119,6 +127,10 @@ public class MenuManager : MonoBehaviour
       .ToList();
 
     OpenPaginatedMenu(macros.ToArray());
+
+
+    //Sound Effect
+    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
   }
 
   public void OpenStanceMenu()
@@ -138,6 +150,9 @@ public class MenuManager : MonoBehaviour
         patternId = 4
       }
     });
+
+    //Sound Effect
+    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
   }
 
   public void SubmitAttack()
@@ -157,6 +172,9 @@ public class MenuManager : MonoBehaviour
       patternId = patternId
     };
 
+    //Sound Effect
+    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
+
     OpenTargetSelector();
   }
 
@@ -172,6 +190,7 @@ public class MenuManager : MonoBehaviour
   {
     topMenu.SetActive(false);
     paginatedMenu.SetActive(false);
+
   }
 
   private void HideAllSelectables()
@@ -189,6 +208,7 @@ public class MenuManager : MonoBehaviour
     }
 
     backCommand.SetActive(false);
+
   }
 
   private void OpenPaginatedMenu(Command[] commands)
@@ -203,6 +223,7 @@ public class MenuManager : MonoBehaviour
       pendingCommand = command;
       OpenTargetSelector();
     });
+
   }
 
   private void OpenTargetSelector()
@@ -230,6 +251,10 @@ public class MenuManager : MonoBehaviour
 
     pendingCommand.SetTarget(combatant);
     combatManager.SubmitCommand(pendingCommand);
+
+
+    //Sound Effect
+    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
   }
 
   private void SelectFirstCommand(GameObject menu)
@@ -241,6 +266,9 @@ public class MenuManager : MonoBehaviour
     }
 
     EventSystem.current.SetSelectedGameObject(menu.GetComponentInChildren<Button>().gameObject);
+
+    //Sound Effect
+    AkSoundEngine.PostEvent("Play_UIMove", gameObject);
   }
 
   private void SelectFirstTarget()

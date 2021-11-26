@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="54022363">
+		<SoundBank Id="1229948536" Language="SFX" Hash="525398504">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -72,11 +72,27 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="1883176764" Name="Play_UIClose" ObjectPath="\Events\Default Work Unit\Play_UIClose" DurationType="OneShot" DurationMin="0.380136" DurationMax="0.380136">
+					<IncludedMemoryFiles>
+						<File Id="117930279" Language="SFX">
+							<ShortName>UIClose.wav</ShortName>
+							<Path>SFX\UIClose_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="4068532111" Name="Play_UIMove" ObjectPath="\Events\Default Work Unit\Play_UIMove" DurationType="OneShot" DurationMin="0.125011" DurationMax="0.125011">
 					<IncludedMemoryFiles>
 						<File Id="846108435" Language="SFX">
 							<ShortName>GameOff2021SoundWorkshop.wav</ShortName>
 							<Path>SFX\GameOff2021SoundWorkshop_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2933238184" Name="Play_UIOpen" ObjectPath="\Events\Default Work Unit\Play_UIOpen" DurationType="OneShot" DurationMin="0.380136" DurationMax="0.380136">
+					<IncludedMemoryFiles>
+						<File Id="201554557" Language="SFX">
+							<ShortName>UIOpen.wav</ShortName>
+							<Path>SFX\UIOpen_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

@@ -270,6 +270,52 @@
 					</ChildrenList>
 					<ObjectLists/>
 				</RandomSequenceContainer>
+				<Sound Name="UIOpen" ID="{BBF7CB62-9B52-4DE7-88EE-60F8A3944C07}" ShortID="156827955">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="UIOpen" ID="{F5BBC4B8-42BE-4026-968A-F3ED56A97342}">
+							<Language>SFX</Language>
+							<AudioFile>UIOpen.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="201554557"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="UIOpen" ID="{F5BBC4B8-42BE-4026-968A-F3ED56A97342}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="UIClose" ID="{9C905C44-BBAE-4F87-8869-2500A8CB95D9}" ShortID="857022260">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="UIClose" ID="{810BB5A8-FFF3-480B-96AB-2EC5354F39AE}">
+							<Language>SFX</Language>
+							<AudioFile>UIClose.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="117930279"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ObjectLists/>
+					<ActiveSourceList>
+						<ActiveSource Name="UIClose" ID="{810BB5A8-FFF3-480B-96AB-2EC5354F39AE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
