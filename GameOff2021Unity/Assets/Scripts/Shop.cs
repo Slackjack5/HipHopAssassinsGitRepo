@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
   [SerializeField] private GameObject menu;
+  [SerializeField] private GameObject descriptionPanel;
 
   private readonly List<Consumable> consumables = new List<Consumable>();
 
@@ -16,6 +18,28 @@ public class Shop : MonoBehaviour
   private void Start()
   {
     consumables.AddRange(DataManager.AllConsumables);
+  }
+
+  private void Update()
+  {
+    if (menu.activeSelf)
+    {
+      descriptionPanel.SetActive(true);
+
+      var description = EventSystem.current.currentSelectedGameObject.GetComponent<Description>();
+      if (description == null)
+      {
+        descriptionPanel.SetActive(false);
+      }
+      else
+      {
+        descriptionPanel.GetComponentInChildren<TextMeshProUGUI>().text = description.text;
+      }
+    }
+    else
+    {
+      descriptionPanel.SetActive(false);
+    }
   }
 
   public void Open()

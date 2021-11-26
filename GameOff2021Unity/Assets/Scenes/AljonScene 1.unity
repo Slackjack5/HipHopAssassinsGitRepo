@@ -4035,6 +4035,18 @@ PrefabInstance:
       propertyPath: combatManager
       value: 
       objectReference: {fileID: 282201246}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: encounters.Array.data[0]
+      value: 
+      objectReference: {fileID: 5173187836029368252, guid: 2e15ef181536f894fb120418ef89be9e, type: 3}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: encounters.Array.data[1]
+      value: 
+      objectReference: {fileID: 1012283874525010048, guid: c2e7902a7b70c1a40b1e71cb2c9916aa, type: 3}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: encounters.Array.data[2]
+      value: 
+      objectReference: {fileID: 9210066921081904185, guid: dfbb52227032612458d5b41c8b650d65, type: 3}
     - target: {fileID: 2686011641875503661, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
       propertyPath: m_RootOrder
       value: 13
