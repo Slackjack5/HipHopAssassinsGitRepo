@@ -3,6 +3,8 @@ public abstract class Command
   public string name;
   public string description;
   public int patternId;
+  public bool selectMonster;
+  public bool needsTarget;
 
   protected Combatant Target { get; private set; }
 

@@ -4,6 +4,7 @@
     <name>Macro 0</name>
     <description>This is macro 0.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>0</id>
     <power>0</power>
     <cost>0</cost>
@@ -12,6 +13,7 @@
     <name>Macro 1</name>
     <description>This is macro 1.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>1</id>
     <power>0</power>
     <cost>0</cost>
@@ -20,6 +22,7 @@
     <name>Macro 2</name>
     <description>This is macro 2.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>2</id>
     <power>0</power>
     <cost>0</cost>
@@ -28,6 +31,7 @@
     <name>Macro 3</name>
     <description>This is macro 3.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>3</id>
     <power>0</power>
     <cost>0</cost>
@@ -36,6 +40,7 @@
     <name>Macro 4</name>
     <description>This is macro 4.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>4</id>
     <power>0</power>
     <cost>0</cost>
@@ -44,6 +49,7 @@
     <name>Macro 5</name>
     <description>This is macro 5.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>5</id>
     <power>0</power>
     <cost>0</cost>
@@ -52,6 +58,7 @@
     <name>Macro 6</name>
     <description>This is macro 6.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>6</id>
     <power>0</power>
     <cost>0</cost>
@@ -60,6 +67,7 @@
     <name>Macro 7</name>
     <description>This is macro 7.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>7</id>
     <power>0</power>
     <cost>0</cost>
@@ -68,6 +76,7 @@
     <name>Macro 8</name>
     <description>This is macro 8.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>8</id>
     <power>0</power>
     <cost>0</cost>
@@ -76,6 +85,7 @@
     <name>Macro 9</name>
     <description>This is macro 9.</description>
     <patternId>3</patternId>
+    <needsTarget>false</needsTarget>
     <id>9</id>
     <power>0</power>
     <cost>0</cost>

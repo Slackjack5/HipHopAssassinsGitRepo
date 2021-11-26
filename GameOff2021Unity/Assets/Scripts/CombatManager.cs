@@ -44,6 +44,11 @@ public class CombatManager : MonoBehaviour
 
   public static List<Monster> Monsters { get; private set; }
 
+  public static Monster FirstLivingMonster
+  {
+    get { return Monsters.FirstOrDefault(monster => !monster.IsDead); }
+  }
+
   private void Awake()
   {
     Assert.IsTrue(beatmapManager, "beatmapManager is empty");
@@ -145,6 +150,11 @@ public class CombatManager : MonoBehaviour
 
   public void Reset()
   {
+    foreach (Hero hero in Heroes)
+    {
+      hero.Reset();
+    }
+
     CurrentState = State.Inactive;
     isStarting = false;
     lastBar = 0;
@@ -323,7 +333,15 @@ public class CombatManager : MonoBehaviour
         case Hero hero:
         {
           Command command = hero.GetSubmittedCommand();
-          combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
+          if (command is Stance stance)
+          {
+            stance.Execute(hero);
+          }
+          else
+          {
+            combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
+          }
+
           break;
         }
         case Monster monster:

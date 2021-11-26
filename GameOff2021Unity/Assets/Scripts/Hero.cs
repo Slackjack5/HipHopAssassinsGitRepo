@@ -33,6 +33,12 @@ public class Hero : Combatant
     submittedCommand = null;
   }
 
+  public void Defend()
+  {
+    DefenseMultiplier *= 2;
+    MacroDefenseMultiplier *= 2;
+  }
+
   public void Spotlight()
   {
     transform.DOMoveX(transform.position.x + spotlightDistance, travelTime);
@@ -41,5 +47,13 @@ public class Hero : Combatant
   public void EndHurtAnimation()
   {
     gameObject.GetComponent<Animator>().SetBool("Hurt", false);
+  }
+
+  public void Reset()
+  {
+    ResetCommand();
+    ResetPosition();
+    ResetBuffMultipliers();
+    ResetDebuffMultipliers();
   }
 }

@@ -15,8 +15,6 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected float distanceFromTarget;
   [SerializeField] protected float travelTime;
 
-
-
   public readonly UnityEvent dead = new UnityEvent();
 
   protected State currentState;
@@ -25,6 +23,7 @@ public abstract class Combatant : MonoBehaviour
 
   private bool isInitialPositionSet;
   private Vector2 initialPosition;
+  private static readonly int hurt = Animator.StringToHash("Hurt");
 
   protected enum State
   {
@@ -43,10 +42,10 @@ public abstract class Combatant : MonoBehaviour
   public bool IsDead => CurrentHealth <= 0;
   private Combatant Target { get; set; }
   public Button TargetCursor => GetComponentInChildren<Button>();
-  public float AttackMultiplier { get; private set; }
-  public float MacroMultiplier { get; protected set; }
-  public float DefenseMultiplier { get; protected set; }
-  public float MacroDefenseMultiplier { get; protected set; }
+  private float AttackMultiplier { get; set; }
+  private float MacroMultiplier { get; set; }
+  protected float DefenseMultiplier { get; set; }
+  protected float MacroDefenseMultiplier { get; set; }
 
   protected virtual void Awake()
   {
@@ -176,6 +175,11 @@ public abstract class Combatant : MonoBehaviour
     {
       DefenseMultiplier = baseDefenseMultiplier;
     }
+
+    if (MacroDefenseMultiplier < baseMacroDefenseMultiplier)
+    {
+      MacroDefenseMultiplier = baseMacroDefenseMultiplier;
+    }
   }
 
   public void ResetBuffMultipliers()
@@ -193,6 +197,11 @@ public abstract class Combatant : MonoBehaviour
     if (DefenseMultiplier > baseDefenseMultiplier)
     {
       DefenseMultiplier = baseDefenseMultiplier;
+    }
+
+    if (MacroDefenseMultiplier > baseMacroDefenseMultiplier)
+    {
+      MacroDefenseMultiplier = baseMacroDefenseMultiplier;
     }
   }
 
@@ -240,10 +249,6 @@ public abstract class Combatant : MonoBehaviour
     }
 
     Target.TakeDamage(this, damageMultiplier, false);
-
-    //Animations
-    //Play Hurt Animation
-
   }
 
   public void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
@@ -256,10 +261,11 @@ public abstract class Combatant : MonoBehaviour
 
     if (GetComponent<Animator>() != null && damageMultiplier != 0)
     {
-      GetComponent<Animator>().SetBool("Hurt", true);
-      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this,isMacro);
+      GetComponent<Animator>().SetBool(hurt, true);
+      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this, isMacro);
       GameObject.Find("FXManager").GetComponent<FXManager>().SpawnMacroPulse(actor, isMacro);
     }
+
     DecreaseHealth(Mathf.RoundToInt(damage));
   }
 

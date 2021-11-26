@@ -4,70 +4,90 @@
     <name>Consumable 0</name>
     <description>This is consumable 0.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>0</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 1</name>
     <description>This is consumable 1.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>1</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 2</name>
     <description>This is consumable 2.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>2</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 3</name>
     <description>This is consumable 3.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>3</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 4</name>
     <description>This is consumable 4.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>4</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 5</name>
     <description>This is consumable 5.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>5</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 6</name>
     <description>This is consumable 6.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>6</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 7</name>
     <description>This is consumable 7.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>7</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 8</name>
     <description>This is consumable 8.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>8</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
   <Consumable>
     <name>Consumable 9</name>
     <description>This is consumable 9.</description>
     <patternId>0</patternId>
+    <needsTarget>false</needsTarget>
     <id>9</id>
+    <power>0</power>
     <cost>0</cost>
   </Consumable>
 </ArrayOfConsumable>

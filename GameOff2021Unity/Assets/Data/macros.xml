@@ -7,6 +7,7 @@
         <power>12</power>
         <patternId>3</patternId>
         <cost>4</cost>
+        <needsTarget>true</needsTarget>
     </Macro>
     <Macro>
         <id>2</id>
@@ -22,6 +23,7 @@
         <description>Resurrects the target to half health.</description>
         <patternId>3</patternId>
         <cost>40</cost>
+        <needsTarget>true</needsTarget>
     </Macro>
     <Macro>
         <id>4</id>
@@ -30,6 +32,8 @@
         <power>20</power>
         <patternId>3</patternId>
         <cost>6</cost>
+        <selectMonster>true</selectMonster>
+        <needsTarget>true</needsTarget>
     </Macro>
     <Macro>
         <id>5</id>
@@ -38,6 +42,7 @@
         <power>20</power>
         <patternId>3</patternId>
         <cost>16</cost>
+        <selectMonster>true</selectMonster>
     </Macro>
     <Macro>
         <id>6</id>
@@ -46,6 +51,7 @@
         <power>2</power>
         <patternId>3</patternId>
         <cost>10</cost>
+        <needsTarget>false</needsTarget>
     </Macro>
     <Macro>
         <id>7</id>
@@ -54,6 +60,7 @@
         <power>2</power>
         <patternId>3</patternId>
         <cost>10</cost>
+        <needsTarget>false</needsTarget>
     </Macro>
     <Macro>
         <id>8</id>
@@ -69,6 +76,7 @@
         <description>Doubles the damage dealt by the target.</description>
         <patternId>3</patternId>
         <cost>36</cost>
+        <needsTarget>true</needsTarget>
     </Macro>
     <Macro>
         <id>10</id>
@@ -76,6 +84,7 @@
         <description>Removes debuffs from the target.</description>
         <patternId>3</patternId>
         <cost>8</cost>
+        <needsTarget>true</needsTarget>
     </Macro>
     <Macro>
         <id>11</id>
@@ -83,6 +92,8 @@
         <description>Removes buffs from the target.</description>
         <patternId>3</patternId>
         <cost>8</cost>
+        <selectMonster>true</selectMonster>
+        <needsTarget>true</needsTarget>
     </Macro>
     <Macro>
         <id>12</id>

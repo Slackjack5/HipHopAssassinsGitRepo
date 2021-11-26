@@ -32,6 +32,8 @@ public class MenuManager : MonoBehaviour
     HideMenu();
     backCommand.SetActive(false);
 
+    RegisterSubmitTargetControls(CombatManager.Heroes);
+
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
   }
 
@@ -40,7 +42,7 @@ public class MenuManager : MonoBehaviour
     switch (state)
     {
       case CombatManager.State.PreStart:
-        RegisterSubmitTargetControls();
+        RegisterSubmitTargetControls(CombatManager.Monsters);
         HideAllSelectables();
         break;
       case CombatManager.State.HeroOne:
@@ -119,6 +121,8 @@ public class MenuManager : MonoBehaviour
         name = macro.name,
         description = macro.description,
         patternId = macro.patternId,
+        selectMonster = macro.selectMonster,
+        needsTarget = macro.needsTarget,
         id = macro.id,
         power = macro.power,
         cost = macro.cost
@@ -135,24 +139,7 @@ public class MenuManager : MonoBehaviour
 
   public void OpenStanceMenu()
   {
-    OpenPaginatedMenu(new Command[]
-    {
-      new Macro
-      {
-        name = "Defend",
-        description = "Raise guard to halve incoming damage.",
-        patternId = 4
-      },
-      new Macro
-      {
-        name = "Charge",
-        description = "Spend a turn to add time back to the timer.",
-        patternId = 4
-      }
-    });
-
-    //Sound Effect
-    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
+    OpenPaginatedMenu(DataManager.AllStances);
   }
 
   public void SubmitAttack()
@@ -169,7 +156,9 @@ public class MenuManager : MonoBehaviour
     {
       name = "Attack",
       description = "Attack the enemy.",
-      patternId = patternId
+      patternId = patternId,
+      selectMonster = true,
+      needsTarget = true
     };
 
     //Sound Effect
@@ -178,9 +167,9 @@ public class MenuManager : MonoBehaviour
     OpenTargetSelector();
   }
 
-  private void RegisterSubmitTargetControls()
+  private void RegisterSubmitTargetControls(IEnumerable<Combatant> combatants)
   {
-    foreach (Combatant combatant in CombatManager.Combatants)
+    foreach (Combatant combatant in combatants)
     {
       combatant.TargetCursor.onClick.AddListener(() => SubmitTarget(combatant));
     }
@@ -190,7 +179,6 @@ public class MenuManager : MonoBehaviour
   {
     topMenu.SetActive(false);
     paginatedMenu.SetActive(false);
-
   }
 
   private void HideAllSelectables()
@@ -208,7 +196,6 @@ public class MenuManager : MonoBehaviour
     }
 
     backCommand.SetActive(false);
-
   }
 
   private void OpenPaginatedMenu(Command[] commands)
@@ -223,7 +210,6 @@ public class MenuManager : MonoBehaviour
       pendingCommand = command;
       OpenTargetSelector();
     });
-
   }
 
   private void OpenTargetSelector()
@@ -238,7 +224,14 @@ public class MenuManager : MonoBehaviour
 
     backCommand.SetActive(true);
 
-    SelectFirstTarget();
+    if (pendingCommand.selectMonster)
+    {
+      SelectFirstMonster();
+    }
+    else
+    {
+      SelectFirstHero();
+    }
   }
 
   private void SubmitTarget(Combatant combatant)
@@ -251,7 +244,6 @@ public class MenuManager : MonoBehaviour
 
     pendingCommand.SetTarget(combatant);
     combatManager.SubmitCommand(pendingCommand);
-
 
     //Sound Effect
     AkSoundEngine.PostEvent("Play_UISelect", gameObject);
@@ -271,14 +263,25 @@ public class MenuManager : MonoBehaviour
     AkSoundEngine.PostEvent("Play_UIMove", gameObject);
   }
 
-  private void SelectFirstTarget()
+  private void SelectFirstHero()
   {
     if (!isSelectingTarget)
     {
-      Debug.LogWarning("Failed selecting first target. We are still in the command menu!");
+      Debug.LogWarning("Failed selecting first hero. We are still in the command menu!");
       return;
     }
 
     EventSystem.current.SetSelectedGameObject(CombatManager.Heroes[0].TargetCursor.gameObject);
+  }
+
+  private void SelectFirstMonster()
+  {
+    if (!isSelectingTarget)
+    {
+      Debug.LogWarning("Failed selecting first monster. We are still in the command menu!");
+      return;
+    }
+
+    EventSystem.current.SetSelectedGameObject(CombatManager.FirstLivingMonster.TargetCursor.gameObject);
   }
 }
