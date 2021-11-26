@@ -3,7 +3,10 @@ guid: e0461090a7a107b4a8824f1d046113ad
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - damageNumberPrefab: {instanceID: 0}
+  - damageSpawnTransform: {instanceID: 0}
+  - AttackHit: {fileID: 940433965074736908, guid: 5b7063dea040dc84f8ca76ea88ca6559, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

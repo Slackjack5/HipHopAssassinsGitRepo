@@ -15,6 +15,8 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected float distanceFromTarget;
   [SerializeField] protected float travelTime;
 
+
+
   public readonly UnityEvent dead = new UnityEvent();
 
   protected State currentState;
@@ -241,6 +243,7 @@ public abstract class Combatant : MonoBehaviour
     if (Target.GetComponent<Animator>() != null && damageMultiplier != 0)
     {
       Target.GetComponent<Animator>().SetBool("Hurt", true);
+      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(Target,this);
     }
   }
 
