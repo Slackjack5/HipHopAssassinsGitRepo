@@ -13,8 +13,14 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_APPROACH = 537679050U;
+        static const AkUniqueID PLAY_ATTACKHIT = 3916729409U;
         static const AkUniqueID PLAY_COWBELL = 1491318392U;
+        static const AkUniqueID PLAY_ENEMYDEATH = 3154146856U;
+        static const AkUniqueID PLAY_MACROHIT = 1720406201U;
         static const AkUniqueID PLAY_MUSIC = 2932040671U;
+        static const AkUniqueID PLAY_UIMOVE = 4068532111U;
+        static const AkUniqueID PLAY_UISELECT = 3703192648U;
     } // namespace EVENTS
 
     namespace BANKS
@@ -26,6 +32,8 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
+        static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID SOUNDFX = 2810670744U;
     } // namespace BUSSES
 
     namespace AUDIO_DEVICES

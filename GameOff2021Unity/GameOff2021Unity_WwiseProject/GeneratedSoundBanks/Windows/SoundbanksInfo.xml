@@ -11,16 +11,56 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="359800002">
+		<SoundBank Id="1229948536" Language="SFX" Hash="54022363">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
+				<Event Id="537679050" Name="Play_Approach" ObjectPath="\Events\Default Work Unit\Play_Approach" DurationType="OneShot" DurationMin="0.216372" DurationMax="0.216372">
+					<IncludedMemoryFiles>
+						<File Id="1001131662" Language="SFX">
+							<ShortName>Approach.wav</ShortName>
+							<Path>SFX\Approach_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3916729409" Name="Play_AttackHit" ObjectPath="\Events\Default Work Unit\Play_AttackHit" DurationType="OneShot" DurationMin="0.139728" DurationMax="0.251066">
+					<IncludedMemoryFiles>
+						<File Id="259699750" Language="SFX">
+							<ShortName>Hit\AttackHit1.wav</ShortName>
+							<Path>SFX\Hit\AttackHit1_10C4C929.wem</Path>
+						</File>
+						<File Id="416583162" Language="SFX">
+							<ShortName>Hit\AttackHit2.wav</ShortName>
+							<Path>SFX\Hit\AttackHit2_10C4C929.wem</Path>
+						</File>
+						<File Id="1042021206" Language="SFX">
+							<ShortName>Hit\AttackHit3.wav</ShortName>
+							<Path>SFX\Hit\AttackHit3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1491318392" Name="Play_Cowbell" ObjectPath="\Events\Default Work Unit\Play_Cowbell" DurationType="OneShot" DurationMin="0.117188" DurationMax="0.117188">
 					<IncludedMemoryFiles>
 						<File Id="396899071" Language="SFX">
 							<ShortName>RKU_BME3_Drums_Perc_Cowbell_03.wav</ShortName>
 							<Path>SFX\RKU_BME3_Drums_Perc_Cowbell_03_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3154146856" Name="Play_EnemyDeath" ObjectPath="\Events\Default Work Unit\Play_EnemyDeath" DurationType="OneShot" DurationMin="0.513447" DurationMax="0.513447">
+					<IncludedMemoryFiles>
+						<File Id="158753998" Language="SFX">
+							<ShortName>EnemyDeath.Wav</ShortName>
+							<Path>SFX\EnemyDeath_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1720406201" Name="Play_MacroHit" ObjectPath="\Events\Default Work Unit\Play_MacroHit" DurationType="OneShot" DurationMin="0.492987" DurationMax="0.613636">
+					<IncludedMemoryFiles>
+						<File Id="455949700" Language="SFX">
+							<ShortName>MacroExplosion.wav</ShortName>
+							<Path>SFX\MacroExplosion_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -32,9 +72,25 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="4068532111" Name="Play_UIMove" ObjectPath="\Events\Default Work Unit\Play_UIMove" DurationType="OneShot" DurationMin="0.125011" DurationMax="0.125011">
+					<IncludedMemoryFiles>
+						<File Id="846108435" Language="SFX">
+							<ShortName>GameOff2021SoundWorkshop.wav</ShortName>
+							<Path>SFX\GameOff2021SoundWorkshop_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3703192648" Name="Play_UISelect" ObjectPath="\Events\Default Work Unit\Play_UISelect" DurationType="OneShot" DurationMin="0.115011" DurationMax="0.115011">
+					<IncludedMemoryFiles>
+						<File Id="625557575" Language="SFX">
+							<ShortName>UISelect.wav</ShortName>
+							<Path>SFX\UISelect_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2241664027">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>

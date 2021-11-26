@@ -30,6 +30,7 @@ public class Monster : Combatant
     base.Die();
 
     GetComponent<SpriteRenderer>().enabled = false;
+    AkSoundEngine.PostEvent("Play_EnemyDeath", gameObject);
   }
 
   public void endHitAnimation()

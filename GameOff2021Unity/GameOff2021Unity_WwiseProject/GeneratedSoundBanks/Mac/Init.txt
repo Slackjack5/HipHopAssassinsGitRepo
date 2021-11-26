@@ -1,5 +1,7 @@
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	2810670744	SoundFX			\Default Work Unit\Master Audio Bus\SoundFX	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	3991942870	Music			\Default Work Unit\Master Audio Bus\Music	
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			

@@ -25,6 +25,72 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_AttackHit" ID="{DF897258-435A-4BE4-B25F-C9FA3EED9CFE}">
+					<ChildrenList>
+						<Action Name="" ID="{C74FE345-8F6D-4A3B-8D31-7B4D9F49969C}" ShortID="521407584">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackHit" ID="{E2FC69D7-B6F6-4D91-B56B-AB6DAD6C4DF8}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MacroHit" ID="{8114F9D1-614A-4FC7-B4C0-6580729018D8}">
+					<ChildrenList>
+						<Action Name="" ID="{7F42A9CC-5051-452E-BDCE-DC6E926B2366}" ShortID="315025011">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MacroHit" ID="{3F8B78C3-1DF2-4DFA-90E7-30EE140F75EB}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Approach" ID="{90A5949A-93C4-4A97-AE6B-38645D75B286}">
+					<ChildrenList>
+						<Action Name="" ID="{19F23514-8489-44A5-A784-955087B6A4E7}" ShortID="47367610">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Approach" ID="{B7BA5BDA-FF60-490E-835F-023CA9D43345}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_EnemyDeath" ID="{765434EA-98AC-425B-A2C9-1EA70C4F12B3}">
+					<ChildrenList>
+						<Action Name="" ID="{65CD19F9-83BE-4670-8B32-683990B31F08}" ShortID="390421500">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="EnemyDeath" ID="{A5187ADD-368D-4956-B92B-B6933B4920C4}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_UIMove" ID="{CB6EFDAC-41BB-44F1-8ADF-EAB893B73BCD}">
+					<ChildrenList>
+						<Action Name="" ID="{277C80CD-1639-4A42-B6BF-77E18AEF008A}" ShortID="577552135">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UIMove" ID="{45B3B4A8-188D-4345-A255-6C2A1FF7C2C4}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_UISelect" ID="{370BF9C4-5832-43A5-91E5-9EF6C2C6157A}">
+					<ChildrenList>
+						<Action Name="" ID="{540AD365-14D3-4806-A63B-A4F193EE11D5}" ShortID="786277607">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UISelect" ID="{B0AA2506-09E8-41BE-8E7E-2FE0F718C9F6}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
