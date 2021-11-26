@@ -4,6 +4,7 @@
         <name>Bandages</name>
         <description>Restores a small amount of health.</description>
         <patternId>2</patternId>
+        <needsTarget>true</needsTarget>
         <id>1</id>
         <power>15</power>
         <cost>1</cost>
@@ -31,8 +32,9 @@
     </Consumable>
     <Consumable>
         <name>Reboot Disk</name>
-        <description>Resurrect the target to half health.</description>
+        <description>Resurrects the target to half health.</description>
         <patternId>2</patternId>
+        <needsTarget>true</needsTarget>
         <id>5</id>
         <cost>4</cost>
     </Consumable>
@@ -40,6 +42,7 @@
         <name>Concentrate Candy</name>
         <description>Doubles all damage dealt by the target.</description>
         <patternId>2</patternId>
+        <needsTarget>true</needsTarget>
         <id>6</id>
         <cost>4</cost>
     </Consumable>
@@ -47,6 +50,7 @@
         <name>Medkit</name>
         <description>Restores a large amount of health.</description>
         <patternId>2</patternId>
+        <needsTarget>true</needsTarget>
         <id>7</id>
         <power>40</power>
         <cost>3</cost>
@@ -55,6 +59,7 @@
         <name>Battery</name>
         <description>Restores a small amount of stamina.</description>
         <patternId>2</patternId>
+        <needsTarget>true</needsTarget>
         <id>8</id>
         <power>15</power>
         <cost>1</cost>
@@ -63,6 +68,7 @@
         <name>Energizer</name>
         <description>Restores a large amount of stamina.</description>
         <patternId>2</patternId>
+        <needsTarget>true</needsTarget>
         <id>9</id>
         <power>40</power>
         <cost>3</cost>

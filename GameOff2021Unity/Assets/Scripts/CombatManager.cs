@@ -44,6 +44,11 @@ public class CombatManager : MonoBehaviour
 
   public static List<Monster> Monsters { get; private set; }
 
+  public static Monster FirstLivingMonster
+  {
+    get { return Monsters.FirstOrDefault(monster => !monster.IsDead); }
+  }
+
   private void Awake()
   {
     Assert.IsTrue(beatmapManager, "beatmapManager is empty");
