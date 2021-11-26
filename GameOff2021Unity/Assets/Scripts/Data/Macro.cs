@@ -8,17 +8,19 @@ public class Macro : Command
   public int cost;
 
   private bool isInitialized;
-  private float effectMultiplier;
-  private bool isLastHit;
+  private float _effectMultiplier;
+  private bool _isLastHit;
   private bool hasMissed;
 
   public override void Execute(Combatant actor)
   {
     if (!isInitialized)
     {
-      Debug.LogError("Failed to execute macro for " + actor.Name + ". Macro fields are not initialized!");
+      Debug.LogError($"Failed to execute macro for {actor.Name}. Macro fields are not initialized!");
       return;
     }
+
+    if (!ShouldExecute()) return;
 
     actor.DecreaseStamina(cost);
 
@@ -26,100 +28,75 @@ public class Macro : Command
     {
       case 1:
         // Repair
-        Target.IncreaseHealth(Mathf.FloorToInt(power * effectMultiplier));
+        Target.IncreaseHealth(Mathf.FloorToInt(power * _effectMultiplier));
         break;
       case 2:
         // Mass repair
         foreach (Hero hero in CombatManager.Heroes)
         {
-          hero.IncreaseHealth(Mathf.FloorToInt(power * effectMultiplier));
+          hero.IncreaseHealth(Mathf.FloorToInt(power * _effectMultiplier));
         }
 
         break;
       case 3:
         // Reboot
-        if (ShouldExecute())
-        {
-          Target.Resurrect();
-        }
+        Target.Resurrect();
 
         break;
       case 4:
         // Debug
-        Target.DecreaseHealth(Mathf.FloorToInt(power * actor.MacroMultiplier * effectMultiplier));
+        Target.DecreaseHealth(Mathf.FloorToInt(power * actor.MacroMultiplier * _effectMultiplier));
         break;
       case 5:
         // Mass debug
         foreach (Monster monster in CombatManager.Monsters)
         {
-          monster.DecreaseHealth(Mathf.FloorToInt(power * actor.MacroMultiplier * effectMultiplier));
+          monster.DecreaseHealth(Mathf.FloorToInt(power * actor.MacroMultiplier * _effectMultiplier));
         }
 
         break;
       case 6:
         // Macro+
-        if (ShouldExecute())
+        foreach (Hero hero in CombatManager.Heroes)
         {
-          foreach (Hero hero in CombatManager.Heroes)
-          {
-            hero.SetMacroMultiplier(power);
-          }
+          hero.BuffMacro();
         }
 
         break;
       case 7:
         // Attack+
-        if (ShouldExecute())
+        foreach (Hero hero in CombatManager.Heroes)
         {
-          foreach (Hero hero in CombatManager.Heroes)
-          {
-            hero.SetAttackMultiplier(power);
-          }
+          hero.BuffAttack();
         }
 
         break;
       case 8:
         // Defense+
-        if (ShouldExecute())
+        foreach (Hero hero in CombatManager.Heroes)
         {
-          foreach (Hero hero in CombatManager.Heroes)
-          {
-            hero.SetDefenseMultiplier(power);
-          }
+          hero.BuffDefense();
         }
 
         break;
       case 9:
         // Surge
-        if (ShouldExecute())
-        {
-          Target.SetAttackMultiplier(2);
-          Target.SetDefenseMultiplier(2);
-        }
+        Target.Surge();
 
         break;
       case 10:
         // Remove Debuff
-        if (ShouldExecute())
-        {
-          Target.ResetDebuffMultipliers();
-        }
+        Target.ResetDebuffMultipliers();
 
         break;
       case 11:
         // Remove Buff
-        if (ShouldExecute())
-        {
-          Target.ResetBuffMultipliers();
-        }
+        Target.ResetBuffMultipliers();
 
         break;
       case 12:
         // Pause
-        if (ShouldExecute())
-        {
-          Timer.Pause(power);
-        }
+        Timer.Pause(power);
 
         break;
     }
@@ -127,8 +104,8 @@ public class Macro : Command
 
   public void Execute(Combatant actor, float effectMultiplier, bool isLastHit)
   {
-    this.effectMultiplier = effectMultiplier;
-    this.isLastHit = isLastHit;
+    _effectMultiplier = effectMultiplier;
+    _isLastHit = isLastHit;
     if (effectMultiplier == 0)
     {
       hasMissed = true;
@@ -141,6 +118,6 @@ public class Macro : Command
 
   private bool ShouldExecute()
   {
-    return isLastHit && !hasMissed;
+    return _isLastHit && !hasMissed;
   }
 }

@@ -51,7 +51,7 @@ public class BeatmapManager : MonoBehaviour
 
   private void Update()
   {
-    if (!GlobalVariables.fightStarted) return;
+    if (!GlobalVariables.songStarted) return;
 
     // AudioEvents.secondsPerBeat is not defined until the first measure starts.
     travelTime = 2 * AudioEvents.secondsPerBeat;
@@ -98,6 +98,11 @@ public class BeatmapManager : MonoBehaviour
 
   public void ForceFinish()
   {
+    foreach (Note note in notes)
+    {
+      Destroy(note.beatCircle);
+    }
+
     isGenerated = false;
     HideTrack();
   }

@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5670748628599544975, guid: 955362698324436448f596729701c564, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6489052443942486318, guid: 955362698324436448f596729701c564, type: 3}
       propertyPath: m_Name
       value: Damage Canvas

@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
   [SerializeField] private Encounter[] encounters;
   [SerializeField] private CombatManager combatManager;
+  [SerializeField] private Shop shop;
 
   private enum State
   {
@@ -12,12 +14,19 @@ public class EncounterManager : MonoBehaviour
   }
 
   private State currentState;
-  private int currentEncounter;
-  private int currentGold;
+  private Encounter currentEncounter;
+  private int currentEncounterIndex;
+  private int currentGold = 12;
+
+  private static readonly HashSet<Consumable> consumablesOwned = new HashSet<Consumable>();
+
+  public static IEnumerable<Consumable> ConsumablesOwned => consumablesOwned;
 
   private void Awake()
   {
     currentState = State.PreEncounter;
+
+    CombatManager.onStateChange.AddListener(OnCombatStateChange);
   }
 
   private void OnGUI()
@@ -38,14 +47,30 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
-    if (currentEncounter >= encounters.Length)
+    if (currentEncounterIndex >= encounters.Length)
     {
-      Debug.LogError($"Failed to start encounter. Index {currentEncounter} is out of bounds!");
+      Debug.LogError($"Failed to start encounter. Index {currentEncounterIndex} is out of bounds!");
       return;
     }
 
-    combatManager.Begin(Instantiate(encounters[currentEncounter]));
-    CombatManager.onStateChange.AddListener(OnCombatStateChange);
+    // Reset the current encounter.
+    if (currentEncounter != null)
+    {
+      Destroy(currentEncounter.gameObject);
+    }
+
+    currentEncounter = Instantiate(encounters[currentEncounterIndex]);
+
+    if (currentEncounter.IsShop)
+    {
+      shop.Open();
+      shop.onPurchase.AddListener(OnPurchase);
+      shop.onClose.AddListener(() => EndEncounter(true));
+    }
+    else
+    {
+      combatManager.Begin(currentEncounter);
+    }
 
     currentState = State.InEncounter;
   }
@@ -58,13 +83,15 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
-    currentState = State.PreEncounter;
-
     if (isWin)
     {
-      currentGold += encounters[currentEncounter].Gold;
-      currentEncounter++;
+      currentGold += encounters[currentEncounterIndex].Gold;
+      currentEncounterIndex++;
     }
+
+    combatManager.Reset();
+    Timer.Deactivate();
+    currentState = State.PreEncounter;
   }
 
   private void OnCombatStateChange(CombatManager.State state)
@@ -78,5 +105,22 @@ public class EncounterManager : MonoBehaviour
         EndEncounter(true);
         break;
     }
+  }
+
+  private void OnPurchase(Consumable consumable)
+  {
+    if (consumable.cost > currentGold)
+    {
+      return;
+    }
+
+    if (!consumablesOwned.Contains(consumable))
+    {
+      consumablesOwned.Add(consumable);
+    }
+
+    consumable.IncrementAmountOwned();
+
+    currentGold -= consumable.cost;
   }
 }

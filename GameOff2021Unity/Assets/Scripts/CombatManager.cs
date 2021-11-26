@@ -108,6 +108,7 @@ public class CombatManager : MonoBehaviour
 
         if (currentStartStateTime <= 0)
         {
+          Timer.Activate();
           ChangeState(State.HeroOne);
         }
 
@@ -142,8 +143,21 @@ public class CombatManager : MonoBehaviour
     }
   }
 
+  public void Reset()
+  {
+    CurrentState = State.Inactive;
+    isStarting = false;
+    lastBar = 0;
+  }
+
   public void Begin(Encounter encounter)
   {
+    if (CurrentState != State.Inactive)
+    {
+      Debug.LogError("Failed to start combat. Current state is not inactive (did you call Reset?)");
+      return;
+    }
+
     Monsters = encounter.GetComponentsInChildren<Monster>().ToList();
 
     SortByInitiative();
@@ -160,7 +174,6 @@ public class CombatManager : MonoBehaviour
 
   private void StartFight()
   {
-    Timer.Activate();
     ChangeState(State.Start);
   }
 
@@ -172,6 +185,11 @@ public class CombatManager : MonoBehaviour
 
   public void SubmitCommand(Command command)
   {
+    if (command is Consumable consumable)
+    {
+      consumable.DecrementAmountOwned();
+    }
+
     switch (CurrentState)
     {
       case State.HeroOne:
@@ -360,7 +378,7 @@ public class CombatManager : MonoBehaviour
             attack.Execute(hero, effectMultiplier, note.isLastOfCombatant);
             break;
           case Consumable consumable:
-            consumable.Execute(hero);
+            consumable.Execute(hero, effectMultiplier, note.isLastOfCombatant);
             break;
         }
 

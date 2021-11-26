@@ -1,13 +1,70 @@
 <?xml version="1.0"?>
 <ArrayOfConsumable xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Consumable>
-    <id>0</id>
-    <name>Health Potion</name>
-    <description>Restores 10 HP</description>
-  </Consumable>
-  <Consumable>
-    <id>1</id>
-    <name>Strength Potion</name>
-    <description>Raises Strength by 5</description>
-  </Consumable>
+    <Consumable>
+        <name>Bandages</name>
+        <description>Restores a small amount of health.</description>
+        <patternId>2</patternId>
+        <id>1</id>
+        <power>15</power>
+        <cost>1</cost>
+    </Consumable>
+    <Consumable>
+        <name>Attack Candy</name>
+        <description>Increases attack damage for all allies.</description>
+        <patternId>2</patternId>
+        <id>2</id>
+        <cost>2</cost>
+    </Consumable>
+    <Consumable>
+        <name>Defense Candy</name>
+        <description>Increases defense for all allies.</description>
+        <patternId>2</patternId>
+        <id>3</id>
+        <cost>2</cost>
+    </Consumable>
+    <Consumable>
+        <name>Macro Candy</name>
+        <description>Increases macro damage for all allies.</description>
+        <patternId>2</patternId>
+        <id>4</id>
+        <cost>2</cost>
+    </Consumable>
+    <Consumable>
+        <name>Reboot Disk</name>
+        <description>Resurrect the target to half health.</description>
+        <patternId>2</patternId>
+        <id>5</id>
+        <cost>4</cost>
+    </Consumable>
+    <Consumable>
+        <name>Concentrate Candy</name>
+        <description>Doubles all damage dealt by the target.</description>
+        <patternId>2</patternId>
+        <id>6</id>
+        <cost>4</cost>
+    </Consumable>
+    <Consumable>
+        <name>Medkit</name>
+        <description>Restores a large amount of health.</description>
+        <patternId>2</patternId>
+        <id>7</id>
+        <power>40</power>
+        <cost>3</cost>
+    </Consumable>
+    <Consumable>
+        <name>Battery</name>
+        <description>Restores a small amount of stamina.</description>
+        <patternId>2</patternId>
+        <id>8</id>
+        <power>15</power>
+        <cost>1</cost>
+    </Consumable>
+    <Consumable>
+        <name>Energizer</name>
+        <description>Restores a large amount of stamina.</description>
+        <patternId>2</patternId>
+        <id>9</id>
+        <power>40</power>
+        <cost>3</cost>
+    </Consumable>
 </ArrayOfConsumable>

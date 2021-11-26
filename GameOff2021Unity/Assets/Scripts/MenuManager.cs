@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -68,6 +66,11 @@ public class MenuManager : MonoBehaviour
         background.gameObject.SetActive(true);
         OpenTopMenu();
         break;
+      case CombatManager.State.Lose:
+      case CombatManager.State.Win:
+        background.gameObject.SetActive(false);
+        HideAllSelectables();
+        break;
       default:
         fill.gameObject.SetActive(false);
         rhythmFill.SetActive(true);
@@ -88,7 +91,7 @@ public class MenuManager : MonoBehaviour
 
   public void OpenConsumableMenu()
   {
-    OpenPaginatedMenu(DataManager.AllConsumables);
+    OpenPaginatedMenu(EncounterManager.ConsumablesOwned.ToArray());
   }
 
   public void OpenMacroMenu()
@@ -172,7 +175,7 @@ public class MenuManager : MonoBehaviour
     paginatedMenu.SetActive(true);
 
     var commandLoader = paginatedMenu.GetComponent<CommandLoader>();
-    commandLoader.LoadCommands(commands);
+    commandLoader.Load(commands);
     commandLoader.onSubmitCommand.AddListener(command =>
     {
       pendingCommand = command;

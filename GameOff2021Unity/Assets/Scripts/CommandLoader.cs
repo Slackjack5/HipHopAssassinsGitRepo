@@ -11,6 +11,9 @@ public class CommandLoader : MonoBehaviour
   [SerializeField] private GameObject commandPrefab;
   [SerializeField] private GameObject commandPanel;
   [SerializeField] private TextMeshProUGUI pageLabel;
+  [SerializeField] private GameObject backCommand;
+  [SerializeField] private Color priceColor;
+  [SerializeField] private Color staminaColor;
   [SerializeField] private int pageSize = 6;
 
   public readonly UnityEvent<Command> onSubmitCommand = new UnityEvent<Command>();
@@ -18,9 +21,11 @@ public class CommandLoader : MonoBehaviour
   private Command[] commands;
   private int currentPage = 1;
   private int totalPages;
+  private bool _isShop;
 
-  public void LoadCommands(Command[] commandsToLoad)
+  public void Load(Command[] commandsToLoad, bool isShop = false)
   {
+    _isShop = isShop;
     commands = commandsToLoad;
 
     currentPage = 1;
@@ -44,6 +49,15 @@ public class CommandLoader : MonoBehaviour
   private void DisplayCommands()
   {
     ClearDisplay();
+    SetPageLabel();
+
+    if (commands.Length == 0)
+    {
+      SelectCommand(backCommand);
+      return;
+    }
+
+    GameObject firstCommand = null;
 
     for (var i = 0; i < pageSize; i++)
     {
@@ -52,11 +66,15 @@ public class CommandLoader : MonoBehaviour
       int index = i + pageSize * (currentPage - 1);
       if (index >= commands.Length) continue;
 
-      GameObject commandObject = Instantiate(commandPrefab, commandPanel.transform);
+      Command command = commands[index];
 
-      if (i == 0)
+      // Don't create a command for a consumable that the player does not currently have.
+      if (!_isShop && command is Consumable {AmountOwned: 0}) continue;
+
+      GameObject commandObject = Instantiate(commandPrefab, commandPanel.transform);
+      if (firstCommand == null)
       {
-        SelectCommand(commandObject);
+        firstCommand = commandObject;
       }
 
       // When i is even, the command appears in the left column.
@@ -76,14 +94,35 @@ public class CommandLoader : MonoBehaviour
         }
       }
 
-      Command command = commands[index];
       commandObject.GetComponentInChildren<Button>().onClick.AddListener(() => SubmitCommand(command));
 
-      var textComponent = commandObject.GetComponentInChildren<TextMeshProUGUI>();
-      textComponent.text = command.name;
+      TextMeshProUGUI[] textComponents = commandObject.GetComponentsInChildren<TextMeshProUGUI>();
+
+      TextMeshProUGUI commandName = textComponents[0];
+      commandName.text = command.name;
+
+      TextMeshProUGUI number = textComponents[1];
+      switch (command)
+      {
+        case Consumable consumable when _isShop:
+          number.text = $"${consumable.cost}";
+          number.color = priceColor;
+          break;
+        case Consumable consumable:
+          number.text = $"x{consumable.AmountOwned}";
+          number.color = Color.white;
+          break;
+        case Macro macro:
+          number.text = $"{macro.cost}";
+          number.color = staminaColor;
+          break;
+        default:
+          number.text = "";
+          break;
+      }
     }
 
-    SetPageLabel();
+    SelectCommand(firstCommand);
   }
 
   private void LoadNextPage()
@@ -125,6 +164,12 @@ public class CommandLoader : MonoBehaviour
 
   private static void SelectCommand(GameObject commandObject)
   {
+    if (commandObject == null)
+    {
+      Debug.LogError("Failed to select command. commandObject is null!");
+      return;
+    }
+
     EventSystem.current.SetSelectedGameObject(commandObject.GetComponentInChildren<Button>().gameObject);
   }
 }
