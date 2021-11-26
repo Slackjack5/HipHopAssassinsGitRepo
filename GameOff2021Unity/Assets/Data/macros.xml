@@ -4,40 +4,40 @@
         <id>1</id>
         <name>Repair</name>
         <description>Heals the target.</description>
-        <power>3</power>
+        <power>12</power>
         <patternId>3</patternId>
-        <cost>1</cost>
+        <cost>4</cost>
     </Macro>
     <Macro>
         <id>2</id>
         <name>Mass Repair</name>
         <description>Heals all allies.</description>
-        <power>3</power>
+        <power>12</power>
         <patternId>3</patternId>
-        <cost>3</cost>
+        <cost>10</cost>
     </Macro>
     <Macro>
         <id>3</id>
         <name>Reboot</name>
         <description>Resurrect the target to half health.</description>
         <patternId>3</patternId>
-        <cost>6</cost>
+        <cost>40</cost>
     </Macro>
     <Macro>
         <id>4</id>
         <name>Debug</name>
         <description>Deal burst damage to a target.</description>
-        <power>8</power>
+        <power>20</power>
         <patternId>3</patternId>
-        <cost>2</cost>
+        <cost>6</cost>
     </Macro>
     <Macro>
         <id>5</id>
         <name>Mass Debug</name>
         <description>Deal burst damage to all enemies.</description>
-        <power>8</power>
+        <power>20</power>
         <patternId>3</patternId>
-        <cost>5</cost>
+        <cost>16</cost>
     </Macro>
     <Macro>
         <id>6</id>
@@ -45,7 +45,7 @@
         <description>Increases macro damage for all allies.</description>
         <power>2</power>
         <patternId>3</patternId>
-        <cost>4</cost>
+        <cost>10</cost>
     </Macro>
     <Macro>
         <id>7</id>
@@ -53,7 +53,7 @@
         <description>Increases attack damage for all allies.</description>
         <power>2</power>
         <patternId>3</patternId>
-        <cost>4</cost>
+        <cost>10</cost>
     </Macro>
     <Macro>
         <id>8</id>
@@ -61,28 +61,28 @@
         <description>Increases defense for all allies.</description>
         <power>2</power>
         <patternId>3</patternId>
-        <cost>4</cost>
+        <cost>10</cost>
     </Macro>
     <Macro>
         <id>9</id>
         <name>Surge</name>
         <description>Doubles the damage dealt by the target.</description>
         <patternId>3</patternId>
-        <cost>6</cost>
+        <cost>36</cost>
     </Macro>
     <Macro>
         <id>10</id>
         <name>Remove Debuff</name>
         <description>Removes debuffs from the target.</description>
         <patternId>3</patternId>
-        <cost>5</cost>
+        <cost>8</cost>
     </Macro>
     <Macro>
         <id>11</id>
         <name>Remove Buff</name>
         <description>Removes buffs from the target.</description>
         <patternId>3</patternId>
-        <cost>5</cost>
+        <cost>8</cost>
     </Macro>
     <Macro>
         <id>12</id>
@@ -90,6 +90,6 @@
         <description>Pauses time for a short period of time.</description>
         <power>10</power>
         <patternId>3</patternId>
-        <cost>5</cost>
+        <cost>18</cost>
     </Macro>
 </ArrayOfMacro>
