@@ -901,6 +901,14 @@ PrefabInstance:
       propertyPath: OnEveryBar.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 282201246}
+    - target: {fileID: 282847691960747259, guid: 621aa4ef1010b2447a2cd6745ea1aa7e, type: 3}
+      propertyPath: OnEveryBeat.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 293773456}
+    - target: {fileID: 282847691960747259, guid: 621aa4ef1010b2447a2cd6745ea1aa7e, type: 3}
+      propertyPath: OnEveryOffbeat.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 293773456}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 621aa4ef1010b2447a2cd6745ea1aa7e, type: 3}
 --- !u!114 &427087141 stripped
