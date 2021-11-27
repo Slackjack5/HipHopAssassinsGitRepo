@@ -151,8 +151,10 @@ public class CombatManager : MonoBehaviour
     }
   }
 
+
   private void OnGUI()
   {
+#if UNITY_EDITOR
     if (Monsters == null) return;
 
     for (var i = 0; i < Monsters.Count; i++)
@@ -160,6 +162,7 @@ public class CombatManager : MonoBehaviour
       GUI.Label(new Rect(0, 30 * i, 200, 30),
         Monsters[i].Name + " HP: " + Monsters[i].CurrentHealth + " / " + Monsters[i].MaxHealth);
     }
+#endif
   }
 
   public void Reset()

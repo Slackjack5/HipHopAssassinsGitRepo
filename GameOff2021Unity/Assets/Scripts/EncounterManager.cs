@@ -48,12 +48,15 @@ public class EncounterManager : MonoBehaviour
     }
   }
 
+
   private void OnGUI()
   {
+#if UNITY_EDITOR
     GUI.Box(new Rect(Screen.width - 100, Screen.height - 100, 100, 50), $"Gold: {currentGold}");
+#endif
   }
 
-  public void StartEncounter()
+  private void StartEncounter()
   {
     if (currentState == State.InEncounter)
     {
