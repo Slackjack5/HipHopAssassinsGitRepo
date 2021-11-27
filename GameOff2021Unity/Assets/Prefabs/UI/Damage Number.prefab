@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: XX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d5fec23cafbaedf49989f62430eea427, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -6544622312601505046, guid: d5fec23cafbaedf49989f62430eea427, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,10 +93,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.7
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &-5605746534032092446
@@ -149,4 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayDuration: 2
   distance: 10
+  hugeColor: {r: 0.9433962, g: 0.17265925, b: 0.81151605, a: 1}
+  largeColor: {r: 1, g: 0.7436638, b: 0.27735847, a: 1}
+  mediumColor: {r: 0.71528083, g: 1, b: 0.2584905, a: 1}
+  smallColor: {r: 0.1342826, g: 0.8679245, b: 0.7075178, a: 1}
   value: 0
