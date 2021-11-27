@@ -2632,6 +2632,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5005420251501811765, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
+      propertyPath: m_fontSize
+      value: 13.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5032336014280381465, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: combatManager
       value: 
@@ -3086,7 +3090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6384243391367484443, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_fontSize
-      value: 12
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 6393273398547771496, guid: cad0fa2bef45f784b90ecb73aee13cc0, type: 3}
       propertyPath: m_AnchorMax.y

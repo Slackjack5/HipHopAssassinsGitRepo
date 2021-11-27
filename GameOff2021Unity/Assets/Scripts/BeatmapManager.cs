@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -58,14 +59,6 @@ public class BeatmapManager : MonoBehaviour
 
     if (isGenerated)
     {
-      // Spawn 
-      if (nextSpawnIndex < notes.Count &&
-          AudioEvents.CurrentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
-      {
-        Spawn(nextSpawnIndex);
-        nextSpawnIndex++;
-      }
-
       if (isReady && Input.GetKeyDown("space"))
       {
         CheckHit();
@@ -93,6 +86,22 @@ public class BeatmapManager : MonoBehaviour
     else
     {
       isReady = false;
+    }
+  }
+
+  private void FixedUpdate()
+  {
+    if (!GlobalVariables.songStarted) return;
+
+    if (isGenerated)
+    {
+      // Spawn 
+      if (nextSpawnIndex < notes.Count &&
+          AudioEvents.CurrentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
+      {
+        Spawn(nextSpawnIndex);
+        nextSpawnIndex++;
+      }
     }
   }
 

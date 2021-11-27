@@ -17,6 +17,9 @@ public class MainMessage : MonoBehaviour
       case CombatManager.State.Start:
         Display("FIGHT");
         break;
+      case CombatManager.State.Win:
+        Display("VICTORY");
+        break;
       case CombatManager.State.Lose:
         Display("GAME OVER");
         break;
