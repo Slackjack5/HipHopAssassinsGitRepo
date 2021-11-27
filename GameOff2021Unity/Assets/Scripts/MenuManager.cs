@@ -118,13 +118,7 @@ public class MenuManager : MonoBehaviour
 
   public void OpenMacroMenu()
   {
-    int[] macroIds = CombatManager.CurrentState switch
-    {
-      CombatManager.State.HeroOne => CombatManager.Heroes[0].MacroIds,
-      CombatManager.State.HeroTwo => CombatManager.Heroes[1].MacroIds,
-      CombatManager.State.HeroThree => CombatManager.Heroes[2].MacroIds,
-      _ => new int[] { }
-    };
+    int[] macroIds = CombatManager.CurrentHero.MacroIds;
 
     List<Command> macros = macroIds.Select(macroId => DataManager.AllMacros[macroId - 1])
       .Select(macro => new Macro
@@ -136,7 +130,8 @@ public class MenuManager : MonoBehaviour
         needsTarget = macro.needsTarget,
         id = macro.id,
         power = macro.power,
-        cost = macro.cost
+        cost = macro.cost,
+        HasEnoughStamina = CombatManager.CurrentHero.CanCastMacro(macro)
       })
       .Cast<Command>()
       .ToList();
@@ -155,13 +150,7 @@ public class MenuManager : MonoBehaviour
 
   public void SubmitAttack()
   {
-    int patternId = CombatManager.CurrentState switch
-    {
-      CombatManager.State.HeroOne => CombatManager.Heroes[0].AttackPatternId,
-      CombatManager.State.HeroTwo => CombatManager.Heroes[1].AttackPatternId,
-      CombatManager.State.HeroThree => CombatManager.Heroes[2].AttackPatternId,
-      _ => 0
-    };
+    int patternId = CombatManager.CurrentHero.AttackPatternId;
 
     pendingCommand = new Attack
     {

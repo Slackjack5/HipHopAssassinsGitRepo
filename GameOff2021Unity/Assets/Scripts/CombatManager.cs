@@ -49,6 +49,20 @@ public class CombatManager : MonoBehaviour
     get { return Monsters.FirstOrDefault(monster => !monster.IsDead); }
   }
 
+  public static Hero CurrentHero
+  {
+    get
+    {
+      return CurrentState switch
+      {
+        State.HeroOne => Heroes[0],
+        State.HeroTwo => Heroes[1],
+        State.HeroThree => Heroes[2],
+        _ => null
+      };
+    }
+  }
+
   private void Awake()
   {
     Assert.IsTrue(beatmapManager, "beatmapManager is empty");

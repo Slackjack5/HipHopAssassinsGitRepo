@@ -130,6 +130,7 @@ public abstract class Combatant : MonoBehaviour
     {
       AttackMultiplier = 4;
     }
+
     //FX
     GameObject.Find("FXManager").GetComponent<FXManager>().SpawnBuffOffense(this);
   }
@@ -141,7 +142,6 @@ public abstract class Combatant : MonoBehaviour
     {
       MacroMultiplier = 4;
     }
-
   }
 
   public void BuffDefense()

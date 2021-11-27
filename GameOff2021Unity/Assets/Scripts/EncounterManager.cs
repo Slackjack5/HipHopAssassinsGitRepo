@@ -16,7 +16,7 @@ public class EncounterManager : MonoBehaviour
   private State currentState;
   private Encounter currentEncounter;
   private int currentEncounterIndex;
-  private int currentGold = 12;
+  private int currentGold;
 
   private static readonly HashSet<Consumable> consumablesOwned = new HashSet<Consumable>();
 

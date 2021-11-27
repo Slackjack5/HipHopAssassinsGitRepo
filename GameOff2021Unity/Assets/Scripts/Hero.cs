@@ -56,4 +56,9 @@ public class Hero : Combatant
     ResetBuffMultipliers();
     ResetDebuffMultipliers();
   }
+
+  public bool CanCastMacro(Macro macro)
+  {
+    return macro.cost <= CurrentStamina;
+  }
 }

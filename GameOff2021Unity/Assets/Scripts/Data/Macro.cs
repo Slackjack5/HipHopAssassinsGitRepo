@@ -12,6 +12,8 @@ public class Macro : Command
   private bool _isLastHit;
   private bool hasMissed;
 
+  public bool HasEnoughStamina { get; set; }
+
   public override void Execute(Combatant actor)
   {
     if (!isInitialized)

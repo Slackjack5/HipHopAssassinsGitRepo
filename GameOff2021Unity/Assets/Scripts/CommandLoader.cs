@@ -14,6 +14,7 @@ public class CommandLoader : MonoBehaviour
   [SerializeField] private GameObject backCommand;
   [SerializeField] private Color priceColor;
   [SerializeField] private Color staminaColor;
+  [SerializeField] private Color insufficientStaminaColor;
   [SerializeField] private int pageSize = 6;
 
   public readonly UnityEvent<Command> onSubmitCommand = new UnityEvent<Command>();
@@ -116,7 +117,7 @@ public class CommandLoader : MonoBehaviour
           break;
         case Macro macro:
           number.text = $"{macro.cost}";
-          number.color = staminaColor;
+          number.color = macro.HasEnoughStamina ? staminaColor : insufficientStaminaColor;
           break;
         default:
           number.text = "";
@@ -153,6 +154,7 @@ public class CommandLoader : MonoBehaviour
 
   private void SubmitCommand(Command command)
   {
+    if (command is Macro {HasEnoughStamina: false}) return;
     onSubmitCommand.Invoke(command);
   }
 

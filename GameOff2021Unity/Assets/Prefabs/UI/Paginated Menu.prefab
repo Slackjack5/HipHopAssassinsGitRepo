@@ -203,6 +203,7 @@ MonoBehaviour:
   backCommand: {fileID: 882295376946646210}
   priceColor: {r: 0.9150943, g: 0.7652051, b: 0.16747947, a: 1}
   staminaColor: {r: 0.645283, g: 0.8226415, b: 1, a: 1}
+  insufficientStaminaColor: {r: 1, g: 0.56037736, b: 0.56037736, a: 1}
   pageSize: 6
 --- !u!1001 &118013922452964062
 PrefabInstance:
