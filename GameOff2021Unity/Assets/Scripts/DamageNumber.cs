@@ -6,9 +6,17 @@ public class DamageNumber : MonoBehaviour
 {
   [SerializeField] private float displayDuration;
   [SerializeField] private float distance;
+  [SerializeField] private float randomBound;
+  [SerializeField] private float hugeSize;
   [SerializeField] private Color hugeColor;
+  [SerializeField] private float hugeThreshold;
+  [SerializeField] private float largeSize;
   [SerializeField] private Color largeColor;
+  [SerializeField] private float largeThreshold;
+  [SerializeField] private float mediumSize;
   [SerializeField] private Color mediumColor;
+  [SerializeField] private float mediumThreshold;
+  [SerializeField] private float smallSize;
   [SerializeField] private Color smallColor;
 
   [HideInInspector] public int value;
@@ -26,27 +34,32 @@ public class DamageNumber : MonoBehaviour
 
   private void Display()
   {
+    float randomOffset = Random.Range(-randomBound, randomBound);
+    Vector2 anchoredPosition = rectTransform.anchoredPosition;
+    rectTransform.anchoredPosition =
+      new Vector2(anchoredPosition.x + randomOffset, anchoredPosition.y + randomOffset);
+
     textComponent.text = value.ToString();
     textComponent.DOFade(0, displayDuration);
 
-    if (value >= 16)
+    if (value >= hugeThreshold)
     {
-      textComponent.fontSize = 64;
+      textComponent.fontSize = hugeSize;
       textComponent.color = hugeColor;
     }
-    else if (value >= 8)
+    else if (value >= largeThreshold)
     {
-      textComponent.fontSize = 36;
+      textComponent.fontSize = largeSize;
       textComponent.color = largeColor;
     }
-    else if (value >= 4)
+    else if (value >= mediumThreshold)
     {
-      textComponent.fontSize = 24;
+      textComponent.fontSize = mediumSize;
       textComponent.color = mediumColor;
     }
     else
     {
-      textComponent.fontSize = 14;
+      textComponent.fontSize = smallSize;
       textComponent.color = smallColor;
     }
 

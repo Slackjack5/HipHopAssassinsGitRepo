@@ -204,12 +204,12 @@ public abstract class Combatant : MonoBehaviour
     }
   }
 
-  public void ResetTempDefenseMultiplier()
+  protected void ResetTempDefenseMultiplier()
   {
     tempDefenseMultiplier = 1;
   }
 
-  public void ResetTempDamageMultiplier()
+  protected void ResetTempDamageMultiplier()
   {
     tempDamageMultiplier = 1;
   }

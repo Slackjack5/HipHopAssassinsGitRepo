@@ -147,10 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c115e3b30e5a24d95eeaf64d9a1dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayDuration: 2
+  displayDuration: 1.2
   distance: 10
+  randomBound: 50
+  hugeSize: 100
   hugeColor: {r: 0.9433962, g: 0.17265925, b: 0.81151605, a: 1}
+  hugeThreshold: 16
+  largeSize: 72
   largeColor: {r: 1, g: 0.7436638, b: 0.27735847, a: 1}
+  largeThreshold: 8
+  mediumSize: 48
   mediumColor: {r: 0.71528083, g: 1, b: 0.2584905, a: 1}
+  mediumThreshold: 4
+  smallSize: 24
   smallColor: {r: 0.1342826, g: 0.8679245, b: 0.7075178, a: 1}
   value: 0
