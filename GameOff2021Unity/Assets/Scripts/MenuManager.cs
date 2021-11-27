@@ -47,14 +47,14 @@ public class MenuManager : MonoBehaviour
     {
       descriptionPanel.SetActive(true);
 
-      var description = EventSystem.current.currentSelectedGameObject.GetComponent<Description>();
-      if (description == null)
+      var commandRef = EventSystem.current.currentSelectedGameObject.GetComponent<CommandRef>();
+      if (commandRef == null)
       {
         descriptionPanel.SetActive(false);
       }
       else
       {
-        descriptionPanel.GetComponentInChildren<TextMeshProUGUI>().text = description.text;
+        descriptionPanel.GetComponentInChildren<TextMeshProUGUI>().text = commandRef.command.description;
       }
     }
     else

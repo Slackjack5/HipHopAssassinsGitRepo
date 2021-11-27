@@ -63,9 +63,13 @@ public class EncounterManager : MonoBehaviour
 
     if (currentEncounter.IsShop)
     {
-      shop.Open();
+      shop.Open(currentGold);
       shop.onPurchase.AddListener(OnPurchase);
-      shop.onClose.AddListener(() => EndEncounter(true));
+      shop.onClose.AddListener(gold =>
+      {
+        currentGold = gold;
+        EndEncounter(true);
+      });
     }
     else
     {
@@ -109,18 +113,11 @@ public class EncounterManager : MonoBehaviour
 
   private void OnPurchase(Consumable consumable)
   {
-    if (consumable.cost > currentGold)
-    {
-      return;
-    }
-
     if (!consumablesOwned.Contains(consumable))
     {
       consumablesOwned.Add(consumable);
     }
 
     consumable.IncrementAmountOwned();
-
-    currentGold -= consumable.cost;
   }
 }

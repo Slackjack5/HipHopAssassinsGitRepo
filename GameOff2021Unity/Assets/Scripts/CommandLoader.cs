@@ -96,7 +96,7 @@ public class CommandLoader : MonoBehaviour
 
       var button = commandObject.GetComponentInChildren<Button>();
       button.onClick.AddListener(() => SubmitCommand(command));
-      button.gameObject.AddComponent<Description>().text = command.description;
+      button.gameObject.AddComponent<CommandRef>().command = command;
 
       TextMeshProUGUI[] textComponents = commandObject.GetComponentsInChildren<TextMeshProUGUI>();
 

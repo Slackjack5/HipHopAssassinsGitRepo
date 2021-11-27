@@ -9,11 +9,16 @@ public class Shop : MonoBehaviour
 {
   [SerializeField] private GameObject menu;
   [SerializeField] private GameObject descriptionPanel;
+  [SerializeField] private TextMeshProUGUI goldNumber;
+  [SerializeField] private GameObject amountOwnedContainer;
+  [SerializeField] private TextMeshProUGUI amountOwnedNumber;
 
   private readonly List<Consumable> consumables = new List<Consumable>();
 
   public readonly UnityEvent<Consumable> onPurchase = new UnityEvent<Consumable>();
-  public readonly UnityEvent onClose = new UnityEvent();
+  public readonly UnityEvent<int> onClose = new UnityEvent<int>();
+
+  private int currentGold;
 
   private void Start()
   {
@@ -22,43 +27,56 @@ public class Shop : MonoBehaviour
 
   private void Update()
   {
-    if (menu.activeSelf)
-    {
-      descriptionPanel.SetActive(true);
+    if (!menu.activeSelf) return;
 
-      var description = EventSystem.current.currentSelectedGameObject.GetComponent<Description>();
-      if (description == null)
-      {
-        descriptionPanel.SetActive(false);
-      }
-      else
-      {
-        descriptionPanel.GetComponentInChildren<TextMeshProUGUI>().text = description.text;
-      }
+    descriptionPanel.SetActive(true);
+
+    var commandRef = EventSystem.current.currentSelectedGameObject.GetComponent<CommandRef>();
+    if (commandRef == null)
+    {
+      descriptionPanel.SetActive(false);
+      amountOwnedContainer.SetActive(false);
     }
     else
     {
-      descriptionPanel.SetActive(false);
+      descriptionPanel.GetComponentInChildren<TextMeshProUGUI>().text = commandRef.command.description;
+
+      amountOwnedContainer.SetActive(true);
+      amountOwnedNumber.text = $"{((Consumable) commandRef.command).AmountOwned}";
     }
+
+    goldNumber.text = $"${currentGold}";
   }
 
-  public void Open()
+  public void Open(int gold)
   {
     menu.SetActive(true);
     EventSystem.current.SetSelectedGameObject(menu.GetComponentInChildren<Button>().gameObject);
 
     var commandLoader = menu.GetComponentInChildren<CommandLoader>();
     commandLoader.Load(consumables.ToArray(), true);
-    commandLoader.onSubmitCommand.AddListener(command =>
-    {
-      var consumable = (Consumable) command;
-      onPurchase.Invoke(consumable);
-    });
+    commandLoader.onSubmitCommand.AddListener(Purchase);
+
+    currentGold = gold;
   }
 
   public void Close()
   {
     menu.SetActive(false);
-    onClose.Invoke();
+    onClose.Invoke(currentGold);
+  }
+
+  private void Purchase(Command command)
+  {
+    var consumable = (Consumable) command;
+
+    if (consumable.cost > currentGold)
+    {
+      return;
+    }
+
+    currentGold -= consumable.cost;
+
+    onPurchase.Invoke(consumable);
   }
 }
