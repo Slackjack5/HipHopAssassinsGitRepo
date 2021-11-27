@@ -399,6 +399,7 @@ public class CombatManager : MonoBehaviour
         {
           case Macro macro:
             macro.Execute(hero, effectMultiplier, note.isLastOfCombatant);
+            GameObject.Find("FXManager").GetComponent<FXManager>().SpawnMacroPulse(combatant);
             break;
           case Attack attack:
             attack.Execute(hero, effectMultiplier, note.isLastOfCombatant);

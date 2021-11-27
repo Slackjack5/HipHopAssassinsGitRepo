@@ -261,9 +261,9 @@ public abstract class Combatant : MonoBehaviour
 
     if (GetComponent<Animator>() != null && damageMultiplier != 0)
     {
-      GetComponent<Animator>().SetBool(hurt, true);
-      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this, isMacro);
-      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnMacroPulse(actor, isMacro);
+      GetComponent<Animator>().SetBool("Hurt", true);
+      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this,isMacro);
+      //GameObject.Find("FXManager").GetComponent<FXManager>().SpawnMacroPulse(actor, isMacro);
     }
 
     DecreaseHealth(Mathf.RoundToInt(damage));

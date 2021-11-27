@@ -31,6 +31,7 @@ public class Monster : Combatant
 
     GetComponent<SpriteRenderer>().enabled = false;
     AkSoundEngine.PostEvent("Play_EnemyDeath", gameObject);
+    GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this,true);
   }
 
   public void endHitAnimation()
