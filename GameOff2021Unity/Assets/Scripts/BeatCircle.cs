@@ -10,18 +10,17 @@ public class BeatCircle : MonoBehaviour
   private float currentTime;
   private bool reachedMiddle;
 
-  private void Start()
-  {
-    currentTime = travelTime;
-  }
-
   private void Update()
   {
-    currentTime -= Time.deltaTime;
-    float t = Mathf.InverseLerp(0, travelTime, currentTime);
-    if (t <= 0)
+    if (currentTime < travelTime)
     {
-      currentTime = travelTime;
+      transform.position = reachedMiddle
+        ? Vector2.Lerp(centerPos.position, endPos.position, currentTime / travelTime)
+        : Vector2.Lerp(spawnerPos.position, centerPos.position, currentTime / travelTime);
+      currentTime += Time.deltaTime;
+    }
+    else
+    {
       if (reachedMiddle)
       {
         // Reached the end of the track, so destroy this object.
@@ -30,13 +29,8 @@ public class BeatCircle : MonoBehaviour
       else
       {
         reachedMiddle = true;
+        currentTime = 0;
       }
-    }
-    else
-    {
-      transform.position = reachedMiddle
-        ? Vector2.Lerp(endPos.position, centerPos.position, t)
-        : Vector2.Lerp(centerPos.position, spawnerPos.position, t);
     }
   }
 

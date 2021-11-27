@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class EncounterManager : MonoBehaviour
 {
   [SerializeField] private Encounter[] encounters;
   [SerializeField] private CombatManager combatManager;
   [SerializeField] private Shop shop;
+  [SerializeField] private GameObject continueCommand;
 
   private enum State
   {
@@ -16,7 +19,7 @@ public class EncounterManager : MonoBehaviour
   private State currentState;
   private Encounter currentEncounter;
   private int currentEncounterIndex;
-  private int currentGold = 12;
+  private int currentGold;
 
   private static readonly HashSet<Consumable> consumablesOwned = new HashSet<Consumable>();
 
@@ -26,20 +29,31 @@ public class EncounterManager : MonoBehaviour
   {
     currentState = State.PreEncounter;
 
+    var button = continueCommand.GetComponentInChildren<Button>();
+    button.onClick.AddListener(StartEncounter);
+
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
+  }
+
+  private void Update()
+  {
+    if (currentState == State.PreEncounter)
+    {
+      continueCommand.SetActive(true);
+      EventSystem.current.SetSelectedGameObject(continueCommand.GetComponentInChildren<Button>().gameObject);
+    }
+    else
+    {
+      continueCommand.SetActive(false);
+    }
   }
 
   private void OnGUI()
   {
-    if (GUI.Button(new Rect(0, Screen.height - 100, 100, 50), "Start encounter"))
-    {
-      StartEncounter();
-    }
-
     GUI.Box(new Rect(Screen.width - 100, Screen.height - 100, 100, 50), $"Gold: {currentGold}");
   }
 
-  private void StartEncounter()
+  public void StartEncounter()
   {
     if (currentState == State.InEncounter)
     {
@@ -63,9 +77,13 @@ public class EncounterManager : MonoBehaviour
 
     if (currentEncounter.IsShop)
     {
-      shop.Open();
+      shop.Open(currentGold);
       shop.onPurchase.AddListener(OnPurchase);
-      shop.onClose.AddListener(() => EndEncounter(true));
+      shop.onClose.AddListener(gold =>
+      {
+        currentGold = gold;
+        EndEncounter(true);
+      });
     }
     else
     {
@@ -109,18 +127,11 @@ public class EncounterManager : MonoBehaviour
 
   private void OnPurchase(Consumable consumable)
   {
-    if (consumable.cost > currentGold)
-    {
-      return;
-    }
-
     if (!consumablesOwned.Contains(consumable))
     {
       consumablesOwned.Add(consumable);
     }
 
     consumable.IncrementAmountOwned();
-
-    currentGold -= consumable.cost;
   }
 }

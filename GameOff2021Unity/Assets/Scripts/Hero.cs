@@ -8,11 +8,12 @@ public class Hero : Combatant
   [SerializeField] private int attackPatternId;
   [SerializeField] private int[] macroIds;
 
+  private Command submittedCommand;
+
   public int AttackPatternId => attackPatternId;
   public int HeroId => heroId;
   public int[] MacroIds => macroIds;
-
-  private Command submittedCommand;
+  public bool IsSurged { get; private set; }
 
   public void SubmitCommand(Command command)
   {
@@ -35,8 +36,12 @@ public class Hero : Combatant
 
   public void Defend()
   {
-    DefenseMultiplier *= 2;
-    MacroDefenseMultiplier *= 2;
+    tempDefenseMultiplier = 2;
+  }
+
+  public void Surge()
+  {
+    IsSurged = true;
   }
 
   public void Spotlight()
@@ -55,5 +60,28 @@ public class Hero : Combatant
     ResetPosition();
     ResetBuffMultipliers();
     ResetDebuffMultipliers();
+    ResetTempDamageMultiplier();
+    ResetTempDefenseMultiplier();
+    IsSurged = false;
+  }
+
+  public bool CanCastMacro(Macro macro)
+  {
+    return macro.cost <= CurrentStamina;
+  }
+
+  public void CheckTemporaries()
+  {
+    if (IsSurged)
+    {
+      tempDamageMultiplier = 2;
+      IsSurged = false;
+    }
+    else
+    {
+      ResetTempDamageMultiplier();
+    }
+
+    ResetTempDefenseMultiplier();
   }
 }

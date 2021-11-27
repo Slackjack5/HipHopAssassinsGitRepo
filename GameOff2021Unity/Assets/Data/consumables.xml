@@ -3,7 +3,7 @@
     <Consumable>
         <name>Bandages</name>
         <description>Restores a small amount of health.</description>
-        <patternId>2</patternId>
+        <patternId>20</patternId>
         <needsTarget>true</needsTarget>
         <id>1</id>
         <power>15</power>
@@ -12,28 +12,28 @@
     <Consumable>
         <name>Attack Candy</name>
         <description>Increases attack damage for all allies.</description>
-        <patternId>2</patternId>
+        <patternId>21</patternId>
         <id>2</id>
         <cost>2</cost>
     </Consumable>
     <Consumable>
         <name>Defense Candy</name>
         <description>Increases defense for all allies.</description>
-        <patternId>2</patternId>
+        <patternId>22</patternId>
         <id>3</id>
         <cost>2</cost>
     </Consumable>
     <Consumable>
         <name>Macro Candy</name>
         <description>Increases macro damage for all allies.</description>
-        <patternId>2</patternId>
+        <patternId>23</patternId>
         <id>4</id>
         <cost>2</cost>
     </Consumable>
     <Consumable>
         <name>Reboot Disk</name>
         <description>Resurrects the target to half health.</description>
-        <patternId>2</patternId>
+        <patternId>24</patternId>
         <needsTarget>true</needsTarget>
         <id>5</id>
         <cost>4</cost>
@@ -41,7 +41,7 @@
     <Consumable>
         <name>Concentrate Candy</name>
         <description>Doubles all damage dealt by the target.</description>
-        <patternId>2</patternId>
+        <patternId>25</patternId>
         <needsTarget>true</needsTarget>
         <id>6</id>
         <cost>4</cost>
@@ -49,7 +49,7 @@
     <Consumable>
         <name>Medkit</name>
         <description>Restores a large amount of health.</description>
-        <patternId>2</patternId>
+        <patternId>26</patternId>
         <needsTarget>true</needsTarget>
         <id>7</id>
         <power>40</power>
@@ -58,7 +58,7 @@
     <Consumable>
         <name>Battery</name>
         <description>Restores a small amount of stamina.</description>
-        <patternId>2</patternId>
+        <patternId>27</patternId>
         <needsTarget>true</needsTarget>
         <id>8</id>
         <power>15</power>
@@ -67,7 +67,7 @@
     <Consumable>
         <name>Energizer</name>
         <description>Restores a large amount of stamina.</description>
-        <patternId>2</patternId>
+        <patternId>28</patternId>
         <needsTarget>true</needsTarget>
         <id>9</id>
         <power>40</power>

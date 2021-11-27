@@ -12,6 +12,8 @@ public class Macro : Command
   private bool _isLastHit;
   private bool hasMissed;
 
+  public bool HasEnoughStamina { get; set; }
+
   public override void Execute(Combatant actor)
   {
     if (!isInitialized)
@@ -81,7 +83,7 @@ public class Macro : Command
         break;
       case 9:
         // Surge
-        Target.Surge();
+        ((Hero) Target).Surge();
 
         break;
       case 10:

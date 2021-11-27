@@ -20,6 +20,8 @@ public abstract class Combatant : MonoBehaviour
   protected State currentState;
   protected float baseDefenseMultiplier;
   protected float baseMacroDefenseMultiplier;
+  protected float tempDamageMultiplier;
+  protected float tempDefenseMultiplier;
 
   private bool isInitialPositionSet;
   private Vector2 initialPosition;
@@ -59,6 +61,9 @@ public abstract class Combatant : MonoBehaviour
 
     baseMacroDefenseMultiplier = 1;
     MacroDefenseMultiplier = baseMacroDefenseMultiplier;
+
+    tempDamageMultiplier = 1;
+    tempDefenseMultiplier = 1;
   }
 
   protected virtual void Start()
@@ -130,6 +135,7 @@ public abstract class Combatant : MonoBehaviour
     {
       AttackMultiplier = 4;
     }
+
     //FX
     GameObject.Find("FXManager").GetComponent<FXManager>().SpawnBuffOffense(this);
   }
@@ -141,7 +147,6 @@ public abstract class Combatant : MonoBehaviour
     {
       MacroMultiplier = 4;
     }
-
   }
 
   public void BuffDefense()
@@ -151,12 +156,6 @@ public abstract class Combatant : MonoBehaviour
     {
       DefenseMultiplier = 4;
     }
-  }
-
-  public void Surge()
-  {
-    AttackMultiplier *= 2;
-    MacroMultiplier *= 2;
   }
 
   public void ResetDebuffMultipliers()
@@ -203,6 +202,16 @@ public abstract class Combatant : MonoBehaviour
     {
       MacroDefenseMultiplier = baseMacroDefenseMultiplier;
     }
+  }
+
+  protected void ResetTempDefenseMultiplier()
+  {
+    tempDefenseMultiplier = 1;
+  }
+
+  protected void ResetTempDamageMultiplier()
+  {
+    tempDamageMultiplier = 1;
   }
 
   public void SetInitialPosition()
@@ -256,8 +265,10 @@ public abstract class Combatant : MonoBehaviour
     if (currentState == State.Dead) return;
 
     float damage = isMacro
-      ? actor.Attack * actor.MacroMultiplier * (1 / MacroDefenseMultiplier) * damageMultiplier
-      : actor.Attack * actor.AttackMultiplier * (1 / DefenseMultiplier) * damageMultiplier;
+      ? actor.Attack * actor.MacroMultiplier * (1 / MacroDefenseMultiplier) * actor.tempDamageMultiplier *
+        (1 / tempDefenseMultiplier) * damageMultiplier
+      : actor.Attack * actor.AttackMultiplier * (1 / DefenseMultiplier) * actor.tempDamageMultiplier *
+        (1 / tempDefenseMultiplier) * damageMultiplier;
 
     if (GetComponent<Animator>() != null && damageMultiplier != 0)
     {

@@ -49,6 +49,20 @@ public class CombatManager : MonoBehaviour
     get { return Monsters.FirstOrDefault(monster => !monster.IsDead); }
   }
 
+  public static Hero CurrentHero
+  {
+    get
+    {
+      return CurrentState switch
+      {
+        State.HeroOne => Heroes[0],
+        State.HeroTwo => Heroes[1],
+        State.HeroThree => Heroes[2],
+        _ => null
+      };
+    }
+  }
+
   private void Awake()
   {
     Assert.IsTrue(beatmapManager, "beatmapManager is empty");
@@ -200,18 +214,7 @@ public class CombatManager : MonoBehaviour
       consumable.DecrementAmountOwned();
     }
 
-    switch (CurrentState)
-    {
-      case State.HeroOne:
-        Heroes[0].SubmitCommand(command);
-        break;
-      case State.HeroTwo:
-        Heroes[1].SubmitCommand(command);
-        break;
-      case State.HeroThree:
-        Heroes[2].SubmitCommand(command);
-        break;
-    }
+    CurrentHero.SubmitCommand(command);
 
     AdvanceState();
   }
@@ -241,6 +244,7 @@ public class CombatManager : MonoBehaviour
         foreach (Hero hero in Heroes)
         {
           hero.ResetCommand();
+          hero.CheckTemporaries();
         }
 
         if (Heroes[0].IsDead)
