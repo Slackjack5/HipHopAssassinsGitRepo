@@ -213,7 +213,7 @@ public class CombatManager : MonoBehaviour
     {
       consumable.DecrementAmountOwned();
     }
-    
+
     CurrentHero.SubmitCommand(command);
 
     AdvanceState();
@@ -244,6 +244,7 @@ public class CombatManager : MonoBehaviour
         foreach (Hero hero in Heroes)
         {
           hero.ResetCommand();
+          hero.CheckTemporaries();
         }
 
         if (Heroes[0].IsDead)

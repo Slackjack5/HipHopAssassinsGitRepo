@@ -83,7 +83,7 @@ public class Macro : Command
         break;
       case 9:
         // Surge
-        Target.Surge();
+        ((Hero) Target).Surge();
 
         break;
       case 10:

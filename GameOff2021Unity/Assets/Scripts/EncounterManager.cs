@@ -28,7 +28,7 @@ public class EncounterManager : MonoBehaviour
   private void Awake()
   {
     currentState = State.PreEncounter;
-    
+
     var button = continueCommand.GetComponentInChildren<Button>();
     button.onClick.AddListener(StartEncounter);
 

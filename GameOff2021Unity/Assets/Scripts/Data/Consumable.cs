@@ -67,7 +67,7 @@ public class Consumable : Command
         break;
       case 6:
         // Concentrate Candy
-        Target.Surge();
+        ((Hero) Target).Surge();
         break;
       case 7:
         // Medkit
