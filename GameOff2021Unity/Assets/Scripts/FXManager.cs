@@ -39,13 +39,10 @@ public class FXManager : MonoBehaviour
     CameraShaker.Instance.ShakeOnce(cameraShakeMagnitude, cameraShakeRoughness, cameraShakeFadeIn, cameraShakeFadeOut);
   }
 
-  public void SpawnMacroPulse(Combatant Caster, bool isMacro)
+  public void SpawnMacroPulse(Combatant Caster)
   {
-    if (isMacro)
-    {
-      GameObject myEffect = Instantiate(MacroPulse,
-        new Vector3(Caster.transform.position.x, Caster.transform.position.y, 0), Quaternion.identity);
-    }
+    GameObject myEffect = Instantiate(MacroPulse,
+      new Vector3(Caster.transform.position.x, Caster.transform.position.y, 0), Quaternion.identity);
   }
 
   public void SpawnBuffOffense(Combatant Target)
