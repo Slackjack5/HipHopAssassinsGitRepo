@@ -246,15 +246,14 @@ public abstract class Combatant : MonoBehaviour
       return;
     }
 
-    if (currentState == State.Idle)
-    {
-      MoveToTarget();
-    }
-
     if (currentState == State.Attacking && isLastHit)
     {
       ResetPosition();
       ChangeState(State.Idle);
+    }
+    else if (currentState == State.Idle)
+    {
+      MoveToTarget();
     }
 
     Target.TakeDamage(this, damageMultiplier, false);
@@ -273,7 +272,7 @@ public abstract class Combatant : MonoBehaviour
     if (GetComponent<Animator>() != null && damageMultiplier != 0)
     {
       GetComponent<Animator>().SetBool("Hurt", true);
-      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this,isMacro);
+      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this, isMacro);
       //GameObject.Find("FXManager").GetComponent<FXManager>().SpawnMacroPulse(actor, isMacro);
     }
 
