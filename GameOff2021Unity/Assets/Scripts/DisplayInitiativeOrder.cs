@@ -19,46 +19,55 @@ public class DisplayInitiativeOrder : MonoBehaviour
 
   private void OnCombatStateChange(CombatManager.State state)
   {
-    if (state != CombatManager.State.PreStart) return;
-
-    ClearDisplay();
-
-    for (var i = 0; i < CombatManager.Combatants.Count; i++)
+    switch (state)
     {
-      Combatant combatant = CombatManager.Combatants[i];
-      GameObject initiativeCard = Instantiate(initiativeCardPrefab, transform);
+      case CombatManager.State.PreStart:
+        ClearDisplay();
 
-      // Background image should be the second image component.
-      Image image = initiativeCard.GetComponentsInChildren<Image>()[1];
-      if (combatant is Hero hero)
-      {
-        switch (hero.HeroId)
+        for (var i = 0; i < CombatManager.Combatants.Count; i++)
         {
-          case 1:
-            image.sprite = heroOneCard;
-            break;
-          case 2:
-            image.sprite = heroTwoCard;
-            break;
-          case 3:
-            image.sprite = heroThreeCard;
-            break;
-          default:
-            Debug.LogError("Failed to set sprite of initiative card for hero " + hero.HeroId);
-            break;
+          Combatant combatant = CombatManager.Combatants[i];
+          GameObject initiativeCard = Instantiate(initiativeCardPrefab, transform);
+
+          // Background image should be the second image component.
+          Image image = initiativeCard.GetComponentsInChildren<Image>()[1];
+          if (combatant is Hero hero)
+          {
+            switch (hero.HeroId)
+            {
+              case 1:
+                image.sprite = heroOneCard;
+                break;
+              case 2:
+                image.sprite = heroTwoCard;
+                break;
+              case 3:
+                image.sprite = heroThreeCard;
+                break;
+              default:
+                Debug.LogError("Failed to set sprite of initiative card for hero " + hero.HeroId);
+                break;
+            }
+          }
+          else
+          {
+            image.sprite = monsterCard;
+          }
+
+          TextMeshProUGUI[] textComponents = initiativeCard.GetComponentsInChildren<TextMeshProUGUI>();
+          TextMeshProUGUI combatantName = textComponents[0];
+          TextMeshProUGUI order = textComponents[1];
+
+          combatantName.text = combatant.Name;
+          order.text = (i + 1).ToString();
         }
-      }
-      else
-      {
-        image.sprite = monsterCard;
-      }
 
-      TextMeshProUGUI[] textComponents = initiativeCard.GetComponentsInChildren<TextMeshProUGUI>();
-      TextMeshProUGUI combatantName = textComponents[0];
-      TextMeshProUGUI order = textComponents[1];
-
-      combatantName.text = combatant.Name;
-      order.text = (i + 1).ToString();
+        break;
+      case CombatManager.State.Inactive:
+      case CombatManager.State.Lose:
+      case CombatManager.State.Win:
+        ClearDisplay();
+        break;
     }
   }
 

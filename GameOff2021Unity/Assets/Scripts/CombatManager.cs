@@ -213,19 +213,8 @@ public class CombatManager : MonoBehaviour
     {
       consumable.DecrementAmountOwned();
     }
-
-    switch (CurrentState)
-    {
-      case State.HeroOne:
-        Heroes[0].SubmitCommand(command);
-        break;
-      case State.HeroTwo:
-        Heroes[1].SubmitCommand(command);
-        break;
-      case State.HeroThree:
-        Heroes[2].SubmitCommand(command);
-        break;
-    }
+    
+    CurrentHero.SubmitCommand(command);
 
     AdvanceState();
   }
