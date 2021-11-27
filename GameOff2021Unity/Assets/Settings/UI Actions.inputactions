@@ -7,15 +7,31 @@
             "actions": [
                 {
                     "name": "Navigate",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "9425fbf9-e2cc-4055-b57e-cfa7f40fc403",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
                 {
+                    "name": "Click",
+                    "type": "PassThrough",
+                    "id": "2e3c0369-3409-4f57-bef1-292940131080",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "17e0821d-880a-4066-9d44-50d071db561b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Submit",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "80cbb8b4-7b4b-4cc4-8521-e378a2c1160f",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -23,7 +39,7 @@
                 },
                 {
                     "name": "Pause",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "eb20c3dd-bd42-4ab1-9050-84d0d34d9394",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -105,6 +121,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ecdd55e2-f072-4dbb-85cc-8fbef0b1a547",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Keyboard",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3cba5fb5-9cd9-43b6-831c-11a624ed340f",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Keyboard",
+                    "action": "Point",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
