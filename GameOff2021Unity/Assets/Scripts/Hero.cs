@@ -54,7 +54,7 @@ public class Hero : Combatant
     gameObject.GetComponent<Animator>().SetBool("Hurt", false);
   }
 
-  public void Reset()
+  public void Reset(bool atFirstEncounter = false)
   {
     ResetCommand();
     ResetPosition();
@@ -63,6 +63,12 @@ public class Hero : Combatant
     ResetTempDamageMultiplier();
     ResetTempDefenseMultiplier();
     IsSurged = false;
+
+    if (atFirstEncounter)
+    {
+      CurrentHealth = maxHealth;
+      CurrentStamina = maxStamina;
+    }
   }
 
   public bool CanCastMacro(Macro macro)

@@ -57,6 +57,10 @@ public class BeatmapManager : MonoBehaviour
   {
     if (!GlobalVariables.songStarted) return;
 
+    AudioEvents.SegmentPosition segmentPosition = AudioEvents.GetCurrentSegmentPosition();
+    if (!segmentPosition.isValid) return;
+    float currentSegmentPosition = segmentPosition.value;
+
     // AudioEvents.secondsPerBeat is not defined until the first measure starts.
     travelTime = 2 * AudioEvents.secondsPerBeat;
 
@@ -64,11 +68,11 @@ public class BeatmapManager : MonoBehaviour
     {
       if (isReady && Input.GetKeyDown("space"))
       {
-        CheckHit();
+        CheckHit(currentSegmentPosition);
       }
 
       if (nextHitIndex < notes.Count &&
-          AudioEvents.CurrentSegmentPosition - notes[nextHitIndex].time > leniency) // Player presses nothing
+          currentSegmentPosition - notes[nextHitIndex].time > leniency) // Player presses nothing
       {
         if (notes[nextHitIndex].beatCircle)
         {
@@ -96,11 +100,15 @@ public class BeatmapManager : MonoBehaviour
   {
     if (!GlobalVariables.songStarted) return;
 
+    AudioEvents.SegmentPosition segmentPosition = AudioEvents.GetCurrentSegmentPosition();
+    if (!segmentPosition.isValid) return;
+    float currentSegmentPosition = segmentPosition.value;
+
     if (isGenerated)
     {
       // Spawn 
       if (nextSpawnIndex < notes.Count &&
-          AudioEvents.CurrentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
+          currentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
       {
         Spawn(nextSpawnIndex);
         nextSpawnIndex++;
@@ -189,11 +197,11 @@ public class BeatmapManager : MonoBehaviour
     track.SetActive(true);
   }
 
-  private void CheckHit()
+  private void CheckHit(float currentSegmentPosition)
   {
     if (nextHitIndex >= notes.Count || !notes[nextHitIndex].beatCircle) return;
 
-    float error = notes[nextHitIndex].time - AudioEvents.CurrentSegmentPosition;
+    float error = notes[nextHitIndex].time - currentSegmentPosition;
 
     if (error >= -lateBound && error <= leniency)
     {

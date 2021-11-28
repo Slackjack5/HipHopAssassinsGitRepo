@@ -48,14 +48,6 @@ public class EncounterManager : MonoBehaviour
     }
   }
 
-
-  private void OnGUI()
-  {
-#if UNITY_EDITOR
-    GUI.Box(new Rect(Screen.width - 100, Screen.height - 100, 100, 50), $"Gold: {currentGold}");
-#endif
-  }
-
   private void StartEncounter()
   {
     if (currentState == State.InEncounter)
@@ -77,6 +69,14 @@ public class EncounterManager : MonoBehaviour
     }
 
     currentEncounter = Instantiate(encounters[currentEncounterIndex]);
+
+    if (currentEncounterIndex == 0)
+    {
+      foreach (Hero hero in CombatManager.Heroes)
+      {
+        hero.Reset(true);
+      }
+    }
 
     if (currentEncounter.IsShop)
     {

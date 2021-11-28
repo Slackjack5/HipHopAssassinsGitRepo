@@ -33,11 +33,11 @@ public abstract class Combatant : MonoBehaviour
   }
 
   public string Name => combatantName;
-  public int CurrentHealth { get; private set; }
-  public int CurrentStamina { get; private set; }
+  public int CurrentHealth { get; protected set; }
+  public int CurrentStamina { get; protected set; }
   public int MaxHealth => maxHealth;
   public int MaxStamina => maxStamina;
-  public int Attack => attack;
+  private int Attack => attack;
   public int Speed => speed;
   public bool IsDead => CurrentHealth <= 0;
   private Combatant Target { get; set; }
@@ -74,7 +74,7 @@ public abstract class Combatant : MonoBehaviour
     currentState = state;
   }
 
-  public void DecreaseHealth(int value)
+  private void DecreaseHealth(int value)
   {
     if (currentState == State.Dead) return;
 
