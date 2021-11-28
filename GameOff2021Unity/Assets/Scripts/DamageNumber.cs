@@ -45,11 +45,13 @@ public class DamageNumber : MonoBehaviour
     {
       textComponent.fontSize = largeSize;
       textComponent.color = largeColor;
+     ;
     }
     else if (value >= mediumThreshold)
     {
       textComponent.fontSize = mediumSize;
       textComponent.color = mediumColor;
+     
     }
     else
     {

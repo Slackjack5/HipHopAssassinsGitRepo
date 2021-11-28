@@ -54,6 +54,16 @@ public class Hero : Combatant
     gameObject.GetComponent<Animator>().SetBool("Hurt", false);
   }
 
+  public override void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
+  {
+    base.TakeDamage(actor, damageMultiplier, isMacro);
+    if (damageMultiplier != 0) 
+    {
+      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnHurtFX();
+    }
+    
+  }
+
   public void Reset(bool atFirstEncounter = false)
   {
     ResetCommand();

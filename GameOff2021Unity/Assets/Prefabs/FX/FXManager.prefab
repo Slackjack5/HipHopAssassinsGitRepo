@@ -51,3 +51,7 @@ MonoBehaviour:
   cameraShakeRoughness: 2
   cameraShakeFadeIn: 0.1
   cameraShakeFadeOut: 0.1
+  PerfectHit: {fileID: 851486232618474314, guid: 54c2b47ee529de94ab6bc632b15a98e0, type: 3}
+  GoodHit: {fileID: 851486232618474314, guid: 515634f9bb53d8d44af10bd412349438, type: 3}
+  Stars: {fileID: 5803432354515659686, guid: 68128ceeaaf16724f8ed26df1ab375c8, type: 3}
+  HurtFX: {fileID: 851486232618474314, guid: 315adf8996542464b8d64cec9ff5df4e, type: 3}
