@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
   private static InputActionMap inputActionMap;
   private static bool isPaused;
   private static bool isInputInitialized;
+  private static GameObject lastSelectedGameObject;
 
   private void Awake()
   {
@@ -37,6 +38,13 @@ public class GameManager : MonoBehaviour
     if (Keyboard.current.escapeKey.wasPressedThisFrame)
     {
       OnPause();
+    }
+
+    var currentSelectedGameObject = EventSystem.current.currentSelectedGameObject;
+    if (currentSelectedGameObject != lastSelectedGameObject)
+    {
+      AkSoundEngine.PostEvent("Play_UIMove", gameObject);
+      lastSelectedGameObject = currentSelectedGameObject;
     }
   }
 
