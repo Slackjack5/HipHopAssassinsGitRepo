@@ -4,7 +4,7 @@
         <id>1</id>
         <name>Repair</name>
         <description>Heals the target.</description>
-        <power>12</power>
+        <power>24</power>
         <patternId>8</patternId>
         <cost>4</cost>
         <needsTarget>true</needsTarget>
@@ -13,7 +13,7 @@
         <id>2</id>
         <name>Mass Repair</name>
         <description>Heals all allies.</description>
-        <power>12</power>
+        <power>24</power>
         <patternId>9</patternId>
         <cost>10</cost>
     </Macro>
@@ -29,7 +29,7 @@
         <id>4</id>
         <name>Debug</name>
         <description>Deals burst damage to a target.</description>
-        <power>20</power>
+        <power>25</power>
         <patternId>11</patternId>
         <cost>6</cost>
         <selectMonster>true</selectMonster>
@@ -39,7 +39,7 @@
         <id>5</id>
         <name>Mass Debug</name>
         <description>Deals burst damage to all enemies.</description>
-        <power>20</power>
+        <power>25</power>
         <patternId>12</patternId>
         <cost>16</cost>
         <selectMonster>true</selectMonster>

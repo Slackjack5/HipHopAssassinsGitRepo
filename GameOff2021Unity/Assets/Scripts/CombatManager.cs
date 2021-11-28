@@ -265,7 +265,22 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case State.HeroOne:
-        ChangeState(Heroes[1].IsDead ? State.HeroThree : State.HeroTwo);
+        if (Heroes[1].IsDead)
+        {
+          if (Heroes[2].IsDead)
+          {
+            DeterminePreExecutionState();
+          }
+          else
+          {
+            ChangeState(State.HeroThree);
+          }
+        }
+        else
+        {
+          ChangeState(State.HeroTwo);
+        }
+
         break;
       case State.HeroTwo:
         if (Heroes[2].IsDead)
