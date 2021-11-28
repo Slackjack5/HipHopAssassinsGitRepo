@@ -36,6 +36,8 @@ public class AudioEvents : MonoBehaviour
   private static AkSegmentInfo currentSegment;
   private static int currentBarStartTime; // The time, in milliseconds, that the current bar started at
   private static int currentBeatStartTime; // The time, in milliseconds, that the current beat started at
+  private static int currentLoop; // Counts the amount of times the song has looped
+  private static int songLength; // The length of the song in milliseconds
 
   //id of the wwise event - using this to get the playback position
   static uint playingID;
@@ -52,7 +54,7 @@ public class AudioEvents : MonoBehaviour
   /// </summary>
   public static float CurrentSegmentPosition =>
     // iCurrentPosition is in milliseconds.
-    (float) currentSegment.iCurrentPosition / 1000;
+    (float) (currentLoop * songLength + currentSegment.iCurrentPosition) / 1000;
 
   private void Start()
   {
@@ -117,7 +119,9 @@ public class AudioEvents : MonoBehaviour
       case AkCallbackType.AK_MusicSyncGrid:
         OnEveryGrid.Invoke();
         break;
-      default:
+      case AkCallbackType.AK_MusicSyncExit:
+        songLength = currentSegment.iCurrentPosition;
+        currentLoop++;
         break;
     }
   }
