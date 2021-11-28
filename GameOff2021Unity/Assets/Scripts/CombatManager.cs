@@ -139,7 +139,7 @@ public class CombatManager : MonoBehaviour
 
         break;
       case State.DelayExecution:
-        if (lastBar != GlobalVariables.currentBar &&
+        if (GlobalVariables.currentBar > lastBar &&
             AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar))
         {
           ChangeState(State.PreExecution);
@@ -344,14 +344,14 @@ public class CombatManager : MonoBehaviour
 
   private void DeterminePreExecutionState()
   {
-    if (AudioEvents.CurrentBarTime <= Threshold(AudioEvents.secondsPerBar))
+    if (AudioEvents.CurrentBarTime < Threshold(AudioEvents.secondsPerBar))
     {
       ChangeState(State.PreExecution);
     }
     else
     {
-      ChangeState(State.DelayExecution);
       lastBar = GlobalVariables.currentBar;
+      ChangeState(State.DelayExecution);
     }
   }
 

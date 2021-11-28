@@ -1,8 +1,18 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class AudioEvents : MonoBehaviour
 {
+  public class SegmentPosition
+  {
+    internal float value;
+    internal bool isValid;
+
+    public float Value => value;
+    public bool IsValid => isValid;
+  }
+
   //Wwise
   public AK.Wwise.Event rhythmHeckinEvent;
   public UnityEvent OnLevelEnded;
@@ -36,8 +46,9 @@ public class AudioEvents : MonoBehaviour
   private static AkSegmentInfo currentSegment;
   private static int currentBarStartTime; // The time, in milliseconds, that the current bar started at
   private static int currentBeatStartTime; // The time, in milliseconds, that the current beat started at
-  private static int currentLoop; // Counts the amount of times the song has looped
+  private static int currentLoop = -1; // Counts the amount of times the song has looped
   private static int songLength; // The length of the song in milliseconds
+  private static bool isSegmentPositionReady;
 
   //id of the wwise event - using this to get the playback position
   static uint playingID;
@@ -49,13 +60,6 @@ public class AudioEvents : MonoBehaviour
     // iCurrentPosition is in milliseconds.
     (float) (currentSegment.iCurrentPosition - currentBarStartTime) / 1000;
 
-  /// <summary>
-  /// The time elapsed, in seconds, since the segment started
-  /// </summary>
-  public static float CurrentSegmentPosition =>
-    // iCurrentPosition is in milliseconds.
-    (float) (currentLoop * songLength + currentSegment.iCurrentPosition) / 1000;
-
   private void Start()
   {
     playingID = rhythmHeckinEvent.Post(gameObject,
@@ -63,6 +67,7 @@ public class AudioEvents : MonoBehaviour
       MusicCallbackFunction);
     currentSegment = new AkSegmentInfo();
     GlobalVariables.songStarted = false;
+    isSegmentPositionReady = true;
   }
 
   private void Update()
@@ -78,6 +83,17 @@ public class AudioEvents : MonoBehaviour
       OnEveryOffbeat.Invoke();
       isOnEveryOffbeatInvoked = true;
     }
+
+    if (!isSegmentPositionReady && currentSegment.iCurrentPosition <= songLength)
+    {
+      isSegmentPositionReady = true;
+    }
+  }
+
+  private void OnGUI()
+  {
+#if UNITY_EDITOR
+#endif
   }
 
   void MusicCallbackFunction(object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info)
@@ -95,33 +111,48 @@ public class AudioEvents : MonoBehaviour
         bpm = _musicInfo.segmentInfo_fBeatDuration * 60f;
         break;
       case AkCallbackType.AK_MusicSyncBeat:
-        currentBeatStartTime = currentSegment.iCurrentPosition;
-
-        OnEveryBeat.Invoke();
-        isOnEveryOffbeatInvoked = false;
-        break;
-      case AkCallbackType.AK_MusicSyncBar:
-        //I want to make sure that the secondsPerBeat is defined on our first measure.
-        if (GlobalVariables.songStarted == false)
+        if (isSegmentPositionReady)
         {
-          // If the game hasn't started yet, start it on beat 1
-          GlobalVariables.songStarted = true;
+          currentBeatStartTime = currentSegment.iCurrentPosition;
+          OnEveryBeat.Invoke();
+          isOnEveryOffbeatInvoked = false;
         }
 
-        secondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
-        secondsPerBar = _musicInfo.segmentInfo_fBarDuration;
+        break;
+      case AkCallbackType.AK_MusicSyncBar:
+        if (isSegmentPositionReady)
+        {
+          //I want to make sure that the secondsPerBeat is defined on our first measure.
+          if (GlobalVariables.songStarted == false)
+          {
+            // If the game hasn't started yet, start it on beat 1
+            GlobalVariables.songStarted = true;
+          }
 
-        currentBarStartTime = currentSegment.iCurrentPosition;
+          secondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
+          secondsPerBar = _musicInfo.segmentInfo_fBarDuration;
 
-        OnEveryBar.Invoke();
+          currentBarStartTime = currentSegment.iCurrentPosition;
+
+          OnEveryBar.Invoke();
+        }
+
         break;
 
       case AkCallbackType.AK_MusicSyncGrid:
         OnEveryGrid.Invoke();
         break;
-      case AkCallbackType.AK_MusicSyncExit:
-        songLength = currentSegment.iCurrentPosition;
+      case AkCallbackType.AK_MusicSyncEntry:
         currentLoop++;
+
+        if (currentLoop > 0)
+        {
+          songLength = currentSegment.iCurrentPosition;
+        }
+
+        break;
+      case AkCallbackType.AK_MusicSyncExit:
+        isSegmentPositionReady = false;
         break;
     }
   }
@@ -155,6 +186,19 @@ public class AudioEvents : MonoBehaviour
     }
   }
 
+  /// <summary>
+  /// When isValid is true, value is the current time elapsed, in seconds, since the song started.
+  /// When isValid is false, value should not be used.
+  /// </summary>
+  public static SegmentPosition GetCurrentSegmentPosition()
+  {
+    // iCurrentPosition is in milliseconds.
+    return new SegmentPosition
+    {
+      value = (float) (currentLoop * songLength + currentSegment.iCurrentPosition) / 1000,
+      isValid = isSegmentPositionReady
+    };
+  }
 
   public void CustomCues(string cueName, AkMusicSyncCallbackInfo _musicInfo)
   {
