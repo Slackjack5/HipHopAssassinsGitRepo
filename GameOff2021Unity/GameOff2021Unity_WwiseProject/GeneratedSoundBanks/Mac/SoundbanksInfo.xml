@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="525398504">
+		<SoundBank Id="1229948536" Language="SFX" Hash="137222409">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -64,11 +64,15 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Play_Music" DurationType="OneShot" DurationMin="245.365265" DurationMax="245.365265">
+				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Play_Music" DurationType="OneShot" DurationMin="695788.187500" DurationMax="695788.187500">
 					<IncludedMemoryFiles>
 						<File Id="109382999" Language="SFX">
 							<ShortName>SampleHipHopTrack100BPM.wav</ShortName>
 							<Path>SFX\SampleHipHopTrack100BPM_D79FB2B7.wem</Path>
+						</File>
+						<File Id="934945912" Language="SFX">
+							<ShortName>Nycelly ~ NothingCanStopUs (GameOff2021).wav</ShortName>
+							<Path>SFX\Nycelly ~ NothingCanStopUs (GameOff2021)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

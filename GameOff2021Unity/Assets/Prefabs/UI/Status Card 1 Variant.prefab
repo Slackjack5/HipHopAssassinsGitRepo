@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 896374612607071215, guid: 91dee66a086d5694d8bc83580502f56e, type: 3}
+      propertyPath: m_TagString
+      value: GrowOnBeat
+      objectReference: {fileID: 0}
     - target: {fileID: 1431012285197337574, guid: 91dee66a086d5694d8bc83580502f56e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
