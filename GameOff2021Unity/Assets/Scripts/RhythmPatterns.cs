@@ -42,51 +42,51 @@ public class RhythmPatterns : MonoBehaviour
         break;
       case 8:
         // Repair
-        beats.AddRange(new[] {1.5f, 2, 2.5f, 3.5f, 4, 4.5f});
+        beats.AddRange(new[] {1f, 1.5f, 2, 3.5f, 4});
         break;
       case 9:
         // Mass repair
-        beats.AddRange(new[] {1.5f, 2, 2.5f, 3.5f, 4, 4.25f, 4.5f});
+        beats.AddRange(new[] {1f, 1.5f, 2, 2.5f, 3.5f, 4, 4.5f});
         break;
       case 10:
         // Reboot
-        beats.AddRange(new[] {1, 1.25f, 1.5f, 2, 2.75f, 3, 3.25f, 3.5f, 4});
+        beats.AddRange(new[] {1, 1.5f, 2, 3, 3.5f, 4});
         break;
       case 11:
         // Debug
-        beats.AddRange(new[] {1, 1.75f, 2, 2.5f, 3.5f, 4});
+        beats.AddRange(new[] {1, 2, 2.5f, 3.5f, 4});
         break;
       case 12:
         // Mass debug
-        beats.AddRange(new[] {1, 1.75f, 2, 2.5f, 3, 3.25f, 3.5f, 4});
+        beats.AddRange(new[] {1, 2, 2.5f, 3, 3.5f, 4});
         break;
       case 13:
         // Macro+
-        beats.AddRange(new[] {1, 1.5f, 2, 2.25f, 2.75f, 3.5f});
+        beats.AddRange(new[] {1, 1.5f, 2, 2.5f, 3.5f});
         break;
       case 14:
         // Attack+
-        beats.AddRange(new[] {1, 1.5f, 2, 2.25f, 4, 4.25f, 4.5f});
+        beats.AddRange(new[] {1, 1.5f, 2, 4, 4.5f});
         break;
       case 15:
         // Defense+
-        beats.AddRange(new[] {1, 1.5f, 2, 2.25f, 4, 4.25f});
+        beats.AddRange(new[] {1, 1.5f, 2, 3, 4});
         break;
       case 16:
         // Surge
-        beats.AddRange(new[] {1, 1.5f, 2, 2.25f, 2.75f, 3.25f, 3.75f, 4.25f});
+        beats.AddRange(new[] {1, 1.5f, 2, 2.5f, 3, 3.5f, 4, 4.5f});
         break;
       case 17:
         // Remove Debuff
-        beats.AddRange(new[] {1, 1.25f, 1.5f, 2.5f, 2.75f, 3, 4});
+        beats.AddRange(new[] {1, 1.5f, 2.5f, 3, 4});
         break;
       case 18:
         // Remove Buff
-        beats.AddRange(new[] {1, 1.25f, 1.5f, 2.5f, 3.5f, 3.75f, 4});
+        beats.AddRange(new[] {1, 1.5f, 2.5f, 3.5f, 4});
         break;
       case 19:
         // Pause
-        beats.AddRange(new[] {1, 1.5f, 1.75f, 2.5f, 2.75f, 3.5f, 3.75f, 4.5f});
+        beats.AddRange(new[] {1, 1.5f, 2.5f, 3.5f, 4.5f});
         break;
       case 20:
         // Bandages
@@ -94,27 +94,27 @@ public class RhythmPatterns : MonoBehaviour
         break;
       case 21:
         // Attack Candy
-        beats.AddRange(new[] {1.5f, 2, 3.25f, 3.5f, 4.5f});
+        beats.AddRange(new[] {1.5f, 2, 3.5f, 4.5f});
         break;
       case 22:
         // Defense Candy
-        beats.AddRange(new[] {1.5f, 2, 2.25f, 3.5f, 4});
+        beats.AddRange(new[] {1.5f, 2, 3, 3.5f});
         break;
       case 23:
         // Macro Candy
-        beats.AddRange(new[] {1.5f, 2, 2.75f, 3, 3.5f, 4});
+        beats.AddRange(new[] {1.5f, 2, 3, 3.5f, 4});
         break;
       case 24:
         // Reboot Disk
-        beats.AddRange(new[] {1.5f, 2, 2.75f, 3.5f, 4.5f});
+        beats.AddRange(new[] {1.5f, 2, 3.5f, 4, 4.5f});
         break;
       case 25:
         // Concentrate Candy
-        beats.AddRange(new[] {1.5f, 2, 2.25f, 2.5f, 2.75f, 3, 3.5f});
+        beats.AddRange(new[] {1.5f, 2, 2.5f, 3, 3.5f});
         break;
       case 26:
         // Medkit
-        beats.AddRange(new[] {1.5f, 2, 2.5f, 3, 3.5f, 4, 4.5f});
+        beats.AddRange(new[] {1.5f, 2, 2.5f, 3, 3.5f, 4});
         break;
       case 27:
         // Battery
@@ -122,7 +122,7 @@ public class RhythmPatterns : MonoBehaviour
         break;
       case 28:
         // Energizer
-        beats.AddRange(new[] {1.5f, 2, 2.75f, 3, 3.75f, 4});
+        beats.AddRange(new[] {1.5f, 2, 3, 3.5f, 4});
         break;
     }
 
