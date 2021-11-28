@@ -39,7 +39,7 @@ public abstract class Combatant : MonoBehaviour
   public int MaxStamina => maxStamina;
   private int Attack => attack;
   public int Speed => speed;
-  public bool IsDead => CurrentHealth <= 0;
+  public bool IsDead => currentState == State.Dead;
   protected Combatant Target { get; private set; }
   public Button TargetCursor => GetComponentInChildren<Button>();
   private float AttackMultiplier { get; set; }
@@ -76,7 +76,7 @@ public abstract class Combatant : MonoBehaviour
 
   private void DecreaseHealth(int value)
   {
-    if (currentState == State.Dead) return;
+    if (IsDead) return;
 
     CurrentHealth -= value;
     DamageNumberSpawner.Spawn(value);
@@ -89,7 +89,7 @@ public abstract class Combatant : MonoBehaviour
 
   public void DecreaseStamina(int value)
   {
-    if (currentState == State.Dead) return;
+    if (IsDead) return;
 
     CurrentStamina -= value;
     if (CurrentStamina <= 0)
@@ -100,7 +100,7 @@ public abstract class Combatant : MonoBehaviour
 
   public void IncreaseHealth(int value)
   {
-    if (currentState == State.Dead) return;
+    if (IsDead) return;
 
     CurrentHealth += value;
     if (CurrentHealth >= maxHealth)
@@ -111,7 +111,7 @@ public abstract class Combatant : MonoBehaviour
 
   public void IncreaseStamina(int value)
   {
-    if (currentState == State.Dead) return;
+    if (IsDead) return;
 
     CurrentStamina += value;
     if (CurrentStamina >= maxStamina)
@@ -123,6 +123,8 @@ public abstract class Combatant : MonoBehaviour
   public void Resurrect()
   {
     if (!IsDead) return;
+
+    ChangeState(State.Idle);
     CurrentHealth = MaxHealth / 2;
   }
 
@@ -231,13 +233,13 @@ public abstract class Combatant : MonoBehaviour
 
   public void SetTarget(Combatant combatant)
   {
-    if (currentState == State.Dead) return;
+    if (IsDead) return;
     Target = combatant;
   }
 
   public virtual void AttackTarget(float damageMultiplier, bool isLastHit)
   {
-    if (currentState == State.Dead) return;
+    if (IsDead) return;
     if (Target == null)
     {
       Debug.LogError(combatantName + " just tried to damage Target, but Target is null!");
@@ -259,7 +261,7 @@ public abstract class Combatant : MonoBehaviour
 
   public virtual void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
   {
-    if (currentState == State.Dead) return;
+    if (IsDead) return;
 
     float damage = isMacro
       ? actor.Attack * actor.MacroMultiplier * (1 / MacroDefenseMultiplier) * actor.tempDamageMultiplier *

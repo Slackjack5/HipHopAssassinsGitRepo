@@ -57,11 +57,10 @@ public class Hero : Combatant
   public override void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
   {
     base.TakeDamage(actor, damageMultiplier, isMacro);
-    if (damageMultiplier != 0) 
+    if (damageMultiplier != 0)
     {
       GameObject.Find("FXManager").GetComponent<FXManager>().SpawnHurtFX();
     }
-    
   }
 
   public void Reset(bool atFirstEncounter = false)
@@ -78,6 +77,8 @@ public class Hero : Combatant
     {
       CurrentHealth = maxHealth;
       CurrentStamina = maxStamina;
+
+      ChangeState(State.Idle);
     }
   }
 
