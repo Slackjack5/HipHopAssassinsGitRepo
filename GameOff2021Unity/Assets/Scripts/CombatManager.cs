@@ -3,18 +3,21 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour
 {
-  [SerializeField] private float startStateDuration;
+  [FormerlySerializedAs("startStateDuration")] [SerializeField]
+  private float showMessageDuration;
+
   [SerializeField] private BeatmapManager beatmapManager;
   [SerializeField] private GameObject heroObjects;
 
   public static readonly UnityEvent<State> onStateChange = new UnityEvent<State>();
 
-  private float currentStartStateTime;
-  private bool isStarting;
+  private float currentWaitTime;
+  private bool isWaiting;
   private int lastBar;
 
   public enum State
@@ -30,7 +33,9 @@ public class CombatManager : MonoBehaviour
     PreExecution,
     Execution,
     Win,
-    Lose
+    Lose,
+    EndWin,
+    EndLose
   }
 
   /// <summary>
@@ -94,7 +99,7 @@ public class CombatManager : MonoBehaviour
 
   private void Update()
   {
-    if (CurrentState == State.Inactive || CurrentState == State.Win || CurrentState == State.Lose) return;
+    if (CurrentState == State.Inactive || CurrentState == State.EndWin || CurrentState == State.EndLose) return;
 
     if (CurrentState != State.PreStart && CurrentState != State.Start)
     {
@@ -112,22 +117,23 @@ public class CombatManager : MonoBehaviour
     switch (CurrentState)
     {
       case State.Start:
-        if (!isStarting)
+        if (!isWaiting)
         {
           foreach (Combatant combatant in Combatants)
           {
             combatant.SetInitialPosition();
           }
 
-          currentStartStateTime = startStateDuration;
-          isStarting = true;
+          currentWaitTime = showMessageDuration;
+          isWaiting = true;
         }
 
-        currentStartStateTime -= Time.deltaTime;
+        currentWaitTime -= Time.deltaTime;
 
-        if (currentStartStateTime <= 0)
+        if (currentWaitTime <= 0)
         {
           Timer.Activate();
+          isWaiting = false;
           ChangeState(State.HeroOne);
         }
 
@@ -148,9 +154,16 @@ public class CombatManager : MonoBehaviour
 
         ChangeState(State.Execution);
         break;
+      case State.Lose:
+        DelayEnd(State.EndLose);
+
+        break;
+      case State.Win:
+        DelayEnd(State.EndWin);
+
+        break;
     }
   }
-
 
   private void OnGUI()
   {
@@ -173,7 +186,7 @@ public class CombatManager : MonoBehaviour
     }
 
     CurrentState = State.Inactive;
-    isStarting = false;
+    isWaiting = false;
     lastBar = 0;
   }
 
@@ -207,7 +220,32 @@ public class CombatManager : MonoBehaviour
   private void Lose()
   {
     ChangeState(State.Lose);
+    Timer.Deactivate();
     beatmapManager.ForceFinish();
+  }
+
+  private void Win()
+  {
+    ChangeState(State.Win);
+    Timer.Deactivate();
+    beatmapManager.ForceFinish();
+  }
+
+  private void DelayEnd(State endState)
+  {
+    if (!isWaiting)
+    {
+      currentWaitTime = showMessageDuration;
+      isWaiting = true;
+    }
+
+    currentWaitTime -= Time.deltaTime;
+
+    if (currentWaitTime <= 0)
+    {
+      isWaiting = false;
+      ChangeState(endState);
+    }
   }
 
   public void SubmitCommand(Command command)
@@ -430,12 +468,6 @@ public class CombatManager : MonoBehaviour
     Combatants.AddRange(Heroes);
     Combatants.AddRange(Monsters);
     Combatants.Sort(CompareCombatantSpeeds);
-  }
-
-  private void Win()
-  {
-    ChangeState(State.Win);
-    beatmapManager.ForceFinish();
   }
 
   private static int CompareCombatantSpeeds(Combatant x, Combatant y)

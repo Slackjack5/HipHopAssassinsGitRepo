@@ -109,6 +109,11 @@ public class EncounterManager : MonoBehaviour
       currentGold += encounters[currentEncounterIndex].Gold;
       currentEncounterIndex++;
     }
+    else
+    {
+      currentGold = 0;
+      currentEncounterIndex = 0;
+    }
 
     combatManager.Reset();
     Timer.Deactivate();
@@ -119,10 +124,10 @@ public class EncounterManager : MonoBehaviour
   {
     switch (state)
     {
-      case CombatManager.State.Lose:
+      case CombatManager.State.EndLose:
         EndEncounter(false);
         break;
-      case CombatManager.State.Win:
+      case CombatManager.State.EndWin:
         EndEncounter(true);
         break;
     }

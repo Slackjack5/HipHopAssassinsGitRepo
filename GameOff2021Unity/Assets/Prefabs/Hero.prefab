@@ -104,11 +104,13 @@ MonoBehaviour:
   speed: 0
   damageNumberPrefab: {fileID: 6632316025372179153, guid: 264fb6a335c1a414b8272264cddabd05, type: 3}
   damageSpawnTransform: {fileID: 3705782181819244135}
+  damageSpawnOffsetBound: 50
   distanceFromTarget: 1
   travelTime: 0.3
   heroId: 0
   spotlightDistance: 2
   attackPatternId: 1
+  macroIds: 
 --- !u!95 &51303484486287734
 Animator:
   serializedVersion: 3

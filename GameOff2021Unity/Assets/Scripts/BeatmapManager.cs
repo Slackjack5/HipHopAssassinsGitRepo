@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class BeatmapManager : MonoBehaviour
 {
   [SerializeField] private GameObject track;
   [SerializeField] private GameObject beatCirclePrefab;
+  [SerializeField] private GameObject downbeatBar;
+  [SerializeField] private GameObject offbeatBar;
   [SerializeField] private RectTransform spawnerPos;
   [SerializeField] private RectTransform centerPos;
   [SerializeField] private RectTransform endPos;
@@ -16,6 +19,7 @@ public class BeatmapManager : MonoBehaviour
   public readonly UnityEvent<Note, AccuracyGrade> hit = new UnityEvent<Note, AccuracyGrade>();
 
   private readonly List<Note> notes = new List<Note>();
+  private readonly List<GameObject> beatEntities = new List<GameObject>();
   private int nextSpawnIndex;
   private int nextHitIndex;
   private float travelTime;
@@ -58,14 +62,6 @@ public class BeatmapManager : MonoBehaviour
 
     if (isGenerated)
     {
-      // Spawn 
-      if (nextSpawnIndex < notes.Count &&
-          AudioEvents.CurrentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
-      {
-        Spawn(nextSpawnIndex);
-        nextSpawnIndex++;
-      }
-
       if (isReady && Input.GetKeyDown("space"))
       {
         CheckHit();
@@ -96,12 +92,52 @@ public class BeatmapManager : MonoBehaviour
     }
   }
 
+  private void FixedUpdate()
+  {
+    if (!GlobalVariables.songStarted) return;
+
+    if (isGenerated)
+    {
+      // Spawn 
+      if (nextSpawnIndex < notes.Count &&
+          AudioEvents.CurrentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
+      {
+        Spawn(nextSpawnIndex);
+        nextSpawnIndex++;
+      }
+    }
+  }
+
+  private void Finish()
+  {
+    // Check that all beat circles are destroyed before closing.
+    if (notes.Any(note => note.beatCircle != null)) return;
+
+    foreach (GameObject beatEntity in beatEntities)
+    {
+      Destroy(beatEntity);
+    }
+
+    beatEntities.Clear();
+
+    isGenerated = false;
+    HideTrack();
+    complete.Invoke();
+  }
+
   public void ForceFinish()
   {
     foreach (Note note in notes)
     {
       Destroy(note.beatCircle);
     }
+
+    foreach (GameObject beatEntity in beatEntities)
+    {
+      Destroy(beatEntity);
+    }
+
+    beatEntities.Clear();
 
     isGenerated = false;
     HideTrack();
@@ -193,16 +229,6 @@ public class BeatmapManager : MonoBehaviour
     }
   }
 
-  private void Finish()
-  {
-    // Check that the last beat circle is destroyed before closing.
-    if (notes[notes.Count - 1].beatCircle != null) return;
-
-    isGenerated = false;
-    HideTrack();
-    complete.Invoke();
-  }
-
   private void Spawn(int spawnIndex)
   {
     Note note = notes[spawnIndex];
@@ -246,5 +272,33 @@ public class BeatmapManager : MonoBehaviour
     }
 
     note.beatCircle = circle;
+  }
+
+  public void SpawnDownbeat()
+  {
+    if (!isGenerated) return;
+
+    GameObject bar = Instantiate(downbeatBar, spawnerPos.position, Quaternion.identity, track.transform);
+    var beat = bar.GetComponent<BeatEntity>();
+    beat.travelTime = travelTime;
+    beat.centerPos = centerPos;
+    beat.endPos = endPos;
+    beat.spawnerPos = spawnerPos;
+
+    beatEntities.Add(bar);
+  }
+
+  public void SpawnOffbeat()
+  {
+    if (!isGenerated) return;
+
+    GameObject bar = Instantiate(offbeatBar, spawnerPos.position, Quaternion.identity, track.transform);
+    var beat = bar.GetComponent<BeatEntity>();
+    beat.travelTime = travelTime;
+    beat.centerPos = centerPos;
+    beat.endPos = endPos;
+    beat.spawnerPos = spawnerPos;
+
+    beatEntities.Add(bar);
   }
 }

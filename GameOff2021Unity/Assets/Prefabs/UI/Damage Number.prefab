@@ -109,7 +109,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -149,16 +149,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayDuration: 1.2
   distance: 10
-  randomBound: 50
-  hugeSize: 100
+  hugeSize: 160
   hugeColor: {r: 0.9433962, g: 0.17265925, b: 0.81151605, a: 1}
   hugeThreshold: 16
-  largeSize: 72
+  largeSize: 100
   largeColor: {r: 1, g: 0.7436638, b: 0.27735847, a: 1}
   largeThreshold: 8
-  mediumSize: 48
+  mediumSize: 72
   mediumColor: {r: 0.71528083, g: 1, b: 0.2584905, a: 1}
   mediumThreshold: 4
-  smallSize: 24
+  smallSize: 48
   smallColor: {r: 0.1342826, g: 0.8679245, b: 0.7075178, a: 1}
   value: 0

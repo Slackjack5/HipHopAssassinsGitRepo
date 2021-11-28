@@ -6,7 +6,6 @@ public class DamageNumber : MonoBehaviour
 {
   [SerializeField] private float displayDuration;
   [SerializeField] private float distance;
-  [SerializeField] private float randomBound;
   [SerializeField] private float hugeSize;
   [SerializeField] private Color hugeColor;
   [SerializeField] private float hugeThreshold;
@@ -34,11 +33,6 @@ public class DamageNumber : MonoBehaviour
 
   private void Display()
   {
-    float randomOffset = Random.Range(-randomBound, randomBound);
-    Vector2 anchoredPosition = rectTransform.anchoredPosition;
-    rectTransform.anchoredPosition =
-      new Vector2(anchoredPosition.x + randomOffset, anchoredPosition.y + randomOffset);
-
     textComponent.text = value.ToString();
     textComponent.DOFade(0, displayDuration);
 

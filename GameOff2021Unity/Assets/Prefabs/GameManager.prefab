@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuCanvas: {fileID: 0}
+  quitButton: {fileID: 0}
+  inputActionAsset: {fileID: -944628639613478452, guid: 7591a424b8f0a464887803322b8e9e1b, type: 3}

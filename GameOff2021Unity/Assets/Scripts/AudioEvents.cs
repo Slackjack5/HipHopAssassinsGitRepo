@@ -14,9 +14,12 @@ public class AudioEvents : MonoBehaviour
   //Unity Events
   public UnityEvent OnEveryGrid;
   public UnityEvent OnEveryBeat;
+  public UnityEvent OnEveryOffbeat;
   public UnityEvent OnEveryBar;
 
   public UnityEvent OnSubtractTime;
+
+  private bool isOnEveryOffbeatInvoked;
 
   //Functions
   public int GridCount = 0;
@@ -32,6 +35,7 @@ public class AudioEvents : MonoBehaviour
 
   private static AkSegmentInfo currentSegment;
   private static int currentBarStartTime; // The time, in milliseconds, that the current bar started at
+  private static int currentBeatStartTime; // The time, in milliseconds, that the current beat started at
 
   //id of the wwise event - using this to get the playback position
   static uint playingID;
@@ -66,6 +70,12 @@ public class AudioEvents : MonoBehaviour
     currentGrid = GlobalVariables.currentGrid;
 
     AkSoundEngine.GetPlayingSegmentInfo(playingID, currentSegment);
+
+    if (!isOnEveryOffbeatInvoked && currentSegment.iCurrentPosition >= currentBeatStartTime + secondsPerBeat * 1000 / 2)
+    {
+      OnEveryOffbeat.Invoke();
+      isOnEveryOffbeatInvoked = true;
+    }
   }
 
   void MusicCallbackFunction(object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info)
@@ -83,9 +93,10 @@ public class AudioEvents : MonoBehaviour
         bpm = _musicInfo.segmentInfo_fBeatDuration * 60f;
         break;
       case AkCallbackType.AK_MusicSyncBeat:
-
+        currentBeatStartTime = currentSegment.iCurrentPosition;
 
         OnEveryBeat.Invoke();
+        isOnEveryOffbeatInvoked = false;
         break;
       case AkCallbackType.AK_MusicSyncBar:
         //I want to make sure that the secondsPerBeat is defined on our first measure.
