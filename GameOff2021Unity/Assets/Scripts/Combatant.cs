@@ -40,7 +40,7 @@ public abstract class Combatant : MonoBehaviour
   private int Attack => attack;
   public int Speed => speed;
   public bool IsDead => CurrentHealth <= 0;
-  private Combatant Target { get; set; }
+  protected Combatant Target { get; private set; }
   public Button TargetCursor => GetComponentInChildren<Button>();
   private float AttackMultiplier { get; set; }
   private float MacroMultiplier { get; set; }
@@ -235,7 +235,7 @@ public abstract class Combatant : MonoBehaviour
     Target = combatant;
   }
 
-  public void AttackTarget(float damageMultiplier, bool isLastHit)
+  public virtual void AttackTarget(float damageMultiplier, bool isLastHit)
   {
     if (currentState == State.Dead) return;
     if (Target == null)
@@ -249,7 +249,7 @@ public abstract class Combatant : MonoBehaviour
       ResetPosition();
       ChangeState(State.Idle);
     }
-    else if (currentState == State.Idle)
+    else
     {
       MoveToTarget();
     }
@@ -285,8 +285,12 @@ public abstract class Combatant : MonoBehaviour
 
   private void MoveToTarget()
   {
-    ChangeState(State.Attacking);
-    AkSoundEngine.PostEvent("Play_Approach", gameObject);
+    if (currentState != State.Attacking)
+    {
+      ChangeState(State.Attacking);
+      AkSoundEngine.PostEvent("Play_Approach", gameObject);
+    }
+
     Vector2 targetPosition = Target.transform.position;
     float distance = distanceFromTarget;
     if (Target is Monster)
