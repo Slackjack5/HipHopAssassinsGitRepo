@@ -244,12 +244,17 @@ public abstract class Combatant : MonoBehaviour
       return;
     }
 
+    if (Target.IsDead)
+    {
+      SetTarget(CombatManager.FirstLivingMonster);
+    }
+
     if (currentState == State.Attacking && isLastHit)
     {
       ResetPosition();
       ChangeState(State.Idle);
     }
-    else if (currentState == State.Idle)
+    else
     {
       MoveToTarget();
     }
@@ -285,8 +290,12 @@ public abstract class Combatant : MonoBehaviour
 
   private void MoveToTarget()
   {
-    ChangeState(State.Attacking);
-    AkSoundEngine.PostEvent("Play_Approach", gameObject);
+    if (currentState != State.Attacking)
+    {
+      ChangeState(State.Attacking);
+      AkSoundEngine.PostEvent("Play_Approach", gameObject);
+    }
+
     Vector2 targetPosition = Target.transform.position;
     float distance = distanceFromTarget;
     if (Target is Monster)
