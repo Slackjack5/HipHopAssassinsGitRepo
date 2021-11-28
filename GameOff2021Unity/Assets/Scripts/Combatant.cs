@@ -10,8 +10,6 @@ public abstract class Combatant : MonoBehaviour
   [SerializeField] protected int maxStamina;
   [SerializeField] protected int attack;
   [SerializeField] protected int speed;
-  [SerializeField] protected GameObject damageNumberPrefab;
-  [SerializeField] protected RectTransform damageSpawnTransform;
   [SerializeField] protected float distanceFromTarget;
   [SerializeField] protected float travelTime;
 
@@ -81,7 +79,7 @@ public abstract class Combatant : MonoBehaviour
     if (currentState == State.Dead) return;
 
     CurrentHealth -= value;
-    SpawnDamageNumber(value);
+    DamageNumberSpawner.Spawn(value);
 
     if (CurrentHealth <= 0)
     {
@@ -271,9 +269,8 @@ public abstract class Combatant : MonoBehaviour
 
     if (GetComponent<Animator>() != null && damageMultiplier != 0)
     {
-      GetComponent<Animator>().SetBool("Hurt", true);
+      GetComponent<Animator>().SetBool(hurt, true);
       GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this, isMacro);
-      //GameObject.Find("FXManager").GetComponent<FXManager>().SpawnMacroPulse(actor, isMacro);
     }
 
     DecreaseHealth(Mathf.RoundToInt(damage));
@@ -284,12 +281,6 @@ public abstract class Combatant : MonoBehaviour
     CurrentHealth = 0;
     ChangeState(State.Dead);
     dead.Invoke();
-  }
-
-  private void SpawnDamageNumber(int value)
-  {
-    GameObject obj = Instantiate(damageNumberPrefab, damageSpawnTransform);
-    obj.GetComponent<DamageNumber>().value = value;
   }
 
   private void MoveToTarget()
