@@ -12,6 +12,10 @@ public class FXManager : MonoBehaviour
   [SerializeField] private float cameraShakeRoughness;
   [SerializeField] private float cameraShakeFadeIn;
   [SerializeField] private float cameraShakeFadeOut;
+  [SerializeField] private GameObject PerfectHit;
+  [SerializeField] private GameObject GoodHit;
+  [SerializeField] private GameObject Stars;
+  [SerializeField] private GameObject HurtFX;
 
   public void SpawnAttackHit(Combatant Target, bool isMacro)
   {
@@ -55,5 +59,21 @@ public class FXManager : MonoBehaviour
   {
     GameObject myEffect = Instantiate(MacroPulse,
       new Vector3(Target.transform.position.x, Target.transform.position.y, 0), Quaternion.identity);
+  }
+
+  public void SpawnPerfectHit()
+  {
+    GameObject myEffect = Instantiate(PerfectHit, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
+    GameObject myEffect2 = Instantiate(Stars, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
+  }
+
+  public void SpawnGreatHit()
+  {
+    GameObject myEffect = Instantiate(GoodHit, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
+  }
+
+  public void SpawnHurtFX()
+  {
+    GameObject myEffect = Instantiate(HurtFX, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
   }
 }

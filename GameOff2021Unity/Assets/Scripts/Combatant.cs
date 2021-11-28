@@ -257,7 +257,7 @@ public abstract class Combatant : MonoBehaviour
     Target.TakeDamage(this, damageMultiplier, false);
   }
 
-  public void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
+  public virtual void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
   {
     if (currentState == State.Dead) return;
 

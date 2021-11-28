@@ -209,14 +209,17 @@ public class BeatmapManager : MonoBehaviour
       if (error <= leniency / 3)
       {
         hit.Invoke(notes[nextHitIndex], AccuracyGrade.Perfect);
+        GameObject.Find("FXManager").GetComponent<FXManager>().SpawnPerfectHit();
       }
       else if (error <= (leniency / 3) * 2)
       {
         hit.Invoke(notes[nextHitIndex], AccuracyGrade.Great);
+        GameObject.Find("FXManager").GetComponent<FXManager>().SpawnGreatHit();
       }
       else
       {
         hit.Invoke(notes[nextHitIndex], AccuracyGrade.Good);
+        GameObject.Find("FXManager").GetComponent<FXManager>().SpawnGreatHit();
       }
 
       AkSoundEngine.PostEvent("Play_Cowbell", gameObject);
