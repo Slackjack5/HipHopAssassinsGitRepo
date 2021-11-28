@@ -220,12 +220,14 @@ public class CombatManager : MonoBehaviour
   private void Lose()
   {
     ChangeState(State.Lose);
+    Timer.Deactivate();
     beatmapManager.ForceFinish();
   }
 
   private void Win()
   {
     ChangeState(State.Win);
+    Timer.Deactivate();
     beatmapManager.ForceFinish();
   }
 
