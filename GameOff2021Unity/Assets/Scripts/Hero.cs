@@ -100,4 +100,14 @@ public class Hero : Combatant
 
     ResetTempDefenseMultiplier();
   }
+
+  public override void AttackTarget(float damageMultiplier, bool isLastHit)
+  {
+    if (Target.IsDead)
+    {
+      SetTarget(CombatManager.FirstLivingMonster);
+    }
+
+    base.AttackTarget(damageMultiplier, isLastHit);
+  }
 }

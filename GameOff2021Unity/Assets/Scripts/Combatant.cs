@@ -40,7 +40,7 @@ public abstract class Combatant : MonoBehaviour
   private int Attack => attack;
   public int Speed => speed;
   public bool IsDead => CurrentHealth <= 0;
-  private Combatant Target { get; set; }
+  protected Combatant Target { get; private set; }
   public Button TargetCursor => GetComponentInChildren<Button>();
   private float AttackMultiplier { get; set; }
   private float MacroMultiplier { get; set; }
@@ -235,18 +235,13 @@ public abstract class Combatant : MonoBehaviour
     Target = combatant;
   }
 
-  public void AttackTarget(float damageMultiplier, bool isLastHit)
+  public virtual void AttackTarget(float damageMultiplier, bool isLastHit)
   {
     if (currentState == State.Dead) return;
     if (Target == null)
     {
       Debug.LogError(combatantName + " just tried to damage Target, but Target is null!");
       return;
-    }
-
-    if (Target.IsDead)
-    {
-      SetTarget(CombatManager.FirstLivingMonster);
     }
 
     if (currentState == State.Attacking && isLastHit)
