@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{306C049B-61EC-4155-9C5A-B22759686577}" SchemaVersion="103">
 	<Modulators>
-		<WorkUnit Name="Default Work Unit" ID="{306C049B-61EC-4155-9C5A-B22759686577}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{306C049B-61EC-4155-9C5A-B22759686577}" PersistMode="Standalone">
+			<ChildrenList>
+				<ModulatorLfo Name="PitchLFO" ID="{35D9F839-61E6-4D59-94C5-836ED8C25178}" ShortID="342804997"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Modulators>
 </WwiseDocument>

@@ -371,7 +371,7 @@
 						<Action Name="" ID="{5C8E5729-57AC-4D4B-9A71-B71F0C3FAE51}" ShortID="775275059">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="TambourineShake" ID="{FC029EF1-9413-4478-8011-E0BEB2AB8E04}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+									<ObjectRef Name="TambourineShake2" ID="{F7DCD5C1-D964-438E-A549-77AC0CD619E9}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -383,6 +383,144 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="BirdWhistle" ID="{DB39F794-B6CB-4EC6-9DA2-8483E379684F}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Heal1" ID="{334B32A9-E2F8-488B-8ECF-68FE70C67C1E}">
+					<ChildrenList>
+						<Action Name="" ID="{A6BC5070-A32F-4654-AD70-FB3CBE6B0041}" ShortID="953663648">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Heal1" ID="{4E970451-B608-40AE-A38C-CEF50C3DD81D}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PowerUp2" ID="{AC5E926B-D8D6-4A48-8909-7673E4DFF572}">
+					<ChildrenList>
+						<Action Name="" ID="{6AF230EB-A8A3-4C19-B04C-941E3E7EB064}" ShortID="808169716">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PowerUp2" ID="{195E9861-183C-4934-AB9A-70D66793B79F}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Drink1" ID="{1409073A-AF24-40FE-9055-93D7A225E74D}">
+					<ChildrenList>
+						<Action Name="" ID="{0E182F4E-CF9E-489A-8084-26AFDFBF2A5F}" ShortID="220908490">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drink1" ID="{5AC100EF-27BA-44DA-B440-B5B481FECA0A}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D55C040C-7B51-43A9-A670-ADDE2C5E004F}" ShortID="35044543">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="8BitBell" ID="{57809F82-A519-41BC-AD72-EA7894BBB07D}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Drink2" ID="{F490D440-BC5F-4CED-BBFF-F852BCFF9102}">
+					<ChildrenList>
+						<Action Name="" ID="{642B5365-7E76-4C7D-9464-02A09CD4E4F0}" ShortID="712371930">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drink2" ID="{4B7F8648-67E9-4CBF-9955-B3D89AD71BE6}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D8DBA1CD-F794-4D57-B080-7AD6A3564B86}" ShortID="1008183235">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="8BitBell2" ID="{A96B496D-ED1C-411B-8065-9065B48312EA}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Drink3" ID="{4B3D2D6D-774B-435F-9445-622E7F62B321}">
+					<ChildrenList>
+						<Action Name="" ID="{BCDCD98C-E5AA-4BA6-8538-C32696B45C2D}" ShortID="182158997">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drink3" ID="{176D5C8C-E87A-4842-A399-52121CD47FBE}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A2BE7FB2-1510-44B9-8257-42A5684537B2}" ShortID="311473891">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="8BitBell3" ID="{9CEF841B-1025-4E1E-81C9-BA6E7CE4767E}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Drink4" ID="{E05F443C-B634-43D0-A11D-35EBA21DD588}">
+					<ChildrenList>
+						<Action Name="" ID="{5AFEBF9D-C737-41F0-BBD4-D49BA0AF8593}" ShortID="903383995">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drink4" ID="{2C451495-7362-4795-AC09-2C6DE7EAEB23}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{91F67698-8211-4B88-8533-F50AC18B251C}" ShortID="156916468">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="8BitBell4" ID="{77B31927-35DA-4807-8EB5-2FAAE9EF3FA7}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Buff1" ID="{62CCD9AE-A92B-4844-825A-ADB3B925D929}">
+					<ChildrenList>
+						<Action Name="" ID="{317D59C8-3BC9-4D23-8BB2-4A33718B73EA}" ShortID="899112921">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Buff1" ID="{AD1F342F-94A2-4A68-ADA6-2770AC8A158A}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Spell1" ID="{FABC75A4-D129-4997-B121-C133D1B3704C}">
+					<ChildrenList>
+						<Action Name="" ID="{A928183C-8DE9-43D3-AADB-DB09A10D238E}" ShortID="497808005">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spell1" ID="{217024C8-C3D8-4447-A784-D0AEB4ABE980}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Spell2" ID="{03FA3077-B1F3-4760-90EA-6FF772871104}">
+					<ChildrenList>
+						<Action Name="" ID="{61063B75-F779-46A4-88C0-01A6C0ACC30D}" ShortID="239547142">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spell2" ID="{01BE2EF8-A769-47E7-8837-4C9A9C08BCBD}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Spell3" ID="{0FC39E83-4F2E-4FAF-94DD-895385B70CFC}">
+					<ChildrenList>
+						<Action Name="" ID="{EC5C06D2-4477-4246-9E75-9244D0D474B7}" ShortID="145428621">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Spell3" ID="{51EC5021-895A-4196-86B5-DAB2F734CD2E}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

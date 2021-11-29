@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: ce9e95076641c840b2e12537fd4e7366
     GuidInternal: 
-    m_lastTime: -8585634406595532531
+    m_lastTime: -8585634382149622390
     List:
     - name: Environment
       guid: e8844d887a77af4dab22949281d082f1
@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 75db4e7638654c49924eee981991fa51
     GuidInternal: 
-    m_lastTime: -8585634406596100999
+    m_lastTime: -8585634382150041287
     List:
     - name: Play_8BitBell
       guid: 98210ff2f2e0c34e8b44fe4897a7d8be
@@ -317,6 +317,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.335271
       minDuration: 0.335271
+    - name: Play_BirdWhistle
+      guid: 910664aba4945c4db099f395a6c43c4e
+      id: 424679367
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_BirdWhistle
+        ObjectType: 3
+        guid: 910664aba4945c4db099f395a6c43c4e
+      Path: Events\Default Work Unit\Play_BirdWhistle
+      maxAttenuation: 0
+      maxDuration: 0.3261
+      minDuration: 0.3261
     - name: Play_Clap
       guid: aff226ec687a4249b27b4521506a430a
       id: 3785725400
@@ -589,6 +606,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.3261
       minDuration: 0.3261
+    - name: Play_TambourineShake
+      guid: 81ba94249eceda449d993fe541f28820
+      id: 3964949448
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_TambourineShake
+        ObjectType: 3
+        guid: 81ba94249eceda449d993fe541f28820
+      Path: Events\Default Work Unit\Play_TambourineShake
+      maxAttenuation: 0
+      maxDuration: 0.434785
+      minDuration: 0.434785
     - name: Play_UIClose
       guid: 3a4d37333fc51e4ab9bc5f9dc9c0b4f1
       id: 1883176764
@@ -674,6 +708,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.3261
       minDuration: 0.3261
+    - name: Play_Yell1
+      guid: c1aa5c07a1d34941a150ec40c341f717
+      id: 2554967377
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Yell1
+        ObjectType: 3
+        guid: c1aa5c07a1d34941a150ec40c341f717
+      Path: Events\Default Work Unit\Play_Yell1
+      maxAttenuation: 0
+      maxDuration: 0.507256
+      minDuration: 0.507256
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:

@@ -32,7 +32,7 @@
             <!--Response-->
             <Beat>
                 <beatNumber>5</beatNumber>
-                <soundName>Play_AttackLight1</soundName>
+                <soundName>Play_Approach</soundName>
             </Beat>
             <Beat>
                 <beatNumber>6</beatNumber>
@@ -114,7 +114,7 @@
             <!--Response-->
             <Beat>
                 <beatNumber>5</beatNumber>
-                <soundName>Play_AttackLight1</soundName>
+                <soundName>Play_Approach</soundName>
             </Beat>
             <Beat>
                 <beatNumber>5.5</beatNumber>
@@ -276,7 +276,7 @@
             <!--Response-->
             <Beat>
               <beatNumber>5</beatNumber>
-              <soundName>Play_AttackLight1</soundName>
+              <soundName>Play_Approach</soundName>
             </Beat>
             <Beat>
               <beatNumber>5.75</beatNumber>
@@ -301,48 +301,192 @@
         <!-- Repair -->
         <id>8</id>
         <beats>
+          <!-- Call -->
             <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
+                <beatNumber>1</beatNumber>
+                <soundName>Play_Whistle</soundName>
+                <isCall>true</isCall>
             </Beat>
             <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
+              <beatNumber>1.75</beatNumber>
+              <soundName>Play_Whistle</soundName>
+              <isCall>true</isCall>
             </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2.5</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!-- Response -->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_AttackLight2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>5.75</beatNumber>
+            <soundName>Play_AttackLight2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_AttackLight2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6.5</beatNumber>
+            <soundName>Play_AttackLight2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Powerup1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Heal1</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Mass Repair -->
         <id>9</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>1.75</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2.5</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!-- Response -->
+          <Beat>
+            <beatNumber>9</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>9.75</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>10</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>10.5</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>11</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>12</beatNumber>
+            <soundName>Play_Drink4</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>13</beatNumber>
+            <soundName>Play_AttackClap2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>14</beatNumber>
+            <soundName>Play_Powerup1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>15</beatNumber>
+            <soundName>Play_Heal1</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>4</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Reboot -->
         <id>10</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!-- Response -->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Powerup1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Buff1</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
@@ -396,80 +540,272 @@
         <!-- Mass Debug -->
         <id>12</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_TambourineShake</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3.5</beatNumber>
+            <soundName>Play_TambourineShake</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_BirdWhistle</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_BirdWhistle</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Powerup1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7.5</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_AttackExplode1</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Macro+ -->
         <id>13</id>
-        <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-        </beats>
-        <barLength>1</barLength>
+      <beats>
+      <!-- Call -->
+        <Beat>
+          <beatNumber>1</beatNumber>
+          <soundName>Play_Whistle</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <Beat>
+          <beatNumber>1.5</beatNumber>
+          <soundName>Play_Whistle</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <Beat>
+          <beatNumber>2.5</beatNumber>
+          <soundName>Play_Whistle</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <Beat>
+          <beatNumber>3</beatNumber>
+          <soundName>Play_TambourineShake</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <Beat>
+          <beatNumber>4</beatNumber>
+          <soundName>Play_ClapWhistle2</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <!-- Response -->
+        <Beat>
+          <beatNumber>5</beatNumber>
+          <soundName>Play_BirdWhistle</soundName>
+        </Beat>
+        <Beat>
+          <beatNumber>5.5</beatNumber>
+          <soundName>Play_BirdWhistle</soundName>
+        </Beat>
+        <Beat>
+          <beatNumber>6.5</beatNumber>
+          <soundName>Play_BirdWhistle</soundName>
+        </Beat>
+        <Beat>
+          <beatNumber>7</beatNumber>
+          <soundName>Play_Powerup1</soundName>
+        </Beat>
+        <Beat>
+          <beatNumber>8</beatNumber>
+          <soundName>Play_Spell1</soundName>
+        </Beat>
+      </beats>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Attack+ -->
         <id>14</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>1.5</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2.5</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3.5</beatNumber>
+            <soundName>Play_TambourineShake</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!-- Response -->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_BirdWhistle</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>5.5</beatNumber>
+            <soundName>Play_BirdWhistle</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6.5</beatNumber>
+            <soundName>Play_Powerup2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7.5</beatNumber>
+            <soundName>Play_Powerup1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell2</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Defense+ -->
         <id>15</id>
-        <beats>
+          <id>14</id>
+          <beats>
             <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
+              <beatNumber>1</beatNumber>
+              <soundName>Play_Whistle</soundName>
+              <isCall>true</isCall>
             </Beat>
             <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
+              <beatNumber>1.5</beatNumber>
+              <soundName>Play_Whistle</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <Beat>
+              <beatNumber>2.5</beatNumber>
+              <soundName>Play_Whistle</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <Beat>
+              <beatNumber>3</beatNumber>
+              <soundName>Play_TambourineShake</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <Beat>
+              <beatNumber>3.5</beatNumber>
+              <soundName>Play_ClapWhistle2</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <Beat>
+              <beatNumber>4</beatNumber>
+              <soundName>Play_ClapWhistle2</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <!-- Response -->
+            <Beat>
+              <beatNumber>5</beatNumber>
+              <soundName>Play_BirdWhistle</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>5.5</beatNumber>
+              <soundName>Play_BirdWhistle</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>6.5</beatNumber>
+              <soundName>Play_BirdWhistle</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>7</beatNumber>
+              <soundName>Play_Powerup2</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>7.5</beatNumber>
+              <soundName>Play_Powerup1</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>8</beatNumber>
+              <soundName>Play_Spell1</soundName>
             </Beat>
         </beats>
-        <barLength>1</barLength>
-
+        <barLength>2</barLength>
     </Pattern>
     <Pattern>
         <!-- Surge -->
         <id>16</id>
-        <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-        </beats>
-        <barLength>1</barLength>
+      <beats>
+        <Beat>
+          <beatNumber>1</beatNumber>
+          <soundName>Play_Whistle</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <Beat>
+          <beatNumber>1.75</beatNumber>
+          <soundName>Play_Whistle</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <Beat>
+          <beatNumber>2.5</beatNumber>
+          <soundName>Play_Whistle</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <Beat>
+          <beatNumber>3.5</beatNumber>
+          <soundName>Play_Whistle</soundName>
+          <isCall>true</isCall>
+        </Beat>
+        <!-- Response -->
+        <Beat>
+          <beatNumber>5</beatNumber>
+          <soundName>Play_BirdWhistle</soundName>
+        </Beat>
+        <Beat>
+          <beatNumber>5.75</beatNumber>
+          <soundName>Play_BirdWhistle</soundName>
+        </Beat>
+        <Beat>
+          <beatNumber>6.5</beatNumber>
+          <soundName>Play_Powerup2</soundName>
+        </Beat>
+        <Beat>
+          <beatNumber>7.5</beatNumber>
+          <soundName>Play_Spell2</soundName>
+        </Beat>
+      </beats>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
@@ -508,160 +844,469 @@
         <!-- Pause -->
         <id>19</id>
         <beats>
+            <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
             <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
+              <beatNumber>1.75</beatNumber>
+              <soundName>Play_Whistle</soundName>
+              <isCall>true</isCall>
             </Beat>
             <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
+              <beatNumber>2.5</beatNumber>
+              <soundName>Play_Whistle</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <Beat>
+              <beatNumber>3.25</beatNumber>
+              <soundName>Play_Whistle</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <Beat>
+              <beatNumber>4</beatNumber>
+              <soundName>Play_ClapWhistle2</soundName>
+              <isCall>true</isCall>
+            </Beat>
+            <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_BirdWhistle</soundName>
+          </Beat>
+            <Beat>
+              <beatNumber>5.75</beatNumber>
+              <soundName>Play_BirdWhistle</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>6.5</beatNumber>
+              <soundName>Play_BirdWhistle</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>7.25</beatNumber>
+              <soundName>Play_Powerup2</soundName>
+            </Beat>
+            <Beat>
+              <beatNumber>8</beatNumber>
+              <soundName>Play_Spell2</soundName>
             </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Bandages -->
         <id>20</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-        </beats>
-        <barLength>1</barLength>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
+      </beats>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Attack Candy -->
         <id>21</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Defense Candy -->
         <id>22</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Macro Candy -->
         <id>23</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Reboot Disk -->
         <id>24</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Concentrate Candy -->
         <id>25</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Medkit -->
         <id>26</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>3</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Battery -->
         <id>27</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
     <Pattern>
         <!-- Energizer -->
         <id>28</id>
         <beats>
-            <Beat>
-                <beatNumber>2</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>4</beatNumber>
-                <soundName>Play_Cowbell</soundName>
-            </Beat>
+          <!-- Call -->
+          <Beat>
+            <beatNumber>1</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>2</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_ClapWhistle2</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <!--Response-->
+          <Beat>
+            <beatNumber>5</beatNumber>
+            <soundName>Play_Drink1</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>6</beatNumber>
+            <soundName>Play_Drink2</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>7</beatNumber>
+            <soundName>Play_Drink3</soundName>
+          </Beat>
+          <Beat>
+            <beatNumber>8</beatNumber>
+            <soundName>Play_Spell3</soundName>
+          </Beat>
         </beats>
-        <barLength>1</barLength>
+        <barLength>2</barLength>
 
     </Pattern>
 </ArrayOfPattern>
