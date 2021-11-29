@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: ce9e95076641c840b2e12537fd4e7366
     GuidInternal: 
-    m_lastTime: -8585636456567151949
+    m_lastTime: -8585634611754146978
     List:
     - name: Environment
       guid: e8844d887a77af4dab22949281d082f1
@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 75db4e7638654c49924eee981991fa51
     GuidInternal: 
-    m_lastTime: -8585636456570079044
+    m_lastTime: -8585634611754575815
     List:
     - name: Play_Approach
       guid: 9a94a590c493974aae6b38645d75b286
@@ -147,6 +147,40 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.216372
       minDuration: 0.216372
+    - name: Play_AttackExplode1
+      guid: c22956a29f7a17489bf5c4ef0b0c8f3f
+      id: 4165562918
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackExplode1
+        ObjectType: 3
+        guid: c22956a29f7a17489bf5c4ef0b0c8f3f
+      Path: Events\Default Work Unit\Play_AttackExplode1
+      maxAttenuation: 0
+      maxDuration: 0.613991
+      minDuration: 0.613991
+    - name: Play_AttackHard1
+      guid: acaf1e630d71d54588d92c703f55f5f5
+      id: 1092343898
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackHard1
+        ObjectType: 3
+        guid: acaf1e630d71d54588d92c703f55f5f5
+      Path: Events\Default Work Unit\Play_AttackHard1
+      maxAttenuation: 0
+      maxDuration: 0.251066
+      minDuration: 0.251066
     - name: Play_AttackHit
       guid: 587289df5a43e44bb25fc9fa3eed9cfe
       id: 3916729409
@@ -164,6 +198,74 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.251066
       minDuration: 0.139728
+    - name: Play_AttackLight1
+      guid: 996d06f97524e04194f27873587e38ea
+      id: 3273307351
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackLight1
+        ObjectType: 3
+        guid: 996d06f97524e04194f27873587e38ea
+      Path: Events\Default Work Unit\Play_AttackLight1
+      maxAttenuation: 0
+      maxDuration: 0.139728
+      minDuration: 0.139728
+    - name: Play_AttackLight2
+      guid: dcf38d75172bcb4599523b6f832da956
+      id: 3273307348
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackLight2
+        ObjectType: 3
+        guid: dcf38d75172bcb4599523b6f832da956
+      Path: Events\Default Work Unit\Play_AttackLight2
+      maxAttenuation: 0
+      maxDuration: 0.226304
+      minDuration: 0.226304
+    - name: Play_AttackLight3
+      guid: 4c3224e46064cb4e923f5c3358ebfef4
+      id: 3273307349
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackLight3
+        ObjectType: 3
+        guid: 4c3224e46064cb4e923f5c3358ebfef4
+      Path: Events\Default Work Unit\Play_AttackLight3
+      maxAttenuation: 0
+      maxDuration: 0.335271
+      minDuration: 0.335271
+    - name: Play_Congrats1
+      guid: 2a3cd9cd38f5ee4fae87b912fa660ac1
+      id: 4195308490
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Congrats1
+        ObjectType: 3
+        guid: 2a3cd9cd38f5ee4fae87b912fa660ac1
+      Path: Events\Default Work Unit\Play_Congrats1
+      maxAttenuation: 0
+      maxDuration: 0.389274
+      minDuration: 0.389274
     - name: Play_Cowbell
       guid: a192cbecc8c6be489c612c8244ebe9d8
       id: 1491318392
@@ -232,6 +334,74 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 695788.2
       minDuration: 695788.2
+    - name: Play_PowerUp1
+      guid: 23f0610a7981fc4e844f19c249b0152f
+      id: 880774659
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_PowerUp1
+        ObjectType: 3
+        guid: 23f0610a7981fc4e844f19c249b0152f
+      Path: Events\Default Work Unit\Play_PowerUp1
+      maxAttenuation: 0
+      maxDuration: 0.724127
+      minDuration: 0.724127
+    - name: Play_Shield1
+      guid: 5038ebeae2195447bfea82c7c86a7c64
+      id: 3865095978
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Shield1
+        ObjectType: 3
+        guid: 5038ebeae2195447bfea82c7c86a7c64
+      Path: Events\Default Work Unit\Play_Shield1
+      maxAttenuation: 0
+      maxDuration: 0.35826
+      minDuration: 0.35826
+    - name: Play_Shield2
+      guid: 764078457fd34141b592c2f31586afc0
+      id: 3865095977
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Shield2
+        ObjectType: 3
+        guid: 764078457fd34141b592c2f31586afc0
+      Path: Events\Default Work Unit\Play_Shield2
+      maxAttenuation: 0
+      maxDuration: 0.820677
+      minDuration: 0.820677
+    - name: Play_Tambourine
+      guid: 437575241b1f6b43a462b6486665a034
+      id: 688015546
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Tambourine
+        ObjectType: 3
+        guid: 437575241b1f6b43a462b6486665a034
+      Path: Events\Default Work Unit\Play_Tambourine
+      maxAttenuation: 0
+      maxDuration: 0.3261
+      minDuration: 0.3261
     - name: Play_UIClose
       guid: 3a4d37333fc51e4ab9bc5f9dc9c0b4f1
       id: 1883176764
@@ -300,6 +470,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.115011
       minDuration: 0.115011
+    - name: Play_Whistle
+      guid: c2cbdce09d8c4d40b8197a63ea63c6b3
+      id: 2693257580
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Whistle
+        ObjectType: 3
+        guid: c2cbdce09d8c4d40b8197a63ea63c6b3
+      Path: Events\Default Work Unit\Play_Whistle
+      maxAttenuation: 0
+      maxDuration: 0.3261
+      minDuration: 0.3261
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:

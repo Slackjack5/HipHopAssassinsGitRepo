@@ -7,6 +7,7 @@
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_Whistle" ID="{E0DCCBC2-8C9D-404D-B819-7A63EA63C6B3}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Shield2" ID="{45784076-D37F-4141-B592-C2F31586AFC0}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Go" ID="{94D6CA78-92BA-41D3-AE4F-69FDE2621097}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackLight1" ID="{F9066D99-2475-41E0-94F2-7873587E38EA}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_EnemyDeath" ID="{765434EA-98AC-425B-A2C9-1EA70C4F12B3}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Tambourine" ID="{24757543-1F1B-436B-A462-B6486665A034}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
@@ -18,9 +19,11 @@
 						<ObjectRef Name="Play_Shield1" ID="{EAEB3850-19E2-4754-BFEA-82C7C86A7C64}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackExplode1" ID="{A25629C2-7A9F-4817-9BF5-C4EF0B0C8F3F}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Cowbell" ID="{ECCB92A1-C6C8-48BE-9C61-2C8244EBE9D8}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Clap" ID="{EC26F2AF-7A68-4942-B27B-4521506A430A}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_UIClose" ID="{33374D3A-C53F-4A1E-B9BC-5F9DC9C0B4F1}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Approach" ID="{90A5949A-93C4-4A97-AE6B-38645D75B286}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackHit" ID="{DF897258-435A-4BE4-B25F-C9FA3EED9CFE}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_8BitBell" ID="{F20F2198-E0F2-4EC3-8B44-FE4897A7D8BE}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Music" ID="{06CF03DA-14E9-4EC4-8A51-D0CACBEEA102}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_AttackLight3" ID="{E424324C-6460-4ECB-923F-5C3358EBFEF4}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_PowerUp1" ID="{0A61F023-8179-4EFC-844F-19C249B0152F}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>

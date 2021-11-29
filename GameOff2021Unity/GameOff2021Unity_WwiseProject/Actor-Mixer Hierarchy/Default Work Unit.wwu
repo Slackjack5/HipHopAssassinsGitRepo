@@ -407,6 +407,96 @@
 										<ActiveSource Name="Whistle" ID="{D9502115-AF8C-45C3-8821-245751E9B8FF}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="Go!" ID="{FC12662D-BB52-4B46-9955-676306A7A95A}" ShortID="871960689">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Go!" ID="{11F1CA03-663A-438C-9AF4-616F66FFFCDA}">
+											<Language>SFX</Language>
+											<AudioFile>Go!.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1041660709"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Go!" ID="{11F1CA03-663A-438C-9AF4-616F66FFFCDA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Clap" ID="{2478798B-4BF8-4664-99AE-2D3FC8240BC2}" ShortID="822848206">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-7</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ND_Clap06" ID="{5A2FDA70-505F-4613-8797-59960815D357}">
+											<Language>SFX</Language>
+											<AudioFile>ND_Clap06.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="347055204"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="ND_Clap06" ID="{5A2FDA70-505F-4613-8797-59960815D357}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="8BitBell" ID="{57809F82-A519-41BC-AD72-EA7894BBB07D}" ShortID="262664913">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-19</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s" ID="{2D8CBADC-EE81-4D4B-B5F9-116C99CA2951}">
+											<Language>SFX</Language>
+											<AudioFile>ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="938064386"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s" ID="{2D8CBADC-EE81-4D4B-B5F9-116C99CA2951}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Responses" ID="{7728B082-7226-4467-8EC4-C737C1A96233}" ShortID="231295434">

@@ -11,11 +11,19 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3465266516">
+		<SoundBank Id="1229948536" Language="SFX" Hash="3663956260">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
+				<Event Id="976860888" Name="Play_8BitBell" ObjectPath="\Events\Default Work Unit\Play_8BitBell" DurationType="OneShot" DurationMin="0.247063" DurationMax="0.247063">
+					<IncludedMemoryFiles>
+						<File Id="938064386" Language="SFX">
+							<ShortName>ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s.wav</ShortName>
+							<Path>SFX\ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="537679050" Name="Play_Approach" ObjectPath="\Events\Default Work Unit\Play_Approach" DurationType="OneShot" DurationMin="0.216372" DurationMax="0.216372">
 					<IncludedMemoryFiles>
 						<File Id="1001131662" Language="SFX">
@@ -80,6 +88,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3785725400" Name="Play_Clap" ObjectPath="\Events\Default Work Unit\Play_Clap" DurationType="OneShot" DurationMin="0.450385" DurationMax="0.450385">
+					<IncludedMemoryFiles>
+						<File Id="347055204" Language="SFX">
+							<ShortName>ND_Clap06.wav</ShortName>
+							<Path>SFX\ND_Clap06_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="4195308490" Name="Play_Congrats1" ObjectPath="\Events\Default Work Unit\Play_Congrats1" DurationType="OneShot" DurationMin="0.389274" DurationMax="0.389274">
 					<IncludedMemoryFiles>
 						<File Id="172442727" Language="SFX">
@@ -101,6 +117,14 @@
 						<File Id="158753998" Language="SFX">
 							<ShortName>EnemyDeath.Wav</ShortName>
 							<Path>SFX\EnemyDeath_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2279634092" Name="Play_Go" ObjectPath="\Events\Default Work Unit\Play_Go" DurationType="OneShot" DurationMin="0.500000" DurationMax="0.500000">
+					<IncludedMemoryFiles>
+						<File Id="1041660709" Language="SFX">
+							<ShortName>Go!.wav</ShortName>
+							<Path>SFX\Go!_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

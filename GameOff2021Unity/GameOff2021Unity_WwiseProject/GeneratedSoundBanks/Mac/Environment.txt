@@ -2,10 +2,12 @@ Event	ID	Name			Wwise Object Path	Notes
 	537679050	Play_Approach			\Default Work Unit\Play_Approach	
 	688015546	Play_Tambourine			\Default Work Unit\Play_Tambourine	
 	880774659	Play_PowerUp1			\Default Work Unit\Play_PowerUp1	
+	976860888	Play_8BitBell			\Default Work Unit\Play_8BitBell	
 	1092343898	Play_AttackHard1			\Default Work Unit\Play_AttackHard1	
 	1491318392	Play_Cowbell			\Default Work Unit\Play_Cowbell	
 	1720406201	Play_MacroHit			\Default Work Unit\Play_MacroHit	
 	1883176764	Play_UIClose			\Default Work Unit\Play_UIClose	
+	2279634092	Play_Go			\Default Work Unit\Play_Go	
 	2693257580	Play_Whistle			\Default Work Unit\Play_Whistle	
 	2932040671	Play_Music			\Default Work Unit\Play_Music	
 	2933238184	Play_UIOpen			\Default Work Unit\Play_UIOpen	
@@ -14,6 +16,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3273307349	Play_AttackLight3			\Default Work Unit\Play_AttackLight3	
 	3273307351	Play_AttackLight1			\Default Work Unit\Play_AttackLight1	
 	3703192648	Play_UISelect			\Default Work Unit\Play_UISelect	
+	3785725400	Play_Clap			\Default Work Unit\Play_Clap	
 	3865095977	Play_Shield2			\Default Work Unit\Play_Shield2	
 	3865095978	Play_Shield1			\Default Work Unit\Play_Shield1	
 	3916729409	Play_AttackHit			\Default Work Unit\Play_AttackHit	
@@ -31,6 +34,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	201554557	UIOpen	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\UIOpen_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Noises\UIOpen		33592
 	259699750	AttackHit1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Hit\AttackHit1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AttackHit\AttackHit1		12388
 	264426336	Shield1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Shield1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Responses\Shield1		68848
+	347055204	Clap	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\ND_Clap06_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Calls\Clap		79512
 	356646821	Tambourine	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Tambourine_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Calls\Tambourine		57588
 	396899071	DebugCowbell	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\RKU_BME3_Drums_Perc_Cowbell_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Noises\DebugCowbell		20736
 	416583162	AttackHit2	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Hit\AttackHit2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AttackHit\AttackHit2		22208
@@ -44,6 +48,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	847141492	AttackExplode1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\AttackExplode1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Responses\AttackExplode1		54218
 	934945912	Nycelly ~ NothingCanStopUs (GameOff2021)	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Nycelly ~ NothingCanStopUs (GameOff2021)_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Nycelly ~ NothingCanStopUs (GameOff2021)\Nycelly ~ NothingCanStopUs (GameOff2021)		12273768
 	936103937	AttackLight3	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\AttackLight3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Responses\AttackLight3		64436
+	938064386	8BitBell	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Calls\8BitBell		47500
 	1001131662	Approach	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Approach_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Noises\Approach		19148
+	1041660709	Go!	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Go!_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Calls\Go!		88264
 	1042021206	AttackHit3	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Hit\AttackHit3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AttackHit\AttackHit3		20024
 

@@ -234,6 +234,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Go" ID="{94D6CA78-92BA-41D3-AE4F-69FDE2621097}">
+					<ChildrenList>
+						<Action Name="" ID="{7105BBF3-C807-4BB8-B078-2B0127D13D21}" ShortID="536519157">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Go!" ID="{FC12662D-BB52-4B46-9955-676306A7A95A}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Clap" ID="{EC26F2AF-7A68-4942-B27B-4521506A430A}">
+					<ChildrenList>
+						<Action Name="" ID="{49DF5845-1FF0-41B1-8CD8-0E2418A6FE5F}" ShortID="771299037">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Clap" ID="{2478798B-4BF8-4664-99AE-2D3FC8240BC2}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_8BitBell" ID="{F20F2198-E0F2-4EC3-8B44-FE4897A7D8BE}">
+					<ChildrenList>
+						<Action Name="" ID="{5AF5BBAC-CF7D-4EA3-B9CA-FE2DA9943F46}" ShortID="767717409">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="8BitBell" ID="{57809F82-A519-41BC-AD72-EA7894BBB07D}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

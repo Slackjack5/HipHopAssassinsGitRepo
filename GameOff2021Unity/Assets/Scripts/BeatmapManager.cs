@@ -29,6 +29,7 @@ public class BeatmapManager : MonoBehaviour
 
   private static readonly int attackType = Animator.StringToHash("AttackType");
   private static readonly int heroHash = Animator.StringToHash("Hero");
+  private int offBeatCounter;
 
   public class Note
   {
@@ -342,5 +343,30 @@ public class BeatmapManager : MonoBehaviour
     beat.spawnerPos = spawnerPos;
 
     beatEntities.Add(bar);
+  }
+
+  public void RhythmTambourine()
+  {
+    if(!isGenerated) { return; }
+    if (notes[nextHitIndex].isCall)
+    {
+      AkSoundEngine.PostEvent("Play_Tambourine", gameObject);
+    }
+    else
+    {
+      if (offBeatCounter == 1)
+      {
+        AkSoundEngine.PostEvent("Play_Clap", gameObject);
+      }
+    }
+
+    if (offBeatCounter!=1)
+    {
+      offBeatCounter += 1;
+    }
+    else
+    {
+      offBeatCounter = 0;
+    }
   }
 }
