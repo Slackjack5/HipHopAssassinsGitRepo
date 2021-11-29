@@ -26,64 +26,28 @@
             </Beat>
             <Beat>
                 <beatNumber>4.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>5.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>6.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>7.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>8</beatNumber>
-                <soundName>Play_Go</soundName>
+                <soundName>Play_ClapWhistle2</soundName>
                 <isCall>true</isCall>
             </Beat>
             <!--Response-->
             <Beat>
-                <beatNumber>9</beatNumber>
+                <beatNumber>5</beatNumber>
                 <soundName>Play_AttackLight1</soundName>
             </Beat>
             <Beat>
-                <beatNumber>10</beatNumber>
+                <beatNumber>6</beatNumber>
                 <soundName>Play_AttackLight1</soundName>
             </Beat>
             <Beat>
-                <beatNumber>11.5</beatNumber>
+                <beatNumber>7.5</beatNumber>
                 <soundName>Play_AttackHard1</soundName>
             </Beat>
             <Beat>
-                <beatNumber>12.5</beatNumber>
+                <beatNumber>8.5</beatNumber>
                 <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>13.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>14.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>15.5</beatNumber>
-                <soundName>Play_AttackLight2</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>16</beatNumber>
-                <soundName>Play_AttackLight2</soundName>
             </Beat>
         </beats>
-        <barLength>4</barLength>
+        <barLength>2</barLength>
     </Pattern>
     <Pattern>
         <!-- Unused -->
@@ -205,79 +169,25 @@
             <!-- Call -->
             <Beat>
                 <beatNumber>1</beatNumber>
-                <soundName>Play_Whistle</soundName>
+                <soundName>Play_CockroachHiss1</soundName>
                 <isCall>true</isCall>
             </Beat>
             <Beat>
                 <beatNumber>2</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>3.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>4.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>5.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>6.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>7.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>8</beatNumber>
-                <soundName>Play_Go</soundName>
+                <soundName>Play_CockroachHiss2</soundName>
                 <isCall>true</isCall>
             </Beat>
             <!--Response-->
             <Beat>
-                <beatNumber>9</beatNumber>
-                <soundName>Play_AttackLight1</soundName>
+              <beatNumber>3</beatNumber>
+              <soundName>Play_Shield</soundName>
             </Beat>
             <Beat>
-                <beatNumber>10</beatNumber>
-                <soundName>Play_AttackLight1</soundName>
+              <beatNumber>4</beatNumber>
+              <soundName>Play_Shield</soundName>
             </Beat>
-            <Beat>
-                <beatNumber>11.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>12.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>13.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>14.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>15.5</beatNumber>
-                <soundName>Play_AttackLight2</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>16</beatNumber>
-                <soundName>Play_AttackLight2</soundName>
-            </Beat>
-        </beats>
-        <barLength>4</barLength>
+          </beats>
+        <barLength>1</barLength>
     </Pattern>
     <Pattern>
         <!-- Dragonfly Attack -->
@@ -371,75 +281,48 @@
                 <isCall>true</isCall>
             </Beat>
             <Beat>
-                <beatNumber>2</beatNumber>
+                <beatNumber>1.75</beatNumber>
                 <soundName>Play_Whistle</soundName>
                 <isCall>true</isCall>
             </Beat>
             <Beat>
-                <beatNumber>3.5</beatNumber>
+                <beatNumber>2.5</beatNumber>
                 <soundName>Play_Whistle</soundName>
                 <isCall>true</isCall>
             </Beat>
-            <Beat>
-                <beatNumber>4.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>5.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>6.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>7.5</beatNumber>
-                <soundName>Play_Whistle</soundName>
-                <isCall>true</isCall>
-            </Beat>
-            <Beat>
-                <beatNumber>8</beatNumber>
-                <soundName>Play_Go</soundName>
-                <isCall>true</isCall>
-            </Beat>
+          <Beat>
+            <beatNumber>3</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
+          <Beat>
+            <beatNumber>4</beatNumber>
+            <soundName>Play_Whistle</soundName>
+            <isCall>true</isCall>
+          </Beat>
             <!--Response-->
             <Beat>
-                <beatNumber>9</beatNumber>
-                <soundName>Play_AttackLight1</soundName>
+              <beatNumber>5</beatNumber>
+              <soundName>Play_AttackLight1</soundName>
             </Beat>
             <Beat>
-                <beatNumber>10</beatNumber>
-                <soundName>Play_AttackLight1</soundName>
+              <beatNumber>5.75</beatNumber>
+              <soundName>Play_AttackLight3</soundName>
             </Beat>
             <Beat>
-                <beatNumber>11.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
+              <beatNumber>6.5</beatNumber>
+              <soundName>Play_AttackHard1</soundName>
             </Beat>
             <Beat>
-                <beatNumber>12.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
+              <beatNumber>7</beatNumber>
+              <soundName>Play_AttackLight3</soundName>
             </Beat>
             <Beat>
-                <beatNumber>13.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
+              <beatNumber>8</beatNumber>
+              <soundName>Play_AttackLight3</soundName>
             </Beat>
-            <Beat>
-                <beatNumber>14.5</beatNumber>
-                <soundName>Play_AttackHard1</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>15.5</beatNumber>
-                <soundName>Play_AttackLight2</soundName>
-            </Beat>
-            <Beat>
-                <beatNumber>16</beatNumber>
-                <soundName>Play_AttackLight2</soundName>
-            </Beat>
-        </beats>
-        <barLength>4</barLength>
+            </beats>
+        <barLength>2</barLength>
     </Pattern>
     <Pattern>
         <!-- Repair -->

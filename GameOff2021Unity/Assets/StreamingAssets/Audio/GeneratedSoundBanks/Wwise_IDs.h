@@ -15,6 +15,9 @@ namespace AK
     {
         static const AkUniqueID PLAY_8BITBELL = 976860888U;
         static const AkUniqueID PLAY_APPROACH = 537679050U;
+        static const AkUniqueID PLAY_ATTACKCLAP1 = 2677263245U;
+        static const AkUniqueID PLAY_ATTACKCLAP2 = 2677263246U;
+        static const AkUniqueID PLAY_ATTACKCLAP3 = 2677263247U;
         static const AkUniqueID PLAY_ATTACKEXPLODE1 = 4165562918U;
         static const AkUniqueID PLAY_ATTACKHARD1 = 1092343898U;
         static const AkUniqueID PLAY_ATTACKHIT = 3916729409U;
@@ -22,13 +25,18 @@ namespace AK
         static const AkUniqueID PLAY_ATTACKLIGHT2 = 3273307348U;
         static const AkUniqueID PLAY_ATTACKLIGHT3 = 3273307349U;
         static const AkUniqueID PLAY_CLAP = 3785725400U;
-        static const AkUniqueID PLAY_CONGRATS1 = 4195308490U;
+        static const AkUniqueID PLAY_CLAPWHISTLE = 1109536254U;
+        static const AkUniqueID PLAY_CLAPWHISTLE2 = 432957160U;
+        static const AkUniqueID PLAY_COCKROACHHISS1 = 3065514911U;
+        static const AkUniqueID PLAY_COCKROACHHISS2 = 3065514908U;
+        static const AkUniqueID PLAY_CONGRATS = 2643100921U;
         static const AkUniqueID PLAY_COWBELL = 1491318392U;
         static const AkUniqueID PLAY_ENEMYDEATH = 3154146856U;
         static const AkUniqueID PLAY_GO = 2279634092U;
         static const AkUniqueID PLAY_MACROHIT = 1720406201U;
         static const AkUniqueID PLAY_MUSIC = 2932040671U;
         static const AkUniqueID PLAY_POWERUP1 = 880774659U;
+        static const AkUniqueID PLAY_SHIELD = 1988178265U;
         static const AkUniqueID PLAY_SHIELD1 = 3865095978U;
         static const AkUniqueID PLAY_SHIELD2 = 3865095977U;
         static const AkUniqueID PLAY_TAMBOURINE = 688015546U;

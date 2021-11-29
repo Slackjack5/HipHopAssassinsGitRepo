@@ -113,7 +113,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Congrats1" ID="{CDD93C2A-F538-4FEE-AE87-B912FA660AC1}">
+				<Event Name="Play_Congrats" ID="{CDD93C2A-F538-4FEE-AE87-B912FA660AC1}">
 					<ChildrenList>
 						<Action Name="" ID="{E434A874-7A38-4C25-A516-9213927D5875}" ShortID="127165087">
 							<ReferenceList>
@@ -262,6 +262,94 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="8BitBell" ID="{57809F82-A519-41BC-AD72-EA7894BBB07D}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_ClapWhistle" ID="{1D9670D0-5DFB-4DDD-B58A-CA0215E0462F}">
+					<ChildrenList>
+						<Action Name="" ID="{742C69C5-D27B-4327-BFA6-3C48B1F30004}" ShortID="897424503">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ClapWhistle" ID="{BA06060B-EB79-4A12-9DE0-C03A1F1EC804}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackClap1" ID="{E26E3E0C-E50D-4E16-8184-09E839AF6B9E}">
+					<ChildrenList>
+						<Action Name="" ID="{9D0AD06D-05E6-4AB6-8017-AE4FACA0D3F0}" ShortID="650069277">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackClap1" ID="{55365C83-9148-4FAF-9B3A-CA546673B487}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackClap2" ID="{949A3CDD-F288-442C-954E-E9D2DD5F0B53}">
+					<ChildrenList>
+						<Action Name="" ID="{F601592E-A780-4037-98A0-C8E020F83FA2}" ShortID="118208870">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackClap2" ID="{8290A514-4522-410E-8536-CFD177FC28D6}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AttackClap3" ID="{C02A7155-2F72-406B-AF77-85C537A4C08F}">
+					<ChildrenList>
+						<Action Name="" ID="{58F958B1-4D61-4147-B190-76A2273A1A10}" ShortID="400125187">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AttackClap3" ID="{1E469B83-5385-401A-9616-6D246C8A7E3D}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_ClapWhistle2" ID="{7BCAED15-8E9E-4EE2-B18E-23D001DF325F}">
+					<ChildrenList>
+						<Action Name="" ID="{CEFB10ED-634E-4556-AC8F-AFE019FE79DE}" ShortID="191207260">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ClapWhistle2" ID="{1C4D8EC9-C2B0-4299-B9D8-8E20E9C34C0A}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CockroachHiss1" ID="{70B1E2F7-4EF9-4510-A724-135858D52D5F}">
+					<ChildrenList>
+						<Action Name="" ID="{636FD4B0-9A50-4CBC-81AD-806D781EAD7C}" ShortID="646325990">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CockroachHiss1" ID="{C3A39B4C-C169-406E-AA01-06495737C500}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CockroachHiss2" ID="{F335FD33-99E8-4C46-8226-49CABCEA3BE0}">
+					<ChildrenList>
+						<Action Name="" ID="{5E991EEE-BAC8-490D-B58D-F6BE667608CF}" ShortID="326030593">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="CockroachHiss2" ID="{F78AC741-B37C-4C04-A733-57FDE9131786}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Shield" ID="{BF4E6722-7A5B-4087-A03C-404A6263328B}">
+					<ChildrenList>
+						<Action Name="" ID="{CF3A465E-5873-4403-BB54-B19910163CDE}" ShortID="34966320">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shield2" ID="{BA49E8EB-6FEF-4705-A34E-DB4A8B6F1173}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
