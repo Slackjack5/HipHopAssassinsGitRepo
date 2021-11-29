@@ -33,6 +33,13 @@ public class EncounterManager : MonoBehaviour
     button.onClick.AddListener(StartEncounter);
 
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
+
+    shop.onPurchase.AddListener(OnPurchase);
+    shop.onClose.AddListener(gold =>
+    {
+      currentGold = gold;
+      EndEncounter(true);
+    });
   }
 
   private void Update()
@@ -81,12 +88,6 @@ public class EncounterManager : MonoBehaviour
     if (currentEncounter.IsShop)
     {
       shop.Open(currentGold);
-      shop.onPurchase.AddListener(OnPurchase);
-      shop.onClose.AddListener(gold =>
-      {
-        currentGold = gold;
-        EndEncounter(true);
-      });
     }
     else
     {

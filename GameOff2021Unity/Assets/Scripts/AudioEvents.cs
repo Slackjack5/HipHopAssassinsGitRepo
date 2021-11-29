@@ -25,6 +25,7 @@ public class AudioEvents : MonoBehaviour
   public UnityEvent OnEveryGrid;
   public UnityEvent OnEveryBeat;
   public UnityEvent OnEveryOffbeat;
+  public UnityEvent OnEvery2ndBeat;
   public UnityEvent OnEveryBar;
 
   public UnityEvent OnSubtractTime;
@@ -113,15 +114,24 @@ public class AudioEvents : MonoBehaviour
       case AkCallbackType.AK_MusicSyncBeat:
         if (isSegmentPositionReady)
         {
+          IncreaseBeat();
+
           currentBeatStartTime = currentSegment.iCurrentPosition;
           OnEveryBeat.Invoke();
           isOnEveryOffbeatInvoked = false;
+
+          if (GlobalVariables.currentBeat % 2 == 0)
+          {
+            OnEvery2ndBeat.Invoke();
+          }
         }
 
         break;
       case AkCallbackType.AK_MusicSyncBar:
         if (isSegmentPositionReady)
         {
+          IncreaseBar();
+
           //I want to make sure that the secondsPerBeat is defined on our first measure.
           if (GlobalVariables.songStarted == false)
           {
@@ -140,6 +150,7 @@ public class AudioEvents : MonoBehaviour
         break;
 
       case AkCallbackType.AK_MusicSyncGrid:
+        IncreaseGrid();
         OnEveryGrid.Invoke();
         break;
       case AkCallbackType.AK_MusicSyncEntry:
@@ -157,12 +168,12 @@ public class AudioEvents : MonoBehaviour
     }
   }
 
-  public void IncreaseBar()
+  private void IncreaseBar()
   {
     GlobalVariables.currentBar += 1;
   }
 
-  public void IncreaseBeat()
+  private void IncreaseBeat()
   {
     if (GlobalVariables.currentBeat < 4) //Insert Time Signature
     {
@@ -174,7 +185,7 @@ public class AudioEvents : MonoBehaviour
     }
   }
 
-  public void IncreaseGrid()
+  private void IncreaseGrid()
   {
     if (GlobalVariables.currentGrid < 4) //Insert Time Signature
     {
