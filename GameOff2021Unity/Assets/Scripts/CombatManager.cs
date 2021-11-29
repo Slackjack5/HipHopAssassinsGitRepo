@@ -187,7 +187,7 @@ public class CombatManager : MonoBehaviour
   {
     foreach (Hero hero in Heroes)
     {
-      hero.Reset();
+      hero.ResetEverything();
     }
 
     CurrentState = State.Inactive;
@@ -371,9 +371,7 @@ public class CombatManager : MonoBehaviour
   private void SetRandomTargets()
   {
     List<Hero> livingHeroes = Heroes.Where(hero => !hero.IsDead).ToList();
-    List<Monster> livingMonsters = Monsters.Where(monster => !monster.IsDead).ToList();
-
-    foreach (Monster monster in livingMonsters)
+    foreach (Monster monster in Monsters.Where(monster => !monster.IsDead))
     {
       int index = Random.Range(0, livingHeroes.Count);
       monster.SetTarget(livingHeroes[index]);
@@ -493,10 +491,5 @@ public class CombatManager : MonoBehaviour
   private static int CompareHeroIds(Hero x, Hero y)
   {
     return y.HeroId.CompareTo(x.HeroId);
-  }
-
-  private static float Threshold(float secondsPerBar)
-  {
-    return secondsPerBar / 2;
   }
 }

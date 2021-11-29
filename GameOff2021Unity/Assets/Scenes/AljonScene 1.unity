@@ -1100,6 +1100,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4993594879384720816, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
   m_PrefabInstance: {fileID: 4993594878220091682}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1314337678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8554516606376298311, guid: c7c3b192938e28d42b28684c307af5ee, type: 3}
+  m_PrefabInstance: {fileID: 6327057293905007652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1405241280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4165,6 +4170,10 @@ PrefabInstance:
       propertyPath: combatManager
       value: 
       objectReference: {fileID: 282201246}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: dialoguePanel
+      value: 
+      objectReference: {fileID: 1314337678}
     - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
       propertyPath: continueCommand
       value: 

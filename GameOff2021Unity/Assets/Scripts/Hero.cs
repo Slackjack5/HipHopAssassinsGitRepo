@@ -9,11 +9,12 @@ public class Hero : Combatant
   [SerializeField] private int[] macroIds;
 
   private Command submittedCommand;
+  private static readonly int hurt = Animator.StringToHash("Hurt");
 
   public int AttackPatternId => attackPatternId;
   public int HeroId => heroId;
   public int[] MacroIds => macroIds;
-  public bool IsSurged { get; private set; }
+  private bool IsSurged { get; set; }
 
   public void SubmitCommand(Command command)
   {
@@ -51,7 +52,7 @@ public class Hero : Combatant
 
   public void EndHurtAnimation()
   {
-    gameObject.GetComponent<Animator>().SetBool("Hurt", false);
+    gameObject.GetComponent<Animator>().SetBool(hurt, false);
   }
 
   public override void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
@@ -63,7 +64,7 @@ public class Hero : Combatant
     }
   }
 
-  public void Reset(bool atFirstEncounter = false)
+  public void ResetEverything(bool atFirstEncounter = false)
   {
     ResetCommand();
     ResetPosition();

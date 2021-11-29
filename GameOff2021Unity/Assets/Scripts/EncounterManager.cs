@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,9 +8,16 @@ using UnityEngine.UI;
 public class EncounterManager : MonoBehaviour
 {
   [SerializeField] private Encounter[] encounters;
+  [SerializeField] private DialogueTrigger[] dialogueTriggers;
+  [SerializeField] private GameObject dialoguePanel;
+  [SerializeField] private float textSpeed;
   [SerializeField] private CombatManager combatManager;
   [SerializeField] private Shop shop;
   [SerializeField] private GameObject continueCommand;
+
+  private Queue<DialogueTrigger.Dialogue> dialogueQueue = new Queue<DialogueTrigger.Dialogue>();
+  private TextMeshProUGUI nameText;
+  private TextMeshProUGUI messageText;
 
   private enum State
   {
@@ -30,7 +39,7 @@ public class EncounterManager : MonoBehaviour
     currentState = State.PreEncounter;
 
     var button = continueCommand.GetComponentInChildren<Button>();
-    button.onClick.AddListener(StartEncounter);
+    button.onClick.AddListener(DisplayNextDialogue);
 
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
 
@@ -40,6 +49,12 @@ public class EncounterManager : MonoBehaviour
       currentGold = gold;
       EndEncounter(true);
     });
+
+    TextMeshProUGUI[] textComponents = dialoguePanel.GetComponentsInChildren<TextMeshProUGUI>();
+    nameText = textComponents[0];
+    messageText = textComponents[1];
+
+    StartDialogue();
   }
 
   private void Update()
@@ -52,6 +67,60 @@ public class EncounterManager : MonoBehaviour
     else
     {
       continueCommand.SetActive(false);
+    }
+  }
+
+  private void StartDialogue()
+  {
+    if (currentState == State.InEncounter)
+    {
+      Debug.LogError("Failed to start dialogue. We are in an encounter!");
+      return;
+    }
+
+    if (currentEncounterIndex >= dialogueTriggers.Length)
+    {
+      Debug.LogWarning(
+        $"Failed to start dialogue. Index {currentEncounterIndex} is out of bounds. Will start the next encounter instead.");
+      StartEncounter();
+      return;
+    }
+
+    dialogueQueue.Clear();
+    DialogueTrigger dialogueTrigger = dialogueTriggers[currentEncounterIndex];
+    foreach (DialogueTrigger.Dialogue dialogue in dialogueTrigger.Dialogues)
+    {
+      dialogueQueue.Enqueue(dialogue);
+    }
+
+    DisplayNextDialogue();
+  }
+
+  private void DisplayNextDialogue()
+  {
+    dialoguePanel.SetActive(true);
+
+    if (dialogueQueue.Count == 0)
+    {
+      StartEncounter();
+      return;
+    }
+
+    DialogueTrigger.Dialogue dialogue = dialogueQueue.Dequeue();
+    nameText.text = dialogue.name;
+
+    // Stop typing the current message before typing a new message.
+    StopAllCoroutines();
+    StartCoroutine(TypeMessage(dialogue.message));
+  }
+
+  private IEnumerator TypeMessage(string message)
+  {
+    messageText.text = "";
+    foreach (char letter in message.ToCharArray())
+    {
+      messageText.text += letter;
+      yield return new WaitForSeconds(textSpeed);
     }
   }
 
@@ -69,6 +138,8 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
+    dialoguePanel.SetActive(false);
+
     // Reset the current encounter.
     if (currentEncounter != null)
     {
@@ -81,7 +152,7 @@ public class EncounterManager : MonoBehaviour
     {
       foreach (Hero hero in CombatManager.Heroes)
       {
-        hero.Reset(true);
+        hero.ResetEverything(true);
       }
     }
 
@@ -119,6 +190,7 @@ public class EncounterManager : MonoBehaviour
     combatManager.Reset();
     Timer.Deactivate();
     currentState = State.PreEncounter;
+    StartDialogue();
   }
 
   private void OnCombatStateChange(CombatManager.State state)
