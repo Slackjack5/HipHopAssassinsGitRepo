@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="137222409">
+		<SoundBank Id="1229948536" Language="SFX" Hash="3465266516">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -21,6 +21,22 @@
 						<File Id="1001131662" Language="SFX">
 							<ShortName>Approach.wav</ShortName>
 							<Path>SFX\Approach_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4165562918" Name="Play_AttackExplode1" ObjectPath="\Events\Default Work Unit\Play_AttackExplode1" DurationType="OneShot" DurationMin="0.613991" DurationMax="0.613991">
+					<IncludedMemoryFiles>
+						<File Id="847141492" Language="SFX">
+							<ShortName>AttackExplode1.wav</ShortName>
+							<Path>SFX\AttackExplode1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1092343898" Name="Play_AttackHard1" ObjectPath="\Events\Default Work Unit\Play_AttackHard1" DurationType="OneShot" DurationMin="0.251066" DurationMax="0.251066">
+					<IncludedMemoryFiles>
+						<File Id="541201414" Language="SFX">
+							<ShortName>AttackHard1.wav</ShortName>
+							<Path>SFX\AttackHard1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -37,6 +53,38 @@
 						<File Id="1042021206" Language="SFX">
 							<ShortName>Hit\AttackHit3.wav</ShortName>
 							<Path>SFX\Hit\AttackHit3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3273307351" Name="Play_AttackLight1" ObjectPath="\Events\Default Work Unit\Play_AttackLight1" DurationType="OneShot" DurationMin="0.139728" DurationMax="0.139728">
+					<IncludedMemoryFiles>
+						<File Id="175088764" Language="SFX">
+							<ShortName>AttackLight1.wav</ShortName>
+							<Path>SFX\AttackLight1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3273307348" Name="Play_AttackLight2" ObjectPath="\Events\Default Work Unit\Play_AttackLight2" DurationType="OneShot" DurationMin="0.226304" DurationMax="0.226304">
+					<IncludedMemoryFiles>
+						<File Id="675905458" Language="SFX">
+							<ShortName>AttackLight2.wav</ShortName>
+							<Path>SFX\AttackLight2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3273307349" Name="Play_AttackLight3" ObjectPath="\Events\Default Work Unit\Play_AttackLight3" DurationType="OneShot" DurationMin="0.335271" DurationMax="0.335271">
+					<IncludedMemoryFiles>
+						<File Id="936103937" Language="SFX">
+							<ShortName>AttackLight3.wav</ShortName>
+							<Path>SFX\AttackLight3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4195308490" Name="Play_Congrats1" ObjectPath="\Events\Default Work Unit\Play_Congrats1" DurationType="OneShot" DurationMin="0.389274" DurationMax="0.389274">
+					<IncludedMemoryFiles>
+						<File Id="172442727" Language="SFX">
+							<ShortName>Congrats!.wav</ShortName>
+							<Path>SFX\Congrats!_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -76,6 +124,38 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="880774659" Name="Play_PowerUp1" ObjectPath="\Events\Default Work Unit\Play_PowerUp1" DurationType="OneShot" DurationMin="0.724127" DurationMax="0.724127">
+					<IncludedMemoryFiles>
+						<File Id="605885087" Language="SFX">
+							<ShortName>PowerUp1.wav</ShortName>
+							<Path>SFX\PowerUp1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3865095978" Name="Play_Shield1" ObjectPath="\Events\Default Work Unit\Play_Shield1" DurationType="OneShot" DurationMin="0.358260" DurationMax="0.358260">
+					<IncludedMemoryFiles>
+						<File Id="264426336" Language="SFX">
+							<ShortName>Shield1.wav</ShortName>
+							<Path>SFX\Shield1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3865095977" Name="Play_Shield2" ObjectPath="\Events\Default Work Unit\Play_Shield2" DurationType="OneShot" DurationMin="0.820677" DurationMax="0.820677">
+					<IncludedMemoryFiles>
+						<File Id="163547098" Language="SFX">
+							<ShortName>Shield2.wav</ShortName>
+							<Path>SFX\Shield2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="688015546" Name="Play_Tambourine" ObjectPath="\Events\Default Work Unit\Play_Tambourine" DurationType="OneShot" DurationMin="0.326100" DurationMax="0.326100">
+					<IncludedMemoryFiles>
+						<File Id="356646821" Language="SFX">
+							<ShortName>Tambourine.wav</ShortName>
+							<Path>SFX\Tambourine_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1883176764" Name="Play_UIClose" ObjectPath="\Events\Default Work Unit\Play_UIClose" DurationType="OneShot" DurationMin="0.380136" DurationMax="0.380136">
 					<IncludedMemoryFiles>
 						<File Id="117930279" Language="SFX">
@@ -105,6 +185,14 @@
 						<File Id="625557575" Language="SFX">
 							<ShortName>UISelect.wav</ShortName>
 							<Path>SFX\UISelect_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2693257580" Name="Play_Whistle" ObjectPath="\Events\Default Work Unit\Play_Whistle" DurationType="OneShot" DurationMin="0.326100" DurationMax="0.326100">
+					<IncludedMemoryFiles>
+						<File Id="511631165" Language="SFX">
+							<ShortName>Whistle.wav</ShortName>
+							<Path>SFX\Whistle_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

@@ -14,15 +14,26 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_APPROACH = 537679050U;
+        static const AkUniqueID PLAY_ATTACKEXPLODE1 = 4165562918U;
+        static const AkUniqueID PLAY_ATTACKHARD1 = 1092343898U;
         static const AkUniqueID PLAY_ATTACKHIT = 3916729409U;
+        static const AkUniqueID PLAY_ATTACKLIGHT1 = 3273307351U;
+        static const AkUniqueID PLAY_ATTACKLIGHT2 = 3273307348U;
+        static const AkUniqueID PLAY_ATTACKLIGHT3 = 3273307349U;
+        static const AkUniqueID PLAY_CONGRATS1 = 4195308490U;
         static const AkUniqueID PLAY_COWBELL = 1491318392U;
         static const AkUniqueID PLAY_ENEMYDEATH = 3154146856U;
         static const AkUniqueID PLAY_MACROHIT = 1720406201U;
         static const AkUniqueID PLAY_MUSIC = 2932040671U;
+        static const AkUniqueID PLAY_POWERUP1 = 880774659U;
+        static const AkUniqueID PLAY_SHIELD1 = 3865095978U;
+        static const AkUniqueID PLAY_SHIELD2 = 3865095977U;
+        static const AkUniqueID PLAY_TAMBOURINE = 688015546U;
         static const AkUniqueID PLAY_UICLOSE = 1883176764U;
         static const AkUniqueID PLAY_UIMOVE = 4068532111U;
         static const AkUniqueID PLAY_UIOPEN = 2933238184U;
         static const AkUniqueID PLAY_UISELECT = 3703192648U;
+        static const AkUniqueID PLAY_WHISTLE = 2693257580U;
     } // namespace EVENTS
 
     namespace BANKS
