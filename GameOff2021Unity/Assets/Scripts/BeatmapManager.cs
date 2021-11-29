@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,7 +28,6 @@ public class BeatmapManager : MonoBehaviour
 
   private static readonly int attackType = Animator.StringToHash("AttackType");
   private static readonly int heroHash = Animator.StringToHash("Hero");
-  private int offBeatCounter;
 
   public class Note
   {
@@ -347,26 +345,19 @@ public class BeatmapManager : MonoBehaviour
 
   public void RhythmTambourine()
   {
-    if(!isGenerated) { return; }
-    if (notes[nextHitIndex].isCall)
+    if (!isGenerated) return;
+    if (nextHitIndex < notes.Count && notes[nextHitIndex].isCall)
     {
       AkSoundEngine.PostEvent("Play_Tambourine", gameObject);
     }
-    else
-    {
-      if (offBeatCounter == 1)
-      {
-        AkSoundEngine.PostEvent("Play_Clap", gameObject);
-      }
-    }
+  }
 
-    if (offBeatCounter!=1)
+  public void PlayClap()
+  {
+    if (!isGenerated) return;
+    if (nextHitIndex < notes.Count && !notes[nextHitIndex].isCall)
     {
-      offBeatCounter += 1;
-    }
-    else
-    {
-      offBeatCounter = 0;
+      AkSoundEngine.PostEvent("Play_Clap", gameObject);
     }
   }
 }

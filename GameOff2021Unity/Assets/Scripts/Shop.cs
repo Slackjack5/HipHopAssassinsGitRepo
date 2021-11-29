@@ -19,10 +19,14 @@ public class Shop : MonoBehaviour
   public readonly UnityEvent<int> onClose = new UnityEvent<int>();
 
   private int currentGold;
+  private CommandLoader commandLoader;
 
   private void Start()
   {
     consumables.AddRange(DataManager.AllConsumables);
+
+    commandLoader = menu.GetComponentInChildren<CommandLoader>();
+    commandLoader.onSubmitCommand.AddListener(Purchase);
   }
 
   private void Update()
@@ -53,10 +57,7 @@ public class Shop : MonoBehaviour
     menu.SetActive(true);
     EventSystem.current.SetSelectedGameObject(menu.GetComponentInChildren<Button>().gameObject);
 
-    var commandLoader = menu.GetComponentInChildren<CommandLoader>();
     commandLoader.Load(consumables.ToArray(), true);
-    commandLoader.onSubmitCommand.AddListener(Purchase);
-
     currentGold = gold;
   }
 

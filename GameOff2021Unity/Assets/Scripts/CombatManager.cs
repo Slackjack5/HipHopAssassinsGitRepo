@@ -92,6 +92,11 @@ public class CombatManager : MonoBehaviour
       Heroes.Sort(CompareHeroIds);
     }
 
+    foreach (Hero hero in Heroes)
+    {
+      hero.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(hero));
+    }
+
     Timer.onExpire.AddListener(Lose);
 
     CurrentState = State.Inactive;
@@ -202,9 +207,9 @@ public class CombatManager : MonoBehaviour
 
     SortByInitiative();
 
-    foreach (Combatant combatant in Combatants)
+    foreach (Monster monster in Monsters)
     {
-      combatant.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(combatant));
+      monster.dead.AddListener(() => beatmapManager.RemoveCombatantNotes(monster));
     }
 
     encounter.GetComponent<CombatantsMovement>().onComplete.AddListener(StartFight);

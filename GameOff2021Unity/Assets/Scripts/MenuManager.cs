@@ -23,6 +23,7 @@ public class MenuManager : MonoBehaviour
   private RectTransform background;
   private bool isSelectingTarget;
   private Command pendingCommand;
+  private CommandLoader commandLoader;
 
   private void Start()
   {
@@ -39,6 +40,13 @@ public class MenuManager : MonoBehaviour
     RegisterSubmitTargetControls(CombatManager.Heroes);
 
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
+
+    commandLoader = paginatedMenu.GetComponent<CommandLoader>();
+    commandLoader.onSubmitCommand.AddListener(command =>
+    {
+      pendingCommand = command;
+      OpenTargetSelector();
+    });
   }
 
   private void Update()
@@ -217,13 +225,7 @@ public class MenuManager : MonoBehaviour
     topMenu.SetActive(false);
     paginatedMenu.SetActive(true);
 
-    var commandLoader = paginatedMenu.GetComponent<CommandLoader>();
     commandLoader.Load(commands);
-    commandLoader.onSubmitCommand.AddListener(command =>
-    {
-      pendingCommand = command;
-      OpenTargetSelector();
-    });
   }
 
   private void OpenTargetSelector()
