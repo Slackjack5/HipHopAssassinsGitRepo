@@ -335,19 +335,19 @@
           <!-- Response -->
           <Beat>
             <beatNumber>5</beatNumber>
-            <soundName>Play_AttackLight2</soundName>
+            <soundName>Play_BirdWhistle</soundName>
           </Beat>
           <Beat>
             <beatNumber>5.75</beatNumber>
-            <soundName>Play_AttackLight2</soundName>
+            <soundName>Play_BirdWhistle</soundName>
           </Beat>
           <Beat>
             <beatNumber>6</beatNumber>
-            <soundName>Play_AttackLight2</soundName>
+            <soundName>Play_BirdWhistle</soundName>
           </Beat>
           <Beat>
             <beatNumber>6.5</beatNumber>
-            <soundName>Play_AttackLight2</soundName>
+            <soundName>Play_BirdWhistle</soundName>
           </Beat>
           <Beat>
             <beatNumber>7</beatNumber>

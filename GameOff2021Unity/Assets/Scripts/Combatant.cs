@@ -107,6 +107,8 @@ public abstract class Combatant : MonoBehaviour
     {
       CurrentHealth = maxHealth;
     }
+    FXManager.SpawnHealFX();
+    FXManager.SpawnBuffHeal(this);
   }
 
   public void IncreaseStamina(int value)
