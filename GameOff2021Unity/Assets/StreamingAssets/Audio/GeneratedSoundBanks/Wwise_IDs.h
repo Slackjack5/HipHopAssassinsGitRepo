@@ -24,6 +24,7 @@ namespace AK
         static const AkUniqueID PLAY_ATTACKLIGHT1 = 3273307351U;
         static const AkUniqueID PLAY_ATTACKLIGHT2 = 3273307348U;
         static const AkUniqueID PLAY_ATTACKLIGHT3 = 3273307349U;
+        static const AkUniqueID PLAY_BIRDWHISTLE = 424679367U;
         static const AkUniqueID PLAY_CLAP = 3785725400U;
         static const AkUniqueID PLAY_CLAPWHISTLE = 1109536254U;
         static const AkUniqueID PLAY_CLAPWHISTLE2 = 432957160U;
@@ -40,11 +41,13 @@ namespace AK
         static const AkUniqueID PLAY_SHIELD1 = 3865095978U;
         static const AkUniqueID PLAY_SHIELD2 = 3865095977U;
         static const AkUniqueID PLAY_TAMBOURINE = 688015546U;
+        static const AkUniqueID PLAY_TAMBOURINESHAKE = 3964949448U;
         static const AkUniqueID PLAY_UICLOSE = 1883176764U;
         static const AkUniqueID PLAY_UIMOVE = 4068532111U;
         static const AkUniqueID PLAY_UIOPEN = 2933238184U;
         static const AkUniqueID PLAY_UISELECT = 3703192648U;
         static const AkUniqueID PLAY_WHISTLE = 2693257580U;
+        static const AkUniqueID PLAY_YELL1 = 2554967377U;
     } // namespace EVENTS
 
     namespace BANKS

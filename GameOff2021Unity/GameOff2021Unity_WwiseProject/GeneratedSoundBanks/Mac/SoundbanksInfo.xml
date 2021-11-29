@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="2916586382">
+		<SoundBank Id="1229948536" Language="SFX" Hash="775030718">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -109,6 +109,14 @@
 						<File Id="936103937" Language="SFX">
 							<ShortName>AttackLight3.wav</ShortName>
 							<Path>SFX\AttackLight3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="424679367" Name="Play_BirdWhistle" ObjectPath="\Events\Default Work Unit\Play_BirdWhistle" DurationType="OneShot" DurationMin="0.326100" DurationMax="0.326100">
+					<IncludedMemoryFiles>
+						<File Id="692354661" Language="SFX">
+							<ShortName>Pattern2\BirdWhistle.wav</ShortName>
+							<Path>SFX\Pattern2\BirdWhistle_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -244,6 +252,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3964949448" Name="Play_TambourineShake" ObjectPath="\Events\Default Work Unit\Play_TambourineShake" DurationType="OneShot" DurationMin="0.434785" DurationMax="0.434785">
+					<IncludedMemoryFiles>
+						<File Id="465996140" Language="SFX">
+							<ShortName>TambourineShake.wav</ShortName>
+							<Path>SFX\TambourineShake_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1883176764" Name="Play_UIClose" ObjectPath="\Events\Default Work Unit\Play_UIClose" DurationType="OneShot" DurationMin="0.380136" DurationMax="0.380136">
 					<IncludedMemoryFiles>
 						<File Id="117930279" Language="SFX">
@@ -281,6 +297,14 @@
 						<File Id="511631165" Language="SFX">
 							<ShortName>Whistle.wav</ShortName>
 							<Path>SFX\Whistle_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2554967377" Name="Play_Yell1" ObjectPath="\Events\Default Work Unit\Play_Yell1" DurationType="OneShot" DurationMin="0.507256" DurationMax="0.507256">
+					<IncludedMemoryFiles>
+						<File Id="299376940" Language="SFX">
+							<ShortName>Yell1.wav</ShortName>
+							<Path>SFX\Yell1_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

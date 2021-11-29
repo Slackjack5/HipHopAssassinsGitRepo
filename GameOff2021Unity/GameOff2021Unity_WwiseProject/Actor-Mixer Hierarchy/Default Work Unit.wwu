@@ -808,6 +808,13 @@
 						<Folder Name="Pattern2" ID="{88E24A07-63BD-4232-9189-B74A85C1C01C}" ShortID="892605825">
 							<ChildrenList>
 								<Sound Name="BirdWhistle" ID="{DB39F794-B6CB-4EC6-9DA2-8483E379684F}" ShortID="436448781">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>7</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
@@ -1141,6 +1148,59 @@
 									<ObjectLists/>
 									<ActiveSourceList>
 										<ActiveSource Name="Whistle" ID="{90E800E2-E1ED-4890-9AFE-72541BFBA73F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Yell1" ID="{4524832E-4D58-44C4-B850-CA8080C4F0CE}" ShortID="464957338">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>10</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Yell1" ID="{945E1FC6-4E4D-402F-B812-D7F4F14B93C7}">
+											<Language>SFX</Language>
+											<AudioFile>Yell1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="299376940"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Yell1" ID="{945E1FC6-4E4D-402F-B812-D7F4F14B93C7}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="TambourineShake" ID="{FC029EF1-9413-4478-8011-E0BEB2AB8E04}" ShortID="527495123">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="TambourineShake" ID="{C1D1C54C-9761-486C-A321-61629D4169E6}">
+											<Language>SFX</Language>
+											<AudioFile>TambourineShake.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="465996140"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="TambourineShake" ID="{C1D1C54C-9761-486C-A321-61629D4169E6}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>

@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: ce9e95076641c840b2e12537fd4e7366
     GuidInternal: 
-    m_lastTime: -8585634573797611992
+    m_lastTime: -8585634406595532531
     List:
     - name: Environment
       guid: e8844d887a77af4dab22949281d082f1
@@ -128,7 +128,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 75db4e7638654c49924eee981991fa51
     GuidInternal: 
-    m_lastTime: -8585634573804359997
+    m_lastTime: -8585634406596100999
     List:
     - name: Play_8BitBell
       guid: 98210ff2f2e0c34e8b44fe4897a7d8be
@@ -164,6 +164,57 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.216372
       minDuration: 0.216372
+    - name: Play_AttackClap1
+      guid: 0c3e6ee20de5164e818409e839af6b9e
+      id: 2677263245
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackClap1
+        ObjectType: 3
+        guid: 0c3e6ee20de5164e818409e839af6b9e
+      Path: Events\Default Work Unit\Play_AttackClap1
+      maxAttenuation: 0
+      maxDuration: 0.358277
+      minDuration: 0.358277
+    - name: Play_AttackClap2
+      guid: dd3c9a9488f22c44954ee9d2dd5f0b53
+      id: 2677263246
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackClap2
+        ObjectType: 3
+        guid: dd3c9a9488f22c44954ee9d2dd5f0b53
+      Path: Events\Default Work Unit\Play_AttackClap2
+      maxAttenuation: 0
+      maxDuration: 0.251066
+      minDuration: 0.251066
+    - name: Play_AttackClap3
+      guid: 55712ac0722f6b40af7785c537a4c08f
+      id: 2677263247
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_AttackClap3
+        ObjectType: 3
+        guid: 55712ac0722f6b40af7785c537a4c08f
+      Path: Events\Default Work Unit\Play_AttackClap3
+      maxAttenuation: 0
+      maxDuration: 0.358277
+      minDuration: 0.358277
     - name: Play_AttackExplode1
       guid: c22956a29f7a17489bf5c4ef0b0c8f3f
       id: 4165562918
@@ -283,9 +334,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.450385
       minDuration: 0.450385
-    - name: Play_Congrats1
-      guid: 2a3cd9cd38f5ee4fae87b912fa660ac1
-      id: 4195308490
+    - name: Play_ClapWhistle
+      guid: d070961dfb5ddd4db58aca0215e0462f
+      id: 1109536254
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -293,10 +344,78 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 75db4e7638654c49924eee981991fa51
-      - ElementName: Play_Congrats1
+      - ElementName: Play_ClapWhistle
+        ObjectType: 3
+        guid: d070961dfb5ddd4db58aca0215e0462f
+      Path: Events\Default Work Unit\Play_ClapWhistle
+      maxAttenuation: 0
+      maxDuration: 0.3261
+      minDuration: 0.3261
+    - name: Play_ClapWhistle2
+      guid: 15edca7b9e8ee24eb18e23d001df325f
+      id: 432957160
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_ClapWhistle2
+        ObjectType: 3
+        guid: 15edca7b9e8ee24eb18e23d001df325f
+      Path: Events\Default Work Unit\Play_ClapWhistle2
+      maxAttenuation: 0
+      maxDuration: 0.434785
+      minDuration: 0.434785
+    - name: Play_CockroachHiss1
+      guid: f7e2b170f94e1045a724135858d52d5f
+      id: 3065514911
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_CockroachHiss1
+        ObjectType: 3
+        guid: f7e2b170f94e1045a724135858d52d5f
+      Path: Events\Default Work Unit\Play_CockroachHiss1
+      maxAttenuation: 0
+      maxDuration: 0.434785
+      minDuration: 0.434785
+    - name: Play_CockroachHiss2
+      guid: 33fd35f3e899464c822649cabcea3be0
+      id: 3065514908
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_CockroachHiss2
+        ObjectType: 3
+        guid: 33fd35f3e899464c822649cabcea3be0
+      Path: Events\Default Work Unit\Play_CockroachHiss2
+      maxAttenuation: 0
+      maxDuration: 0.434785
+      minDuration: 0.434785
+    - name: Play_Congrats
+      guid: 2a3cd9cd38f5ee4fae87b912fa660ac1
+      id: 2643100921
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Congrats
         ObjectType: 3
         guid: 2a3cd9cd38f5ee4fae87b912fa660ac1
-      Path: Events\Default Work Unit\Play_Congrats1
+      Path: Events\Default Work Unit\Play_Congrats
       maxAttenuation: 0
       maxDuration: 0.389274
       minDuration: 0.389274
@@ -402,6 +521,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.724127
       minDuration: 0.724127
+    - name: Play_Shield
+      guid: 22674ebf5b7a8740a03c404a6263328b
+      id: 1988178265
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Play_Shield
+        ObjectType: 3
+        guid: 22674ebf5b7a8740a03c404a6263328b
+      Path: Events\Default Work Unit\Play_Shield
+      maxAttenuation: 0
+      maxDuration: 0.820677
+      minDuration: 0.820677
     - name: Play_Shield1
       guid: 5038ebeae2195447bfea82c7c86a7c64
       id: 3865095978

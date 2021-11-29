@@ -355,6 +355,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Yell1" ID="{075CAAC1-D3A1-4149-A150-EC40C341F717}">
+					<ChildrenList>
+						<Action Name="" ID="{7156BD58-116E-427F-934F-202148F8F69B}" ShortID="734470577">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Yell1" ID="{4524832E-4D58-44C4-B850-CA8080C4F0CE}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_TambourineShake" ID="{2494BA81-CE9E-44DA-9D99-3FE541F28820}">
+					<ChildrenList>
+						<Action Name="" ID="{5C8E5729-57AC-4D4B-9A71-B71F0C3FAE51}" ShortID="775275059">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TambourineShake" ID="{FC029EF1-9413-4478-8011-E0BEB2AB8E04}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BirdWhistle" ID="{AB640691-94A4-4D5C-B099-F395A6C43C4E}">
+					<ChildrenList>
+						<Action Name="" ID="{28489BDE-D6EC-4839-A8AB-DF9C0E18C5B6}" ShortID="847766970">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BirdWhistle" ID="{DB39F794-B6CB-4EC6-9DA2-8483E379684F}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
