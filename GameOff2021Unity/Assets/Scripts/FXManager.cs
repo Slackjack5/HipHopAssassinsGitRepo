@@ -1,5 +1,6 @@
 using UnityEngine;
 using EZCameraShake;
+using Random = UnityEngine.Random;
 
 public class FXManager : MonoBehaviour
 {
@@ -17,63 +18,101 @@ public class FXManager : MonoBehaviour
   [SerializeField] private GameObject Stars;
   [SerializeField] private GameObject HurtFX;
 
-  public void SpawnAttackHit(Combatant Target, bool isMacro)
+  private static float _cameraShakeMagnitude;
+  private static float _cameraShakeRoughness;
+  private static float _cameraShakeFadeIn;
+  private static float _cameraShakeFadeOut;
+  private static GameObject _attackHit;
+  private static GameObject _macroHit;
+  private static GameObject _macroPulse;
+  private static GameObject _buffOffense;
+  private static GameObject _perfectHit;
+  private static GameObject _goodHit;
+  private static GameObject _stars;
+  private static GameObject _hurtFX;
+  private static GameObject fxManager;
+
+  private void Awake()
+  {
+    _cameraShakeMagnitude = cameraShakeMagnitude;
+    _cameraShakeRoughness = cameraShakeRoughness;
+    _cameraShakeFadeIn = cameraShakeFadeIn;
+    _cameraShakeFadeOut = cameraShakeFadeOut;
+    _attackHit = AttackHit;
+    _macroHit = MacroHit;
+    _macroPulse = MacroPulse;
+    _buffOffense = BuffOffense;
+    _perfectHit = PerfectHit;
+    _goodHit = GoodHit;
+    _stars = Stars;
+    _hurtFX = HurtFX;
+
+    fxManager = gameObject;
+  }
+
+  public static void SpawnAttackHit(Combatant Target, bool isMacro)
   {
     float randomPosition = Random.Range(-.5f, .5f);
 
     if (isMacro)
     {
       float randomSize = Random.Range(1f, 1.5f);
-      GameObject myEffect = Instantiate(MacroHit,
-        new Vector3(Target.transform.position.x + randomPosition, Target.transform.position.y + randomPosition, 0),
+      Vector3 position = Target.transform.position;
+      GameObject myEffect = Instantiate(_macroHit,
+        new Vector3(position.x + randomPosition, position.y + randomPosition, 0),
         Quaternion.identity);
       myEffect.transform.localScale = new Vector3(randomSize, randomSize, 0);
-      AkSoundEngine.PostEvent("Play_MacroHit", gameObject);
+      AkSoundEngine.PostEvent("Play_MacroHit", fxManager);
     }
     else
     {
       float randomSize = Random.Range(.5f, 1.5f);
-      GameObject myEffect = Instantiate(AttackHit,
-        new Vector3(Target.transform.position.x + randomPosition, Target.transform.position.y + randomPosition, 0),
+      Vector3 position = Target.transform.position;
+      GameObject myEffect = Instantiate(_attackHit,
+        new Vector3(position.x + randomPosition, position.y + randomPosition, 0),
         Quaternion.identity);
       myEffect.transform.localScale = new Vector3(randomSize, randomSize, 0);
-      AkSoundEngine.PostEvent("Play_AttackHit", gameObject);
+      AkSoundEngine.PostEvent("Play_AttackHit", fxManager);
     }
 
-    CameraShaker.Instance.ShakeOnce(cameraShakeMagnitude, cameraShakeRoughness, cameraShakeFadeIn, cameraShakeFadeOut);
+    CameraShaker.Instance.ShakeOnce(_cameraShakeMagnitude, _cameraShakeRoughness, _cameraShakeFadeIn,
+      _cameraShakeFadeOut);
   }
 
-  public void SpawnMacroPulse(Combatant Caster)
+  public static void SpawnMacroPulse(Combatant Caster)
   {
-    GameObject myEffect = Instantiate(MacroPulse,
-      new Vector3(Caster.transform.position.x, Caster.transform.position.y, 0), Quaternion.identity);
+    Vector3 position = Caster.transform.position;
+    Instantiate(_macroPulse,
+      new Vector3(position.x, position.y, 0), Quaternion.identity);
   }
 
-  public void SpawnBuffOffense(Combatant Target)
+  public static void SpawnBuffOffense(Combatant Target)
   {
-    GameObject myEffect = Instantiate(BuffOffense,
-      new Vector3(Target.transform.position.x, Target.transform.position.y, 0), Quaternion.identity);
+    Vector3 position = Target.transform.position;
+    Instantiate(_buffOffense,
+      new Vector3(position.x, position.y, 0), Quaternion.identity);
   }
 
-  public void SpawnBuffDefense(Combatant Target)
+  public static void SpawnBuffDefense(Combatant Target)
   {
-    GameObject myEffect = Instantiate(MacroPulse,
-      new Vector3(Target.transform.position.x, Target.transform.position.y, 0), Quaternion.identity);
+    Vector3 position = Target.transform.position;
+    Instantiate(_macroPulse,
+      new Vector3(position.x, position.y, 0), Quaternion.identity);
   }
 
-  public void SpawnPerfectHit()
+  public static void SpawnPerfectHit()
   {
-    GameObject myEffect = Instantiate(PerfectHit, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
-    GameObject myEffect2 = Instantiate(Stars, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
+    Instantiate(_perfectHit, Vector3.zero, Quaternion.identity);
+    Instantiate(_stars, Vector3.zero, Quaternion.identity);
   }
 
-  public void SpawnGreatHit()
+  public static void SpawnGreatHit()
   {
-    GameObject myEffect = Instantiate(GoodHit, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
+    Instantiate(_goodHit, Vector3.zero, Quaternion.identity);
   }
 
-  public void SpawnHurtFX()
+  public static void SpawnHurtFX()
   {
-    GameObject myEffect = Instantiate(HurtFX, transform.position = new Vector3(0, 0, 0), Quaternion.identity);
+    Instantiate(_hurtFX, Vector3.zero, Quaternion.identity);
   }
 }

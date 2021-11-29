@@ -4,6 +4,7 @@
     <name>Stance 0</name>
     <description>This is stance 0.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>0</id>
     <power>0</power>
@@ -12,6 +13,7 @@
     <name>Stance 1</name>
     <description>This is stance 1.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>1</id>
     <power>0</power>
@@ -20,6 +22,7 @@
     <name>Stance 2</name>
     <description>This is stance 2.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>2</id>
     <power>0</power>
@@ -28,6 +31,7 @@
     <name>Stance 3</name>
     <description>This is stance 3.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>3</id>
     <power>0</power>
@@ -36,6 +40,7 @@
     <name>Stance 4</name>
     <description>This is stance 4.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>4</id>
     <power>0</power>
@@ -44,6 +49,7 @@
     <name>Stance 5</name>
     <description>This is stance 5.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>5</id>
     <power>0</power>
@@ -52,6 +58,7 @@
     <name>Stance 6</name>
     <description>This is stance 6.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>6</id>
     <power>0</power>
@@ -60,6 +67,7 @@
     <name>Stance 7</name>
     <description>This is stance 7.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>7</id>
     <power>0</power>
@@ -68,6 +76,7 @@
     <name>Stance 8</name>
     <description>This is stance 8.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>8</id>
     <power>0</power>
@@ -76,6 +85,7 @@
     <name>Stance 9</name>
     <description>This is stance 9.</description>
     <patternId>0</patternId>
+    <selectMonster>false</selectMonster>
     <needsTarget>false</needsTarget>
     <id>9</id>
     <power>0</power>

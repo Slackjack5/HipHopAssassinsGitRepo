@@ -137,7 +137,7 @@ public abstract class Combatant : MonoBehaviour
     }
 
     //FX
-    GameObject.Find("FXManager").GetComponent<FXManager>().SpawnBuffOffense(this);
+    FXManager.SpawnBuffOffense(this);
   }
 
   public void BuffMacro()
@@ -272,7 +272,7 @@ public abstract class Combatant : MonoBehaviour
     if (GetComponent<Animator>() != null && damageMultiplier != 0)
     {
       GetComponent<Animator>().SetBool(hurt, true);
-      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnAttackHit(this, isMacro);
+      FXManager.SpawnAttackHit(this, isMacro);
     }
 
     DecreaseHealth(Mathf.RoundToInt(damage));

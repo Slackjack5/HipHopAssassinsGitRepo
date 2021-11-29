@@ -1,0 +1,464 @@
+<?xml version="1.0"?>
+<ArrayOfPattern xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Pattern>
+        <!-- DO NOT USE -->
+        <id>0</id>
+    </Pattern>
+    <Pattern>
+        <!-- Analysis Attack -->
+        <id>1</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+                <isCall>true</isCall>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+                <isCall>true</isCall>
+            </Beat>
+            <Beat>
+                <beatNumber>6</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>8</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>2</barLength>
+    </Pattern>
+    <Pattern>
+        <!-- Unused -->
+        <id>2</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Unused -->
+        <id>3</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Initiate Attack -->
+        <id>4</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Cockroach Attack -->
+        <id>5</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Dragonfly Attack -->
+        <id>6</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Vanguard Attack -->
+        <id>7</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Repair -->
+        <id>8</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Mass Repair -->
+        <id>9</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Reboot -->
+        <id>10</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Debug -->
+        <id>11</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Mass Debug -->
+        <id>12</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Macro+ -->
+        <id>13</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Attack+ -->
+        <id>14</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Defense+ -->
+        <id>15</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Surge -->
+        <id>16</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Remove Debuff -->
+        <id>17</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Remove Buff -->
+        <id>18</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Pause -->
+        <id>19</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Bandages -->
+        <id>20</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Attack Candy -->
+        <id>21</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Defense Candy -->
+        <id>22</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Macro Candy -->
+        <id>23</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Reboot Disk -->
+        <id>24</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Concentrate Candy -->
+        <id>25</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Medkit -->
+        <id>26</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Battery -->
+        <id>27</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+    <Pattern>
+        <!-- Energizer -->
+        <id>28</id>
+        <beats>
+            <Beat>
+                <beatNumber>2</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>4</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+        </beats>
+        <barLength>1</barLength>
+
+    </Pattern>
+</ArrayOfPattern>
