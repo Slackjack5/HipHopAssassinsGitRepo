@@ -241,14 +241,12 @@ public class BeatmapManager : MonoBehaviour
 
     Pattern removedPattern = _combatantPatterns[combatant];
 
-    // Don't fast-forward the time if the removed pattern's bar length is 2 or less so that there is time for the
-    // next notes to spawn.
-    if (removedPattern.barLength <= 2) return;
-
-    // i should now point to the next Combatant's pattern.
+    // i should now point to the next Combatant's pattern. If it is right after the current pattern, don't fast-forward
+    // the time so that there is time for the next notes to spawn.
+    if (i - nextHitIndex <= removedPattern.beats.Length) return;
     while (i < notes.Count)
     {
-      notes[i].time -= (removedPattern.barLength - 2) * AudioEvents.secondsPerBar;
+      notes[i].time -= removedPattern.barLength * AudioEvents.secondsPerBar;
       i++;
     }
   }

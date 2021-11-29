@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
     inputActionMap = inputActionAsset.FindActionMap("UI");
 
     _quitButton.onClick.AddListener(Quit);
+
+    DOTween.Init().SetCapacity(1250, 50);
   }
 
   private void Update()
