@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
 
 public class BeatmapManager : MonoBehaviour
@@ -17,8 +18,11 @@ public class BeatmapManager : MonoBehaviour
   public readonly UnityEvent complete = new UnityEvent();
   public readonly UnityEvent<Note, AccuracyGrade> hit = new UnityEvent<Note, AccuracyGrade>();
 
-  private readonly List<Note> notes = new List<Note>();
+  private Dictionary<Combatant, Pattern> _combatantPatterns = new Dictionary<Combatant, Pattern>();
+  private List<Note> notes = new List<Note>();
+  private readonly Dictionary<Combatant, int> combatantStartIndices = new Dictionary<Combatant, int>();
   private readonly List<GameObject> beatEntities = new List<GameObject>();
+
   private int nextSpawnIndex;
   private int nextHitIndex;
   private float travelTime;
@@ -31,6 +35,7 @@ public class BeatmapManager : MonoBehaviour
 
   public class Note
   {
+    internal bool isValid;
     internal float time;
     internal GameObject beatCircle;
     internal Combatant combatant;
@@ -70,15 +75,18 @@ public class BeatmapManager : MonoBehaviour
       if (nextHitIndex < notes.Count)
       {
         Note note = notes[nextHitIndex];
-        if (!note.isCall)
+        if (!note.isValid)
+        {
+          nextHitIndex++;
+        }
+        else if (!note.isCall)
         {
           if (isInputReady && Input.GetKeyDown("space"))
           {
             CheckHit(currentSegmentPosition);
           }
 
-          if (nextHitIndex < notes.Count &&
-              currentSegmentPosition - note.time > leniency) // Player presses nothing
+          if (currentSegmentPosition - note.time > leniency) // Player presses nothing
           {
             if (note.beatCircle)
             {
@@ -118,7 +126,11 @@ public class BeatmapManager : MonoBehaviour
       if (nextSpawnIndex < notes.Count)
       {
         Note note = notes[nextSpawnIndex];
-        if (currentSegmentPosition >= note.time - travelTime)
+        if (!note.isValid)
+        {
+          nextSpawnIndex++;
+        }
+        else if (currentSegmentPosition >= note.time - travelTime)
         {
           SpawnNote(nextSpawnIndex);
           nextSpawnIndex++;
@@ -126,11 +138,18 @@ public class BeatmapManager : MonoBehaviour
       }
 
       // Play call notes
-      if (nextHitIndex < notes.Count && notes[nextHitIndex].isCall &&
-          currentSegmentPosition >= notes[nextHitIndex].time)
+      if (nextHitIndex < notes.Count)
       {
-        AkSoundEngine.PostEvent(notes[nextHitIndex].soundName, gameObject);
-        nextHitIndex++;
+        Note note = notes[nextHitIndex];
+        if (!note.isValid)
+        {
+          nextHitIndex++;
+        }
+        else if (note.isCall && currentSegmentPosition >= notes[nextHitIndex].time)
+        {
+          AkSoundEngine.PostEvent(notes[nextHitIndex].soundName, gameObject);
+          nextHitIndex++;
+        }
       }
     }
   }
@@ -172,28 +191,37 @@ public class BeatmapManager : MonoBehaviour
 
   public void GenerateBeatmap(Dictionary<Combatant, Pattern> combatantPatterns, float startTime)
   {
+    _combatantPatterns = combatantPatterns;
+    combatantStartIndices.Clear();
+
     var generatedNotes = new List<Note>();
     var barNumber = 0;
+    var noteIndex = 0;
     foreach (var entry in combatantPatterns)
     {
+      // Keep track of where in the notes list is the first note of a given Combatant.
+      combatantStartIndices.Add(entry.Key, noteIndex);
+
       Pattern pattern = entry.Value;
       for (var i = 0; i < pattern.beats.Length; i++)
       {
         generatedNotes.Add(new Note
         {
+          isValid = true,
           time = ConvertBeatToBarTime(pattern.beats[i].beatNumber) + startTime + AudioEvents.secondsPerBar * barNumber,
           combatant = entry.Key,
           isLastOfCombatant = i == pattern.beats.Length - 1,
           soundName = pattern.beats[i].soundName,
-          isCall = pattern.beats[i].isCall
+          isCall = pattern.beats[i].isCall,
         });
+
+        noteIndex++;
       }
 
       barNumber += pattern.barLength;
     }
 
-    notes.Clear();
-    notes.AddRange(generatedNotes);
+    notes = generatedNotes;
     nextHitIndex = 0;
     nextSpawnIndex = 0;
     ShowTrack();
@@ -202,9 +230,26 @@ public class BeatmapManager : MonoBehaviour
 
   public void RemoveCombatantNotes(Combatant combatant)
   {
-    foreach (Note note in notes.Where(note => note.combatant == combatant))
+    int start = combatantStartIndices[combatant];
+    int i = start;
+    while (i < start + _combatantPatterns[combatant].beats.Length)
     {
-      Destroy(note.beatCircle);
+      Destroy(notes[i].beatCircle);
+      notes[i].isValid = false;
+      i++;
+    }
+
+    Pattern removedPattern = _combatantPatterns[combatant];
+
+    // Don't fast-forward the time if the removed pattern's bar length is 2 or less so that there is time for the
+    // next notes to spawn.
+    if (removedPattern.barLength <= 2) return;
+
+    // i should now point to the next Combatant's pattern.
+    while (i < notes.Count)
+    {
+      notes[i].time -= (removedPattern.barLength - 2) * AudioEvents.secondsPerBar;
+      i++;
     }
   }
 
@@ -228,7 +273,7 @@ public class BeatmapManager : MonoBehaviour
     if (nextHitIndex >= notes.Count) return;
 
     Note note = notes[nextHitIndex];
-    if (note.isCall || !note.beatCircle) return;
+    if (note.isCall || !note.beatCircle || !note.isValid) return;
 
     float error = note.time - currentSegmentPosition;
 
@@ -272,8 +317,7 @@ public class BeatmapManager : MonoBehaviour
   private void SpawnNote(int spawnIndex)
   {
     Note note = notes[spawnIndex];
-    if (note.combatant.IsDead) return;
-    if (note.isCall) return;
+    if (note.combatant.IsDead || note.isCall || !note.isValid) return;
 
     GameObject circle = Instantiate(beatCirclePrefab, spawnerPos.position, Quaternion.identity, track.transform);
     var beatCircle = circle.GetComponent<BeatCircle>();

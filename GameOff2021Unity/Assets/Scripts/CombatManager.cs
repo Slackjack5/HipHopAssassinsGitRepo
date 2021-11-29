@@ -18,7 +18,6 @@ public class CombatManager : MonoBehaviour
 
   private float currentWaitTime;
   private bool isWaiting;
-  private int lastBar;
 
   public enum State
   {
@@ -144,8 +143,9 @@ public class CombatManager : MonoBehaviour
 
         break;
       case State.DelayExecution:
-        if (GlobalVariables.currentBar > lastBar &&
-            AudioEvents.CurrentBarTime >= Threshold(AudioEvents.secondsPerBar))
+        // Beatmap execution should start at an odd-numbered bar, so generate notes at the bar before it
+        // (an even-numbered bar).
+        if (GlobalVariables.currentBar % 2 == 0)
         {
           ChangeState(State.PreExecution);
         }
@@ -192,7 +192,6 @@ public class CombatManager : MonoBehaviour
 
     CurrentState = State.Inactive;
     isWaiting = false;
-    lastBar = 0;
   }
 
   public void Begin(Encounter encounter)
@@ -364,15 +363,9 @@ public class CombatManager : MonoBehaviour
 
   private void DeterminePreExecutionState()
   {
-    if (AudioEvents.CurrentBarTime < Threshold(AudioEvents.secondsPerBar))
-    {
-      ChangeState(State.PreExecution);
-    }
-    else
-    {
-      lastBar = GlobalVariables.currentBar;
-      ChangeState(State.DelayExecution);
-    }
+    // Beatmap execution should start at an odd-numbered bar, so we should generate notes at the bar before it
+    // (an even-numbered bar). Otherwise, wait until we are at an even-numbered bar.
+    ChangeState(GlobalVariables.currentBar % 2 == 0 ? State.PreExecution : State.DelayExecution);
   }
 
   private void SetRandomTargets()
@@ -421,6 +414,8 @@ public class CombatManager : MonoBehaviour
       }
     }
 
+    // We directly take currentBar since we want to generate notes at the next bar. Current bar starts at 1 while time
+    // starts at 0. This offset handles the desired behavior for us.
     float executionStartTime = GlobalVariables.currentBar * AudioEvents.secondsPerBar;
     beatmapManager.GenerateBeatmap(combatantPatterns, executionStartTime);
   }
