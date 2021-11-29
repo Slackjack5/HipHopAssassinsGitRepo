@@ -59,7 +59,7 @@ public class Hero : Combatant
     base.TakeDamage(actor, damageMultiplier, isMacro);
     if (damageMultiplier != 0)
     {
-      GameObject.Find("FXManager").GetComponent<FXManager>().SpawnHurtFX();
+      FXManager.SpawnHurtFX();
     }
   }
 

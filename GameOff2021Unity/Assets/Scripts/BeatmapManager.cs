@@ -24,7 +24,7 @@ public class BeatmapManager : MonoBehaviour
   private int nextHitIndex;
   private float travelTime;
   private bool isGenerated;
-  private bool isReady;
+  private bool isInputReady;
   private float lateBound; // The latest, in seconds, that the player can hit the note before it is considered a miss
 
   private static readonly int attackType = Animator.StringToHash("AttackType");
@@ -36,6 +36,8 @@ public class BeatmapManager : MonoBehaviour
     internal GameObject beatCircle;
     internal Combatant combatant;
     internal bool isLastOfCombatant;
+    internal string soundName;
+    internal bool isCall;
   }
 
   public enum AccuracyGrade
@@ -66,20 +68,27 @@ public class BeatmapManager : MonoBehaviour
 
     if (isGenerated)
     {
-      if (isReady && Input.GetKeyDown("space"))
+      if (nextHitIndex < notes.Count)
       {
-        CheckHit(currentSegmentPosition);
-      }
-
-      if (nextHitIndex < notes.Count &&
-          currentSegmentPosition - notes[nextHitIndex].time > leniency) // Player presses nothing
-      {
-        if (notes[nextHitIndex].beatCircle)
+        Note note = notes[nextHitIndex];
+        if (!note.isCall)
         {
-          hit.Invoke(notes[nextHitIndex], AccuracyGrade.Miss);
-        }
+          if (isInputReady && Input.GetKeyDown("space"))
+          {
+            CheckHit(currentSegmentPosition);
+          }
 
-        nextHitIndex++;
+          if (nextHitIndex < notes.Count &&
+              currentSegmentPosition - note.time > leniency) // Player presses nothing
+          {
+            if (note.beatCircle)
+            {
+              hit.Invoke(note, AccuracyGrade.Miss);
+            }
+
+            nextHitIndex++;
+          }
+        }
       }
 
       if (nextHitIndex == notes.Count)
@@ -88,11 +97,11 @@ public class BeatmapManager : MonoBehaviour
       }
 
       // Wait one more frame before checking hit since the Space key could have just been pressed for submitting a command.
-      isReady = true;
+      isInputReady = true;
     }
     else
     {
-      isReady = false;
+      isInputReady = false;
     }
   }
 
@@ -106,12 +115,23 @@ public class BeatmapManager : MonoBehaviour
 
     if (isGenerated)
     {
-      // Spawn 
-      if (nextSpawnIndex < notes.Count &&
-          currentSegmentPosition >= notes[nextSpawnIndex].time - travelTime)
+      // Spawn note
+      if (nextSpawnIndex < notes.Count)
       {
-        Spawn(nextSpawnIndex);
-        nextSpawnIndex++;
+        Note note = notes[nextSpawnIndex];
+        if (currentSegmentPosition >= note.time - travelTime)
+        {
+          SpawnNote(nextSpawnIndex);
+          nextSpawnIndex++;
+        }
+      }
+
+      // Play call notes
+      if (nextHitIndex < notes.Count && notes[nextHitIndex].isCall &&
+          currentSegmentPosition >= notes[nextHitIndex].time)
+      {
+        AkSoundEngine.PostEvent(notes[nextHitIndex].soundName, gameObject);
+        nextHitIndex++;
       }
     }
   }
@@ -151,24 +171,26 @@ public class BeatmapManager : MonoBehaviour
     HideTrack();
   }
 
-  public void GenerateBeatmap(Dictionary<Combatant, List<float>> combatantPatterns, float startTime)
+  public void GenerateBeatmap(Dictionary<Combatant, Pattern> combatantPatterns, float startTime)
   {
     var generatedNotes = new List<Note>();
-    var entryNumber = 0;
-    foreach (KeyValuePair<Combatant, List<float>> entry in combatantPatterns)
+    var barNumber = 0;
+    foreach (var entry in combatantPatterns)
     {
-      List<float> pattern = entry.Value;
-      for (var i = 0; i < pattern.Count; i++)
+      Pattern pattern = entry.Value;
+      for (var i = 0; i < pattern.beats.Length; i++)
       {
         generatedNotes.Add(new Note
         {
-          time = pattern[i] + startTime + AudioEvents.secondsPerBar * entryNumber,
+          time = ConvertBeatToBarTime(pattern.beats[i].beatNumber) + startTime + AudioEvents.secondsPerBar * barNumber,
           combatant = entry.Key,
-          isLastOfCombatant = i == pattern.Count - 1
+          isLastOfCombatant = i == pattern.beats.Length - 1,
+          soundName = pattern.beats[i].soundName,
+          isCall = pattern.beats[i].isCall
         });
       }
 
-      entryNumber++;
+      barNumber += pattern.barLength;
     }
 
     notes.Clear();
@@ -187,6 +209,11 @@ public class BeatmapManager : MonoBehaviour
     }
   }
 
+  private float ConvertBeatToBarTime(float beatNumber)
+  {
+    return AudioEvents.secondsPerBeat * (beatNumber - 1);
+  }
+
   private void HideTrack()
   {
     track.SetActive(false);
@@ -199,51 +226,55 @@ public class BeatmapManager : MonoBehaviour
 
   private void CheckHit(float currentSegmentPosition)
   {
-    if (nextHitIndex >= notes.Count || !notes[nextHitIndex].beatCircle) return;
+    if (nextHitIndex >= notes.Count) return;
 
-    float error = notes[nextHitIndex].time - currentSegmentPosition;
+    Note note = notes[nextHitIndex];
+    if (note.isCall || !note.beatCircle) return;
+
+    float error = note.time - currentSegmentPosition;
 
     if (error >= -lateBound && error <= leniency)
     {
       // Check to see where they hit exactly and give proper rating
       if (error <= leniency / 3)
       {
-        hit.Invoke(notes[nextHitIndex], AccuracyGrade.Perfect);
-        GameObject.Find("FXManager").GetComponent<FXManager>().SpawnPerfectHit();
+        hit.Invoke(note, AccuracyGrade.Perfect);
+        FXManager.SpawnPerfectHit();
       }
       else if (error <= (leniency / 3) * 2)
       {
-        hit.Invoke(notes[nextHitIndex], AccuracyGrade.Great);
-        GameObject.Find("FXManager").GetComponent<FXManager>().SpawnGreatHit();
+        hit.Invoke(note, AccuracyGrade.Great);
+        FXManager.SpawnGreatHit();
       }
       else
       {
-        hit.Invoke(notes[nextHitIndex], AccuracyGrade.Good);
-        GameObject.Find("FXManager").GetComponent<FXManager>().SpawnGreatHit();
+        hit.Invoke(note, AccuracyGrade.Good);
+        FXManager.SpawnGreatHit();
       }
 
-      AkSoundEngine.PostEvent("Play_Cowbell", gameObject);
+      AkSoundEngine.PostEvent(note.soundName, gameObject);
 
-      notes[nextHitIndex].beatCircle.GetComponent<BeatCircle>().Hit();
+      note.beatCircle.GetComponent<BeatCircle>().Hit();
       nextHitIndex++;
     }
     else if (error > leniency) // Player hits too early
     {
-      hit.Invoke(notes[nextHitIndex], AccuracyGrade.Miss);
-      notes[nextHitIndex].beatCircle.GetComponent<BeatCircle>().Hit();
+      hit.Invoke(note, AccuracyGrade.Miss);
+      note.beatCircle.GetComponent<BeatCircle>().Hit();
       nextHitIndex++;
     }
     else if (error < -lateBound) // Player hits too late
     {
-      hit.Invoke(notes[nextHitIndex], AccuracyGrade.Miss);
+      hit.Invoke(note, AccuracyGrade.Miss);
       nextHitIndex++;
     }
   }
 
-  private void Spawn(int spawnIndex)
+  private void SpawnNote(int spawnIndex)
   {
     Note note = notes[spawnIndex];
     if (note.combatant.IsDead) return;
+    if (note.isCall) return;
 
     GameObject circle = Instantiate(beatCirclePrefab, spawnerPos.position, Quaternion.identity, track.transform);
     var beatCircle = circle.GetComponent<BeatCircle>();

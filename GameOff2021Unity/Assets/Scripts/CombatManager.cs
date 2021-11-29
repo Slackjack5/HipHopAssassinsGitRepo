@@ -384,7 +384,7 @@ public class CombatManager : MonoBehaviour
 
   private void GeneratePatterns()
   {
-    var combatantPatterns = new Dictionary<Combatant, List<float>>();
+    var combatantPatterns = new Dictionary<Combatant, Pattern>();
 
     foreach (Combatant combatant in Combatants.Where(combatant => !combatant.IsDead))
     {
@@ -399,14 +399,14 @@ public class CombatManager : MonoBehaviour
           }
           else
           {
-            combatantPatterns[hero] = RhythmPatterns.Pattern(command.patternId);
+            combatantPatterns[hero] = DataManager.AllPatterns[command.patternId];
           }
 
           break;
         }
         case Monster monster:
         {
-          combatantPatterns[monster] = RhythmPatterns.Pattern(monster.PatternId);
+          combatantPatterns[monster] = DataManager.AllPatterns[monster.PatternId];
           break;
         }
         default:
@@ -459,7 +459,7 @@ public class CombatManager : MonoBehaviour
         {
           case Macro macro:
             macro.Execute(hero, effectMultiplier, note.isLastOfCombatant);
-            GameObject.Find("FXManager").GetComponent<FXManager>().SpawnMacroPulse(combatant);
+            FXManager.SpawnMacroPulse(combatant);
             break;
           case Attack attack:
             attack.Execute(hero, effectMultiplier, note.isLastOfCombatant);
