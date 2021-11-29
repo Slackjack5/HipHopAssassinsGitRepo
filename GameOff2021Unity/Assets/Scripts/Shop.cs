@@ -13,7 +13,7 @@ public class Shop : MonoBehaviour
   [SerializeField] private GameObject amountOwnedContainer;
   [SerializeField] private TextMeshProUGUI amountOwnedNumber;
 
-  private readonly List<Consumable> consumables = new List<Consumable>();
+  private readonly List<Command> consumables = new List<Command>();
 
   public readonly UnityEvent<Consumable> onPurchase = new UnityEvent<Consumable>();
   public readonly UnityEvent<int> onClose = new UnityEvent<int>();
