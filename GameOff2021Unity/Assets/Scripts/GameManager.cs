@@ -46,11 +46,7 @@ public class GameManager : MonoBehaviour
     var currentSelectedGameObject = EventSystem.current.currentSelectedGameObject;
     if (currentSelectedGameObject != lastSelectedGameObject)
     {
-      if (lastSelectedGameObject != null)
-      {
-        AkSoundEngine.PostEvent("Play_UIMove", gameObject);
-      }
-
+      AkSoundEngine.PostEvent("Play_UIMove", gameObject);
       lastSelectedGameObject = currentSelectedGameObject;
     }
   }
@@ -87,7 +83,6 @@ public class GameManager : MonoBehaviour
       isPaused = true;
     }
   }
-
 
 
   private static void Quit()

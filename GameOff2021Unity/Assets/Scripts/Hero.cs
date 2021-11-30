@@ -9,7 +9,8 @@ public class Hero : Combatant
   [SerializeField] private int[] macroIds;
 
   private Command submittedCommand;
-  private static readonly int hurt = Animator.StringToHash("Hurt");
+
+  private static readonly int isDead = Animator.StringToHash("isDead");
 
   public int AttackPatternId => attackPatternId;
   public int HeroId => heroId;
@@ -80,6 +81,7 @@ public class Hero : Combatant
       CurrentStamina = maxStamina;
 
       ChangeState(State.Idle);
+      GetComponent<Animator>().SetBool(isDead, false);
     }
   }
 
@@ -111,5 +113,19 @@ public class Hero : Combatant
     }
 
     base.AttackTarget(damageMultiplier, isLastHit);
+  }
+
+  public override void Resurrect()
+  {
+    base.Resurrect();
+
+    GetComponent<Animator>().SetBool(isDead, false);
+  }
+
+  protected override void Die()
+  {
+    animator.SetBool(isDead, true);
+
+    base.Die();
   }
 }

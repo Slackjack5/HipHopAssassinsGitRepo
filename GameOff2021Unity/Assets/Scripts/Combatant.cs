@@ -20,10 +20,12 @@ public abstract class Combatant : MonoBehaviour
   protected float baseMacroDefenseMultiplier;
   protected float tempDamageMultiplier;
   protected float tempDefenseMultiplier;
+  protected Animator animator;
 
   private bool isInitialPositionSet;
   private Vector2 initialPosition;
-  private static readonly int hurt = Animator.StringToHash("Hurt");
+
+  protected static readonly int hurt = Animator.StringToHash("Hurt");
 
   protected enum State
   {
@@ -49,6 +51,8 @@ public abstract class Combatant : MonoBehaviour
 
   protected virtual void Awake()
   {
+    animator = GetComponent<Animator>();
+
     CurrentHealth = maxHealth;
     CurrentStamina = maxStamina;
     AttackMultiplier = 1;
@@ -107,6 +111,7 @@ public abstract class Combatant : MonoBehaviour
     {
       CurrentHealth = maxHealth;
     }
+
     FXManager.SpawnHealFX();
     FXManager.SpawnBuffHeal(this);
   }
@@ -122,12 +127,11 @@ public abstract class Combatant : MonoBehaviour
     }
   }
 
-  public void Resurrect()
+  public virtual void Resurrect()
   {
     if (!IsDead) return;
 
     ChangeState(State.Idle);
-    this.GetComponent<Animator>().SetBool("isDead", false);
     CurrentHealth = MaxHealth / 2;
   }
 
@@ -272,9 +276,9 @@ public abstract class Combatant : MonoBehaviour
       : actor.Attack * actor.AttackMultiplier * (1 / DefenseMultiplier) * actor.tempDamageMultiplier *
         (1 / tempDefenseMultiplier) * damageMultiplier;
 
-    if (GetComponent<Animator>() != null && damageMultiplier != 0)
+    if (animator != null && damageMultiplier != 0)
     {
-      GetComponent<Animator>().SetBool(hurt, true);
+      animator.SetBool(hurt, true);
       FXManager.SpawnAttackHit(this, isMacro);
     }
 
@@ -284,8 +288,8 @@ public abstract class Combatant : MonoBehaviour
   protected virtual void Die()
   {
     CurrentHealth = 0;
-    this.GetComponent<Animator>().SetBool("Hurt", false);
-    this.GetComponent<Animator>().SetBool("isDead", true);
+    ResetPosition();
+    animator.SetBool(hurt, false);
     ChangeState(State.Dead);
     dead.Invoke();
   }
@@ -297,6 +301,8 @@ public abstract class Combatant : MonoBehaviour
       ChangeState(State.Attacking);
       AkSoundEngine.PostEvent("Play_Approach", gameObject);
     }
+
+    if (Target == this) return;
 
     Vector2 targetPosition = Target.transform.position;
     float distance = distanceFromTarget;

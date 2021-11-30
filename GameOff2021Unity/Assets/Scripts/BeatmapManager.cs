@@ -295,7 +295,7 @@ public class BeatmapManager : MonoBehaviour
       }
 
       AkSoundEngine.PostEvent(note.soundName, gameObject);
-      
+
       note.beatCircle.GetComponent<BeatCircle>().Hit();
       nextHitIndex++;
     }
@@ -324,34 +324,35 @@ public class BeatmapManager : MonoBehaviour
     beatCircle.endPos = endPos;
     beatCircle.spawnerPos = spawnerPos;
 
+    var animator = circle.GetComponent<Animator>();
     if (note.combatant is Hero hero)
     {
       // Attack is 1. Macro is 2.
       int value = hero.GetSubmittedCommand() is Macro ? 2 : 1;
-      circle.GetComponent<Animator>().SetInteger(attackType, value);
+      animator.SetInteger(attackType, value);
 
       switch (hero.Name)
       {
         case "Vanguard":
           // Current Hero is Vanguard so make Hero 3.
-          circle.GetComponent<Animator>().SetInteger(heroHash, 3);
+          animator.SetInteger(heroHash, 3);
           break;
         case "Initiate":
           // Current Hero is Initiate so make Hero 1.
-          circle.GetComponent<Animator>().SetInteger(heroHash, 1);
+          animator.SetInteger(heroHash, 1);
           break;
         case "Analysis":
           // Current Hero is Analysis so make Hero 2.
-          circle.GetComponent<Animator>().SetInteger(heroHash, 2);
+          animator.SetInteger(heroHash, 2);
           break;
       }
     }
     else
     {
-      circle.GetComponent<Animator>().SetInteger(attackType, 1);
+      animator.SetInteger(attackType, 1);
 
       // Enemy is represented with a value of 4.
-      circle.GetComponent<Animator>().SetInteger(heroHash, 4);
+      animator.SetInteger(heroHash, 4);
     }
 
     note.beatCircle = circle;
