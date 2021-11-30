@@ -21,7 +21,7 @@ public class EncounterManager : MonoBehaviour
     InEncounter
   }
 
-  private Queue<DialogueTrigger.Dialogue> dialogueQueue = new Queue<DialogueTrigger.Dialogue>();
+  private readonly Queue<DialogueTrigger.Dialogue> dialogueQueue = new Queue<DialogueTrigger.Dialogue>();
   private DialogueTrigger.Dialogue currentDialogue;
   private TextMeshProUGUI nameText;
   private TextMeshProUGUI messageText;
