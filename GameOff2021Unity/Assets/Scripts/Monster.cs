@@ -5,6 +5,7 @@ public class Monster : Combatant
   [SerializeField] private int patternId;
   [SerializeField] private bool isPhysicalResistant;
   [SerializeField] private bool isMacroResistant;
+  [SerializeField] private bool doesAoeAttack;
 
   public int PatternId => patternId;
 
@@ -37,5 +38,20 @@ public class Monster : Combatant
   public void endHitAnimation()
   {
     gameObject.GetComponent<Animator>().SetBool("Hurt", false);
+  }
+
+  public override void AttackTarget(float damageMultiplier, bool isLastHit)
+  {
+    if (doesAoeAttack && !IsDead)
+    {
+      foreach (Hero hero in CombatManager.Heroes)
+      {
+        hero.TakeDamage(this, damageMultiplier, false);
+      }
+    }
+    else
+    {
+      base.AttackTarget(damageMultiplier, isLastHit);
+    }
   }
 }
