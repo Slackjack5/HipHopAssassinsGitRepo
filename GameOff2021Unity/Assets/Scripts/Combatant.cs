@@ -288,6 +288,7 @@ public abstract class Combatant : MonoBehaviour
   protected virtual void Die()
   {
     CurrentHealth = 0;
+    ResetPosition();
     animator.SetBool(hurt, false);
     ChangeState(State.Dead);
     dead.Invoke();
@@ -300,6 +301,8 @@ public abstract class Combatant : MonoBehaviour
       ChangeState(State.Attacking);
       AkSoundEngine.PostEvent("Play_Approach", gameObject);
     }
+
+    if (Target == this) return;
 
     Vector2 targetPosition = Target.transform.position;
     float distance = distanceFromTarget;

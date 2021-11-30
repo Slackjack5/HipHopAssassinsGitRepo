@@ -14,11 +14,13 @@ public class EncounterManager : MonoBehaviour
   [SerializeField] private CombatManager combatManager;
   [SerializeField] private Shop shop;
   [SerializeField] private GameObject continueCommand;
+  [SerializeField] private GameObject restartCommand;
 
   private enum State
   {
     PreEncounter,
-    InEncounter
+    InEncounter,
+    GameOver
   }
 
   private readonly Queue<DialogueTrigger.Dialogue> dialogueQueue = new Queue<DialogueTrigger.Dialogue>();
@@ -39,8 +41,10 @@ public class EncounterManager : MonoBehaviour
   {
     currentState = State.PreEncounter;
 
-    var button = continueCommand.GetComponentInChildren<Button>();
-    button.onClick.AddListener(DisplayNextDialogue);
+    continueCommand.GetComponentInChildren<Button>().onClick.AddListener(DisplayNextDialogue);
+
+    restartCommand.GetComponentInChildren<Button>().onClick.AddListener(RestartGame);
+    restartCommand.SetActive(false);
 
     CombatManager.onStateChange.AddListener(OnCombatStateChange);
 
@@ -54,21 +58,44 @@ public class EncounterManager : MonoBehaviour
     TextMeshProUGUI[] textComponents = dialoguePanel.GetComponentsInChildren<TextMeshProUGUI>();
     nameText = textComponents[0];
     messageText = textComponents[1];
+  }
 
+  private void Start()
+  {
     StartDialogue();
   }
 
   private void Update()
   {
-    if (currentState == State.PreEncounter)
+    switch (currentState)
     {
-      continueCommand.SetActive(true);
-      EventSystem.current.SetSelectedGameObject(continueCommand.GetComponentInChildren<Button>().gameObject);
+      case State.PreEncounter:
+        continueCommand.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(continueCommand.GetComponentInChildren<Button>().gameObject);
+        break;
+      case State.InEncounter:
+        continueCommand.SetActive(false);
+        break;
     }
-    else
+  }
+
+  private void RestartGame()
+  {
+    restartCommand.SetActive(false);
+
+    foreach (Hero hero in CombatManager.Heroes)
     {
-      continueCommand.SetActive(false);
+      hero.ResetEverything(true);
     }
+
+    // Reset the current encounter.
+    if (currentEncounter != null)
+    {
+      Destroy(currentEncounter.gameObject);
+    }
+
+    currentState = State.PreEncounter;
+    StartDialogue();
   }
 
   private void StartDialogue()
@@ -115,6 +142,7 @@ public class EncounterManager : MonoBehaviour
     }
 
     dialoguePanel.SetActive(true);
+    AkSoundEngine.PostEvent("Play_UISelect", gameObject);
 
     currentDialogue = dialogueQueue.Dequeue();
     nameText.text = currentDialogue.name;
@@ -150,22 +178,7 @@ public class EncounterManager : MonoBehaviour
     }
 
     dialoguePanel.SetActive(false);
-
-    // Reset the current encounter.
-    if (currentEncounter != null)
-    {
-      Destroy(currentEncounter.gameObject);
-    }
-
     currentEncounter = Instantiate(encounters[currentEncounterIndex]);
-
-    if (currentEncounterIndex == 0)
-    {
-      foreach (Hero hero in CombatManager.Heroes)
-      {
-        hero.ResetEverything(true);
-      }
-    }
 
     if (currentEncounter.IsShop)
     {
@@ -187,21 +200,35 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
+    combatManager.Reset();
+    Timer.Deactivate();
+
     if (isWin)
     {
+      currentState = State.PreEncounter;
       currentGold += encounters[currentEncounterIndex].Gold;
       currentEncounterIndex++;
+      StartDialogue();
     }
     else
     {
+      currentState = State.GameOver;
       currentGold = 0;
       currentEncounterIndex = 0;
+      ShowRestart();
+    }
+  }
+
+  private void ShowRestart()
+  {
+    if (currentState == State.InEncounter)
+    {
+      Debug.LogError("Failed to show restart command. We are in an encounter!");
+      return;
     }
 
-    combatManager.Reset();
-    Timer.Deactivate();
-    currentState = State.PreEncounter;
-    StartDialogue();
+    restartCommand.SetActive(true);
+    EventSystem.current.SetSelectedGameObject(restartCommand.GetComponentInChildren<Button>().gameObject);
   }
 
   private void OnCombatStateChange(CombatManager.State state)
