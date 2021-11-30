@@ -11,11 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="1035481537">
+		<SoundBank Id="1229948536" Language="SFX" Hash="2038929015">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
+				<Event Id="2735935537" Name="Pause_Music" ObjectPath="\Events\Default Work Unit\Pause_Music" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="976860888" Name="Play_8BitBell" ObjectPath="\Events\Default Work Unit\Play_8BitBell" DurationType="OneShot" DurationMin="0.247063" DurationMax="0.247063">
 					<IncludedMemoryFiles>
 						<File Id="938064386" Language="SFX">
@@ -288,7 +289,7 @@
 					<IncludedMemoryFiles>
 						<File Id="951269746" Language="SFX">
 							<ShortName>Powerup2.wav</ShortName>
-							<Path>SFX\Powerup2_FE50E34E.wem</Path>
+							<Path>SFX\Powerup2_76D96387.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -404,6 +405,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2940177080" Name="Resume_Music" ObjectPath="\Events\Default Work Unit\Resume_Music" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="117217156" Language="SFX">

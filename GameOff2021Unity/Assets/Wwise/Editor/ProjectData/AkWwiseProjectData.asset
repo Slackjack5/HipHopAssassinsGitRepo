@@ -100,7 +100,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: ce9e95076641c840b2e12537fd4e7366
     GuidInternal: 
-    m_lastTime: -8585633798248013167
+    m_lastTime: -8585633708065891658
     List:
     - name: Environment
       guid: e8844d887a77af4dab22949281d082f1
@@ -128,8 +128,25 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 75db4e7638654c49924eee981991fa51
     GuidInternal: 
-    m_lastTime: -8585633798256615246
+    m_lastTime: -8585633708065682233
     List:
+    - name: Pause_Music
+      guid: c4749028940d6e4c993e3fb742038589
+      id: 2735935537
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Pause_Music
+        ObjectType: 3
+        guid: c4749028940d6e4c993e3fb742038589
+      Path: Events\Default Work Unit\Pause_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Play_8BitBell
       guid: 98210ff2f2e0c34e8b44fe4897a7d8be
       id: 976860888
@@ -895,6 +912,23 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.620909
       minDuration: 0.620909
+    - name: Resume_Music
+      guid: d35fd8931e9e1f4f88447add00dde91c
+      id: 2940177080
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 75db4e7638654c49924eee981991fa51
+      - ElementName: Resume_Music
+        ObjectType: 3
+        guid: d35fd8931e9e1f4f88447add00dde91c
+      Path: Events\Default Work Unit\Resume_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:

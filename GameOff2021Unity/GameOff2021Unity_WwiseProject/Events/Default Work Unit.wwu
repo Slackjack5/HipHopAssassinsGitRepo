@@ -526,6 +526,34 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Pause_Music" ID="{289074C4-0D94-4C6E-993E-3FB742038589}">
+					<ChildrenList>
+						<Action Name="" ID="{E030A138-B6C8-40E7-B335-2301BB14FD9B}" ShortID="672569925">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="7"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Music" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Resume_Music" ID="{93D85FD3-9E1E-4F1F-8844-7ADD00DDE91C}">
+					<ChildrenList>
+						<Action Name="" ID="{F6060229-44EA-48F6-8F95-0C9612F4DD63}" ShortID="712812665">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="9"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Music" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -102,12 +102,13 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 			AkSoundEngineController.Instance.LateUpdate();
 	}
 
-#region WwiseMigration
+
+  #region WwiseMigration
 #if UNITY_EDITOR
 #pragma warning disable 0414 // private field assigned but not used.
 
-	// previously serialized data that will be consumed by migration
-	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private string basePath = string.Empty;
+  // previously serialized data that will be consumed by migration
+  [UnityEngine.HideInInspector][UnityEngine.SerializeField] private string basePath = string.Empty;
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private string language = string.Empty;
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private int defaultPoolSize = 0;
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private int lowerPoolSize = 0;
