@@ -178,18 +178,26 @@ public class EncounterManager : MonoBehaviour
     }
 
     dialoguePanel.SetActive(false);
-    currentEncounter = Instantiate(encounters[currentEncounterIndex]);
+    currentState = State.InEncounter;
 
-    if (currentEncounter.IsShop)
+    if (encounters[currentEncounterIndex].IsShop)
     {
       shop.Open(currentGold);
     }
+    else if (encounters[currentEncounterIndex].IsDangerous)
+    {
+      DangerPlayer.Play();
+      DangerPlayer.onComplete.AddListener(() =>
+      {
+        currentEncounter = Instantiate(encounters[currentEncounterIndex]);
+        combatManager.Begin(currentEncounter);
+      });
+    }
     else
     {
+      currentEncounter = Instantiate(encounters[currentEncounterIndex]);
       combatManager.Begin(currentEncounter);
     }
-
-    currentState = State.InEncounter;
   }
 
   private void EndEncounter(bool isWin)

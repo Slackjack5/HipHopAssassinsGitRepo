@@ -58,4 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17936e739c94a9da948938e9118f07c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reward: 0
+  gold: 0
+  isShop: 0
+  isDangerous: 0
+  dangerTime: 5

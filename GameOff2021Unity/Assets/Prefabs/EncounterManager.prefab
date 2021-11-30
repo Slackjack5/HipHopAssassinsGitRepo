@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 5173187836029368252, guid: 2e15ef181536f894fb120418ef89be9e, type: 3}
   - {fileID: 9210066921081904185, guid: a367da854179f884c99649431b183056, type: 3}
   - {fileID: 9210066921081904185, guid: 99ab8903366d3b245a0b4ae615361c4b, type: 3}
+  - {fileID: 9210066921081904185, guid: 8ecf55a1d7f8d9741883081a6f8d2bd8, type: 3}
   dialogueTriggers:
   - {fileID: 8327956515019374700, guid: d787b92ff71b6fc40a60e4970f76c39e, type: 3}
   - {fileID: -8087776384602923934, guid: 10e8bb4d2b33a5540ab477af9585f312, type: 3}
@@ -57,3 +58,4 @@ MonoBehaviour:
   combatManager: {fileID: 0}
   shop: {fileID: 0}
   continueCommand: {fileID: 0}
+  restartCommand: {fileID: 0}

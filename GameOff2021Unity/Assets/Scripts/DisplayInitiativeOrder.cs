@@ -21,7 +21,7 @@ public class DisplayInitiativeOrder : MonoBehaviour
   {
     switch (state)
     {
-      case CombatManager.State.PreStart:
+      case CombatManager.State.Start:
         ClearDisplay();
 
         for (var i = 0; i < CombatManager.Combatants.Count; i++)
