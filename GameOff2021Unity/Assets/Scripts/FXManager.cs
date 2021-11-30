@@ -17,6 +17,8 @@ public class FXManager : MonoBehaviour
   [SerializeField] private GameObject GoodHit;
   [SerializeField] private GameObject Stars;
   [SerializeField] private GameObject HurtFX;
+  [SerializeField] private GameObject HealFX;
+  [SerializeField] private GameObject buffHeal;
 
   private static float _cameraShakeMagnitude;
   private static float _cameraShakeRoughness;
@@ -26,11 +28,13 @@ public class FXManager : MonoBehaviour
   private static GameObject _macroHit;
   private static GameObject _macroPulse;
   private static GameObject _buffOffense;
+  private static GameObject _buffHeal;
   private static GameObject _perfectHit;
   private static GameObject _goodHit;
   private static GameObject _stars;
   private static GameObject _hurtFX;
   private static GameObject fxManager;
+  private static GameObject _healFX;
 
   private void Awake()
   {
@@ -42,11 +46,12 @@ public class FXManager : MonoBehaviour
     _macroHit = MacroHit;
     _macroPulse = MacroPulse;
     _buffOffense = BuffOffense;
+    _buffHeal = buffHeal;
     _perfectHit = PerfectHit;
     _goodHit = GoodHit;
     _stars = Stars;
     _hurtFX = HurtFX;
-
+    _healFX = HealFX;
     fxManager = gameObject;
   }
 
@@ -93,6 +98,13 @@ public class FXManager : MonoBehaviour
       new Vector3(position.x, position.y, 0), Quaternion.identity);
   }
 
+  public static void SpawnBuffHeal(Combatant Target)
+  {
+    Vector3 position = Target.transform.position;
+    Instantiate(_buffHeal,
+      new Vector3(position.x, position.y, 0), Quaternion.identity);
+  }
+
   public static void SpawnBuffDefense(Combatant Target)
   {
     Vector3 position = Target.transform.position;
@@ -114,5 +126,10 @@ public class FXManager : MonoBehaviour
   public static void SpawnHurtFX()
   {
     Instantiate(_hurtFX, Vector3.zero, Quaternion.identity);
+  }
+
+  public static void SpawnHealFX()
+  {
+    Instantiate(_healFX, Vector3.zero, Quaternion.identity);
   }
 }

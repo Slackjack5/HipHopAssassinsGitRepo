@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     if (isPaused)
     {
       ResetInput();
-
+      AudioEvents.ResumeMusic();
       Time.timeScale = 1;
       pauseMenu.SetActive(false);
       isPaused = false;
@@ -81,12 +81,14 @@ public class GameManager : MonoBehaviour
       inputModule.leftClick = InputActionReference.Create(inputActionMap.FindAction("Click"));
       inputModule.move = null;
       inputModule.submit = null;
-
+      AudioEvents.PauseMusic();
       Time.timeScale = 0;
       pauseMenu.SetActive(true);
       isPaused = true;
     }
   }
+
+
 
   private static void Quit()
   {

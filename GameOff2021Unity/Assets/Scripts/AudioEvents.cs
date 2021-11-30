@@ -50,6 +50,7 @@ public class AudioEvents : MonoBehaviour
   private static int currentLoop = -1; // Counts the amount of times the song has looped
   private static int songLength; // The length of the song in milliseconds
   private static bool isSegmentPositionReady;
+  private static GameObject Self;
 
   //id of the wwise event - using this to get the playback position
   static uint playingID;
@@ -69,6 +70,7 @@ public class AudioEvents : MonoBehaviour
     currentSegment = new AkSegmentInfo();
     GlobalVariables.songStarted = false;
     isSegmentPositionReady = true;
+    Self = gameObject;
   }
 
   private void Update()
@@ -89,6 +91,7 @@ public class AudioEvents : MonoBehaviour
     {
       isSegmentPositionReady = true;
     }
+
   }
 
   private void OnGUI()
@@ -226,6 +229,17 @@ public class AudioEvents : MonoBehaviour
   {
     //Camera Shake
   }
+
+  public static void PauseMusic()
+  {
+    AkSoundEngine.PostEvent("Pause_Music", Self);
+  }
+
+  public static void ResumeMusic()
+  {
+    AkSoundEngine.PostEvent("Resume_Music", Self);
+  }
+
 }
 
 public static class GlobalVariables

@@ -11,11 +11,12 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3663956260">
+		<SoundBank Id="1229948536" Language="SFX" Hash="2038929015">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
 			<IncludedEvents>
+				<Event Id="2735935537" Name="Pause_Music" ObjectPath="\Events\Default Work Unit\Pause_Music" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="976860888" Name="Play_8BitBell" ObjectPath="\Events\Default Work Unit\Play_8BitBell" DurationType="OneShot" DurationMin="0.247063" DurationMax="0.247063">
 					<IncludedMemoryFiles>
 						<File Id="938064386" Language="SFX">
@@ -29,6 +30,30 @@
 						<File Id="1001131662" Language="SFX">
 							<ShortName>Approach.wav</ShortName>
 							<Path>SFX\Approach_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2677263245" Name="Play_AttackClap1" ObjectPath="\Events\Default Work Unit\Play_AttackClap1" DurationType="OneShot" DurationMin="0.358277" DurationMax="0.358277">
+					<IncludedMemoryFiles>
+						<File Id="1009823381" Language="SFX">
+							<ShortName>AttackClap1.wav</ShortName>
+							<Path>SFX\AttackClap1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2677263246" Name="Play_AttackClap2" ObjectPath="\Events\Default Work Unit\Play_AttackClap2" DurationType="OneShot" DurationMin="0.251066" DurationMax="0.251066">
+					<IncludedMemoryFiles>
+						<File Id="538443303" Language="SFX">
+							<ShortName>AttackClap2.wav</ShortName>
+							<Path>SFX\AttackClap2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2677263247" Name="Play_AttackClap3" ObjectPath="\Events\Default Work Unit\Play_AttackClap3" DurationType="OneShot" DurationMin="0.358277" DurationMax="0.358277">
+					<IncludedMemoryFiles>
+						<File Id="122429786" Language="SFX">
+							<ShortName>AttackMedium.wav</ShortName>
+							<Path>SFX\AttackMedium_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -88,6 +113,22 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="424679367" Name="Play_BirdWhistle" ObjectPath="\Events\Default Work Unit\Play_BirdWhistle" DurationType="OneShot" DurationMin="0.326100" DurationMax="0.326100">
+					<IncludedMemoryFiles>
+						<File Id="692354661" Language="SFX">
+							<ShortName>Pattern2\BirdWhistle.wav</ShortName>
+							<Path>SFX\Pattern2\BirdWhistle_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3067030450" Name="Play_Buff1" ObjectPath="\Events\Default Work Unit\Play_Buff1" DurationType="OneShot" DurationMin="1.739138" DurationMax="1.739138">
+					<IncludedMemoryFiles>
+						<File Id="253947556" Language="SFX">
+							<ShortName>Buff1.wav</ShortName>
+							<Path>SFX\Buff1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3785725400" Name="Play_Clap" ObjectPath="\Events\Default Work Unit\Play_Clap" DurationType="OneShot" DurationMin="0.450385" DurationMax="0.450385">
 					<IncludedMemoryFiles>
 						<File Id="347055204" Language="SFX">
@@ -96,7 +137,39 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4195308490" Name="Play_Congrats1" ObjectPath="\Events\Default Work Unit\Play_Congrats1" DurationType="OneShot" DurationMin="0.389274" DurationMax="0.389274">
+				<Event Id="1109536254" Name="Play_ClapWhistle" ObjectPath="\Events\Default Work Unit\Play_ClapWhistle" DurationType="OneShot" DurationMin="0.326100" DurationMax="0.326100">
+					<IncludedMemoryFiles>
+						<File Id="117217156" Language="SFX">
+							<ShortName>ClapWhistle.wav</ShortName>
+							<Path>SFX\ClapWhistle_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="432957160" Name="Play_ClapWhistle2" ObjectPath="\Events\Default Work Unit\Play_ClapWhistle2" DurationType="OneShot" DurationMin="0.434785" DurationMax="0.434785">
+					<IncludedMemoryFiles>
+						<File Id="426376387" Language="SFX">
+							<ShortName>ClapWhistle2.wav</ShortName>
+							<Path>SFX\ClapWhistle2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3065514911" Name="Play_CockroachHiss1" ObjectPath="\Events\Default Work Unit\Play_CockroachHiss1" DurationType="OneShot" DurationMin="0.434785" DurationMax="0.434785">
+					<IncludedMemoryFiles>
+						<File Id="295727573" Language="SFX">
+							<ShortName>Pattern2\CockroachHiss1.wav</ShortName>
+							<Path>SFX\Pattern2\CockroachHiss1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3065514908" Name="Play_CockroachHiss2" ObjectPath="\Events\Default Work Unit\Play_CockroachHiss2" DurationType="OneShot" DurationMin="0.434785" DurationMax="0.434785">
+					<IncludedMemoryFiles>
+						<File Id="608999138" Language="SFX">
+							<ShortName>Pattern2\CockroachHiss2.wav</ShortName>
+							<Path>SFX\Pattern2\CockroachHiss2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2643100921" Name="Play_Congrats" ObjectPath="\Events\Default Work Unit\Play_Congrats" DurationType="OneShot" DurationMin="0.389274" DurationMax="0.389274">
 					<IncludedMemoryFiles>
 						<File Id="172442727" Language="SFX">
 							<ShortName>Congrats!.wav</ShortName>
@@ -109,6 +182,54 @@
 						<File Id="396899071" Language="SFX">
 							<ShortName>RKU_BME3_Drums_Perc_Cowbell_03.wav</ShortName>
 							<Path>SFX\RKU_BME3_Drums_Perc_Cowbell_03_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3632061737" Name="Play_Drink1" ObjectPath="\Events\Default Work Unit\Play_Drink1" DurationType="OneShot" DurationMin="0.247063" DurationMax="0.247063">
+					<IncludedMemoryFiles>
+						<File Id="228807456" Language="SFX">
+							<ShortName>Response\Drink1.wav</ShortName>
+							<Path>SFX\Response\Drink1_10C4C929.wem</Path>
+						</File>
+						<File Id="938064386" Language="SFX">
+							<ShortName>ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s.wav</ShortName>
+							<Path>SFX\ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3632061738" Name="Play_Drink2" ObjectPath="\Events\Default Work Unit\Play_Drink2" DurationType="OneShot" DurationMin="0.226557" DurationMax="0.226557">
+					<IncludedMemoryFiles>
+						<File Id="938064386" Language="SFX">
+							<ShortName>ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s.wav</ShortName>
+							<Path>SFX\ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s_10C4C929.wem</Path>
+						</File>
+						<File Id="1001053136" Language="SFX">
+							<ShortName>Response\Drink2.wav</ShortName>
+							<Path>SFX\Response\Drink2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3632061739" Name="Play_Drink3" ObjectPath="\Events\Default Work Unit\Play_Drink3" DurationType="OneShot" DurationMin="0.201840" DurationMax="0.201840">
+					<IncludedMemoryFiles>
+						<File Id="598275031" Language="SFX">
+							<ShortName>Response\Drink3.wav</ShortName>
+							<Path>SFX\Response\Drink3_10C4C929.wem</Path>
+						</File>
+						<File Id="938064386" Language="SFX">
+							<ShortName>ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s.wav</ShortName>
+							<Path>SFX\ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3632061740" Name="Play_Drink4" ObjectPath="\Events\Default Work Unit\Play_Drink4" DurationType="OneShot" DurationMin="0.190511" DurationMax="0.190511">
+					<IncludedMemoryFiles>
+						<File Id="410657505" Language="SFX">
+							<ShortName>Response\Drink4.wav</ShortName>
+							<Path>SFX\Response\Drink4_10C4C929.wem</Path>
+						</File>
+						<File Id="938064386" Language="SFX">
+							<ShortName>ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s.wav</ShortName>
+							<Path>SFX\ESM_Retro_Game_Classic_Jump_16_8_Bit_Arcade_80s_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -125,6 +246,14 @@
 						<File Id="1041660709" Language="SFX">
 							<ShortName>Go!.wav</ShortName>
 							<Path>SFX\Go!_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2317071881" Name="Play_Heal1" ObjectPath="\Events\Default Work Unit\Play_Heal1" DurationType="OneShot" DurationMin="0.869569" DurationMax="0.869569">
+					<IncludedMemoryFiles>
+						<File Id="238169385" Language="SFX">
+							<ShortName>HealNoise.wav</ShortName>
+							<Path>SFX\HealNoise_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -156,6 +285,22 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="880774656" Name="Play_PowerUp2" ObjectPath="\Events\Default Work Unit\Play_PowerUp2" DurationType="OneShot" DurationMin="0.649773" DurationMax="0.649773">
+					<IncludedMemoryFiles>
+						<File Id="951269746" Language="SFX">
+							<ShortName>Powerup2.wav</ShortName>
+							<Path>SFX\Powerup2_76D96387.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1988178265" Name="Play_Shield" ObjectPath="\Events\Default Work Unit\Play_Shield" DurationType="OneShot" DurationMin="0.820677" DurationMax="0.820677">
+					<IncludedMemoryFiles>
+						<File Id="163547098" Language="SFX">
+							<ShortName>Shield2.wav</ShortName>
+							<Path>SFX\Shield2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3865095978" Name="Play_Shield1" ObjectPath="\Events\Default Work Unit\Play_Shield1" DurationType="OneShot" DurationMin="0.358260" DurationMax="0.358260">
 					<IncludedMemoryFiles>
 						<File Id="264426336" Language="SFX">
@@ -172,11 +317,43 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="3601250801" Name="Play_Spell1" ObjectPath="\Events\Default Work Unit\Play_Spell1" DurationType="OneShot" DurationMin="1.721020" DurationMax="1.721020">
+					<IncludedMemoryFiles>
+						<File Id="427274664" Language="SFX">
+							<ShortName>Spell1.wav</ShortName>
+							<Path>SFX\Spell1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3601250802" Name="Play_Spell2" ObjectPath="\Events\Default Work Unit\Play_Spell2" DurationType="OneShot" DurationMin="1.007483" DurationMax="1.007483">
+					<IncludedMemoryFiles>
+						<File Id="479723978" Language="SFX">
+							<ShortName>Spell2.wav</ShortName>
+							<Path>SFX\Spell2_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3601250803" Name="Play_Spell3" ObjectPath="\Events\Default Work Unit\Play_Spell3" DurationType="OneShot" DurationMin="1.195669" DurationMax="1.195669">
+					<IncludedMemoryFiles>
+						<File Id="172447860" Language="SFX">
+							<ShortName>Spell3.wav</ShortName>
+							<Path>SFX\Spell3_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="688015546" Name="Play_Tambourine" ObjectPath="\Events\Default Work Unit\Play_Tambourine" DurationType="OneShot" DurationMin="0.326100" DurationMax="0.326100">
 					<IncludedMemoryFiles>
 						<File Id="356646821" Language="SFX">
 							<ShortName>Tambourine.wav</ShortName>
 							<Path>SFX\Tambourine_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3964949448" Name="Play_TambourineShake" ObjectPath="\Events\Default Work Unit\Play_TambourineShake" DurationType="OneShot" DurationMin="0.434785" DurationMax="0.434785">
+					<IncludedMemoryFiles>
+						<File Id="744188317" Language="SFX">
+							<ShortName>TambourineShake2.wav</ShortName>
+							<Path>SFX\TambourineShake2_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -220,7 +397,22 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2554967377" Name="Play_Yell1" ObjectPath="\Events\Default Work Unit\Play_Yell1" DurationType="OneShot" DurationMin="0.620909" DurationMax="0.620909">
+					<IncludedMemoryFiles>
+						<File Id="299376940" Language="SFX">
+							<ShortName>Yell1.wav</ShortName>
+							<Path>SFX\Yell1_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2940177080" Name="Resume_Music" ObjectPath="\Events\Default Work Unit\Resume_Music" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="117217156" Language="SFX">
+					<ShortName>ClapWhistle.wav</ShortName>
+					<Path>SFX\ClapWhistle_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="2241664027">
 			<ObjectPath>Init</ObjectPath>

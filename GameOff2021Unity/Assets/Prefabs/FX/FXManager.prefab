@@ -55,3 +55,5 @@ MonoBehaviour:
   GoodHit: {fileID: 851486232618474314, guid: 515634f9bb53d8d44af10bd412349438, type: 3}
   Stars: {fileID: 5803432354515659686, guid: 68128ceeaaf16724f8ed26df1ab375c8, type: 3}
   HurtFX: {fileID: 851486232618474314, guid: 315adf8996542464b8d64cec9ff5df4e, type: 3}
+  HealFX: {fileID: 851486232618474314, guid: 22b04b35fc4f10a46a0d827db7ab6f37, type: 3}
+  buffHeal: {fileID: 1221544090074648248, guid: aa06d34033ed74c499c4798f7f8a54a3, type: 3}

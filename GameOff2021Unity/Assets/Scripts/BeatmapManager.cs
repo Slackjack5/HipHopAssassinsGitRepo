@@ -147,6 +147,7 @@ public class BeatmapManager : MonoBehaviour
         else if (note.isCall && currentSegmentPosition >= notes[nextHitIndex].time)
         {
           AkSoundEngine.PostEvent(notes[nextHitIndex].soundName, gameObject);
+          FXManager.SpawnGreatHit();
           nextHitIndex++;
         }
       }
@@ -294,7 +295,7 @@ public class BeatmapManager : MonoBehaviour
       }
 
       AkSoundEngine.PostEvent(note.soundName, gameObject);
-
+      
       note.beatCircle.GetComponent<BeatCircle>().Hit();
       nextHitIndex++;
     }
