@@ -15,16 +15,17 @@ public class EncounterManager : MonoBehaviour
   [SerializeField] private Shop shop;
   [SerializeField] private GameObject continueCommand;
 
-  private Queue<DialogueTrigger.Dialogue> dialogueQueue = new Queue<DialogueTrigger.Dialogue>();
-  private TextMeshProUGUI nameText;
-  private TextMeshProUGUI messageText;
-
   private enum State
   {
     PreEncounter,
     InEncounter
   }
 
+  private Queue<DialogueTrigger.Dialogue> dialogueQueue = new Queue<DialogueTrigger.Dialogue>();
+  private DialogueTrigger.Dialogue currentDialogue;
+  private TextMeshProUGUI nameText;
+  private TextMeshProUGUI messageText;
+  private bool isTyping;
   private State currentState;
   private Encounter currentEncounter;
   private int currentEncounterIndex;
@@ -98,7 +99,14 @@ public class EncounterManager : MonoBehaviour
 
   private void DisplayNextDialogue()
   {
-    dialoguePanel.SetActive(true);
+    if (isTyping)
+    {
+      // Stop typing the current message before typing a new message.
+      StopAllCoroutines();
+      isTyping = false;
+      messageText.text = currentDialogue.message;
+      return;
+    }
 
     if (dialogueQueue.Count == 0)
     {
@@ -106,22 +114,25 @@ public class EncounterManager : MonoBehaviour
       return;
     }
 
-    DialogueTrigger.Dialogue dialogue = dialogueQueue.Dequeue();
-    nameText.text = dialogue.name;
+    dialoguePanel.SetActive(true);
 
-    // Stop typing the current message before typing a new message.
-    StopAllCoroutines();
-    StartCoroutine(TypeMessage(dialogue.message));
+    currentDialogue = dialogueQueue.Dequeue();
+    nameText.text = currentDialogue.name;
+
+    StartCoroutine(TypeMessage(currentDialogue.message));
   }
 
   private IEnumerator TypeMessage(string message)
   {
+    isTyping = true;
     messageText.text = "";
-    foreach (char letter in message.ToCharArray())
+    foreach (char letter in message)
     {
       messageText.text += letter;
       yield return new WaitForSeconds(textSpeed);
     }
+
+    isTyping = false;
   }
 
   private void StartEncounter()
