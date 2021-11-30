@@ -127,6 +127,7 @@ public abstract class Combatant : MonoBehaviour
     if (!IsDead) return;
 
     ChangeState(State.Idle);
+    this.GetComponent<Animator>().SetBool("isDead", false);
     CurrentHealth = MaxHealth / 2;
   }
 
@@ -283,6 +284,8 @@ public abstract class Combatant : MonoBehaviour
   protected virtual void Die()
   {
     CurrentHealth = 0;
+    this.GetComponent<Animator>().SetBool("Hurt", false);
+    this.GetComponent<Animator>().SetBool("isDead", true);
     ChangeState(State.Dead);
     dead.Invoke();
   }
