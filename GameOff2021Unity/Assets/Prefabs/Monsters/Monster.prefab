@@ -101,14 +101,14 @@ MonoBehaviour:
   maxStamina: 0
   attack: 4
   speed: 0
-  damageNumberPrefab: {fileID: 6632316025372179153, guid: 264fb6a335c1a414b8272264cddabd05, type: 3}
-  damageSpawnTransform: {fileID: 5815836085045471016}
-  damageSpawnOffsetBound: 50
   distanceFromTarget: 1
   travelTime: 0.3
   patternId: 5
   isPhysicalResistant: 0
   isMacroResistant: 0
+  doesAoeAttack: 0
+  twitchDistance: 0.5
+  twitchDuration: 0.1
 --- !u!1001 &6150571464042424597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,10 +209,5 @@ PrefabInstance:
 --- !u!224 &9190175405923259167 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3085308791343905290, guid: 955362698324436448f596729701c564, type: 3}
-  m_PrefabInstance: {fileID: 6150571464042424597}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &5815836085045471016 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 427059335104794173, guid: 955362698324436448f596729701c564, type: 3}
   m_PrefabInstance: {fileID: 6150571464042424597}
   m_PrefabAsset: {fileID: 0}

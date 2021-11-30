@@ -144,10 +144,16 @@ public class BeatmapManager : MonoBehaviour
         {
           nextHitIndex++;
         }
-        else if (note.isCall && currentSegmentPosition >= notes[nextHitIndex].time)
+        else if (note.isCall && currentSegmentPosition >= note.time)
         {
-          AkSoundEngine.PostEvent(notes[nextHitIndex].soundName, gameObject);
+          AkSoundEngine.PostEvent(note.soundName, gameObject);
           FXManager.SpawnGreatHit();
+
+          if (note.combatant is Monster monster)
+          {
+            monster.Twitch();
+          }
+
           nextHitIndex++;
         }
       }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Monster : Combatant
@@ -6,6 +7,10 @@ public class Monster : Combatant
   [SerializeField] private bool isPhysicalResistant;
   [SerializeField] private bool isMacroResistant;
   [SerializeField] private bool doesAoeAttack;
+  [SerializeField] private float twitchDistance;
+  [SerializeField] private float twitchDuration;
+
+  private bool twitched;
 
   public int PatternId => patternId;
 
@@ -52,6 +57,21 @@ public class Monster : Combatant
     else
     {
       base.AttackTarget(damageMultiplier, isLastHit);
+    }
+  }
+
+  public void Twitch()
+  {
+    var position = transform.position;
+    if (twitched)
+    {
+      transform.DOMoveY(position.y - twitchDistance, twitchDuration);
+      twitched = false;
+    }
+    else
+    {
+      transform.DOMoveY(position.y + twitchDistance, twitchDuration);
+      twitched = true;
     }
   }
 }
