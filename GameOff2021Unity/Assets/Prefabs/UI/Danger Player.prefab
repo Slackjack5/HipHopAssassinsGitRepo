@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6748294f6818148b3c90ff6cd46b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
-  frequency: 2
+  duration: 18
+  frequency: 5
   topStart: {fileID: 102895968764484056}
   topEnd: {fileID: 960568683680277772}
   bottomStart: {fileID: 5392258030909828401}
