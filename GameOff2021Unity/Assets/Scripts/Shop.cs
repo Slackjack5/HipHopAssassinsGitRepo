@@ -64,8 +64,8 @@ public class Shop : MonoBehaviour
   public void Close()
   {
     menu.SetActive(false);
-    onClose.Invoke(currentGold);
     AudioEvents.SetSwitchCombat();
+    onClose.Invoke(currentGold);
   }
 
   private void Purchase(Command command)
