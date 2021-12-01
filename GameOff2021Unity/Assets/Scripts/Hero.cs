@@ -59,9 +59,9 @@ public class Hero : Combatant
     }
   }
 
-  public override void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
+  public override void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro, float macroPower = 0)
   {
-    base.TakeDamage(actor, damageMultiplier, isMacro);
+    base.TakeDamage(actor, damageMultiplier, isMacro, macroPower);
     if (damageMultiplier != 0)
     {
       FXManager.SpawnHurtFX();
