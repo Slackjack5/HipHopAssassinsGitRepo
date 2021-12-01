@@ -10,12 +10,14 @@ public class EncounterManager : MonoBehaviour
   [SerializeField] private Encounter[] encounters;
   [SerializeField] private int firstEncounterIndex;
   [SerializeField] private DialogueTrigger[] dialogueTriggers;
+  [SerializeField] private DialogueTrigger endDialogueTrigger;
   [SerializeField] private GameObject dialoguePanel;
   [SerializeField] private float textSpeed;
   [SerializeField] private CombatManager combatManager;
   [SerializeField] private Shop shop;
   [SerializeField] private GameObject continueCommand;
   [SerializeField] private GameObject restartCommand;
+  [SerializeField] private GameObject endPanel;
 
   private enum State
   {
@@ -130,6 +132,17 @@ public class EncounterManager : MonoBehaviour
     DisplayNextDialogue();
   }
 
+  private void StartDialogue(DialogueTrigger dialogueTrigger)
+  {
+    dialogueQueue.Clear();
+    foreach (DialogueTrigger.Dialogue dialogue in dialogueTrigger.Dialogues)
+    {
+      dialogueQueue.Enqueue(dialogue);
+    }
+
+    DisplayNextDialogue();
+  }
+
   private void DisplayNextDialogue()
   {
     if (isTyping)
@@ -179,7 +192,7 @@ public class EncounterManager : MonoBehaviour
 
     if (currentEncounterIndex >= encounters.Length)
     {
-      Debug.LogError($"Failed to start encounter. Index {currentEncounterIndex} is out of bounds!");
+      endPanel.SetActive(true);
       return;
     }
 
@@ -229,6 +242,11 @@ public class EncounterManager : MonoBehaviour
         ResetHeroes();
       }
 
+      if (currentEncounterIndex == encounters.Length)
+      {
+        EndGame();
+      }
+
       StartDialogue();
     }
     else
@@ -273,5 +291,10 @@ public class EncounterManager : MonoBehaviour
     }
 
     consumable.IncrementAmountOwned();
+  }
+
+  private void EndGame()
+  {
+    StartDialogue(endDialogueTrigger);
   }
 }
