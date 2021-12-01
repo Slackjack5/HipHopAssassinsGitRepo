@@ -42,7 +42,10 @@ public class Monster : Combatant
 
   public void endHitAnimation()
   {
-    gameObject.GetComponent<Animator>().SetBool("Hurt", false);
+    if (animator != null)
+    {
+      animator.SetBool(hurt, false);
+    }
   }
 
   public override void AttackTarget(float damageMultiplier, bool isLastHit)

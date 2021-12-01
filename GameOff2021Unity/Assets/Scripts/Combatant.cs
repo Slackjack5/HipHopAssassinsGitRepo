@@ -289,7 +289,12 @@ public abstract class Combatant : MonoBehaviour
   {
     CurrentHealth = 0;
     ResetPosition();
-    animator.SetBool(hurt, false);
+
+    if (animator != null)
+    {
+      animator.SetBool(hurt, false);
+    }
+
     ChangeState(State.Dead);
     dead.Invoke();
   }

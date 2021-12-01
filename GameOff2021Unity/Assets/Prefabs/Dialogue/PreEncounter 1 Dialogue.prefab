@@ -45,10 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - name: Vanguard
-    message: Hi, I am the Vanguard.
+    message: Well done once again, team.
   - name: Analysis
-    message: Hi, I am the Analysis.
+    message: I'm detecting movement coming towards us.
   - name: Initiate
-    message: Hi, I am the Initiate.
+    message: No time to rest.
   - name: Vanguard
     message: Let's bash some bugs!

@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encounters:
+  - {fileID: 1012283874525010048, guid: af51892d69ad28f4694dce0962782174, type: 3}
+  - {fileID: 1012283874525010048, guid: f749fd63fa1c3734ebbae966142d4e73, type: 3}
   - {fileID: 1012283874525010048, guid: c2e7902a7b70c1a40b1e71cb2c9916aa, type: 3}
   - {fileID: 9210066921081904185, guid: dfbb52227032612458d5b41c8b650d65, type: 3}
   - {fileID: 5173187836029368252, guid: 2e15ef181536f894fb120418ef89be9e, type: 3}
@@ -51,6 +53,8 @@ MonoBehaviour:
   - {fileID: 9210066921081904185, guid: 99ab8903366d3b245a0b4ae615361c4b, type: 3}
   - {fileID: 9210066921081904185, guid: 8ecf55a1d7f8d9741883081a6f8d2bd8, type: 3}
   dialogueTriggers:
+  - {fileID: 1180851996246844586, guid: 2293a704cbaa7314b94167262769c74f, type: 3}
+  - {fileID: 4073692835945133943, guid: c58bf11736c9f87499c3c23b97c36470, type: 3}
   - {fileID: 8327956515019374700, guid: d787b92ff71b6fc40a60e4970f76c39e, type: 3}
   - {fileID: -8087776384602923934, guid: 10e8bb4d2b33a5540ab477af9585f312, type: 3}
   dialoguePanel: {fileID: 0}

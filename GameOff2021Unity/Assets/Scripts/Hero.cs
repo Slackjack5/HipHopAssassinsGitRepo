@@ -53,7 +53,10 @@ public class Hero : Combatant
 
   public void EndHurtAnimation()
   {
-    gameObject.GetComponent<Animator>().SetBool(hurt, false);
+    if (animator != null)
+    {
+      animator.SetBool(hurt, false);
+    }
   }
 
   public override void TakeDamage(Combatant actor, float damageMultiplier, bool isMacro)
@@ -81,7 +84,11 @@ public class Hero : Combatant
       CurrentStamina = maxStamina;
 
       ChangeState(State.Idle);
-      GetComponent<Animator>().SetBool(isDead, false);
+
+      if (animator != null)
+      {
+        animator.SetBool(isDead, false);
+      }
     }
   }
 
@@ -119,12 +126,18 @@ public class Hero : Combatant
   {
     base.Resurrect();
 
-    GetComponent<Animator>().SetBool(isDead, false);
+    if (animator != null)
+    {
+      animator.SetBool(isDead, false);
+    }
   }
 
   protected override void Die()
   {
-    animator.SetBool(isDead, true);
+    if (animator != null)
+    {
+      animator.SetBool(isDead, true);
+    }
 
     base.Die();
   }
