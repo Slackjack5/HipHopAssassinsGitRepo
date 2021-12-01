@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfPattern xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- Patterns MUST be sorted in ID order. Patterns must also not be removed. -->
     <Pattern>
         <!-- DO NOT USE -->
         <id>0</id>

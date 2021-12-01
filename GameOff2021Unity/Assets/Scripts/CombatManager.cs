@@ -21,20 +21,20 @@ public class CombatManager : MonoBehaviour
 
   public enum State
   {
-    Unspecified,
-    Inactive,
-    PreStart,
-    Start,
-    HeroOne,
-    HeroTwo,
-    HeroThree,
-    DelayExecution,
-    PreExecution,
-    Execution,
-    Win,
-    Lose,
-    EndWin,
-    EndLose
+    Unspecified, // Should never be used
+    Inactive, // Out of combat
+    PreStart, // Monsters are arriving on the scene
+    Start, // Show start message
+    HeroOne, // Hero 1's turn to select command
+    HeroTwo, // Hero 2's turn
+    HeroThree, // Hero 3's turn
+    DelayExecution, // Wait until it's the right time to generate beatmap
+    PreExecution, // Generate beatmap
+    Execution, // Player executes beatmap
+    Win, // Show win message
+    Lose, // Show lose message
+    EndWin, // Exit out of combat on a win
+    EndLose // Exit out of combat on a loss
   }
 
   /// <summary>
