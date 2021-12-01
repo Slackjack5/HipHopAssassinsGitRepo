@@ -537,6 +537,45 @@
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
+							</ChildrenList>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{D717592C-D748-4276-8826-15889970C663}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{5AC96CFD-7DFB-4D92-BCAA-3ED6A3872533}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<Playlist>
+								<MusicPlaylistItem Name="" ID="{56015C8F-7D40-4BC4-82F4-EDA61F540BB0}" ShortID="295196027">
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{ADE688B3-052D-49EC-8CA8-57DE6C3D3276}" ShortID="523257352">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="10000"/>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="Nycelly ~ SaveTheCyberSpace" ID="{3926328D-0EF5-4AF3-A45C-55D66636A9C8}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Playlist>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="BossEntrance" ID="{F78B9B8A-5904-4BF8-953D-2D10D9CF20D2}" ShortID="666563724">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
 								<MusicSegment Name="Nycelly ~ BossEntrance" ID="{C5271963-E2EA-4291-8F93-09A8654C265B}" ShortID="902808588">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="18750"/>
@@ -628,12 +667,12 @@
 								</MusicSegment>
 							</ChildrenList>
 							<TransitionList>
-								<MusicTransition Name="Root" ID="{D717592C-D748-4276-8826-15889970C663}">
+								<MusicTransition Name="Root" ID="{5E255112-9A31-4DB3-8E24-463B88134AF6}">
 									<PropertyList>
 										<Property Name="IsFolder" Type="bool" Value="True"/>
 									</PropertyList>
 									<ChildrenList>
-										<MusicTransition Name="Transition" ID="{5AC96CFD-7DFB-4D92-BCAA-3ED6A3872533}">
+										<MusicTransition Name="Transition" ID="{9E22397A-3480-48AA-AF46-3768B894126F}">
 											<TransitionInfo/>
 										</MusicTransition>
 									</ChildrenList>
@@ -642,20 +681,13 @@
 							</TransitionList>
 							<ObjectLists/>
 							<Playlist>
-								<MusicPlaylistItem Name="" ID="{56015C8F-7D40-4BC4-82F4-EDA61F540BB0}" ShortID="295196027">
+								<MusicPlaylistItem Name="" ID="{8B18B0F0-ACE2-4A02-A84C-3FC8C6BC4A44}" ShortID="673553030">
 									<ChildrenList>
-										<MusicPlaylistItem Name="" ID="{36681F65-F42E-497D-8FAD-6CCBCA96F46F}" ShortID="74362015">
+										<MusicPlaylistItem Name="" ID="{24286E55-63B1-4FA7-B2D0-A4EDEE32EB00}" ShortID="922713871">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
 											<SegmentRef Name="Nycelly ~ BossEntrance" ID="{C5271963-E2EA-4291-8F93-09A8654C265B}"/>
-										</MusicPlaylistItem>
-										<MusicPlaylistItem Name="" ID="{ADE688B3-052D-49EC-8CA8-57DE6C3D3276}" ShortID="523257352">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="10000"/>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="Nycelly ~ SaveTheCyberSpace" ID="{3926328D-0EF5-4AF3-A45C-55D66636A9C8}"/>
 										</MusicPlaylistItem>
 									</ChildrenList>
 								</MusicPlaylistItem>
@@ -731,10 +763,14 @@
 									<PropertyList>
 										<Property Name="DestinationContextType" Type="int16" Value="2"/>
 										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="DestinationContextObject">
 											<ObjectRef Name="BossFight" ID="{C47E0CE7-D70F-4316-BD5E-A6A3D2D4A7E6}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="BossEntrance" ID="{F78B9B8A-5904-4BF8-953D-2D10D9CF20D2}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
 										</Reference>
 									</ReferenceList>
 									<TransitionInfo/>
@@ -770,6 +806,14 @@
 							</Path>
 							<AudioNodeInfo>
 								<AudioNodeRef Name="Shop" ID="{2A6818A6-2B5E-4B02-A194-77FDC093E203}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="BossEntrance" ID="{E01AFA6D-6396-480E-89E0-4FDD53FD245C}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="BossEntrance" ID="{F78B9B8A-5904-4BF8-953D-2D10D9CF20D2}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}" Platform="Linked"/>
 							</AudioNodeInfo>
 						</Entry>
 					</EntryList>

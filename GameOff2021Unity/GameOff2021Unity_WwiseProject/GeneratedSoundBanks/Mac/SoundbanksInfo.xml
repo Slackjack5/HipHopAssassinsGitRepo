@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="3345380819">
+		<SoundBank Id="1229948536" Language="SFX" Hash="1634296897">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -291,7 +291,6 @@
 					<SwitchContainers>
 						<SwitchContainer SwitchValue="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}">
 							<Media>
-								<File Id="274508196"/>
 								<File Id="820650245"/>
 							</Media>
 						</SwitchContainer>
@@ -304,6 +303,11 @@
 						<SwitchContainer SwitchValue="{6C4F3227-58AB-4634-912D-931E710BEEB8}">
 							<Media>
 								<File Id="321804522"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{E01AFA6D-6396-480E-89E0-4FDD53FD245C}">
+							<Media>
+								<File Id="274508196"/>
 							</Media>
 						</SwitchContainer>
 					</SwitchContainers>
@@ -442,6 +446,11 @@
 						<ActionSetSwitchEntry Id="1560169506" Name="Boss" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Boss"/>
 					</ActionSetSwitch>
 				</Event>
+				<Event Id="3963264424" Name="Set_Switch_BossEntrance" ObjectPath="\Events\Default Work Unit\Set_Switch_BossEntrance" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="3173959700" Name="BossEntrance" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\BossEntrance"/>
+					</ActionSetSwitch>
+				</Event>
 				<Event Id="164217529" Name="Set_Switch_Combat" ObjectPath="\Events\Default Work Unit\Set_Switch_Combat" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
 					<ActionSetSwitch>
 						<ActionSetSwitchEntry Id="2764240573" Name="Combat" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Combat"/>
@@ -469,11 +478,15 @@
 				<SwitchGroup Id="2764240573" Name="Combat" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Combat" GUID="{3AA6FADC-1177-47BF-A030-E42C607D04B9}">
 					<Switches/>
 				</SwitchGroup>
+				<SwitchGroup Id="3173959700" Name="BossEntrance" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\BossEntrance" GUID="{E01AFA6D-6396-480E-89E0-4FDD53FD245C}">
+					<Switches/>
+				</SwitchGroup>
 				<SwitchGroup Id="3955977733" Name="MusicEnvironment" ObjectPath="\Switches\Default Work Unit\MusicEnvironment" GUID="{DF52CAAE-B629-4200-ABAA-103F6454EE18}">
 					<Switches>
 						<Switch Id="251412225" Name="Shop" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Shop" GUID="{6C4F3227-58AB-4634-912D-931E710BEEB8}"/>
 						<Switch Id="2764240573" Name="Combat" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Combat" GUID="{3AA6FADC-1177-47BF-A030-E42C607D04B9}"/>
 						<Switch Id="1560169506" Name="Boss" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Boss" GUID="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}"/>
+						<Switch Id="3173959700" Name="BossEntrance" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\BossEntrance" GUID="{E01AFA6D-6396-480E-89E0-4FDD53FD245C}"/>
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>

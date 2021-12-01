@@ -46,6 +46,7 @@ public class DangerPlayer : MonoBehaviour
     if (remainingTime <= 0)
     {
       isStarted = false;
+      AudioEvents.SetSwitchBoss();
       onComplete.Invoke();
       onComplete.RemoveAllListeners();
     }
@@ -55,6 +56,6 @@ public class DangerPlayer : MonoBehaviour
   {
     isStarted = true;
     remainingTime = _duration;
-    AudioEvents.SetSwitchBoss();
+    AudioEvents.SetSwitchBossEntrance();
   }
 }

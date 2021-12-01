@@ -35,6 +35,7 @@
 						<ObjectRef Name="Play_Cowbell" ID="{ECCB92A1-C6C8-48BE-9C61-2C8244EBE9D8}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Clap" ID="{EC26F2AF-7A68-4942-B27B-4521506A430A}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Spell1" ID="{FABC75A4-D129-4997-B121-C133D1B3704C}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Set_Switch_BossEntrance" ID="{98608BD3-17EE-49E7-8A59-116784C37AB7}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="ClapWhistle" ID="{BA06060B-EB79-4A12-9DE0-C03A1F1EC804}" WorkUnitID="{BDA32F40-E8F2-4C68-B94C-4E1438657051}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_UIClose" ID="{33374D3A-C53F-4A1E-B9BC-5F9DC9C0B4F1}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_PowerUp2" ID="{AC5E926B-D8D6-4A48-8909-7673E4DFF572}" WorkUnitID="{764EDB75-6538-494C-924E-EE981991FA51}" Origin="Manual" Filter="7"/>

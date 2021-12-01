@@ -46,6 +46,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3865095977	Play_Shield2			\Default Work Unit\Play_Shield2	
 	3865095978	Play_Shield1			\Default Work Unit\Play_Shield1	
 	3916729409	Play_AttackHit			\Default Work Unit\Play_AttackHit	
+	3963264424	Set_Switch_BossEntrance			\Default Work Unit\Set_Switch_BossEntrance	
 	3964949448	Play_TambourineShake			\Default Work Unit\Play_TambourineShake	
 	4068532111	Play_UIMove			\Default Work Unit\Play_UIMove	
 	4165562918	Play_AttackExplode1			\Default Work Unit\Play_AttackExplode1	
@@ -57,6 +58,7 @@ Switch	ID	Name	Switch Group			Notes
 	251412225	Shop	MusicEnvironment			
 	1560169506	Boss	MusicEnvironment			
 	2764240573	Combat	MusicEnvironment			
+	3173959700	BossEntrance	MusicEnvironment			
 
 Modulator LFO	ID	Name			Wwise Object Path	Notes
 	342804997	PitchLFO			\Default Work Unit\PitchLFO	
@@ -77,7 +79,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	253947556	Buff1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Buff1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Buff1		306848
 	259699750	AttackHit1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Hit\AttackHit1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\AttackHit\AttackHit1		12388
 	264426336	Shield1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Shield1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Responses\Shield1		68848
-	274508196	Nycelly ~ BossEntrance	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Nycelly ~ BossEntrance_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitcher\BossFight\Nycelly ~ BossEntrance\Nycelly ~ BossEntrance		3307564
+	274508196	Nycelly ~ BossEntrance	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Nycelly ~ BossEntrance_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitcher\BossEntrance\Nycelly ~ BossEntrance\Nycelly ~ BossEntrance		3307564
 	295727573	CockroachHiss1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Pattern2\CockroachHiss1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Pattern2\CockroachHiss1		76760
 	299376940	Yell1	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Yell1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Patterns\Pattern2\Yell1		89544
 	321804522	Nycelly ~ CyberMonday	G:\GameOff2021\GameOff2021GitRepo\GameOff2021Unity\GameOff2021Unity_WwiseProject\.cache\Mac\SFX\Nycelly ~ CyberMonday_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\MusicSwitcher\Shop\Nycelly ~ CyberMonday\Nycelly ~ CyberMonday		8467264

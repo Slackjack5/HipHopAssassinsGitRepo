@@ -596,6 +596,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Set_Switch_BossEntrance" ID="{98608BD3-17EE-49E7-8A59-116784C37AB7}">
+					<ChildrenList>
+						<Action Name="" ID="{66416926-77DE-4099-923C-5E8CEFD1DB48}" ShortID="1015130783">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BossEntrance" ID="{E01AFA6D-6396-480E-89E0-4FDD53FD245C}" WorkUnitID="{CADEB6C7-4448-49F9-98F8-698E5A52A756}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -258,6 +258,12 @@ public class AudioEvents : MonoBehaviour
     ResetTiming();
   }
 
+  public static void SetSwitchBossEntrance()
+  {
+    AkSoundEngine.PostEvent("Set_Switch_BossEntrance", Self);
+    ResetTiming();
+  }
+
   private static void ResetTiming()
   {
     currentLoop = -1;

@@ -61,6 +61,7 @@ namespace AK
         static const AkUniqueID PLAY_YELL1 = 2554967377U;
         static const AkUniqueID RESUME_MUSIC = 2940177080U;
         static const AkUniqueID SET_SWITCH_BOSS = 2319098654U;
+        static const AkUniqueID SET_SWITCH_BOSSENTRANCE = 3963264424U;
         static const AkUniqueID SET_SWITCH_COMBAT = 164217529U;
         static const AkUniqueID SET_SWITCH_SHOP = 3474775021U;
     } // namespace EVENTS
@@ -74,6 +75,7 @@ namespace AK
             namespace SWITCH
             {
                 static const AkUniqueID BOSS = 1560169506U;
+                static const AkUniqueID BOSSENTRANCE = 3173959700U;
                 static const AkUniqueID COMBAT = 2764240573U;
                 static const AkUniqueID SHOP = 251412225U;
             } // namespace SWITCH

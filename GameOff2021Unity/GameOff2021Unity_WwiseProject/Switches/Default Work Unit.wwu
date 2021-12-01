@@ -8,6 +8,7 @@
 						<Switch Name="Shop" ID="{6C4F3227-58AB-4634-912D-931E710BEEB8}"/>
 						<Switch Name="Combat" ID="{3AA6FADC-1177-47BF-A030-E42C607D04B9}"/>
 						<Switch Name="Boss" ID="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}"/>
+						<Switch Name="BossEntrance" ID="{E01AFA6D-6396-480E-89E0-4FDD53FD245C}"/>
 					</ChildrenList>
 				</SwitchGroup>
 			</ChildrenList>

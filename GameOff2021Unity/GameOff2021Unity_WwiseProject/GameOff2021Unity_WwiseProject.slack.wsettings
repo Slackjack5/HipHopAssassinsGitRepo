@@ -98,6 +98,7 @@
 				<Property Name="Music Transition List\{BE0E1348-019A-4F65-B4B4-5228394CDE74}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{C47E0CE7-D70F-4316-BD5E-A6A3D2D4A7E6}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{EFF67AC1-DBAD-4A73-A4D6-31F624ED7F7C}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Music Transition List\{F78B9B8A-5904-4BF8-953D-2D10D9CF20D2}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_12_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
 				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{4524832E-4D58-44C4-B850-CA8080C4F0CE}"/>
