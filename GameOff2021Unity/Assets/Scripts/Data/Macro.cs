@@ -47,13 +47,13 @@ public class Macro : Command
         break;
       case 4:
         // Debug
-        Target.TakeDamage(actor, _effectMultiplier, true);
+        Target.TakeDamage(actor, _effectMultiplier, true, power);
         break;
       case 5:
         // Mass debug
         foreach (Monster monster in CombatManager.Monsters)
         {
-          monster.TakeDamage(actor, _effectMultiplier, true);
+          monster.TakeDamage(actor, _effectMultiplier, true, power);
         }
 
         break;
