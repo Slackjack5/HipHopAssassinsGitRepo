@@ -66,7 +66,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1782945289169124522, guid: 38dcf0fce7c70eb44b158771fbd37290, type: 3}
       propertyPath: gold
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8049576065316245786, guid: 38dcf0fce7c70eb44b158771fbd37290, type: 3}
       propertyPath: m_RootOrder
