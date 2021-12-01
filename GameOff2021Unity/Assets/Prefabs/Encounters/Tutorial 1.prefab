@@ -8,10 +8,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1782945289169124522, guid: 38dcf0fce7c70eb44b158771fbd37290, type: 3}
-      propertyPath: gold
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1782945289169124522, guid: 38dcf0fce7c70eb44b158771fbd37290, type: 3}
       propertyPath: reward
       value: 1
       objectReference: {fileID: 0}

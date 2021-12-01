@@ -52,6 +52,7 @@ MonoBehaviour:
   - {fileID: 9210066921081904185, guid: a367da854179f884c99649431b183056, type: 3}
   - {fileID: 9210066921081904185, guid: 99ab8903366d3b245a0b4ae615361c4b, type: 3}
   - {fileID: 9210066921081904185, guid: 8ecf55a1d7f8d9741883081a6f8d2bd8, type: 3}
+  firstEncounterIndex: 2
   dialogueTriggers:
   - {fileID: 1180851996246844586, guid: 2293a704cbaa7314b94167262769c74f, type: 3}
   - {fileID: 4073692835945133943, guid: c58bf11736c9f87499c3c23b97c36470, type: 3}
