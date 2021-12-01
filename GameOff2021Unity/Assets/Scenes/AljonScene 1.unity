@@ -4255,6 +4255,14 @@ PrefabInstance:
       propertyPath: continueCommand
       value: 
       objectReference: {fileID: 9132686943207127799}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: dialogueTriggers.Array.data[0]
+      value: 
+      objectReference: {fileID: 4073692835945133943, guid: c58bf11736c9f87499c3c23b97c36470, type: 3}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: dialogueTriggers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1180851996246844586, guid: 2293a704cbaa7314b94167262769c74f, type: 3}
     - target: {fileID: 2686011641875503661, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
       propertyPath: m_RootOrder
       value: 14

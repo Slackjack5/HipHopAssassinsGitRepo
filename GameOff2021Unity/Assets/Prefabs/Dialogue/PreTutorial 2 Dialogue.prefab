@@ -51,14 +51,14 @@ MonoBehaviour:
   - name: Analysis
     message: We may encounter bugs that are resistant to our normal Attacks.
   - name: Vanguard
-    message: "In those cases, Analysis and I can cast Macros that strengthen the
-      power\r of our Attacks."
+    message: In those cases, Analysis and I can cast Macros that strengthen the power
+      of our Attacks.
   - name: Vanguard
     message: Of course, they affect us all simultaneously. However, they don't stack
       further than twice so don't make that mistake again, Analysis.
   - name: Vanguard
-    message: "Alternatively, you, Initiate, were taught Macros that deal Macro damage,
-      which\r bypasses any physical resistance of these intrusive Bugs."
+    message: Alternatively, you, Initiate, were taught Macros that deal Macro damage,
+      which bypasses any physical resistance of these intrusive Bugs.
   - name: Analysis
     message: Macros cost a certain amount of AP to cast, so use them wisely. It's
       like magic or stamina in a game.

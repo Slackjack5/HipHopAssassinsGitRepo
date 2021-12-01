@@ -54,33 +54,55 @@
         <!-- Training Cube Attacks -->
         <id>2</id>
         <beats>
+            <!-- Call -->
             <Beat>
                 <beatNumber>2</beatNumber>
                 <soundName>Play_Cowbell</soundName>
+                <isCall>true</isCall>
             </Beat>
             <Beat>
                 <beatNumber>4</beatNumber>
                 <soundName>Play_Cowbell</soundName>
+                <isCall>true</isCall>
+            </Beat>
+            <!-- Response -->
+            <Beat>
+                <beatNumber>6</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>8</beatNumber>
+                <soundName>Play_Cowbell</soundName>
             </Beat>
         </beats>
-        <barLength>1</barLength>
-
+        <barLength>2</barLength>
     </Pattern>
     <Pattern>
         <!-- Praying Mantis Attack -->
         <id>3</id>
         <beats>
+            <!-- Call -->
             <Beat>
                 <beatNumber>2</beatNumber>
                 <soundName>Play_Cowbell</soundName>
+                <isCall>true</isCall>
             </Beat>
             <Beat>
                 <beatNumber>4</beatNumber>
                 <soundName>Play_Cowbell</soundName>
+                <isCall>true</isCall>
+            </Beat>
+            <!-- Response -->
+            <Beat>
+                <beatNumber>6</beatNumber>
+                <soundName>Play_Cowbell</soundName>
+            </Beat>
+            <Beat>
+                <beatNumber>8</beatNumber>
+                <soundName>Play_Cowbell</soundName>
             </Beat>
         </beats>
-        <barLength>1</barLength>
-
+        <barLength>2</barLength>
     </Pattern>
     <Pattern>
         <!-- Initiate Attack -->
