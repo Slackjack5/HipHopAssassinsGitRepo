@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &396347369006138919
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202343593967407984}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5912127d013bd844cbcd9da61a9dd2b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7378294540142306745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +26,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7253655950834415304, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c34d46481516ee47a0bbd2ec2a78915, type: 3}
+    - target: {fileID: 7253655950834415304, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253655950834415304, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253655950834415304, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7253655950834415305, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: m_Name
       value: Praying Mantis Variant
@@ -81,3 +116,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
+--- !u!1 &202343593967407984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7253655950834415305, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
+  m_PrefabInstance: {fileID: 7378294540142306745}
+  m_PrefabAsset: {fileID: 0}
