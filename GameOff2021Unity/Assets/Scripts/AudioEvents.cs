@@ -92,7 +92,6 @@ public class AudioEvents : MonoBehaviour
     {
       isSegmentPositionReady = true;
     }
-
   }
 
   private void OnGUI()
@@ -244,16 +243,27 @@ public class AudioEvents : MonoBehaviour
   public static void SetSwitchShop()
   {
     AkSoundEngine.PostEvent("Set_Switch_Shop", Self);
+    ResetTiming();
   }
 
   public static void SetSwitchCombat()
   {
     AkSoundEngine.PostEvent("Set_Switch_Combat", Self);
+    ResetTiming();
   }
 
   public static void SetSwitchBoss()
   {
     AkSoundEngine.PostEvent("Set_Switch_Boss", Self);
+    ResetTiming();
+  }
+
+  private static void ResetTiming()
+  {
+    currentLoop = -1;
+    GlobalVariables.currentBar = 0;
+    GlobalVariables.currentBeat = 0;
+    GlobalVariables.currentGrid = 0;
   }
 }
 
