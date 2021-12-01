@@ -44,30 +44,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogues:
-  - name: Vanguard
-    message: Well done, team.
-  - name: Vanguard
-    message: You all may have noticed that you have Macros at your disposal.
-  - name: Vanguard
+  - name: Analysis
+    message: Good job, team.
+  - name: Analysis
+    message: Initiate, you may have noticed that we have Macros at our disposal.
+  - name: Analysis
     message: We may encounter bugs that are resistant to our normal Attacks.
   - name: Vanguard
-    message: In that case, Analysis and I can cast Macros that strengthen the power
-      of our Attacks.
+    message: "In those cases, Analysis and I can cast Macros that strengthen the
+      power\r of our Attacks."
   - name: Vanguard
-    message: Alternatively, you, Initiate, have Macros that deal Macro damage, which
-      bypasses any physical resistance.
+    message: Of course, they affect us all simultaneously. However, they don't stack
+      further than twice so don't make that mistake again, Analysis.
   - name: Vanguard
-    message: Macros cost a certain amount of AP to cast, so use them wisely.
+    message: "Alternatively, you, Initiate, were taught Macros that deal Macro damage,
+      which\r bypasses any physical resistance of these intrusive Bugs."
   - name: Analysis
-    message: My Macros are supportive in nature.
+    message: Macros cost a certain amount of AP to cast, so use them wisely. It's
+      like magic or stamina in a game.
   - name: Analysis
-    message: Buffs affect all of us, and the same buff can be stacked up to two times.
+    message: That would make you our caster Initiate. Vanguard's the tank, and I'm
+      the support. The perfect party!
   - name: Analysis
     message: Initiate, you've got the big guns. I say we practice on that cube over
       there.
   - name: Analysis
-    message: From my analysis, that one looks to be resistant to our normal Attacks.
-  - name: Analysis
+    message: From my ANALYSIS *smiles*, that one looks to be resistant to our normal
+      Attacks.
+  - name: Vanguard
     message: I recommend casting Debug to quickly eliminate it, Initiate.
   - name: Initiate
     message: Copy that.

@@ -45,17 +45,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogues:
   - name: Vanguard
-    message: We have safely arrived.
+    message: It's about time.
   - name: Vanguard
-    message: Team, welcome to the CPU.
+    message: Analysis, explain to the newbie what we do here.
+  - name: Analysis
+    message: HQ's noticed an anomaly with this computer. You could say it has a bug.
   - name: Vanguard
-    message: We have noticed an anomaly with this computer, more than your typical
-      bug.
+    message: Wait? Something's peculiar. Analysis, explain to me why my movements
+      are inconsistent.
+  - name: Analysis
+    message: Our abilities to debug seem to have been restrained to follow a rhythmic
+      pattern.
   - name: Vanguard
-    message: Our abilities to debug have been restrained to follow a rhythmic pattern.
-  - name: Vanguard
-    message: Initiate, this is your first job. Time to use what they taught you back
-      in the Academy.
+    message: Initiate, this is your first job. Show me what you learned back in the
+      Academy.
   - name: Initiate
     message: Yessir!
   - name: Initiate
@@ -82,6 +85,7 @@ MonoBehaviour:
     message: We do have methods available to us to delay the timer's end, so we must
       take advantage of all resources we have to efficiently make progress.
   - name: Analysis
-    message: Wow, they taught you all that?
+    message: Wow, they taught you all that? Was it part of a minor or something?
   - name: Vanguard
-    message: Well said, Initiate. Let's practice on that cube over there.
+    message: Glad to see you're not an imbecile, Initiate. Let's put your knowledge
+      to the test on that cube over there.
