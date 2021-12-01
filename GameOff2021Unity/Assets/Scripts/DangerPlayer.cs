@@ -55,5 +55,6 @@ public class DangerPlayer : MonoBehaviour
   {
     isStarted = true;
     remainingTime = _duration;
+    AudioEvents.SetSwitchBoss();
   }
 }

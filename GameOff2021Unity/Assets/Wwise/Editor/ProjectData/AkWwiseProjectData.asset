@@ -1020,7 +1020,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: c7b6deca4844f94998f8698e5a52a756
     GuidInternal: 
-    m_lastTime: -8585632772361331696
+    m_lastTime: -8585632647683242990
     List:
     - name: MusicEnvironment
       guid: aeca52df29b60042abaa103f6454ee18
@@ -1053,6 +1053,22 @@ MonoBehaviour:
         - ElementName: Boss
           ObjectType: 10
           guid: 9bbef44d1d719d449b4b0c9e1fa97bfe
+      - name: BossEntrance
+        guid: 4b965fbfe34f8d4ebd0069ef6af452ef
+        id: 3173959700
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: c7b6deca4844f94998f8698e5a52a756
+        - ElementName: MusicEnvironment
+          ObjectType: 11
+          guid: aeca52df29b60042abaa103f6454ee18
+        - ElementName: BossEntrance
+          ObjectType: 10
+          guid: 4b965fbfe34f8d4ebd0069ef6af452ef
       - name: Combat
         guid: dcfaa63a7711bf47a030e42c607d04b9
         id: 2764240573

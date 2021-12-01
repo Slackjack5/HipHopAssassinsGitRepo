@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="2599370634">
+		<SoundBank Id="1229948536" Language="SFX" Hash="260682842">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -271,9 +271,17 @@
 							<ShortName>SampleHipHopTrack100BPM.wav</ShortName>
 							<Path>SFX\SampleHipHopTrack100BPM_D79FB2B7.wem</Path>
 						</File>
+						<File Id="274508196" Language="SFX">
+							<ShortName>Nycelly ~ BossEntrance.wav</ShortName>
+							<Path>SFX\Nycelly ~ BossEntrance_D79FB2B7.wem</Path>
+						</File>
 						<File Id="321804522" Language="SFX">
 							<ShortName>Nycelly ~ CyberMonday.wav</ShortName>
 							<Path>SFX\Nycelly ~ CyberMonday_D79FB2B7.wem</Path>
+						</File>
+						<File Id="820650245" Language="SFX">
+							<ShortName>Nycelly ~ SaveTheCyberSpace.wav</ShortName>
+							<Path>SFX\Nycelly ~ SaveTheCyberSpace_D79FB2B7.wem</Path>
 						</File>
 						<File Id="934945912" Language="SFX">
 							<ShortName>Nycelly ~ NothingCanStopUs (GameOff2021).wav</ShortName>
@@ -281,6 +289,12 @@
 						</File>
 					</IncludedMemoryFiles>
 					<SwitchContainers>
+						<SwitchContainer SwitchValue="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}">
+							<Media>
+								<File Id="274508196"/>
+								<File Id="820650245"/>
+							</Media>
+						</SwitchContainer>
 						<SwitchContainer SwitchValue="{3AA6FADC-1177-47BF-A030-E42C607D04B9}">
 							<Media>
 								<File Id="109382999"/>
