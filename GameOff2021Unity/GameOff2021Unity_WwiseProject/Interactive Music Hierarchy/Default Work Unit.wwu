@@ -3,184 +3,304 @@
 	<InteractiveMusic>
 		<WorkUnit Name="Default Work Unit" ID="{86CBE694-7639-499A-A32A-677586411F80}" PersistMode="Standalone">
 			<ChildrenList>
-				<MusicPlaylistContainer Name="Music" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" ShortID="1033650539">
-					<PropertyList>
-						<Property Name="GridFrequencyPreset" Type="int16" Value="52"/>
-						<Property Name="Tempo" Type="Real64" Value="100"/>
-					</PropertyList>
+				<MusicSwitchContainer Name="MusicSwitcher" ID="{8AA2629F-4F1F-487C-8B3D-F295C98D30EB}" ShortID="716548951">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Music" ID="{BA3E2BF2-B82E-45FE-8435-F37D7940D005}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<MusicSegment Name="SampleHipHopTrack100BPM" ID="{F36DA277-B605-4665-8D4C-A7AECEB1A07F}" ShortID="934142253">
+						<MusicPlaylistContainer Name="Combat" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" ShortID="1033650539">
 							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="245365.270833333"/>
-								<Property Name="GridFrequencyPreset" Type="int16" Value="64"/>
-								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
-								<Property Name="Tempo" Type="Real64" Value="100"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-8</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<MusicTrack Name="SampleHipHopTrack100BPM" ID="{A82D0F46-C831-462B-A128-AB696A4A9069}" ShortID="336086816">
-									<ReferenceList>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="SampleHipHopTrack100BPM" ID="{07B00DD3-5F6A-4A81-8122-0ACAB1D7AA69}">
-											<Language>SFX</Language>
-											<AudioFile>SampleHipHopTrack100BPM.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="109382999"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{52A12556-6044-44E9-AF9D-062708FA4909}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
-									<ObjectLists>
-										<ObjectList Name="Sequences">
-											<Reference>
-												<Local>
-													<MusicTrackSequence Name="" ID="{EE021777-48E9-4C61-B18D-D54C20F7FBF5}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<Reference>
-																	<Local>
-																		<MusicClip Name="SampleHipHopTrack100BPM" ID="{245151BA-7D23-4383-A9DD-7A7BA0AD0397}">
-																			<PropertyList>
-																				<Property Name="BeginTrimOffset" Type="Real64" Value="2422.2320305569"/>
-																				<Property Name="EndTrimOffset" Type="Real64" Value="245365.270833333"/>
-																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																				<Property Name="PlayAt" Type="Real64" Value="-2422.2320305569"/>
-																			</PropertyList>
-																			<AudioSourceRef Name="SampleHipHopTrack100BPM" ID="{07B00DD3-5F6A-4A81-8122-0ACAB1D7AA69}"/>
-																			<PropertyCurveList>
-																				<PropertyCurve PropertyName="Highpass">
-																					<Curve Name="" ID="{A191C6E9-907B-4C47-8256-07AA446BA7F8}">
-																						<PropertyList>
-																							<Property Name="Flags" Type="int32" Value="1"/>
-																						</PropertyList>
-																						<PointList>
-																							<Point>
-																								<XPos>2.42223</XPos>
-																								<YPos>0</YPos>
-																								<Flags>5</Flags>
-																							</Point>
-																							<Point>
-																								<XPos>245.365270833333</XPos>
-																								<YPos>0</YPos>
-																								<Flags>37</Flags>
-																							</Point>
-																						</PointList>
-																					</Curve>
-																				</PropertyCurve>
-																				<PropertyCurve PropertyName="Lowpass">
-																					<Curve Name="" ID="{DA24FC4E-984A-42D0-AE9D-FA0047FE7EDB}">
-																						<PropertyList>
-																							<Property Name="Flags" Type="int32" Value="1"/>
-																						</PropertyList>
-																						<PointList>
-																							<Point>
-																								<XPos>2.42223</XPos>
-																								<YPos>0</YPos>
-																								<Flags>5</Flags>
-																							</Point>
-																							<Point>
-																								<XPos>245.365270833333</XPos>
-																								<YPos>0</YPos>
-																								<Flags>37</Flags>
-																							</Point>
-																						</PointList>
-																					</Curve>
-																				</PropertyCurve>
-																				<PropertyCurve PropertyName="Volume">
-																					<Curve Name="" ID="{289861FA-0FF4-483F-B838-C526FE5BEC34}">
-																						<PropertyList>
-																							<Property Name="Flags" Type="int32" Value="3"/>
-																						</PropertyList>
-																						<PointList>
-																							<Point>
-																								<XPos>2.42223</XPos>
-																								<YPos>0</YPos>
-																								<Flags>5</Flags>
-																							</Point>
-																							<Point>
-																								<XPos>245.365270833333</XPos>
-																								<YPos>0</YPos>
-																								<Flags>37</Flags>
-																							</Point>
-																						</PointList>
-																					</Curve>
-																				</PropertyCurve>
-																			</PropertyCurveList>
-																		</MusicClip>
-																	</Local>
-																</Reference>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
-												</Local>
-											</Reference>
-										</ObjectList>
-									</ObjectLists>
-								</MusicTrack>
-							</ChildrenList>
-							<ObjectLists>
-								<ObjectList Name="Cues">
-									<Reference>
-										<Local>
-											<MusicCue Name="Entry Cue" ID="{7E0BB11D-844B-45A8-8938-B23353474498}"/>
-										</Local>
-									</Reference>
-									<Reference>
-										<Local>
-											<MusicCue Name="Exit Cue" ID="{F1A4064A-DE77-4D9C-B0D5-FA4BB20C618D}">
-												<PropertyList>
-													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="245365.270833333"/>
-												</PropertyList>
-											</MusicCue>
-										</Local>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
-						</MusicSegment>
-						<MusicSegment Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{42B02AB2-792E-435E-BBE3-EE74FC6C6757}" ShortID="746620834">
-							<PropertyList>
-								<Property Name="EndPosition" Type="Real64" Value="69578.820861678"/>
 								<Property Name="GridFrequencyPreset" Type="int16" Value="52"/>
-								<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
-								<Property Name="Tempo" Type="Real64" Value="138"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-15</Value>
-									</ValueList>
-								</Property>
+								<Property Name="Tempo" Type="Real64" Value="100"/>
 							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Music" ID="{BA3E2BF2-B82E-45FE-8435-F37D7940D005}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicSegment Name="SampleHipHopTrack100BPM" ID="{F36DA277-B605-4665-8D4C-A7AECEB1A07F}" ShortID="934142253">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="245365.270833333"/>
+										<Property Name="GridFrequencyPreset" Type="int16" Value="64"/>
+										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+										<Property Name="Tempo" Type="Real64" Value="100"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-8</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="SampleHipHopTrack100BPM" ID="{A82D0F46-C831-462B-A128-AB696A4A9069}" ShortID="336086816">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SampleHipHopTrack100BPM" ID="{07B00DD3-5F6A-4A81-8122-0ACAB1D7AA69}">
+													<Language>SFX</Language>
+													<AudioFile>SampleHipHopTrack100BPM.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="109382999"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{52A12556-6044-44E9-AF9D-062708FA4909}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{EE021777-48E9-4C61-B18D-D54C20F7FBF5}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="SampleHipHopTrack100BPM" ID="{245151BA-7D23-4383-A9DD-7A7BA0AD0397}">
+																					<PropertyList>
+																						<Property Name="BeginTrimOffset" Type="Real64" Value="2422.2320305569"/>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="245365.270833333"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																						<Property Name="PlayAt" Type="Real64" Value="-2422.2320305569"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="SampleHipHopTrack100BPM" ID="{07B00DD3-5F6A-4A81-8122-0ACAB1D7AA69}"/>
+																					<PropertyCurveList>
+																						<PropertyCurve PropertyName="Highpass">
+																							<Curve Name="" ID="{A191C6E9-907B-4C47-8256-07AA446BA7F8}">
+																								<PropertyList>
+																									<Property Name="Flags" Type="int32" Value="1"/>
+																								</PropertyList>
+																								<PointList>
+																									<Point>
+																										<XPos>2.42223</XPos>
+																										<YPos>0</YPos>
+																										<Flags>5</Flags>
+																									</Point>
+																									<Point>
+																										<XPos>245.365270833333</XPos>
+																										<YPos>0</YPos>
+																										<Flags>37</Flags>
+																									</Point>
+																								</PointList>
+																							</Curve>
+																						</PropertyCurve>
+																						<PropertyCurve PropertyName="Lowpass">
+																							<Curve Name="" ID="{DA24FC4E-984A-42D0-AE9D-FA0047FE7EDB}">
+																								<PropertyList>
+																									<Property Name="Flags" Type="int32" Value="1"/>
+																								</PropertyList>
+																								<PointList>
+																									<Point>
+																										<XPos>2.42223</XPos>
+																										<YPos>0</YPos>
+																										<Flags>5</Flags>
+																									</Point>
+																									<Point>
+																										<XPos>245.365270833333</XPos>
+																										<YPos>0</YPos>
+																										<Flags>37</Flags>
+																									</Point>
+																								</PointList>
+																							</Curve>
+																						</PropertyCurve>
+																						<PropertyCurve PropertyName="Volume">
+																							<Curve Name="" ID="{289861FA-0FF4-483F-B838-C526FE5BEC34}">
+																								<PropertyList>
+																									<Property Name="Flags" Type="int32" Value="3"/>
+																								</PropertyList>
+																								<PointList>
+																									<Point>
+																										<XPos>2.42223</XPos>
+																										<YPos>0</YPos>
+																										<Flags>5</Flags>
+																									</Point>
+																									<Point>
+																										<XPos>245.365270833333</XPos>
+																										<YPos>0</YPos>
+																										<Flags>37</Flags>
+																									</Point>
+																								</PointList>
+																							</Curve>
+																						</PropertyCurve>
+																					</PropertyCurveList>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{7E0BB11D-844B-45A8-8938-B23353474498}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{F1A4064A-DE77-4D9C-B0D5-FA4BB20C618D}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="245365.270833333"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+								<MusicSegment Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{42B02AB2-792E-435E-BBE3-EE74FC6C6757}" ShortID="746620834">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="69578.820861678"/>
+										<Property Name="GridFrequencyPreset" Type="int16" Value="52"/>
+										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+										<Property Name="Tempo" Type="Real64" Value="138"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<MusicTrack Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{D046902A-8341-4B89-90BF-2E51582C6739}" ShortID="430959652">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{967E3580-697B-49BC-BDBD-FDB25EA4BEAE}">
+													<Language>SFX</Language>
+													<AudioFile>Nycelly ~ NothingCanStopUs (GameOff2021).wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="934945912"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{882E26C7-DEEB-4DFF-B612-26D9B86669EB}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{703A14E7-78CE-437B-8E40-26BC83E06BFE}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{FC69F76D-795C-47FA-AFF1-0D2179216897}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="69578.820861678"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{967E3580-697B-49BC-BDBD-FDB25EA4BEAE}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Cues">
+											<Reference>
+												<Local>
+													<MusicCue Name="Entry Cue" ID="{3E3797F2-8B83-4B19-9011-3CAC00E228FB}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{54131ECB-833F-4414-AD3C-CDC888A621C5}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="69578.820861678"/>
+														</PropertyList>
+													</MusicCue>
+												</Local>
+											</Reference>
+										</ObjectList>
+									</ObjectLists>
+								</MusicSegment>
+							</ChildrenList>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{EA2E580A-E5B6-4DA1-A05C-667E64AD20B7}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{92FA68B6-AEAD-4EA3-961D-1D54EDA0EA5A}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<Playlist>
+								<MusicPlaylistItem Name="" ID="{BFBD8D66-506D-4600-98F9-07737E9052A2}" ShortID="512234200">
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{93EDC45F-1177-42D1-BB29-42D22F8703B7}" ShortID="425958086">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="10000"/>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{42B02AB2-792E-435E-BBE3-EE74FC6C6757}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Playlist>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Shop" ID="{2A6818A6-2B5E-4B02-A194-77FDC093E203}" ShortID="718109023">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
@@ -190,106 +310,252 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicTrack Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{D046902A-8341-4B89-90BF-2E51582C6739}" ShortID="430959652">
+								<MusicSegment Name="Nycelly ~ CyberMonday" ID="{928F394B-1772-4034-B86C-987718092E05}" ShortID="139501174">
+									<PropertyList>
+										<Property Name="EndPosition" Type="Real64" Value="48000"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-9</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{967E3580-697B-49BC-BDBD-FDB25EA4BEAE}">
-											<Language>SFX</Language>
-											<AudioFile>Nycelly ~ NothingCanStopUs (GameOff2021).wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="934945912"/>
-											</MediaIDList>
-										</AudioFileSource>
+										<MusicTrack Name="Nycelly ~ CyberMonday" ID="{DF505A81-5ED0-4BA1-9FCF-4AC71A500C8D}" ShortID="639143437">
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Nycelly ~ CyberMonday" ID="{66C868B7-D04D-4DCA-AA68-290D260FC0B7}">
+													<Language>SFX</Language>
+													<AudioFile>Nycelly ~ CyberMonday.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="321804522"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{31BE1847-9625-476B-9DBC-25D2EF47663C}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<ObjectLists>
+												<ObjectList Name="Sequences">
+													<Reference>
+														<Local>
+															<MusicTrackSequence Name="" ID="{6D626576-434D-48B9-B992-85C540F48A35}">
+																<ObjectLists>
+																	<ObjectList Name="Clips">
+																		<Reference>
+																			<Local>
+																				<MusicClip Name="Nycelly ~ CyberMonday" ID="{2ED978DE-603C-4376-8D0F-DFCDACC955CD}">
+																					<PropertyList>
+																						<Property Name="EndTrimOffset" Type="Real64" Value="48000"/>
+																						<Property Name="FadeInMode" Type="int16" Value="0"/>
+																						<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																					</PropertyList>
+																					<AudioSourceRef Name="Nycelly ~ CyberMonday" ID="{66C868B7-D04D-4DCA-AA68-290D260FC0B7}"/>
+																				</MusicClip>
+																			</Local>
+																		</Reference>
+																	</ObjectList>
+																</ObjectLists>
+															</MusicTrackSequence>
+														</Local>
+													</Reference>
+												</ObjectList>
+											</ObjectLists>
+										</MusicTrack>
 									</ChildrenList>
-									<TransitionList>
-										<MusicTransition Name="Root" ID="{882E26C7-DEEB-4DFF-B612-26D9B86669EB}">
-											<PropertyList>
-												<Property Name="IsFolder" Type="bool" Value="True"/>
-											</PropertyList>
-											<TransitionInfo/>
-										</MusicTransition>
-									</TransitionList>
 									<ObjectLists>
-										<ObjectList Name="Sequences">
+										<ObjectList Name="Cues">
 											<Reference>
 												<Local>
-													<MusicTrackSequence Name="" ID="{703A14E7-78CE-437B-8E40-26BC83E06BFE}">
-														<ObjectLists>
-															<ObjectList Name="Clips">
-																<Reference>
-																	<Local>
-																		<MusicClip Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{FC69F76D-795C-47FA-AFF1-0D2179216897}">
-																			<PropertyList>
-																				<Property Name="EndTrimOffset" Type="Real64" Value="69578.820861678"/>
-																				<Property Name="FadeInMode" Type="int16" Value="0"/>
-																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
-																			</PropertyList>
-																			<AudioSourceRef Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{967E3580-697B-49BC-BDBD-FDB25EA4BEAE}"/>
-																		</MusicClip>
-																	</Local>
-																</Reference>
-															</ObjectList>
-														</ObjectLists>
-													</MusicTrackSequence>
+													<MusicCue Name="Entry Cue" ID="{115DB8DA-765A-4ACB-AB49-FC306B62048C}"/>
+												</Local>
+											</Reference>
+											<Reference>
+												<Local>
+													<MusicCue Name="Exit Cue" ID="{C9E8B638-D849-4725-B4D1-636E32449EE5}">
+														<PropertyList>
+															<Property Name="CueType" Type="int16" Value="1"/>
+															<Property Name="TimeMs" Type="Real64" Value="48000"/>
+														</PropertyList>
+													</MusicCue>
 												</Local>
 											</Reference>
 										</ObjectList>
 									</ObjectLists>
-								</MusicTrack>
+								</MusicSegment>
 							</ChildrenList>
-							<ObjectLists>
-								<ObjectList Name="Cues">
-									<Reference>
-										<Local>
-											<MusicCue Name="Entry Cue" ID="{3E3797F2-8B83-4B19-9011-3CAC00E228FB}"/>
-										</Local>
-									</Reference>
-									<Reference>
-										<Local>
-											<MusicCue Name="Exit Cue" ID="{54131ECB-833F-4414-AD3C-CDC888A621C5}">
-												<PropertyList>
-													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="69578.820861678"/>
-												</PropertyList>
-											</MusicCue>
-										</Local>
-									</Reference>
-								</ObjectList>
-							</ObjectLists>
-						</MusicSegment>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{D380888C-27BD-4984-8E19-803E88F450C8}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{582C8D2C-6B27-4EA5-B5C7-AFA214FBCF15}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<Playlist>
+								<MusicPlaylistItem Name="" ID="{687ED3AD-63F0-4B06-90F9-F91FE458274D}" ShortID="387352179">
+									<ChildrenList>
+										<MusicPlaylistItem Name="" ID="{8BB61031-FCB2-4F7C-96DF-CAAEFDC5045D}" ShortID="878001775">
+											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="10000"/>
+												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+											</PropertyList>
+											<SegmentRef Name="Nycelly ~ CyberMonday" ID="{928F394B-1772-4034-B86C-987718092E05}"/>
+										</MusicPlaylistItem>
+									</ChildrenList>
+								</MusicPlaylistItem>
+							</Playlist>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="BossFight" ID="{C47E0CE7-D70F-4316-BD5E-A6A3D2D4A7E6}" ShortID="612372536">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C411E715-EB47-4A28-83B4-191AD523FDA3}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{847F7C4A-FE18-4F30-859A-C84EB586E722}"/>
+								</Reference>
+							</ReferenceList>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{D717592C-D748-4276-8826-15889970C663}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{5AC96CFD-7DFB-4D92-BCAA-3ED6A3872533}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<ObjectLists/>
+							<Playlist>
+								<MusicPlaylistItem Name="" ID="{56015C8F-7D40-4BC4-82F4-EDA61F540BB0}" ShortID="295196027"/>
+							</Playlist>
+						</MusicPlaylistContainer>
 					</ChildrenList>
 					<TransitionList>
-						<MusicTransition Name="Root" ID="{EA2E580A-E5B6-4DA1-A05C-667E64AD20B7}">
+						<MusicTransition Name="Root" ID="{21BB080E-8429-4B88-BD39-2D751E895C12}">
 							<PropertyList>
 								<Property Name="IsFolder" Type="bool" Value="True"/>
 							</PropertyList>
 							<ChildrenList>
-								<MusicTransition Name="Transition" ID="{92FA68B6-AEAD-4EA3-961D-1D54EDA0EA5A}">
+								<MusicTransition Name="Transition" ID="{F13F0B42-96C9-415E-B7EE-81FE547F4625}">
 									<TransitionInfo/>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{157CF3B2-A20F-42EB-B101-E66DC7BAFD8D}">
+									<PropertyList>
+										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="Combat" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{73BD9A66-926D-4FA1-B9D0-5D296A628572}">
+												<PropertyList>
+													<Property Name="FadeCurve" Type="int16" Value="1"/>
+													<Property Name="FadeTime" Type="Real64" Value="0.6"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{2FCBEA76-DE3D-4C4C-94EC-F7FAA2896378}"/>
+										</DestinationFadeIn>
+									</TransitionInfo>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{40179190-1423-48D3-A318-F59D91EBE650}">
+									<PropertyList>
+										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="0"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="Shop" ID="{2A6818A6-2B5E-4B02-A194-77FDC093E203}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo>
+										<SourceFadeOut>
+											<MusicFade Name="Source Fade-out" ID="{9CD372D9-38E0-41F4-82C7-69858B70C0D8}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+													<Property Name="FadeType" Type="int16" Value="1"/>
+												</PropertyList>
+											</MusicFade>
+										</SourceFadeOut>
+										<DestinationFadeIn>
+											<MusicFade Name="Destination Fade-in" ID="{64C36CFF-B41E-48AF-9C5A-F1426BAFB7F8}">
+												<PropertyList>
+													<Property Name="FadeTime" Type="Real64" Value="1.1"/>
+												</PropertyList>
+											</MusicFade>
+										</DestinationFadeIn>
+									</TransitionInfo>
 								</MusicTransition>
 							</ChildrenList>
 							<TransitionInfo/>
 						</MusicTransition>
 					</TransitionList>
 					<ObjectLists/>
-					<Playlist>
-						<MusicPlaylistItem Name="" ID="{BFBD8D66-506D-4600-98F9-07737E9052A2}" ShortID="512234200">
-							<ChildrenList>
-								<MusicPlaylistItem Name="" ID="{93EDC45F-1177-42D1-BB29-42D22F8703B7}" ShortID="425958086">
-									<PropertyList>
-										<Property Name="LoopCount" Type="int16" Value="10000"/>
-										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-									</PropertyList>
-									<SegmentRef Name="Nycelly ~ NothingCanStopUs (GameOff2021)" ID="{42B02AB2-792E-435E-BBE3-EE74FC6C6757}"/>
-								</MusicPlaylistItem>
-							</ChildrenList>
-						</MusicPlaylistItem>
-					</Playlist>
-				</MusicPlaylistContainer>
+					<ArgumentList>
+						<ArgumentRef Name="MusicEnvironment" ID="{DF52CAAE-B629-4200-ABAA-103F6454EE18}"/>
+					</ArgumentList>
+					<EntryList>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Boss" ID="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="BossFight" ID="{C47E0CE7-D70F-4316-BD5E-A6A3D2D4A7E6}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Combat" ID="{3AA6FADC-1177-47BF-A030-E42C607D04B9}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Combat" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="Shop" ID="{6C4F3227-58AB-4634-912D-931E710BEEB8}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="Shop" ID="{2A6818A6-2B5E-4B02-A194-77FDC093E203}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+					</EntryList>
+				</MusicSwitchContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>

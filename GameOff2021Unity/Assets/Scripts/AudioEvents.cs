@@ -71,6 +71,7 @@ public class AudioEvents : MonoBehaviour
     GlobalVariables.songStarted = false;
     isSegmentPositionReady = true;
     Self = gameObject;
+    AkSoundEngine.PostEvent("Set_Switch_Combat", Self);
   }
 
   private void Update()
@@ -240,6 +241,20 @@ public class AudioEvents : MonoBehaviour
     AkSoundEngine.PostEvent("Resume_Music", Self);
   }
 
+  public static void SetSwitchShop()
+  {
+    AkSoundEngine.PostEvent("Set_Switch_Shop", Self);
+  }
+
+  public static void SetSwitchCombat()
+  {
+    AkSoundEngine.PostEvent("Set_Switch_Combat", Self);
+  }
+
+  public static void SetSwitchBoss()
+  {
+    AkSoundEngine.PostEvent("Set_Switch_Boss", Self);
+  }
 }
 
 public static class GlobalVariables

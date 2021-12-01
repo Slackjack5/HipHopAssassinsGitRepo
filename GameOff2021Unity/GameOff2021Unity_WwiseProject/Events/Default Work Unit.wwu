@@ -8,7 +8,7 @@
 						<Action Name="" ID="{A2625C23-EC43-4120-9241-2DFE490D1A78}" ShortID="187533505">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Music" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+									<ObjectRef Name="MusicSwitcher" ID="{8AA2629F-4F1F-487C-8B3D-F295C98D30EB}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -534,7 +534,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Music" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+									<ObjectRef Name="Combat" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -548,7 +548,49 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Music" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+									<ObjectRef Name="Combat" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Set_Switch_Shop" ID="{FC95778B-FC7E-4B75-AC61-4BE556631E66}">
+					<ChildrenList>
+						<Action Name="" ID="{F291C255-A49D-4C22-8F3C-F013BE5FEFFC}" ShortID="241674688">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shop" ID="{6C4F3227-58AB-4634-912D-931E710BEEB8}" WorkUnitID="{CADEB6C7-4448-49F9-98F8-698E5A52A756}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Set_Switch_Boss" ID="{B95FC3C8-2374-419C-BA2A-4C3736B4120B}">
+					<ChildrenList>
+						<Action Name="" ID="{FE9AB1B0-1A7C-474D-BFA9-00B505212811}" ShortID="683060951">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Boss" ID="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}" WorkUnitID="{CADEB6C7-4448-49F9-98F8-698E5A52A756}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Set_Switch_Combat" ID="{EFCE334A-7931-403B-B1DA-4279BE4F9403}">
+					<ChildrenList>
+						<Action Name="" ID="{DE241E7B-3ECA-4252-92D1-5D629A83A7CF}" ShortID="1066601604">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="23"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Combat" ID="{3AA6FADC-1177-47BF-A030-E42C607D04B9}" WorkUnitID="{CADEB6C7-4448-49F9-98F8-698E5A52A756}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

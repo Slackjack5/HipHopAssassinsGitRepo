@@ -56,7 +56,7 @@ public class Shop : MonoBehaviour
   {
     menu.SetActive(true);
     EventSystem.current.SetSelectedGameObject(menu.GetComponentInChildren<Button>().gameObject);
-
+    AudioEvents.SetSwitchShop();
     commandLoader.Load(consumables.ToArray(), true);
     currentGold = gold;
   }
@@ -65,6 +65,7 @@ public class Shop : MonoBehaviour
   {
     menu.SetActive(false);
     onClose.Invoke(currentGold);
+    AudioEvents.SetSwitchCombat();
   }
 
   private void Purchase(Command command)

@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1229948536" Language="SFX" Hash="2038929015">
+		<SoundBank Id="1229948536" Language="SFX" Hash="2599370634">
 			<ObjectPath>\SoundBanks\Default Work Unit\Environment</ObjectPath>
 			<ShortName>Environment</ShortName>
 			<Path>Environment.bnk</Path>
@@ -265,17 +265,34 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Play_Music" DurationType="OneShot" DurationMin="695788.187500" DurationMax="695788.187500">
+				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Play_Music" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="109382999" Language="SFX">
 							<ShortName>SampleHipHopTrack100BPM.wav</ShortName>
 							<Path>SFX\SampleHipHopTrack100BPM_D79FB2B7.wem</Path>
+						</File>
+						<File Id="321804522" Language="SFX">
+							<ShortName>Nycelly ~ CyberMonday.wav</ShortName>
+							<Path>SFX\Nycelly ~ CyberMonday_D79FB2B7.wem</Path>
 						</File>
 						<File Id="934945912" Language="SFX">
 							<ShortName>Nycelly ~ NothingCanStopUs (GameOff2021).wav</ShortName>
 							<Path>SFX\Nycelly ~ NothingCanStopUs (GameOff2021)_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{3AA6FADC-1177-47BF-A030-E42C607D04B9}">
+							<Media>
+								<File Id="109382999"/>
+								<File Id="934945912"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{6C4F3227-58AB-4634-912D-931E710BEEB8}">
+							<Media>
+								<File Id="321804522"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 				<Event Id="880774659" Name="Play_PowerUp1" ObjectPath="\Events\Default Work Unit\Play_PowerUp1" DurationType="OneShot" DurationMin="0.724127" DurationMax="0.724127">
 					<IncludedMemoryFiles>
@@ -406,6 +423,21 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="2940177080" Name="Resume_Music" ObjectPath="\Events\Default Work Unit\Resume_Music" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2319098654" Name="Set_Switch_Boss" ObjectPath="\Events\Default Work Unit\Set_Switch_Boss" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="1560169506" Name="Boss" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Boss"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="164217529" Name="Set_Switch_Combat" ObjectPath="\Events\Default Work Unit\Set_Switch_Combat" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="2764240573" Name="Combat" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Combat"/>
+					</ActionSetSwitch>
+				</Event>
+				<Event Id="3474775021" Name="Set_Switch_Shop" ObjectPath="\Events\Default Work Unit\Set_Switch_Shop" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+					<ActionSetSwitch>
+						<ActionSetSwitchEntry Id="251412225" Name="Shop" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Shop"/>
+					</ActionSetSwitch>
+				</Event>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="117217156" Language="SFX">
@@ -413,6 +445,24 @@
 					<Path>SFX\ClapWhistle_10C4C929.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
+			<SwitchGroups>
+				<SwitchGroup Id="251412225" Name="Shop" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Shop" GUID="{6C4F3227-58AB-4634-912D-931E710BEEB8}">
+					<Switches/>
+				</SwitchGroup>
+				<SwitchGroup Id="1560169506" Name="Boss" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Boss" GUID="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}">
+					<Switches/>
+				</SwitchGroup>
+				<SwitchGroup Id="2764240573" Name="Combat" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Combat" GUID="{3AA6FADC-1177-47BF-A030-E42C607D04B9}">
+					<Switches/>
+				</SwitchGroup>
+				<SwitchGroup Id="3955977733" Name="MusicEnvironment" ObjectPath="\Switches\Default Work Unit\MusicEnvironment" GUID="{DF52CAAE-B629-4200-ABAA-103F6454EE18}">
+					<Switches>
+						<Switch Id="251412225" Name="Shop" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Shop" GUID="{6C4F3227-58AB-4634-912D-931E710BEEB8}"/>
+						<Switch Id="2764240573" Name="Combat" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Combat" GUID="{3AA6FADC-1177-47BF-A030-E42C607D04B9}"/>
+						<Switch Id="1560169506" Name="Boss" ObjectPath="\Switches\Default Work Unit\MusicEnvironment\Boss" GUID="{4DF4BE9B-711D-449D-9B4B-0C9E1FA97BFE}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
 		<SoundBank Id="1355168291" Language="SFX" Hash="3209844325">
 			<ObjectPath>Init</ObjectPath>

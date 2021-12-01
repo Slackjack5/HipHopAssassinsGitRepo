@@ -3,7 +3,7 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{B8ECC702-16C2-433D-9116-56CB589ABD29}">
 			<PropertyList>
-				<Property Name="AudioFilesImporter\Path" Type="string" Value="G:\Ableton\New Projects\Empty Project\AudioWorkshop\Sounds\GameOff2021\Patterns\"/>
+				<Property Name="AudioFilesImporter\Path" Type="string" Value="G:\Ableton\New Projects\Empty Project\AudioWorkshop\Sounds\GameOff2021\Music\"/>
 				<Property Name="Event Action List\{03FA3077-B1F3-4760-90EA-6FF772871104}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{06CF03DA-14E9-4EC4-8A51-D0CACBEEA102}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{075CAAC1-D3A1-4149-A150-EC40C341F717}\x64_Expand States" Type="string" Value=""/>
@@ -36,6 +36,7 @@
 				<Property Name="Event Action List\{A25629C2-7A9F-4817-9BF5-C4EF0B0C8F3F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{AB640691-94A4-4D5C-B099-F395A6C43C4E}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{AC5E926B-D8D6-4A48-8909-7673E4DFF572}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{B95FC3C8-2374-419C-BA2A-4C3736B4120B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{BF4E6722-7A5B-4087-A03C-404A6263328B}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{C02A7155-2F72-406B-AF77-85C537A4C08F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{CB6EFDAC-41BB-44F1-8ADF-EAB893B73BCD}\x64_Expand States" Type="string" Value=""/>
@@ -48,11 +49,13 @@
 				<Property Name="Event Action List\{EAEB3850-19E2-4754-BFEA-82C7C86A7C64}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{EC26F2AF-7A68-4942-B27B-4521506A430A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{ECCB92A1-C6C8-48BE-9C61-2C8244EBE9D8}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{EFCE334A-7931-403B-B1DA-4279BE4F9403}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F20F2198-E0F2-4EC3-8B44-FE4897A7D8BE}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F335FD33-99E8-4C46-8226-49CABCEA3BE0}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F490D440-BC5F-4CED-BBFF-F852BCFF9102}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F9066D99-2475-41E0-94F2-7873587E38EA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{FABC75A4-D129-4997-B121-C133D1B3704C}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{FC95778B-FC7E-4B75-AC61-4BE556631E66}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{FD2B7509-DFE5-46E2-B705-C48EBEAB5B54}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
@@ -76,6 +79,7 @@
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
 				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="zqn/gBtvAkyzjphX8pWskQEDI5r/////uNezjfhal02CaPxx3eQOHQEDI5r/////"/>
 				<Property Name="Interactive Music\x64_{42B02AB2-792E-435E-BBE3-EE74FC6C6757} - SegmentEditorZoomInfo" Type="string" Value="2cORFzSMOUDlflr78S3/P6XfeZW/MixAAAAAAAAA8D8AAAAAQITXQAAAAAAAAAAA"/>
+				<Property Name="Interactive Music\x64_{928F394B-1772-4034-B86C-987718092E05} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP6uqqqqqWjRAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="Interactive Music\x64_{F36DA277-B605-4665-8D4C-A7AECEB1A07F} - SegmentEditorZoomInfo" Type="string" Value="Z99JKRCzI0Cv591YUFj8P7gasTL16xBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
@@ -87,6 +91,8 @@
 				<Property Name="MonitoringManager\GameObjectFilter\GameObjectFilterVersion" Type="int32" Value="1"/>
 				<Property Name="MonitoringManager\GameObjectFilter\GameObjectFiltersEnable" Type="bool" Value="True"/>
 				<Property Name="MonitoringManager\GameObjectFilter\x64_GameObjectFilters" Type="string" Value=""/>
+				<Property Name="Music Transition List\{2A6818A6-2B5E-4B02-A194-77FDC093E203}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Music Transition List\{8AA2629F-4F1F-487C-8B3D-F295C98D30EB}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{BE0E1348-019A-4F65-B4B4-5228394CDE74}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_12_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
