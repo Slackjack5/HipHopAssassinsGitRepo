@@ -313,6 +313,9 @@
 								<MusicSegment Name="Nycelly ~ CyberMonday" ID="{928F394B-1772-4034-B86C-987718092E05}" ShortID="139501174">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="48000"/>
+										<Property Name="GridFrequencyPreset" Type="int16" Value="52"/>
+										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
+										<Property Name="Tempo" Type="Real64" Value="200"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-9</Value>
