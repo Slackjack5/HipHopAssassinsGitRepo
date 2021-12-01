@@ -96,15 +96,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: attack
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: maxHealth
-      value: 250
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: patternId
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8752208769070977871, guid: 7aa0321cfc670e04e8668e09f6bc88ff, type: 3}
       propertyPath: combatantName

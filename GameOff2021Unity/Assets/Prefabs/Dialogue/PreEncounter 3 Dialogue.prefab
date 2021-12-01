@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &696530481954293460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5150546359608650369}
+  - component: {fileID: 473068600192344618}
+  m_Layer: 0
+  m_Name: PreEncounter 3 Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5150546359608650369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696530481954293460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &473068600192344618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696530481954293460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b4ecb54b86465ba8d65abda0f8d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - name: Analysis
+    message: "Hey Vanguard, I\u2019ve been meaning to ask. How come you look like
+      that?"
+  - name: Vanguard
+    message: What do you mean?
+  - name: Analysis
+    message: Well, when we enter cyberspace, our appearance changes to match our
+      perceptions of ourselves.
+  - name: Analysis
+    message: So I'm wondering why you look so medieval.
+  - name: Vanguard
+    message: Good eye, my astute companion.
+  - name: Vanguard
+    message: The visage you see before you is a manifestation of my own beliefs.
+  - name: Vanguard
+    message: A belief that amongst those in the organization I have risen above and
+      proven myself as the paramount of strength and a symbol of valor in cyberspace.
+  - name: Analysis
+    message: Oh...
+  - name: Analysis
+    message: Me, I turned my glasses into visors 'cause I thought it would look cool.

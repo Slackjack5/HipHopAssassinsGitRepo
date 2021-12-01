@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class EncounterManager : MonoBehaviour
 {
   [SerializeField] private Encounter[] encounters;
+  [SerializeField] private int firstEncounterIndex;
   [SerializeField] private DialogueTrigger[] dialogueTriggers;
   [SerializeField] private GameObject dialoguePanel;
   [SerializeField] private float textSpeed;
@@ -83,10 +84,7 @@ public class EncounterManager : MonoBehaviour
   {
     restartCommand.SetActive(false);
 
-    foreach (Hero hero in CombatManager.Heroes)
-    {
-      hero.ResetEverything(true);
-    }
+    ResetHeroes();
 
     // Reset the current encounter.
     if (currentEncounter != null)
@@ -96,6 +94,14 @@ public class EncounterManager : MonoBehaviour
 
     currentState = State.PreEncounter;
     StartDialogue();
+  }
+
+  private void ResetHeroes()
+  {
+    foreach (Hero hero in CombatManager.Heroes)
+    {
+      hero.ResetEverything(true);
+    }
   }
 
   private void StartDialogue()
@@ -216,13 +222,20 @@ public class EncounterManager : MonoBehaviour
       currentState = State.PreEncounter;
       currentGold += encounters[currentEncounterIndex].Gold;
       currentEncounterIndex++;
+
+      if (currentEncounterIndex == firstEncounterIndex)
+      {
+        // Tutorial is complete. Reset heroes' health and stamina.
+        ResetHeroes();
+      }
+
       StartDialogue();
     }
     else
     {
       currentState = State.GameOver;
       currentGold = 0;
-      currentEncounterIndex = 0;
+      currentEncounterIndex = currentEncounterIndex < firstEncounterIndex ? 0 : firstEncounterIndex;
       ShowRestart();
     }
   }

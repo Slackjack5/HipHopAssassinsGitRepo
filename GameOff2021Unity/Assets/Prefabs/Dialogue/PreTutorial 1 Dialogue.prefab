@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1954416474620399613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4444139431268415458}
+  - component: {fileID: 1180851996246844586}
+  m_Layer: 0
+  m_Name: PreTutorial 1 Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4444139431268415458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954416474620399613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180851996246844586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954416474620399613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b4ecb54b86465ba8d65abda0f8d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - name: Vanguard
+    message: It's about time.
+  - name: Vanguard
+    message: Analysis, explain to the newbie what we do here.
+  - name: Analysis
+    message: HQ's noticed an anomaly with this computer. You could say it has a bug.
+  - name: Vanguard
+    message: Wait? Something's peculiar. Analysis, explain to me why my movements
+      are inconsistent.
+  - name: Analysis
+    message: Our abilities to debug seem to have been restrained to follow a rhythmic
+      pattern.
+  - name: Vanguard
+    message: Initiate, this is your first job. Show me what you learned back in the
+      Academy.
+  - name: Initiate
+    message: Yessir!
+  - name: Initiate
+    message: When attacking the target, listen closely to the whistle. It shows us
+      when we should strike.
+  - name: Initiate
+    message: Then, when it's our time to attack, follow the pattern of the whistle.
+  - name: Initiate
+    message: The more accurate our strikes, the more damage we inflict.
+  - name: Initiate
+    message: When it is the enemy's turn to attack, a whistle will likewise play
+      a pattern.
+  - name: Initiate
+    message: Listen to it closely, then repeat the pattern to dodge their attacks!
+  - name: Initiate
+    message: Keep going until all our enemies are defeated, but we must be wary of
+      one thing.
+  - name: Initiate
+    message: As soon as we enter a fight, there will be a time limit shown at the
+      top of the screen.
+  - name: Initiate
+    message: We must eliminate all bugs before the timer runs out.
+  - name: Initiate
+    message: We do have methods available to us to delay the timer's end, so we must
+      take advantage of all resources we have to efficiently make progress.
+  - name: Analysis
+    message: Wow, they taught you all that? Was it part of a minor or something?
+  - name: Vanguard
+    message: Glad to see you're not an imbecile, Initiate. Let's put your knowledge
+      to the test on that cube over there.

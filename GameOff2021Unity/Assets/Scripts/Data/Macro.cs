@@ -64,6 +64,7 @@ public class Macro : Command
           hero.BuffMacro();
         }
 
+        IconManager.BuffMacro();
         break;
       case 7:
         // Attack+
@@ -72,6 +73,7 @@ public class Macro : Command
           hero.BuffAttack();
         }
 
+        IconManager.BuffAttack();
         break;
       case 8:
         // Defense+
@@ -80,6 +82,7 @@ public class Macro : Command
           hero.BuffDefense();
         }
 
+        IconManager.BuffDefense();
         break;
       case 9:
         // Surge
