@@ -4,7 +4,7 @@
         <id>1</id>
         <name>Repair</name>
         <description>Heals the target.</description>
-        <power>24</power>
+        <power>38</power>
         <patternId>8</patternId>
         <cost>4</cost>
         <needsTarget>true</needsTarget>
@@ -13,7 +13,7 @@
         <id>2</id>
         <name>Mass Repair</name>
         <description>Heals all allies.</description>
-        <power>24</power>
+        <power>38</power>
         <patternId>9</patternId>
         <cost>10</cost>
     </Macro>

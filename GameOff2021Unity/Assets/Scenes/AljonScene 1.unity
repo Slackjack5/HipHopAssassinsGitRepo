@@ -1144,6 +1144,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4993594879384720819, guid: a010af32af73c4540ae922f1dcc75ea3, type: 3}
   m_PrefabInstance: {fileID: 4993594878220091682}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1492895752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5985547270497574370, guid: 93ebce32c2fa48a4b8747c48f8804762, type: 3}
+  m_PrefabInstance: {fileID: 5985547270115601824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1497037481
 GameObject:
   m_ObjectHideFlags: 0
@@ -4239,6 +4244,10 @@ PrefabInstance:
       propertyPath: shop
       value: 
       objectReference: {fileID: 389403649}
+    - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
+      propertyPath: endPanel
+      value: 
+      objectReference: {fileID: 1492895752}
     - target: {fileID: 2686011641875503660, guid: 00cfb57d00026bf448efa708610f8e64, type: 3}
       propertyPath: combatManager
       value: 
