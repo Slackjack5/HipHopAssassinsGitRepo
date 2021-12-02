@@ -534,7 +534,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Combat" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+									<ObjectRef Name="MusicSwitcher" ID="{8AA2629F-4F1F-487C-8B3D-F295C98D30EB}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -548,7 +548,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Combat" ID="{BE0E1348-019A-4F65-B4B4-5228394CDE74}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
+									<ObjectRef Name="MusicSwitcher" ID="{8AA2629F-4F1F-487C-8B3D-F295C98D30EB}" WorkUnitID="{86CBE694-7639-499A-A32A-677586411F80}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
