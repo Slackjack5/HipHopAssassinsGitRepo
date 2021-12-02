@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     _quitButton.onClick.AddListener(Quit);
 
     DOTween.Init().SetCapacity(1250, 50);
+
+    Application.runInBackground = true;
   }
 
   private void Update()
