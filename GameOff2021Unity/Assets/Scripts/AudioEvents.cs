@@ -111,49 +111,39 @@ public class AudioEvents : MonoBehaviour
         bpm = _musicInfo.segmentInfo_fBeatDuration * 60f;
         break;
       case AkCallbackType.AK_MusicSyncBeat:
-        if (isSegmentPositionReady)
+        IncreaseBeat();
+
+        currentBeatStartTime = currentSegment.iCurrentPosition;
+        OnEveryBeat.Invoke();
+        isOnEveryOffbeatInvoked = false;
+
+        if (GlobalVariables.currentBeat % 2 == 0)
         {
-          IncreaseBeat();
-
-          currentBeatStartTime = currentSegment.iCurrentPosition;
-          OnEveryBeat.Invoke();
-          isOnEveryOffbeatInvoked = false;
-
-          if (GlobalVariables.currentBeat % 2 == 0)
-          {
-            OnEvery2ndBeat.Invoke();
-          }
+          OnEvery2ndBeat.Invoke();
         }
 
         break;
       case AkCallbackType.AK_MusicSyncBar:
-        if (isSegmentPositionReady)
+        IncreaseBar();
+
+        //I want to make sure that the secondsPerBeat is defined on our first measure.
+        if (GlobalVariables.songStarted == false)
         {
-          IncreaseBar();
-
-          //I want to make sure that the secondsPerBeat is defined on our first measure.
-          if (GlobalVariables.songStarted == false)
-          {
-            // If the game hasn't started yet, start it on beat 1
-            GlobalVariables.songStarted = true;
-          }
-
-          secondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
-          secondsPerBar = _musicInfo.segmentInfo_fBarDuration;
-
-          currentBarStartTime = currentSegment.iCurrentPosition;
-
-          OnEveryBar.Invoke();
+          // If the game hasn't started yet, start it on beat 1
+          GlobalVariables.songStarted = true;
         }
+
+        secondsPerBeat = _musicInfo.segmentInfo_fBeatDuration;
+        secondsPerBar = _musicInfo.segmentInfo_fBarDuration;
+
+        currentBarStartTime = currentSegment.iCurrentPosition;
+
+        OnEveryBar.Invoke();
 
         break;
       case AkCallbackType.AK_MusicSyncGrid:
-        if (isSegmentPositionReady)
-        {
-          IncreaseGrid();
-          OnEveryGrid.Invoke();
-        }
-
+        IncreaseGrid();
+        OnEveryGrid.Invoke();
         break;
       case AkCallbackType.AK_MusicSyncEntry:
         currentLoop++;
@@ -165,8 +155,15 @@ public class AudioEvents : MonoBehaviour
 
         isSegmentPositionReady = true;
 
+        GlobalVariables.currentBeat = 0;
+        GlobalVariables.currentGrid = 0;
+
         break;
       case AkCallbackType.AK_MusicSyncExit:
+        // Exit is called after bar, beat, and grid callbacks.
+        // Decrement currentBar so that it doesn't double-count.
+        GlobalVariables.currentBar -= 1;
+
         isSegmentPositionReady = false;
         break;
     }

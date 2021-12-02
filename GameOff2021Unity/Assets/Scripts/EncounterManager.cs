@@ -246,8 +246,10 @@ public class EncounterManager : MonoBehaviour
       {
         EndGame();
       }
-
-      StartDialogue();
+      else
+      {
+        StartDialogue();
+      }
     }
     else
     {
