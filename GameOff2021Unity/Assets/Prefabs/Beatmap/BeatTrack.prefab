@@ -224,6 +224,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8907859657742053462}
     - target: {fileID: 4603286157685234760, guid: 7782f4255cd4c2d448246dc6da41e864, type: 3}
+      propertyPath: leniency
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603286157685234760, guid: 7782f4255cd4c2d448246dc6da41e864, type: 3}
       propertyPath: centerPos
       value: 
       objectReference: {fileID: 905266794364031000}

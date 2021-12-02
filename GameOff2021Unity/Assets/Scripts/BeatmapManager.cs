@@ -12,7 +12,7 @@ public class BeatmapManager : MonoBehaviour
   [SerializeField] private RectTransform spawnerPos;
   [SerializeField] private RectTransform centerPos;
   [SerializeField] private RectTransform endPos;
-  [Range(0.00f, 1.2f)] private float leniency = 0.07f;
+  [SerializeField] [Range(0.00f, 1.2f)] private float leniency = 0.07f;
 
   public readonly UnityEvent complete = new UnityEvent();
   public readonly UnityEvent<Note, AccuracyGrade> hit = new UnityEvent<Note, AccuracyGrade>();
