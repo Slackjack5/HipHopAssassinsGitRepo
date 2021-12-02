@@ -10,7 +10,7 @@ public class Consumable : Command
   private int amountOwned;
   private int lastAmountOwned; // amountOwned right before it is modified.
   private bool _isLastHit;
-  private bool hasMissed;
+  private int missCount;
   private bool isInitialized;
 
   public int AmountOwned => amountOwned;
@@ -89,7 +89,7 @@ public class Consumable : Command
     _isLastHit = isLastHit;
     if (effectMultiplier == 0)
     {
-      hasMissed = true;
+      missCount++;
     }
 
     isInitialized = true;
@@ -99,6 +99,7 @@ public class Consumable : Command
 
   private bool ShouldExecute()
   {
-    return _isLastHit && !hasMissed;
+    // Player can miss up to 2 times before the consumable fails.
+    return _isLastHit && missCount <= 2;
   }
 }
