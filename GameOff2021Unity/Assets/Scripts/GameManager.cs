@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -28,8 +29,14 @@ public class GameManager : MonoBehaviour
     _quitButton.onClick.AddListener(Quit);
 
     DOTween.Init().SetCapacity(1250, 50);
+  }
 
-    Application.runInBackground = true;
+  private void OnApplicationFocus(bool hasFocus)
+  {
+    if (!hasFocus)
+    {
+      OnPause();
+    }
   }
 
   private void Update()
