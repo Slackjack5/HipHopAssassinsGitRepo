@@ -10,7 +10,7 @@ public class Macro : Command
   private bool isInitialized;
   private float _effectMultiplier;
   private bool _isLastHit;
-  private bool hasMissed;
+  private int missCount;
 
   public bool HasEnoughStamina { get; set; }
 
@@ -113,7 +113,7 @@ public class Macro : Command
     _isLastHit = isLastHit;
     if (effectMultiplier == 0)
     {
-      hasMissed = true;
+      missCount++;
     }
 
     isInitialized = true;
@@ -123,6 +123,7 @@ public class Macro : Command
 
   private bool ShouldExecute()
   {
-    return _isLastHit && !hasMissed;
+    // Player can miss up to a maximum of 2 times before the macro fails.
+    return _isLastHit && missCount <= 2;
   }
 }
