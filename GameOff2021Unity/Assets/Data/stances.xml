@@ -9,6 +9,6 @@
         <name>Charge</name>
         <description>Spends a turn to add time back to the timer.</description>
         <id>2</id>
-        <power>50</power>
+        <power>60</power>
     </Stance>
 </ArrayOfStance>
