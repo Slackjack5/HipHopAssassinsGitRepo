@@ -155,13 +155,16 @@ public class AudioEvents : MonoBehaviour
 
         isSegmentPositionReady = true;
 
-        break;
-      case AkCallbackType.AK_MusicSyncExit:
-        // Exit is called after bar, beat, and grid, so decrement currentBar and reset currentBeat and currentGrid
-        // so that it doesn't double-count.
-        GlobalVariables.currentBar -= 1;
         GlobalVariables.currentBeat = 0;
         GlobalVariables.currentGrid = 0;
+
+        break;
+      case AkCallbackType.AK_MusicSyncExit:
+        // Exit is called after bar, beat, and grid callbacks.
+        // Decrement currentBar so that it doesn't double-count.
+        GlobalVariables.currentBar -= 1;
+
+        isSegmentPositionReady = false;
         break;
     }
   }
