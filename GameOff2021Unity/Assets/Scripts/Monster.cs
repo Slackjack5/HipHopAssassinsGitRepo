@@ -56,6 +56,18 @@ public class Monster : Combatant
       {
         hero.TakeDamage(this, damageMultiplier, false);
       }
+
+      if (isLastHit)
+      {
+        ResetPosition();
+        ChangeState(State.Idle);
+      }
+      else
+      {
+        // Move in front of the heroes at the middle
+        MoveToHero(CombatManager.Heroes[1]);
+        ChangeState(State.Attacking);
+      }
     }
     else
     {
@@ -76,5 +88,11 @@ public class Monster : Combatant
       transform.DOMoveY(position.y + twitchDistance, twitchDuration);
       twitched = true;
     }
+  }
+
+  private void MoveToHero(Hero hero)
+  {
+    Vector2 targetPosition = hero.transform.position;
+    transform.DOMove(new Vector2(targetPosition.x + distanceFromTarget, targetPosition.y), travelTime);
   }
 }

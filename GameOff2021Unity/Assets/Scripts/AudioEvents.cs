@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
 
 public class AudioEvents : MonoBehaviour
@@ -87,11 +88,6 @@ public class AudioEvents : MonoBehaviour
       OnEveryOffbeat.Invoke();
       isOnEveryOffbeatInvoked = true;
     }
-
-    if (!isSegmentPositionReady && currentSegment.iCurrentPosition <= songLength)
-    {
-      isSegmentPositionReady = true;
-    }
   }
 
   private void OnGUI()
@@ -151,10 +147,13 @@ public class AudioEvents : MonoBehaviour
         }
 
         break;
-
       case AkCallbackType.AK_MusicSyncGrid:
-        IncreaseGrid();
-        OnEveryGrid.Invoke();
+        if (isSegmentPositionReady)
+        {
+          IncreaseGrid();
+          OnEveryGrid.Invoke();
+        }
+
         break;
       case AkCallbackType.AK_MusicSyncEntry:
         currentLoop++;
@@ -163,6 +162,8 @@ public class AudioEvents : MonoBehaviour
         {
           songLength = currentSegment.iCurrentPosition;
         }
+
+        isSegmentPositionReady = true;
 
         break;
       case AkCallbackType.AK_MusicSyncExit:
